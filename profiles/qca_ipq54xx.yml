@@ -1,7 +1,7 @@
 ---
 profiles:
-  - prpl_freedom
-target: ipq95xx
+  - qcom_maxx
+target: ipq54xx
 subtarget: generic
 external_target: True
 description: Build image for prpl Foundation Freedom board
@@ -11,7 +11,18 @@ additional_packages:
     packages:
       - i2c-tools
       - sysstat
-  - feed: platform_utils
+  - feed: wlan-internal
+    packages:
+      - kmod-ath12k
+      - kmod-mac80211
+      - kmod-cfg80211
+      - iw-full
+      - wireless-freedom
+      - netifd-scripts
+      - libubox
+      - ubus
+      - udebug
+  - feed: feed_qca
     packages:
       - platform_drivers
       - wififw_mount_script
@@ -23,69 +34,59 @@ additional_packages:
       - kmod-usb-storage-extras
       - kmod-usb-storage-uas
       - kmod-fs-vfat
-  - feed: wlan_utils
-    packages:
       - qca-wifi-scripts
       - wifi-scripts
       - ath-legacy-wifi-scripts
-  - feed: ssdk
-    packages:
-      - qca-ssdk
+      - kmod-qca-nss-dp
+      - kmod-qca-nss-dscpstats
+      - kmod-qca-nss-flowmgr
+      - kmod-qca-nss-macsec
+      - kmod-qca-nss-phy
+      - kmod-qca-nss-ppe
+      - kmod-qca-nss-ppe-bridge-mgr
+      - kmod-qca-nss-ppe-ds
+      - kmod-qca-nss-ppe-dsa-mgr
+      - kmod-qca-nss-ppe-gretap
+      - kmod-qca-nss-ppe-lag-mgr
+      - kmod-qca-nss-ppe-mapt
+      - kmod-qca-nss-ppe-mirror-test
+      - kmod-qca-nss-ppe-netlink
+      - kmod-qca-nss-ppe-pppoe-mgr
+      - kmod-qca-nss-ppe-qdisc
+      - kmod-qca-nss-ppe-rule
+      - kmod-qca-nss-ppe-tun
+      - kmod-qca-nss-ppe-tunipip6
+      - kmod-qca-nss-ppe-vlan-mgr
+      - kmod-qca-nss-ppe-vp
+      - kmod-qca-nss-ppe-vxlanmgr
+      - kmod-qca-ovsmgr
+      - kmod-qca-ssdk-nohnat
       - qca-ssdk-shell
-  - feed: wlan-internal
-    packages:
+      - kmod-qca8084
+      - kmod-qca81xx
+      - kmod-qca8xxx-phc
+      - kmod-qca-nss-ecm-premium
+      - kmod-qca-nss-fls
+      - ppecfg
+      - kmod-emesh-sp
+      - kmod-nss-udp-st-drv
+      - kmod-nss-userspace-oss
+      - kmod-qca8k
       - kmod-ath12k
-      - kmod-mac80211
-      - kmod-cfg80211
+      - kmod-ath11k
+      - kmod-qca-ovsmgr
+      - kmod-macvlan
+      - wpad-mesh-openssl
       - hostapd-common
       - hostapd-utils
-      - wpad-mesh-openssl
-      - iw-full
-      - wireless-freedom
-      - netifd-scripts
-      - ubus
-      - libubox
-      - udebug
-  - feed: nss_host
-    packages:
-      - kmod-qca-nss-ppe
-      - kmod-qca-nss-ppe-vp
-      - kmod-qca-nss-ppe-bridge-mgr
-      - kmod-qca-nss-ppe-pppoe-mgr
-      - kmod-qca-nss-ppe-lag-mgr
-      - kmod-qca-nss-ppe-tunipip6
-      - kmod-qca-nss-ppe-gretap
-      - kmod-qca-nss-ppe-vxlanmgr
-      - kmod-qca-nss-ppe-mapt
-      - kmod-qca-nss-ppe-rule
-      - kmod-qca-nss-ppe-qdisc
-      - kmod-qca-nss-ppe-ds
-      - kmod-qca-nss-ppe-mirror-test
-      - kmod-qca-nss-ppe-dsa-mgr
-      - kmod-qca-nss-dp
-      - ppecfg
-      - aqr-phy
-      - kmod-qca-nss-cfi
-      - kmod-qca-nss-ecm
-      - kmod-qca-nss-phy
-      - kmod-qca-nss-sfe
-      - kmod-emesh-sp
-      - kmod-qca-nss-clients
-      - kmod-qca-nss-ppe-test
-      - kmod-qca-ovsmgr
-      - kmod-nss-udp-st-drv
-      - kmod-qca-nss-crypto
-      - kmod-qca-nss-gmac
-      - kmod-qca-nss-ppe-capwapmgr
-      - kmod-qca-nss-ppe-tun
-      - kmod-nss-userspace-oss
-      - kmod-qca-nss-ppe-clients
-      - kmod-qca-nss-ppe-netlink
-      - kmod-qca-nss-netfn
-      - kmod-qca-net-standby
-      - kmod-qca-nss-nsm
-      - kmod-qca-nss-ppe-dtlsmgr
-      - kmod-qca8k
+      - ath-wifi-scripts
+      - wpa-cli
+      - qca-wifi-scripts
+      - ath-wifi-scripts
+      - wireless-regdb
+      - kmod-fs-vfat
+      - kmod-telemetry-agent
+      - wpa-cli
 
 packages:
   - e2fsprogs
@@ -97,31 +98,15 @@ packages:
   - kmod-ata-ahci
   - kmod-ata-ahci-platform
   - kmod-usb3
-  - kmod-ath12k
   - kmod-leds-gpio
   - swconfig
   - kmod-fs-ext4
   - losetup
-  - ath-wifi-scripts
   - kmod-bonding
-  - wpad-mesh-openssl
   - kmod-pptp
   - kmod-crypto-authenc
-  - kmod-qca-nss-dscpstats
-  - kmod-qca-nss-eip
-  - kmod-qca-nss-eip-crypto
-  - kmod-qca-nss-eip-ipsec
-  - kmod-qca-nss-macsec
-  - kmod-qca-nss-ppe-vlan-mgr
-  - kmod-qca-nss-ecm-premium
-  - kmod-qca-nss-fls
-  - kmod-qca-nss-ecm-wifi-plugin
-  - hostapd-utils
-  - wireless-regdb
-  - qca-ssdk-shell
-  - kmod-telemetry-agent
+  - kmod-fs-vfat
   - kmod-bootconfig
-  - wpa-cli
   - ethtool
   - tcpdump
   - taskset
@@ -129,7 +114,7 @@ packages:
 diffconfig: |
   CONFIG_TARGET_INITRAMFS_COMPRESSION_LZMA=y
   CONFIG_BUSYBOX_CUSTOM=y
-  CONFIG_TARGET_ipq95xx_generic_DEVICE_qcom_alxx=y
+  CONFIG_TARGET_ipq54xx_generic_DEVICE_qcom_maxx=y
   CONFIG_KERNEL_HWMON=y
   CONFIG_BUSYBOX_CONFIG_USLEEP=y
   CONFIG_BUSYBOX_CONFIG_BLOCKDEV=y

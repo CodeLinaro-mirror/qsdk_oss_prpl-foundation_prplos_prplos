@@ -1,0 +1,131 @@
+---
+profiles:
+  - qcom_mixx
+target: ipq53xx
+subtarget: generic
+external_target: True
+description: Build image for prpl Foundation Freedom board
+
+additional_packages:
+  - feed: packages
+    packages:
+      - i2c-tools
+      - sysstat
+  - feed: wlan-internal
+    packages:
+      - kmod-ath12k
+      - kmod-mac80211
+      - kmod-cfg80211
+      - iw-full
+      - wireless-freedom
+      - netifd-scripts
+      - libubox
+      - udebug
+      - ubus
+  - feed: feed_qca
+    packages:
+      - platform_drivers
+      - wififw_mount_script
+      - kmod-sound-soc-ipq
+      - kmod-usb-phy-ipq807x
+      - kmod-usb-dwc3-internal
+      - kmod-usb-dwc3-qcom-internal
+      - kmod-usb-storage
+      - kmod-usb-storage-extras
+      - kmod-usb-storage-uas
+      - kmod-fs-vfat
+      - wifi-scripts
+      - kmod-qca-nss-dp
+      - kmod-qca-nss-dscpstats
+      - kmod-qca-nss-flowmgr
+      - kmod-qca-nss-macsec
+      - kmod-qca-nss-phy
+      - kmod-qca-nss-ppe
+      - kmod-qca-nss-ppe-bridge-mgr
+      - kmod-qca-nss-ppe-ds
+      - kmod-qca-nss-ppe-dsa-mgr
+      - kmod-qca-nss-ppe-gretap
+      - kmod-qca-nss-ppe-lag-mgr
+      - kmod-qca-nss-ppe-mapt
+      - kmod-qca-nss-ppe-mirror-test
+      - kmod-qca-nss-ppe-netlink
+      - kmod-qca-nss-ppe-pppoe-mgr
+      - kmod-qca-nss-ppe-qdisc
+      - kmod-qca-nss-ppe-rule
+      - kmod-qca-nss-ppe-tun
+      - kmod-qca-nss-ppe-tunipip6
+      - kmod-qca-nss-ppe-vlan-mgr
+      - kmod-qca-nss-ppe-vp
+      - kmod-qca-nss-ppe-vxlanmgr
+      - kmod-qca-ovsmgr
+      - kmod-qca-ssdk-nohnat
+      - qca-ssdk-shell
+      - kmod-qca8084
+      - kmod-qca81xx
+      - kmod-qca8xxx-phc
+      - kmod-qca-nss-ecm-premium
+      - kmod-qca-nss-fls
+      - ppecfg
+      - kmod-emesh-sp
+      - kmod-nss-udp-st-drv
+      - kmod-nss-userspace-oss
+      - kmod-qca8k
+      - kmod-ath12k
+      - kmod-ath11k
+      - kmod-nat46
+      - kmod-qca-ovsmgr
+      - kmod-macvlan
+      - wpad-mesh-openssl
+      - hostapd-common
+      - hostapd-utils
+      - ath-wifi-scripts
+      - wpa-cli
+      - qca-wifi-scripts
+      - ath-legacy-wifi-scripts
+      - wireless-regdb
+      - kmod-fs-vfat
+      - kmod-telemetry-agent
+      - wpa-cli
+
+packages:
+  - e2fsprogs
+  - uboot-envtools
+  - kmod-leds-gpio
+  - kmod-gpio-button-hotplug
+  - kmod-button-hotplug
+  - kmod-ata-core
+  - kmod-ata-ahci
+  - kmod-ata-ahci-platform
+  - kmod-usb3
+  - kmod-leds-gpio
+  - swconfig
+  - kmod-fs-ext4
+  - losetup
+  - kmod-bonding
+  - kmod-pptp
+  - kmod-crypto-authenc
+  - kmod-fs-vfat
+  - kmod-bootconfig
+  - ethtool
+  - tcpdump
+  - taskset
+
+diffconfig: |
+  CONFIG_TARGET_INITRAMFS_COMPRESSION_LZMA=y
+  CONFIG_BUSYBOX_CUSTOM=y
+  CONFIG_TARGET_ipq53xx_generic_DEVICE_qcom_mixx=y
+  CONFIG_KERNEL_HWMON=y
+  CONFIG_BUSYBOX_CONFIG_USLEEP=y
+  CONFIG_BUSYBOX_CONFIG_BLOCKDEV=y
+  CONFIG_BUSYBOX_CONFIG_TFTPD=y
+  CONFIG_BUSYBOX_CONFIG_FEATURE_TFTP_GET=y
+  CONFIG_BUSYBOX_CONFIG_FEATURE_TFTP_PUT=y
+  CONFIG_BUSYBOX_CONFIG_TFTP=y
+  CONFIG_BUSYBOX_CONFIG_TELNET=y
+  CONFIG_KERNEL_UBIFS_FS_SECURITY=y
+  CONFIG_KERNEL_DYNAMIC_DEBUG=y
+  CONFIG_DEBUG=y
+  # CONFIG_KERNEL_DEBUG_INFO_REDUCED is not set
+  CONFIG_PACKAGE_ATH_DEBUG=y
+  CONFIG_PACKAGE_ppecfg=y
+  CONFIG_PACKAGE_libnl-ppe=y
