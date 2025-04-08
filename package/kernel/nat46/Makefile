@@ -25,11 +25,17 @@ endef
 
 include $(INCLUDE_DIR)/kernel-defaults.mk
 
+define Build/InstallDev
+	mkdir -p -m 0777 $(1)/usr/include/nat46
+	$(CP) $(PKG_BUILD_DIR)/nat46/modules/*.h $(1)/usr/include/nat46/
+endef
+
 define Build/Compile
 	$(KERNEL_MAKE) M="$(PKG_BUILD_DIR)/nat46/modules" \
 		MODFLAGS="-DMODULE -mlong-calls" \
 		EXTRA_CFLAGS="-DNAT46_VERSION=\\\"$(PKG_SOURCE_VERSION)\\\"" \
 		modules
+	cp $(PKG_BUILD_DIR)/nat46/modules/Module.symvers $(PKG_BUILD_DIR)/Module.symvers.tmp
 endef
 
 $(eval $(call KernelPackage,nat46))
