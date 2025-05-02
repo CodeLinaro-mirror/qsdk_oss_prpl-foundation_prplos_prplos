@@ -129,3 +129,5 @@ diffconfig: |
   CONFIG_PACKAGE_ATH_DEBUG=y
   CONFIG_PACKAGE_ppecfg=y
   CONFIG_PACKAGE_libnl-ppe=y
+  CONFIG_PACKAGE_mcastd-noforward=n
+  CONFIG_PACKAGE_tr181-mcastd=n
