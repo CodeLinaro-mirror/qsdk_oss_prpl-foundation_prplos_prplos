@@ -11,6 +11,7 @@ additional_packages:
     packages:
       - i2c-tools
       - sysstat
+      - u-boot
   - feed: wlan-internal
     packages:
       - kmod-ath12k

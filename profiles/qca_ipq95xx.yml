@@ -11,6 +11,7 @@ additional_packages:
     packages:
       - i2c-tools
       - sysstat
+      - u-boot
   - feed: platform_utils
     packages:
       - platform_drivers
