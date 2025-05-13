@@ -87,6 +87,10 @@ additional_packages:
       - kmod-fs-vfat
       - kmod-telemetry-agent
       - wpa-cli
+      - ftm
+      - myftm
+      - diag
+      - cnssdiag
 
 packages:
   - e2fsprogs
