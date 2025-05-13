@@ -58,6 +58,10 @@ MAKE_FLAGS += \
 	no-dot-config-targets=envtools \
 	envtools
 
+ifeq ($(CONFIG_USE_PRPLMESH_WHM),y)
+	EXTERNAL_DIR:=$(TOPDIR)/prpl-patches/package/boot/uboot-envtools/
+endif
+
 define Package/uboot-envtools/conffiles
 /etc/config/ubootenv
 /etc/fw_env.config
@@ -81,6 +85,9 @@ define Package/uboot-envtools/install
 			$(1)/etc/uci-defaults/30_uboot-envtools \
 		) \
 	)
+ifeq ($(CONFIG_USE_PRPLMESH_WHM),y)
+	$(INSTALL_DATA) $(EXTERNAL_DIR)/files/ipq $(1)/etc/uci-defaults/30_uboot-envtools
+endif
 endef
 
 $(eval $(call BuildPackage,uboot-envtools))
