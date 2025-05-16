@@ -87,6 +87,10 @@ additional_packages:
       - kmod-qca-nss-nsm
       - kmod-qca-nss-ppe-dtlsmgr
       - kmod-qca8k
+      - ftm
+      - myftm
+      - diag
+      - cnssdiag
 
 packages:
   - e2fsprogs
