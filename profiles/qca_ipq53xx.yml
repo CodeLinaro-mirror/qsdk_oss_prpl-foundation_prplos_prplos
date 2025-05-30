@@ -136,3 +136,6 @@ diffconfig: |
   CONFIG_PACKAGE_libnl-ppe=y
   CONFIG_PACKAGE_mcastd-noforward=n
   CONFIG_PACKAGE_tr181-mcastd=n
+  CONFIG_PACKAGE_perf=m
+  CONFIG_PACKAGE_libtraceevent=m
+  CONFIG_PACKAGE_libunwind=m
