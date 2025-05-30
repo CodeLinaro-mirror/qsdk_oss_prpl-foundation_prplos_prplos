@@ -12,6 +12,7 @@ additional_packages:
       - i2c-tools
       - sysstat
       - u-boot
+      - ntfs-3g
   - feed: platform_utils
     packages:
       - platform_drivers
@@ -24,6 +25,7 @@ additional_packages:
       - kmod-usb-storage-extras
       - kmod-usb-storage-uas
       - kmod-fs-vfat
+      - kmod-fs-ntfs
   - feed: wlan_utils
     packages:
       - qca-wifi-scripts
