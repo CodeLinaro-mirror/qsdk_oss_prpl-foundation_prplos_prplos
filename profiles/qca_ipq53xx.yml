@@ -12,6 +12,7 @@ additional_packages:
       - i2c-tools
       - sysstat
       - u-boot
+      - ntfs-3g
   - feed: wlan-internal
     packages:
       - kmod-ath12k
@@ -35,6 +36,7 @@ additional_packages:
       - kmod-usb-storage-extras
       - kmod-usb-storage-uas
       - kmod-fs-vfat
+      - kmod-fs-ntfs
       - wifi-scripts
       - kmod-qca-nss-dp
       - kmod-qca-nss-dscpstats
