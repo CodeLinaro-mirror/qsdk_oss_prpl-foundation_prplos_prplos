@@ -24,6 +24,7 @@ additional_packages:
       - libubox
       - udebug
       - ubus
+      - luci-app-samba4
   - feed: feed_qca
     packages:
       - platform_drivers
@@ -141,3 +142,4 @@ diffconfig: |
   CONFIG_PACKAGE_perf=m
   CONFIG_PACKAGE_libtraceevent=m
   CONFIG_PACKAGE_libunwind=m
+  CONFIG_PACKAGE_kmod-qseecom=m
