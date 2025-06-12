@@ -26,6 +26,7 @@ additional_packages:
       - kmod-usb-storage-uas
       - kmod-fs-vfat
       - kmod-fs-ntfs
+      - sysupgrade-helper
   - feed: wlan_utils
     packages:
       - qca-wifi-scripts

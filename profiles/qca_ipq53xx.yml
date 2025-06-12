@@ -93,6 +93,7 @@ additional_packages:
       - myftm
       - diag
       - cnssdiag
+      - sysupgrade-helper
 
 packages:
   - e2fsprogs
