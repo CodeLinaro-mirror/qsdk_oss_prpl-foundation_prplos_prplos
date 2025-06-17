@@ -50,6 +50,7 @@ additional_packages:
       - ubus
       - libubox
       - udebug
+      - samba4
   - feed: nss_host
     packages:
       - kmod-qca-nss-ppe
@@ -159,4 +160,4 @@ diffconfig: |
   CONFIG_PACKAGE_libtraceevent=m
   CONFIG_PACKAGE_libunwind=m
   CONFIG_PACKAGE_kmod-qseecom=m
-  CONFIG_PACKAGE_luci-app-samba4=m
+  CONFIG_PACKAGE_samba4-server=m
