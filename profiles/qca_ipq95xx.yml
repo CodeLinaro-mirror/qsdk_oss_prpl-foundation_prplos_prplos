@@ -40,7 +40,7 @@ additional_packages:
     packages:
       - kmod-ath12k
       - kmod-mac80211
-      - kmod-cfg80211
+      - qca-cfg80211
       - hostapd-common
       - hostapd-utils
       - wpad-mesh-openssl
@@ -68,7 +68,7 @@ additional_packages:
       - kmod-qca-nss-ppe-dsa-mgr
       - kmod-qca-nss-dp
       - ppecfg
-      - aqr-phy
+      - kmod-aqr-phy
       - kmod-qca-nss-cfi
       - kmod-qca-nss-ecm
       - kmod-qca-nss-phy
@@ -94,6 +94,19 @@ additional_packages:
       - myftm
       - diag
       - cnssdiag
+      - kmod-qca-nss-netfn-tcpst
+      - nss-tcp-st-cli
+      - nss-udp-st
+      - netstandby-drv
+      - kmod-qca-nss-nsm
+      - mcproxy
+      - libmmap-telemetry
+      - qca-nsm-app
+      - qca-sal-qos-test
+      - qca-sal-rule-test
+      - udp-clf
+      - kmod-qca-nss-ecm-wifi-plugin
+      - ath11k-fwtest
 
 packages:
   - e2fsprogs
@@ -116,14 +129,10 @@ packages:
   - kmod-pptp
   - kmod-crypto-authenc
   - kmod-qca-nss-dscpstats
-  - kmod-qca-nss-eip
-  - kmod-qca-nss-eip-crypto
-  - kmod-qca-nss-eip-ipsec
   - kmod-qca-nss-macsec
   - kmod-qca-nss-ppe-vlan-mgr
   - kmod-qca-nss-ecm-premium
   - kmod-qca-nss-fls
-  - kmod-qca-nss-ecm-wifi-plugin
   - hostapd-utils
   - wireless-regdb
   - qca-ssdk-shell
@@ -158,5 +167,6 @@ diffconfig: |
   CONFIG_PACKAGE_perf=m
   CONFIG_PACKAGE_libtraceevent=m
   CONFIG_PACKAGE_libunwind=m
+  CONFIG_PACKAGE_lldpd=y
   CONFIG_PACKAGE_kmod-qseecom=m
   CONFIG_PACKAGE_luci-app-samba4=m
