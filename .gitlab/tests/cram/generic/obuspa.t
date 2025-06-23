@@ -2,9 +2,9 @@ Create R alias:
 
   $ alias R="${CRAM_REMOTE_COMMAND:-}"
 
-Check that obuspa has expected datamodel available (minus the platform specific WiFi Vendor extensions):
+Check that obuspa has expected datamodel available (minus the platform specific WiFi Vendor extensions/cellular):
 
-  $ R "obuspa -f /etc/obuspa.db -c dump datamodel | grep '^Device.' | grep -v -e 'Device.WiFi.AccessPoint.{i}.Vendor.' -e 'Device.WiFi.EndPoint.{i}.Vendor.' -e 'Device.WiFi.Radio.{i}.Vendor.' -e 'Device.WiFi.Radio.{i}.NaStaMonitor.'"
+  $ R "obuspa -f /etc/obuspa.db -c dump datamodel | grep '^Device.' | grep -v -e 'Device.Cellular.' -e 'Device.WiFi.AccessPoint.{i}.Vendor.' -e 'Device.WiFi.EndPoint.{i}.Vendor.' -e 'Device.WiFi.Radio.{i}.Vendor.' -e 'Device.WiFi.Radio.{i}.NaStaMonitor.'"
   Device.
   Device.Boot!                                                                                         proto::tr181-device
   Device.Bridging.                                                                                     proto::tr181-bridging
@@ -44,7 +44,7 @@ Check that obuspa has expected datamodel available (minus the platform specific 
   Device.Bridging.Bridge.{i}.Port.{i}.Stats.UnknownProtoPacketsReceived                                proto::tr181-bridging
   Device.Bridging.Bridge.{i}.Port.{i}.Status                                                           proto::tr181-bridging
   Device.Bridging.Bridge.{i}.Port.{i}.Type                                                             proto::tr181-bridging
-  Device.Bridging.Bridge.{i}.Port.{i}.X_PRPL-COM_IGMP                                                  proto::tr181-bridging
+  Device.Bridging.Bridge.{i}.Port.{i}.X_PRPLWARE-COM_IGMP                                              proto::tr181-bridging
   Device.Bridging.Bridge.{i}.PortNumberOfEntries                                                       proto::tr181-bridging
   Device.Bridging.Bridge.{i}.STP.                                                                      proto::tr181-bridging
   Device.Bridging.Bridge.{i}.STP.BridgePriority                                                        proto::tr181-bridging
@@ -74,54 +74,64 @@ Check that obuspa has expected datamodel available (minus the platform specific 
   Device.Bridging.MaxDBridgeEntries                                                                    proto::tr181-bridging
   Device.Bridging.MaxQBridgeEntries                                                                    proto::tr181-bridging
   Device.Bridging.MaxVLANEntries                                                                       proto::tr181-bridging
-  Device.BulkData.
-  Device.BulkData.Enable
-  Device.BulkData.EncodingTypes
-  Device.BulkData.MaxNumberOfParameterReferences
-  Device.BulkData.MaxNumberOfProfiles
-  Device.BulkData.MinReportingInterval
-  Device.BulkData.ParameterWildCardSupported
-  Device.BulkData.Profile.{i}.
-  Device.BulkData.Profile.{i}.Alias
-  Device.BulkData.Profile.{i}.Enable
-  Device.BulkData.Profile.{i}.EncodingType
-  Device.BulkData.Profile.{i}.HTTP.
-  Device.BulkData.Profile.{i}.HTTP.Compression
-  Device.BulkData.Profile.{i}.HTTP.CompressionsSupported
-  Device.BulkData.Profile.{i}.HTTP.Method
-  Device.BulkData.Profile.{i}.HTTP.MethodsSupported
-  Device.BulkData.Profile.{i}.HTTP.Password
-  Device.BulkData.Profile.{i}.HTTP.RequestURIParameter.{i}.
-  Device.BulkData.Profile.{i}.HTTP.RequestURIParameter.{i}.Name
-  Device.BulkData.Profile.{i}.HTTP.RequestURIParameter.{i}.Reference
-  Device.BulkData.Profile.{i}.HTTP.RequestURIParameterNumberOfEntries
-  Device.BulkData.Profile.{i}.HTTP.RetryEnable
-  Device.BulkData.Profile.{i}.HTTP.RetryIntervalMultiplier
-  Device.BulkData.Profile.{i}.HTTP.RetryMinimumWaitInterval
-  Device.BulkData.Profile.{i}.HTTP.URL
-  Device.BulkData.Profile.{i}.HTTP.UseDateHeader
-  Device.BulkData.Profile.{i}.HTTP.Username
-  Device.BulkData.Profile.{i}.JSONEncoding.
-  Device.BulkData.Profile.{i}.JSONEncoding.ReportFormat
-  Device.BulkData.Profile.{i}.JSONEncoding.ReportTimestamp
-  Device.BulkData.Profile.{i}.MQTT.
-  Device.BulkData.Profile.{i}.MQTT.PublishTopic
-  Device.BulkData.Profile.{i}.MQTT.Reference
-  Device.BulkData.Profile.{i}.Name
-  Device.BulkData.Profile.{i}.NumberOfRetainedFailedReports
-  Device.BulkData.Profile.{i}.Parameter.{i}.
-  Device.BulkData.Profile.{i}.Parameter.{i}.Name
-  Device.BulkData.Profile.{i}.Parameter.{i}.Reference
-  Device.BulkData.Profile.{i}.ParameterNumberOfEntries
-  Device.BulkData.Profile.{i}.Protocol
-  Device.BulkData.Profile.{i}.Push!
-  Device.BulkData.Profile.{i}.Push! event_arg:Data
-  Device.BulkData.Profile.{i}.ReportingInterval
-  Device.BulkData.Profile.{i}.TimeReference
-  Device.BulkData.Profile.{i}.X_ARRIS-COM_Status
-  Device.BulkData.ProfileNumberOfEntries
-  Device.BulkData.Protocols
-  Device.BulkData.Status
+  Device.BulkData.                                                                                     proto::tr181-bulkdata
+  Device.BulkData.Enable                                                                               proto::tr181-bulkdata
+  Device.BulkData.EncodingTypes                                                                        proto::tr181-bulkdata
+  Device.BulkData.MaxNumberOfParameterReferences                                                       proto::tr181-bulkdata
+  Device.BulkData.MaxNumberOfProfiles                                                                  proto::tr181-bulkdata
+  Device.BulkData.MinReportingInterval                                                                 proto::tr181-bulkdata
+  Device.BulkData.ParameterWildCardSupported                                                           proto::tr181-bulkdata
+  Device.BulkData.Profile.{i}.                                                                         proto::tr181-bulkdata
+  Device.BulkData.Profile.{i}.Alias                                                                    proto::tr181-bulkdata
+  Device.BulkData.Profile.{i}.CSVEncoding.                                                             proto::tr181-bulkdata
+  Device.BulkData.Profile.{i}.CSVEncoding.EscapeCharacter                                              proto::tr181-bulkdata
+  Device.BulkData.Profile.{i}.CSVEncoding.FieldSeparator                                               proto::tr181-bulkdata
+  Device.BulkData.Profile.{i}.CSVEncoding.ReportFormat                                                 proto::tr181-bulkdata
+  Device.BulkData.Profile.{i}.CSVEncoding.RowSeparator                                                 proto::tr181-bulkdata
+  Device.BulkData.Profile.{i}.CSVEncoding.RowTimestamp                                                 proto::tr181-bulkdata
+  Device.BulkData.Profile.{i}.Controller                                                               proto::tr181-bulkdata
+  Device.BulkData.Profile.{i}.Enable                                                                   proto::tr181-bulkdata
+  Device.BulkData.Profile.{i}.EncodingType                                                             proto::tr181-bulkdata
+  Device.BulkData.Profile.{i}.ForceCollection()                                                        proto::tr181-bulkdata
+  Device.BulkData.Profile.{i}.HTTP.                                                                    proto::tr181-bulkdata
+  Device.BulkData.Profile.{i}.HTTP.CACertificate                                                       proto::tr181-bulkdata
+  Device.BulkData.Profile.{i}.HTTP.Compression                                                         proto::tr181-bulkdata
+  Device.BulkData.Profile.{i}.HTTP.CompressionsSupported                                               proto::tr181-bulkdata
+  Device.BulkData.Profile.{i}.HTTP.Method                                                              proto::tr181-bulkdata
+  Device.BulkData.Profile.{i}.HTTP.MethodsSupported                                                    proto::tr181-bulkdata
+  Device.BulkData.Profile.{i}.HTTP.Password                                                            proto::tr181-bulkdata
+  Device.BulkData.Profile.{i}.HTTP.PersistAcrossReboot                                                 proto::tr181-bulkdata
+  Device.BulkData.Profile.{i}.HTTP.RequestURIParameter.{i}.                                            proto::tr181-bulkdata
+  Device.BulkData.Profile.{i}.HTTP.RequestURIParameter.{i}.Name                                        proto::tr181-bulkdata
+  Device.BulkData.Profile.{i}.HTTP.RequestURIParameter.{i}.Reference                                   proto::tr181-bulkdata
+  Device.BulkData.Profile.{i}.HTTP.RequestURIParameterNumberOfEntries                                  proto::tr181-bulkdata
+  Device.BulkData.Profile.{i}.HTTP.RetryEnable                                                         proto::tr181-bulkdata
+  Device.BulkData.Profile.{i}.HTTP.RetryIntervalMultiplier                                             proto::tr181-bulkdata
+  Device.BulkData.Profile.{i}.HTTP.RetryMinimumWaitInterval                                            proto::tr181-bulkdata
+  Device.BulkData.Profile.{i}.HTTP.URL                                                                 proto::tr181-bulkdata
+  Device.BulkData.Profile.{i}.HTTP.UseDateHeader                                                       proto::tr181-bulkdata
+  Device.BulkData.Profile.{i}.HTTP.Username                                                            proto::tr181-bulkdata
+  Device.BulkData.Profile.{i}.JSONEncoding.                                                            proto::tr181-bulkdata
+  Device.BulkData.Profile.{i}.JSONEncoding.ReportFormat                                                proto::tr181-bulkdata
+  Device.BulkData.Profile.{i}.JSONEncoding.ReportTimestamp                                             proto::tr181-bulkdata
+  Device.BulkData.Profile.{i}.MQTT.                                                                    proto::tr181-bulkdata
+  Device.BulkData.Profile.{i}.MQTT.PublishQoS                                                          proto::tr181-bulkdata
+  Device.BulkData.Profile.{i}.MQTT.PublishRetain                                                       proto::tr181-bulkdata
+  Device.BulkData.Profile.{i}.MQTT.PublishTopic                                                        proto::tr181-bulkdata
+  Device.BulkData.Profile.{i}.MQTT.Reference                                                           proto::tr181-bulkdata
+  Device.BulkData.Profile.{i}.Name                                                                     proto::tr181-bulkdata
+  Device.BulkData.Profile.{i}.NumberOfRetainedFailedReports                                            proto::tr181-bulkdata
+  Device.BulkData.Profile.{i}.Parameter.{i}.                                                           proto::tr181-bulkdata
+  Device.BulkData.Profile.{i}.Parameter.{i}.Name                                                       proto::tr181-bulkdata
+  Device.BulkData.Profile.{i}.Parameter.{i}.Reference                                                  proto::tr181-bulkdata
+  Device.BulkData.Profile.{i}.ParameterNumberOfEntries                                                 proto::tr181-bulkdata
+  Device.BulkData.Profile.{i}.Protocol                                                                 proto::tr181-bulkdata
+  Device.BulkData.Profile.{i}.Push!                                                                    proto::tr181-bulkdata
+  Device.BulkData.Profile.{i}.ReportingInterval                                                        proto::tr181-bulkdata
+  Device.BulkData.Profile.{i}.TimeReference                                                            proto::tr181-bulkdata
+  Device.BulkData.ProfileNumberOfEntries                                                               proto::tr181-bulkdata
+  Device.BulkData.Protocols                                                                            proto::tr181-bulkdata
+  Device.BulkData.Status                                                                               proto::tr181-bulkdata
   Device.CaptivePortal.                                                                                proto::tr181-captiveportal
   Device.CaptivePortal.AllowedList                                                                     proto::tr181-captiveportal
   Device.CaptivePortal.Enable                                                                          proto::tr181-captiveportal
@@ -157,14 +167,15 @@ Check that obuspa has expected datamodel available (minus the platform specific 
   Device.DHCPv4.Client.{i}.SentOptionNumberOfEntries                                                   proto::tr181-dhcpv4client
   Device.DHCPv4.Client.{i}.Status                                                                      proto::tr181-dhcpv4client
   Device.DHCPv4.Client.{i}.SubnetMask                                                                  proto::tr181-dhcpv4client
-  Device.DHCPv4.Client.{i}.X_PRPL-COM_Release                                                          proto::tr181-dhcpv4client
-  Device.DHCPv4.Client.{i}.X_PRPL-COM_Release()                                                        proto::tr181-dhcpv4client
+  Device.DHCPv4.Client.{i}.X_PRPLWARE-COM_Release                                                      proto::tr181-dhcpv4client
+  Device.DHCPv4.Client.{i}.X_PRPLWARE-COM_Release()                                                    proto::tr181-dhcpv4client
   Device.DHCPv4.ClientNumberOfEntries                                                                  proto::tr181-dhcpv4client
   Device.DHCPv4.Server.                                                                                proto::dhcpv4-manager
   Device.DHCPv4.Server.Enable                                                                          proto::dhcpv4-manager
   Device.DHCPv4.Server.Pool.{i}.                                                                       proto::dhcpv4-manager
   Device.DHCPv4.Server.Pool.{i}.Alias                                                                  proto::dhcpv4-manager
   Device.DHCPv4.Server.Pool.{i}.AllowedDevices                                                         proto::dhcpv4-manager
+  Device.DHCPv4.Server.Pool.{i}.AssignedLeasesNumberOfEntries                                          proto::dhcpv4-manager
   Device.DHCPv4.Server.Pool.{i}.Chaddr                                                                 proto::dhcpv4-manager
   Device.DHCPv4.Server.Pool.{i}.ChaddrExclude                                                          proto::dhcpv4-manager
   Device.DHCPv4.Server.Pool.{i}.ChaddrMask                                                             proto::dhcpv4-manager
@@ -197,7 +208,7 @@ Check that obuspa has expected datamodel available (minus the platform specific 
   Device.DHCPv4.Server.Pool.{i}.Option.{i}.Enable                                                      proto::dhcpv4-manager
   Device.DHCPv4.Server.Pool.{i}.Option.{i}.Tag                                                         proto::dhcpv4-manager
   Device.DHCPv4.Server.Pool.{i}.Option.{i}.Value                                                       proto::dhcpv4-manager
-  Device.DHCPv4.Server.Pool.{i}.Option.{i}.X_PRPL-COM_Force                                            proto::dhcpv4-manager
+  Device.DHCPv4.Server.Pool.{i}.Option.{i}.X_PRPLWARE-COM_Force                                        proto::dhcpv4-manager
   Device.DHCPv4.Server.Pool.{i}.OptionNumberOfEntries                                                  proto::dhcpv4-manager
   Device.DHCPv4.Server.Pool.{i}.Order                                                                  proto::dhcpv4-manager
   Device.DHCPv4.Server.Pool.{i}.ReservedAddresses                                                      proto::dhcpv4-manager
@@ -214,11 +225,12 @@ Check that obuspa has expected datamodel available (minus the platform specific 
   Device.DHCPv4.Server.Pool.{i}.VendorClassID                                                          proto::dhcpv4-manager
   Device.DHCPv4.Server.Pool.{i}.VendorClassIDExclude                                                   proto::dhcpv4-manager
   Device.DHCPv4.Server.Pool.{i}.VendorClassIDMode                                                      proto::dhcpv4-manager
-  Device.DHCPv4.Server.Pool.{i}.X_PRPL-COM_WINSServer                                                  proto::dhcpv4-manager
+  Device.DHCPv4.Server.Pool.{i}.X_PRPLWARE-COM_WINSServer                                              proto::dhcpv4-manager
   Device.DHCPv4.Server.PoolNumberOfEntries                                                             proto::dhcpv4-manager
   Device.DHCPv6.
   Device.DHCPv6.Client.{i}.                                                                            proto::tr181-dhcpv6client
   Device.DHCPv6.Client.{i}.Alias                                                                       proto::tr181-dhcpv6client
+  Device.DHCPv6.Client.{i}.AuthenticationProtocol                                                      proto::tr181-dhcpv6client
   Device.DHCPv6.Client.{i}.DUID                                                                        proto::tr181-dhcpv6client
   Device.DHCPv6.Client.{i}.Enable                                                                      proto::tr181-dhcpv6client
   Device.DHCPv6.Client.{i}.Interface                                                                   proto::tr181-dhcpv6client
@@ -293,12 +305,12 @@ Check that obuspa has expected datamodel available (minus the platform specific 
   Device.DHCPv6.Client.{i}.SuggestedT1                                                                 proto::tr181-dhcpv6client
   Device.DHCPv6.Client.{i}.SuggestedT2                                                                 proto::tr181-dhcpv6client
   Device.DHCPv6.Client.{i}.SupportedOptions                                                            proto::tr181-dhcpv6client
-  Device.DHCPv6.Client.{i}.X_PRPL-COM_Config.                                                          proto::tr181-dhcpv6client
-  Device.DHCPv6.Client.{i}.X_PRPL-COM_Config.LastT1SentWhen                                            proto::tr181-dhcpv6client
-  Device.DHCPv6.Client.{i}.X_PRPL-COM_Config.LastT2SentWhen                                            proto::tr181-dhcpv6client
-  Device.DHCPv6.Client.{i}.X_PRPL-COM_Config.LeaseRenewedWhen                                          proto::tr181-dhcpv6client
-  Device.DHCPv6.Client.{i}.X_PRPL-COM_Config.T1Renewed                                                 proto::tr181-dhcpv6client
-  Device.DHCPv6.Client.{i}.X_PRPL-COM_Config.T2Renewed                                                 proto::tr181-dhcpv6client
+  Device.DHCPv6.Client.{i}.X_PRPLWARE-COM_Config.                                                      proto::tr181-dhcpv6client
+  Device.DHCPv6.Client.{i}.X_PRPLWARE-COM_Config.LastT1SentWhen                                        proto::tr181-dhcpv6client
+  Device.DHCPv6.Client.{i}.X_PRPLWARE-COM_Config.LastT2SentWhen                                        proto::tr181-dhcpv6client
+  Device.DHCPv6.Client.{i}.X_PRPLWARE-COM_Config.LeaseRenewedWhen                                      proto::tr181-dhcpv6client
+  Device.DHCPv6.Client.{i}.X_PRPLWARE-COM_Config.T1Renewed                                             proto::tr181-dhcpv6client
+  Device.DHCPv6.Client.{i}.X_PRPLWARE-COM_Config.T2Renewed                                             proto::tr181-dhcpv6client
   Device.DHCPv6.ClientNumberOfEntries                                                                  proto::tr181-dhcpv6client
   Device.DHCPv6.Server.                                                                                proto::dhcpv6s-manager
   Device.DHCPv6.Server.Enable                                                                          proto::dhcpv6s-manager
@@ -350,14 +362,14 @@ Check that obuspa has expected datamodel available (minus the platform specific 
   Device.DHCPv6.Server.Pool.{i}.UserClassIDExclude                                                     proto::dhcpv6s-manager
   Device.DHCPv6.Server.Pool.{i}.VendorClassID                                                          proto::dhcpv6s-manager
   Device.DHCPv6.Server.Pool.{i}.VendorClassIDExclude                                                   proto::dhcpv6s-manager
-  Device.DHCPv6.Server.Pool.{i}.X_PRPL-COM_DNS.                                                        proto::dhcpv6s-manager
-  Device.DHCPv6.Server.Pool.{i}.X_PRPL-COM_DNS.DNSMode                                                 proto::dhcpv6s-manager
-  Device.DHCPv6.Server.Pool.{i}.X_PRPL-COM_DNS.DNSServers                                              proto::dhcpv6s-manager
-  Device.DHCPv6.Server.Pool.{i}.X_PRPL-COM_DNS.StaticServers                                           proto::dhcpv6s-manager
-  Device.DHCPv6.Server.Pool.{i}.X_PRPL-COM_IANAConfig.                                                 proto::dhcpv6s-manager
-  Device.DHCPv6.Server.Pool.{i}.X_PRPL-COM_IANAConfig.LeaseTime                                        proto::dhcpv6s-manager
-  Device.DHCPv6.Server.Pool.{i}.X_PRPL-COM_IANAConfig.MaxAddress                                       proto::dhcpv6s-manager
-  Device.DHCPv6.Server.Pool.{i}.X_PRPL-COM_IANAConfig.MinAddress                                       proto::dhcpv6s-manager
+  Device.DHCPv6.Server.Pool.{i}.X_PRPLWARE-COM_DNS.                                                    proto::dhcpv6s-manager
+  Device.DHCPv6.Server.Pool.{i}.X_PRPLWARE-COM_DNS.DNSMode                                             proto::dhcpv6s-manager
+  Device.DHCPv6.Server.Pool.{i}.X_PRPLWARE-COM_DNS.DNSServers                                          proto::dhcpv6s-manager
+  Device.DHCPv6.Server.Pool.{i}.X_PRPLWARE-COM_DNS.StaticServers                                       proto::dhcpv6s-manager
+  Device.DHCPv6.Server.Pool.{i}.X_PRPLWARE-COM_IANAConfig.                                             proto::dhcpv6s-manager
+  Device.DHCPv6.Server.Pool.{i}.X_PRPLWARE-COM_IANAConfig.LeaseTime                                    proto::dhcpv6s-manager
+  Device.DHCPv6.Server.Pool.{i}.X_PRPLWARE-COM_IANAConfig.MaxAddress                                   proto::dhcpv6s-manager
+  Device.DHCPv6.Server.Pool.{i}.X_PRPLWARE-COM_IANAConfig.MinAddress                                   proto::dhcpv6s-manager
   Device.DHCPv6.Server.PoolNumberOfEntries                                                             proto::dhcpv6s-manager
   Device.DNS.
   Device.DNS.Client.                                                                                   proto::tr181-dns
@@ -464,26 +476,26 @@ Check that obuspa has expected datamodel available (minus the platform specific 
   Device.DNS.SD.service_unsubscribe()                                                                  proto::tr181-dnssd
   Device.DNS.SD.service_unsubscribe() input:key
   Device.DNS.SupportedRecordTypes                                                                      proto::tr181-dns
-  Device.DNS.X_PRPL-COM_ForwardZoneNumberOfEntries                                                     proto::tr181-dns
-  Device.DNS.X_PRPL-COM_Host.{i}.                                                                      proto::tr181-dns
-  Device.DNS.X_PRPL-COM_Host.{i}.Alias                                                                 proto::tr181-dns
-  Device.DNS.X_PRPL-COM_Host.{i}.Enable                                                                proto::tr181-dns
-  Device.DNS.X_PRPL-COM_Host.{i}.IPAddress.{i}.                                                        proto::tr181-dns
-  Device.DNS.X_PRPL-COM_Host.{i}.IPAddress.{i}.Alias                                                   proto::tr181-dns
-  Device.DNS.X_PRPL-COM_Host.{i}.IPAddress.{i}.IPAddress                                               proto::tr181-dns
-  Device.DNS.X_PRPL-COM_Host.{i}.IPAddressNumberOfEntries                                              proto::tr181-dns
-  Device.DNS.X_PRPL-COM_Host.{i}.Interface                                                             proto::tr181-dns
-  Device.DNS.X_PRPL-COM_Host.{i}.Name                                                                  proto::tr181-dns
-  Device.DNS.X_PRPL-COM_Host.{i}.Origin                                                                proto::tr181-dns
-  Device.DNS.X_PRPL-COM_HostNumberOfEntries                                                            proto::tr181-dns
-  Device.DNS.X_PRPL-COM_RebindProtection.                                                              proto::tr181-dns
-  Device.DNS.X_PRPL-COM_RebindProtection.DomainExceptions.{i}.                                         proto::tr181-dns
-  Device.DNS.X_PRPL-COM_RebindProtection.DomainExceptions.{i}.Address                                  proto::tr181-dns
-  Device.DNS.X_PRPL-COM_RebindProtection.DomainExceptionsNumberOfEntries                               proto::tr181-dns
-  Device.DNS.X_PRPL-COM_RebindProtection.Enable                                                        proto::tr181-dns
-  Device.DNS.X_PRPL-COM_RebindProtection.IPExceptions.{i}.                                             proto::tr181-dns
-  Device.DNS.X_PRPL-COM_RebindProtection.IPExceptions.{i}.Address                                      proto::tr181-dns
-  Device.DNS.X_PRPL-COM_RebindProtection.IPExceptionsNumberOfEntries                                   proto::tr181-dns
+  Device.DNS.X_PRPLWARE-COM_ForwardZoneNumberOfEntries                                                 proto::tr181-dns
+  Device.DNS.X_PRPLWARE-COM_Host.{i}.                                                                  proto::tr181-dns
+  Device.DNS.X_PRPLWARE-COM_Host.{i}.Alias                                                             proto::tr181-dns
+  Device.DNS.X_PRPLWARE-COM_Host.{i}.Enable                                                            proto::tr181-dns
+  Device.DNS.X_PRPLWARE-COM_Host.{i}.IPAddress.{i}.                                                    proto::tr181-dns
+  Device.DNS.X_PRPLWARE-COM_Host.{i}.IPAddress.{i}.Alias                                               proto::tr181-dns
+  Device.DNS.X_PRPLWARE-COM_Host.{i}.IPAddress.{i}.IPAddress                                           proto::tr181-dns
+  Device.DNS.X_PRPLWARE-COM_Host.{i}.IPAddressNumberOfEntries                                          proto::tr181-dns
+  Device.DNS.X_PRPLWARE-COM_Host.{i}.Interface                                                         proto::tr181-dns
+  Device.DNS.X_PRPLWARE-COM_Host.{i}.Name                                                              proto::tr181-dns
+  Device.DNS.X_PRPLWARE-COM_Host.{i}.Origin                                                            proto::tr181-dns
+  Device.DNS.X_PRPLWARE-COM_HostNumberOfEntries                                                        proto::tr181-dns
+  Device.DNS.X_PRPLWARE-COM_RebindProtection.                                                          proto::tr181-dns
+  Device.DNS.X_PRPLWARE-COM_RebindProtection.DomainExceptions.{i}.                                     proto::tr181-dns
+  Device.DNS.X_PRPLWARE-COM_RebindProtection.DomainExceptions.{i}.Address                              proto::tr181-dns
+  Device.DNS.X_PRPLWARE-COM_RebindProtection.DomainExceptionsNumberOfEntries                           proto::tr181-dns
+  Device.DNS.X_PRPLWARE-COM_RebindProtection.Enable                                                    proto::tr181-dns
+  Device.DNS.X_PRPLWARE-COM_RebindProtection.IPExceptions.{i}.                                         proto::tr181-dns
+  Device.DNS.X_PRPLWARE-COM_RebindProtection.IPExceptions.{i}.Address                                  proto::tr181-dns
+  Device.DNS.X_PRPLWARE-COM_RebindProtection.IPExceptionsNumberOfEntries                               proto::tr181-dns
   Device.DSLite.                                                                                       proto::tr181-dslite
   Device.DSLite.Enable                                                                                 proto::tr181-dslite
   Device.DSLite.InterfaceSetting.{i}.                                                                  proto::tr181-dslite
@@ -582,17 +594,6 @@ Check that obuspa has expected datamodel available (minus the platform specific 
   Device.DeviceInfo.ModelName                                                                          proto::deviceinfo-manager
   Device.DeviceInfo.ModelNumber                                                                        proto::deviceinfo-manager
   Device.DeviceInfo.PEN                                                                                proto::deviceinfo-manager
-  Device.DeviceInfo.PowerStatus.                                                                       proto::tr181-powerstatus
-  Device.DeviceInfo.PowerStatus.PowerSensor.{i}.                                                       proto::tr181-powerstatus
-  Device.DeviceInfo.PowerStatus.PowerSensor.{i}.Alias                                                  proto::tr181-powerstatus
-  Device.DeviceInfo.PowerStatus.PowerSensor.{i}.Current                                                proto::tr181-powerstatus
-  Device.DeviceInfo.PowerStatus.PowerSensor.{i}.Enable                                                 proto::tr181-powerstatus
-  Device.DeviceInfo.PowerStatus.PowerSensor.{i}.LastUpdate                                             proto::tr181-powerstatus
-  Device.DeviceInfo.PowerStatus.PowerSensor.{i}.Name                                                   proto::tr181-powerstatus
-  Device.DeviceInfo.PowerStatus.PowerSensor.{i}.Power                                                  proto::tr181-powerstatus
-  Device.DeviceInfo.PowerStatus.PowerSensor.{i}.Status                                                 proto::tr181-powerstatus
-  Device.DeviceInfo.PowerStatus.PowerSensor.{i}.Voltage                                                proto::tr181-powerstatus
-  Device.DeviceInfo.PowerStatus.PowerSensorNumberOfEntries                                             proto::tr181-powerstatus
   Device.DeviceInfo.ProcessFaults.                                                                     proto::amx-faultmonitor
   Device.DeviceInfo.ProcessFaults.LastUpgradeCount                                                     proto::amx-faultmonitor
   Device.DeviceInfo.ProcessFaults.MaxProcessFaultEntries                                               proto::amx-faultmonitor
@@ -646,10 +647,10 @@ Check that obuspa has expected datamodel available (minus the platform specific 
   Device.DeviceInfo.Reboots.RemoveAllReboots()                                                         proto::reboot-service
   Device.DeviceInfo.Reboots.WarmBootCount                                                              proto::reboot-service
   Device.DeviceInfo.Reboots.WatchdogBootCount                                                          proto::reboot-service
-  Device.DeviceInfo.Reboots.X_PRPL-COM_CurrentBootCycle                                                proto::reboot-service
-  Device.DeviceInfo.Reboots.X_PRPL-COM_Reasons.{i}.                                                    proto::reboot-service
-  Device.DeviceInfo.Reboots.X_PRPL-COM_Reasons.{i}.Alias                                               proto::reboot-service
-  Device.DeviceInfo.Reboots.X_PRPL-COM_Reasons.{i}.Format                                              proto::reboot-service
+  Device.DeviceInfo.Reboots.X_PRPLWARE-COM_CurrentBootCycle                                            proto::reboot-service
+  Device.DeviceInfo.Reboots.X_PRPLWARE-COM_Reasons.{i}.                                                proto::reboot-service
+  Device.DeviceInfo.Reboots.X_PRPLWARE-COM_Reasons.{i}.Alias                                           proto::reboot-service
+  Device.DeviceInfo.Reboots.X_PRPLWARE-COM_Reasons.{i}.Format                                          proto::reboot-service
   Device.DeviceInfo.Reboots.reboot()                                                                   proto::reboot-service
   Device.DeviceInfo.Reboots.reboot() input:Cause
   Device.DeviceInfo.Reboots.reboot() input:Reason
@@ -707,12 +708,12 @@ Check that obuspa has expected datamodel available (minus the platform specific 
   Device.DeviceInfo.VendorLogFile.{i}.Upload() input:URL
   Device.DeviceInfo.VendorLogFile.{i}.Upload() input:Username
   Device.DeviceInfo.VendorLogFileNumberOfEntries                                                       proto::deviceinfo-manager
-  Device.DeviceInfo.X_PRPL-COM_CloneMACAddress()                                                       proto::deviceinfo-manager
-  Device.DeviceInfo.X_PRPL-COM_CloneMACAddress() input:MACAddress
-  Device.DeviceInfo.X_PRPL-COM_ClonedMACAddress                                                        proto::deviceinfo-manager
-  Device.DeviceInfo.X_PRPL-COM_Country                                                                 proto::deviceinfo-manager
-  Device.DeviceInfo.X_PRPL-COM_LastUpgradeDate                                                         proto::deviceinfo-manager
-  Device.DeviceInfo.X_PRPL-COM_RestoreMACAddress()                                                     proto::deviceinfo-manager
+  Device.DeviceInfo.X_PRPLWARE-COM_CloneMACAddress()                                                   proto::deviceinfo-manager
+  Device.DeviceInfo.X_PRPLWARE-COM_CloneMACAddress() input:MACAddress
+  Device.DeviceInfo.X_PRPLWARE-COM_ClonedMACAddress                                                    proto::deviceinfo-manager
+  Device.DeviceInfo.X_PRPLWARE-COM_Country                                                             proto::deviceinfo-manager
+  Device.DeviceInfo.X_PRPLWARE-COM_LastUpgradeDate                                                     proto::deviceinfo-manager
+  Device.DeviceInfo.X_PRPLWARE-COM_RestoreMACAddress()                                                 proto::deviceinfo-manager
   Device.DynamicDNS.                                                                                   proto::tr181-dynamicdns
   Device.DynamicDNS.Client.{i}.                                                                        proto::tr181-dynamicdns
   Device.DynamicDNS.Client.{i}.Alias                                                                   proto::tr181-dynamicdns
@@ -729,9 +730,10 @@ Check that obuspa has expected datamodel available (minus the platform specific 
   Device.DynamicDNS.Client.{i}.Server                                                                  proto::tr181-dynamicdns
   Device.DynamicDNS.Client.{i}.Status                                                                  proto::tr181-dynamicdns
   Device.DynamicDNS.Client.{i}.Username                                                                proto::tr181-dynamicdns
-  Device.DynamicDNS.Client.{i}.X_PRPL-COM_DNSServer                                                    proto::tr181-dynamicdns
-  Device.DynamicDNS.Client.{i}.X_PRPL-COM_IP                                                           proto::tr181-dynamicdns
-  Device.DynamicDNS.Client.{i}.X_PRPL-COM_IPVersion                                                    proto::tr181-dynamicdns
+  Device.DynamicDNS.Client.{i}.X_PRPLWARE-COM_DNSServer                                                proto::tr181-dynamicdns
+  Device.DynamicDNS.Client.{i}.X_PRPLWARE-COM_IP                                                       proto::tr181-dynamicdns
+  Device.DynamicDNS.Client.{i}.X_PRPLWARE-COM_IPInterfaceRef                                           proto::tr181-dynamicdns
+  Device.DynamicDNS.Client.{i}.X_PRPLWARE-COM_IPVersion                                                proto::tr181-dynamicdns
   Device.DynamicDNS.ClientNumberOfEntries                                                              proto::tr181-dynamicdns
   Device.DynamicDNS.Server.{i}.                                                                        proto::tr181-dynamicdns
   Device.DynamicDNS.Server.{i}.Alias                                                                   proto::tr181-dynamicdns
@@ -783,12 +785,12 @@ Check that obuspa has expected datamodel available (minus the platform specific 
   Device.Ethernet.Interface.{i}.Stats.UnknownProtoPacketsReceived                                      proto::ethernet-manager
   Device.Ethernet.Interface.{i}.Status                                                                 proto::ethernet-manager
   Device.Ethernet.Interface.{i}.Upstream                                                               proto::ethernet-manager
-  Device.Ethernet.Interface.{i}.X_PRPL-COM_Description                                                 proto::ethernet-manager
-  Device.Ethernet.Interface.{i}.X_PRPL-COM_LED.                                                        proto::ethernet-manager
-  Device.Ethernet.Interface.{i}.X_PRPL-COM_LED.Enable                                                  proto::ethernet-manager
-  Device.Ethernet.Interface.{i}.X_PRPL-COM_LED.Status                                                  proto::ethernet-manager
-  Device.Ethernet.Interface.{i}.X_PRPL-COM_MTU                                                         proto::ethernet-manager
-  Device.Ethernet.Interface.{i}.X_PRPL-COM_MTUMode                                                     proto::ethernet-manager
+  Device.Ethernet.Interface.{i}.X_PRPLWARE-COM_Description                                             proto::ethernet-manager
+  Device.Ethernet.Interface.{i}.X_PRPLWARE-COM_LED.                                                    proto::ethernet-manager
+  Device.Ethernet.Interface.{i}.X_PRPLWARE-COM_LED.Enable                                              proto::ethernet-manager
+  Device.Ethernet.Interface.{i}.X_PRPLWARE-COM_LED.Status                                              proto::ethernet-manager
+  Device.Ethernet.Interface.{i}.X_PRPLWARE-COM_MTU                                                     proto::ethernet-manager
+  Device.Ethernet.Interface.{i}.X_PRPLWARE-COM_MTUMode                                                 proto::ethernet-manager
   Device.Ethernet.Interface.{i}.X_PRPLWARE-COM_SFPReference                                            proto::ethernet-manager
   Device.Ethernet.InterfaceNumberOfEntries                                                             proto::ethernet-manager
   Device.Ethernet.Link.{i}.                                                                            proto::ethernet-manager
@@ -921,7 +923,7 @@ Check that obuspa has expected datamodel available (minus the platform specific 
   Device.Firewall.Chain.{i}.Rule.{i}.Status                                                            proto::tr181-firewall
   Device.Firewall.Chain.{i}.Rule.{i}.Target                                                            proto::tr181-firewall
   Device.Firewall.Chain.{i}.Rule.{i}.TargetChain                                                       proto::tr181-firewall
-  Device.Firewall.Chain.{i}.Rule.{i}.X_PRPL-COM_VendorClassID                                          proto::tr181-firewall
+  Device.Firewall.Chain.{i}.Rule.{i}.X_PRPLWARE-COM_VendorClassID                                      proto::tr181-firewall
   Device.Firewall.Chain.{i}.RuleNumberOfEntries                                                        proto::tr181-firewall
   Device.Firewall.ChainNumberOfEntries                                                                 proto::tr181-firewall
   Device.Firewall.Config                                                                               proto::tr181-firewall
@@ -944,9 +946,21 @@ Check that obuspa has expected datamodel available (minus the platform specific 
   Device.Firewall.DMZ.{i}.RemainingLeaseTime                                                           proto::tr181-firewall
   Device.Firewall.DMZ.{i}.SourcePrefix                                                                 proto::tr181-firewall
   Device.Firewall.DMZ.{i}.Status                                                                       proto::tr181-firewall
-  Device.Firewall.DMZ.{i}.X_PRPL-COM_Log                                                               proto::tr181-firewall
+  Device.Firewall.DMZ.{i}.X_PRPLWARE-COM_Log                                                           proto::tr181-firewall
   Device.Firewall.DMZNumberOfEntries                                                                   proto::tr181-firewall
   Device.Firewall.Enable                                                                               proto::tr181-firewall
+  Device.Firewall.InterfaceSetting.{i}.                                                                proto::tr181-firewall
+  Device.Firewall.InterfaceSetting.{i}.Alias                                                           proto::tr181-firewall
+  Device.Firewall.InterfaceSetting.{i}.Enable                                                          proto::tr181-firewall
+  Device.Firewall.InterfaceSetting.{i}.IPv4AcceptICMPEchoRequest                                       proto::tr181-firewall
+  Device.Firewall.InterfaceSetting.{i}.IPv4SpoofingProtection                                          proto::tr181-firewall
+  Device.Firewall.InterfaceSetting.{i}.IPv6AcceptICMPEchoRequest                                       proto::tr181-firewall
+  Device.Firewall.InterfaceSetting.{i}.IPv6PassThroughICMPEchoRequest                                  proto::tr181-firewall
+  Device.Firewall.InterfaceSetting.{i}.IPv6SpoofingProtection                                          proto::tr181-firewall
+  Device.Firewall.InterfaceSetting.{i}.Interface                                                       proto::tr181-firewall
+  Device.Firewall.InterfaceSetting.{i}.Status                                                          proto::tr181-firewall
+  Device.Firewall.InterfaceSetting.{i}.StealthMode                                                     proto::tr181-firewall
+  Device.Firewall.InterfaceSettingNumberOfEntries                                                      proto::tr181-firewall
   Device.Firewall.LastChange                                                                           proto::tr181-firewall
   Device.Firewall.Level.{i}.                                                                           proto::tr181-firewall
   Device.Firewall.Level.{i}.Alias                                                                      proto::tr181-firewall
@@ -978,7 +992,7 @@ Check that obuspa has expected datamodel available (minus the platform specific 
   Device.Firewall.Pinhole.{i}.SourcePortRangeMax                                                       proto::tr181-firewall
   Device.Firewall.Pinhole.{i}.SourcePrefixes                                                           proto::tr181-firewall
   Device.Firewall.Pinhole.{i}.Status                                                                   proto::tr181-firewall
-  Device.Firewall.Pinhole.{i}.X_PRPL-COM_Log                                                           proto::tr181-firewall
+  Device.Firewall.Pinhole.{i}.X_PRPLWARE-COM_Log                                                       proto::tr181-firewall
   Device.Firewall.PinholeNumberOfEntries                                                               proto::tr181-firewall
   Device.Firewall.Policy.{i}.                                                                          proto::tr181-firewall
   Device.Firewall.Policy.{i}.Alias                                                                     proto::tr181-firewall
@@ -991,7 +1005,7 @@ Check that obuspa has expected datamodel available (minus the platform specific 
   Device.Firewall.Policy.{i}.SourceInterface                                                           proto::tr181-firewall
   Device.Firewall.Policy.{i}.Status                                                                    proto::tr181-firewall
   Device.Firewall.Policy.{i}.TargetChain                                                               proto::tr181-firewall
-  Device.Firewall.Policy.{i}.X_PRPL-COM_Log                                                            proto::tr181-firewall
+  Device.Firewall.Policy.{i}.X_PRPLWARE-COM_Log                                                        proto::tr181-firewall
   Device.Firewall.PolicyLevel                                                                          proto::tr181-firewall
   Device.Firewall.PolicyNumberOfEntries                                                                proto::tr181-firewall
   Device.Firewall.Service.{i}.                                                                         proto::tr181-firewall
@@ -1005,7 +1019,7 @@ Check that obuspa has expected datamodel available (minus the platform specific 
   Device.Firewall.Service.{i}.Protocol                                                                 proto::tr181-firewall
   Device.Firewall.Service.{i}.SourcePrefixes                                                           proto::tr181-firewall
   Device.Firewall.Service.{i}.Status                                                                   proto::tr181-firewall
-  Device.Firewall.Service.{i}.X_PRPL-COM_Log                                                           proto::tr181-firewall
+  Device.Firewall.Service.{i}.X_PRPLWARE-COM_Log                                                       proto::tr181-firewall
   Device.Firewall.ServiceNumberOfEntries                                                               proto::tr181-firewall
   Device.Firewall.Set.{i}.                                                                             proto::tr181-firewall
   Device.Firewall.Set.{i}.Alias                                                                        proto::tr181-firewall
@@ -1024,60 +1038,65 @@ Check that obuspa has expected datamodel available (minus the platform specific 
   Device.Firewall.SetNumberOfEntries                                                                   proto::tr181-firewall
   Device.Firewall.Type                                                                                 proto::tr181-firewall
   Device.Firewall.Version                                                                              proto::tr181-firewall
-  Device.Firewall.X_PRPL-COM_Enable                                                                    proto::tr181-firewall
-  Device.Firewall.X_PRPL-COM_ICMPLogs                                                                  proto::tr181-firewall
-  Device.Firewall.X_PRPL-COM_InterfaceSetting.{i}.                                                     proto::tr181-firewall
-  Device.Firewall.X_PRPL-COM_InterfaceSetting.{i}.AcceptICMPEchoRequest                                proto::tr181-firewall
-  Device.Firewall.X_PRPL-COM_InterfaceSetting.{i}.AcceptUDPTraceroute                                  proto::tr181-firewall
-  Device.Firewall.X_PRPL-COM_InterfaceSetting.{i}.AcceptUDPTracerouteStatus                            proto::tr181-firewall
-  Device.Firewall.X_PRPL-COM_InterfaceSetting.{i}.Alias                                                proto::tr181-firewall
-  Device.Firewall.X_PRPL-COM_InterfaceSetting.{i}.ICMPv4EchoRequestStatus                              proto::tr181-firewall
-  Device.Firewall.X_PRPL-COM_InterfaceSetting.{i}.ICMPv6EchoRequestStatus                              proto::tr181-firewall
-  Device.Firewall.X_PRPL-COM_InterfaceSetting.{i}.Interface                                            proto::tr181-firewall
-  Device.Firewall.X_PRPL-COM_InterfaceSetting.{i}.IsolateInterface                                     proto::tr181-firewall
-  Device.Firewall.X_PRPL-COM_InterfaceSetting.{i}.LOGAcceptOutgoingConnection                          proto::tr181-firewall
-  Device.Firewall.X_PRPL-COM_InterfaceSetting.{i}.LOGAcceptOutgoingConnectionStatus                    proto::tr181-firewall
-  Device.Firewall.X_PRPL-COM_InterfaceSetting.{i}.LOGDroppedIncomingConnection                         proto::tr181-firewall
-  Device.Firewall.X_PRPL-COM_InterfaceSetting.{i}.LOGDroppedIncomingConnectionStatus                   proto::tr181-firewall
-  Device.Firewall.X_PRPL-COM_InterfaceSetting.{i}.LOGDroppedOutgoingConnection                         proto::tr181-firewall
-  Device.Firewall.X_PRPL-COM_InterfaceSetting.{i}.LOGDroppedOutgoingConnectionStatus                   proto::tr181-firewall
-  Device.Firewall.X_PRPL-COM_InterfaceSetting.{i}.PassthroughICMPv6EchoRequest                         proto::tr181-firewall
-  Device.Firewall.X_PRPL-COM_InterfaceSetting.{i}.PassthroughICMPv6Status                              proto::tr181-firewall
-  Device.Firewall.X_PRPL-COM_InterfaceSetting.{i}.SpoofingProtection                                   proto::tr181-firewall
-  Device.Firewall.X_PRPL-COM_InterfaceSetting.{i}.SpoofingProtectionIPv4Status                         proto::tr181-firewall
-  Device.Firewall.X_PRPL-COM_InterfaceSetting.{i}.SpoofingProtectionIPv6Status                         proto::tr181-firewall
-  Device.Firewall.X_PRPL-COM_InterfaceSetting.{i}.StealthMode                                          proto::tr181-firewall
-  Device.Firewall.X_PRPL-COM_InterfaceSetting.{i}.StealthModeStatus                                    proto::tr181-firewall
-  Device.Firewall.X_PRPL-COM_InterfaceSettingNumberOfEntries                                           proto::tr181-firewall
-  Device.Firewall.X_PRPL-COM_Log.{i}.                                                                  proto::tr181-firewall
-  Device.Firewall.X_PRPL-COM_Log.{i}.Alias                                                             proto::tr181-firewall
-  Device.Firewall.X_PRPL-COM_Log.{i}.Description                                                       proto::tr181-firewall
-  Device.Firewall.X_PRPL-COM_Log.{i}.Enable                                                            proto::tr181-firewall
-  Device.Firewall.X_PRPL-COM_Log.{i}.FilterDestinationInterface                                        proto::tr181-firewall
-  Device.Firewall.X_PRPL-COM_Log.{i}.FilterPolicy                                                      proto::tr181-firewall
-  Device.Firewall.X_PRPL-COM_Log.{i}.FilterSourceInterface                                             proto::tr181-firewall
-  Device.Firewall.X_PRPL-COM_Log.{i}.Level                                                             proto::tr181-firewall
-  Device.Firewall.X_PRPL-COM_Log.{i}.Prefix                                                            proto::tr181-firewall
-  Device.Firewall.X_PRPL-COM_LogNumberOfEntries                                                        proto::tr181-firewall
-  Device.Firewall.X_PRPL-COM_MaxPinholeNumberOfEntries                                                 proto::tr181-firewall
-  Device.Firewall.X_PRPL-COM_WANAccess.                                                                proto::tr181-firewall
-  Device.Firewall.X_PRPL-COM_WANAccess.BlockList.{i}.                                                  proto::tr181-firewall
-  Device.Firewall.X_PRPL-COM_WANAccess.BlockList.{i}.Alias                                             proto::tr181-firewall
-  Device.Firewall.X_PRPL-COM_WANAccess.BlockList.{i}.DeviceType                                        proto::tr181-firewall
-  Device.Firewall.X_PRPL-COM_WANAccess.BlockList.{i}.DiscoverySource                                   proto::tr181-firewall
-  Device.Firewall.X_PRPL-COM_WANAccess.BlockList.{i}.IPAddress                                         proto::tr181-firewall
-  Device.Firewall.X_PRPL-COM_WANAccess.BlockList.{i}.IPAddressSource                                   proto::tr181-firewall
-  Device.Firewall.X_PRPL-COM_WANAccess.BlockList.{i}.InterfaceName                                     proto::tr181-firewall
-  Device.Firewall.X_PRPL-COM_WANAccess.BlockList.{i}.PhysAddress                                       proto::tr181-firewall
-  Device.Firewall.X_PRPL-COM_WANAccess.BlockList.{i}.Tags                                              proto::tr181-firewall
-  Device.Firewall.X_PRPL-COM_WANAccess.BlockListNumberOfEntries                                        proto::tr181-firewall
+  Device.Firewall.X_PRPLWARE-COM_Enable                                                                proto::tr181-firewall
+  Device.Firewall.X_PRPLWARE-COM_ICMPLogs                                                              proto::tr181-firewall
+  Device.Firewall.X_PRPLWARE-COM_InterfaceSetting.{i}.                                                 proto::tr181-firewall
+  Device.Firewall.X_PRPLWARE-COM_InterfaceSetting.{i}.AcceptICMPEchoRequest                            proto::tr181-firewall
+  Device.Firewall.X_PRPLWARE-COM_InterfaceSetting.{i}.Alias                                            proto::tr181-firewall
+  Device.Firewall.X_PRPLWARE-COM_InterfaceSetting.{i}.Enable                                           proto::tr181-firewall
+  Device.Firewall.X_PRPLWARE-COM_InterfaceSetting.{i}.ICMPv4EchoRequestStatus                          proto::tr181-firewall
+  Device.Firewall.X_PRPLWARE-COM_InterfaceSetting.{i}.ICMPv6EchoRequestStatus                          proto::tr181-firewall
+  Device.Firewall.X_PRPLWARE-COM_InterfaceSetting.{i}.IPv4AcceptUDPTraceroute                          proto::tr181-firewall
+  Device.Firewall.X_PRPLWARE-COM_InterfaceSetting.{i}.IPv4AcceptUDPTracerouteStatus                    proto::tr181-firewall
+  Device.Firewall.X_PRPLWARE-COM_InterfaceSetting.{i}.IPv6AcceptUDPTraceroute                          proto::tr181-firewall
+  Device.Firewall.X_PRPLWARE-COM_InterfaceSetting.{i}.IPv6AcceptUDPTracerouteStatus                    proto::tr181-firewall
+  Device.Firewall.X_PRPLWARE-COM_InterfaceSetting.{i}.Interface                                        proto::tr181-firewall
+  Device.Firewall.X_PRPLWARE-COM_InterfaceSetting.{i}.IsolateInterface                                 proto::tr181-firewall
+  Device.Firewall.X_PRPLWARE-COM_InterfaceSetting.{i}.LOGAcceptOutgoingConnection                      proto::tr181-firewall
+  Device.Firewall.X_PRPLWARE-COM_InterfaceSetting.{i}.LOGAcceptOutgoingConnectionStatus                proto::tr181-firewall
+  Device.Firewall.X_PRPLWARE-COM_InterfaceSetting.{i}.LOGDroppedIncomingConnection                     proto::tr181-firewall
+  Device.Firewall.X_PRPLWARE-COM_InterfaceSetting.{i}.LOGDroppedIncomingConnectionStatus               proto::tr181-firewall
+  Device.Firewall.X_PRPLWARE-COM_InterfaceSetting.{i}.LOGDroppedOutgoingConnection                     proto::tr181-firewall
+  Device.Firewall.X_PRPLWARE-COM_InterfaceSetting.{i}.LOGDroppedOutgoingConnectionStatus               proto::tr181-firewall
+  Device.Firewall.X_PRPLWARE-COM_InterfaceSetting.{i}.PassthroughICMPv6EchoRequest                     proto::tr181-firewall
+  Device.Firewall.X_PRPLWARE-COM_InterfaceSetting.{i}.PassthroughICMPv6Status                          proto::tr181-firewall
+  Device.Firewall.X_PRPLWARE-COM_InterfaceSetting.{i}.SpoofingProtection                               proto::tr181-firewall
+  Device.Firewall.X_PRPLWARE-COM_InterfaceSetting.{i}.SpoofingProtectionIPv4Status                     proto::tr181-firewall
+  Device.Firewall.X_PRPLWARE-COM_InterfaceSetting.{i}.SpoofingProtectionIPv6Status                     proto::tr181-firewall
+  Device.Firewall.X_PRPLWARE-COM_InterfaceSetting.{i}.StealthMode                                      proto::tr181-firewall
+  Device.Firewall.X_PRPLWARE-COM_InterfaceSetting.{i}.StealthModeStatus                                proto::tr181-firewall
+  Device.Firewall.X_PRPLWARE-COM_InterfaceSettingNumberOfEntries                                       proto::tr181-firewall
+  Device.Firewall.X_PRPLWARE-COM_Log.{i}.                                                              proto::tr181-firewall
+  Device.Firewall.X_PRPLWARE-COM_Log.{i}.Alias                                                         proto::tr181-firewall
+  Device.Firewall.X_PRPLWARE-COM_Log.{i}.Description                                                   proto::tr181-firewall
+  Device.Firewall.X_PRPLWARE-COM_Log.{i}.Enable                                                        proto::tr181-firewall
+  Device.Firewall.X_PRPLWARE-COM_Log.{i}.FilterDestinationInterface                                    proto::tr181-firewall
+  Device.Firewall.X_PRPLWARE-COM_Log.{i}.FilterPolicy                                                  proto::tr181-firewall
+  Device.Firewall.X_PRPLWARE-COM_Log.{i}.FilterSourceInterface                                         proto::tr181-firewall
+  Device.Firewall.X_PRPLWARE-COM_Log.{i}.Level                                                         proto::tr181-firewall
+  Device.Firewall.X_PRPLWARE-COM_Log.{i}.Prefix                                                        proto::tr181-firewall
+  Device.Firewall.X_PRPLWARE-COM_LogNumberOfEntries                                                    proto::tr181-firewall
+  Device.Firewall.X_PRPLWARE-COM_MaxPinholeNumberOfEntries                                             proto::tr181-firewall
+  Device.Firewall.X_PRPLWARE-COM_WANAccess.                                                            proto::tr181-firewall
+  Device.Firewall.X_PRPLWARE-COM_WANAccess.BlockList.{i}.                                              proto::tr181-firewall
+  Device.Firewall.X_PRPLWARE-COM_WANAccess.BlockList.{i}.Alias                                         proto::tr181-firewall
+  Device.Firewall.X_PRPLWARE-COM_WANAccess.BlockList.{i}.DeviceType                                    proto::tr181-firewall
+  Device.Firewall.X_PRPLWARE-COM_WANAccess.BlockList.{i}.DiscoverySource                               proto::tr181-firewall
+  Device.Firewall.X_PRPLWARE-COM_WANAccess.BlockList.{i}.IPAddress                                     proto::tr181-firewall
+  Device.Firewall.X_PRPLWARE-COM_WANAccess.BlockList.{i}.IPAddressSource                               proto::tr181-firewall
+  Device.Firewall.X_PRPLWARE-COM_WANAccess.BlockList.{i}.InterfaceName                                 proto::tr181-firewall
+  Device.Firewall.X_PRPLWARE-COM_WANAccess.BlockList.{i}.PhysAddress                                   proto::tr181-firewall
+  Device.Firewall.X_PRPLWARE-COM_WANAccess.BlockList.{i}.Tags                                          proto::tr181-firewall
+  Device.Firewall.X_PRPLWARE-COM_WANAccess.BlockListNumberOfEntries                                    proto::tr181-firewall
   Device.Hosts.                                                                                        proto::hosts-manager
   Device.Hosts.AccessControl.{i}.                                                                      proto::hosts-manager
   Device.Hosts.AccessControl.{i}.AccessPolicy                                                          proto::hosts-manager
   Device.Hosts.AccessControl.{i}.Alias                                                                 proto::hosts-manager
   Device.Hosts.AccessControl.{i}.Enable                                                                proto::hosts-manager
   Device.Hosts.AccessControl.{i}.HostName                                                              proto::hosts-manager
+  Device.Hosts.AccessControl.{i}.Origin                                                                proto::hosts-manager
   Device.Hosts.AccessControl.{i}.PhysAddress                                                           proto::hosts-manager
+  Device.Hosts.AccessControl.{i}.PhysAddressMask                                                       proto::hosts-manager
   Device.Hosts.AccessControl.{i}.Schedule.{i}.                                                         proto::hosts-manager
   Device.Hosts.AccessControl.{i}.Schedule.{i}.Alias                                                    proto::hosts-manager
   Device.Hosts.AccessControl.{i}.Schedule.{i}.Day                                                      proto::hosts-manager
@@ -1086,8 +1105,6 @@ Check that obuspa has expected datamodel available (minus the platform specific 
   Device.Hosts.AccessControl.{i}.Schedule.{i}.StartTime                                                proto::hosts-manager
   Device.Hosts.AccessControl.{i}.ScheduleNumberOfEntries                                               proto::hosts-manager
   Device.Hosts.AccessControl.{i}.ScheduleRef                                                           proto::hosts-manager
-  Device.Hosts.AccessControl.{i}.X_PRPL-COM_Origin                                                     proto::hosts-manager
-  Device.Hosts.AccessControl.{i}.X_PRPL-COM_PhysAddressMask                                            proto::hosts-manager
   Device.Hosts.AccessControlNumberOfEntries                                                            proto::hosts-manager
   Device.Hosts.Host.{i}.                                                                               proto::hosts-manager
   Device.Hosts.Host.{i}.Active                                                                         proto::hosts-manager
@@ -1111,17 +1128,17 @@ Check that obuspa has expected datamodel available (minus the platform specific 
   Device.Hosts.Host.{i}.WANStats.BytesSent                                                             proto::hosts-manager
   Device.Hosts.Host.{i}.WANStats.PacketsReceived                                                       proto::hosts-manager
   Device.Hosts.Host.{i}.WANStats.PacketsSent                                                           proto::hosts-manager
-  Device.Hosts.Host.{i}.X_PRPL-COM_Protected                                                           proto::hosts-manager
+  Device.Hosts.Host.{i}.X_PRPLWARE-COM_Protected                                                       proto::hosts-manager
   Device.Hosts.HostNumberOfEntries                                                                     proto::hosts-manager
-  Device.Hosts.X_PRPL-COM_HostConfig.                                                                  proto::hosts-manager
-  Device.Hosts.X_PRPL-COM_HostConfig.InactiveCheckInterval                                             proto::hosts-manager
-  Device.Hosts.X_PRPL-COM_HostConfig.InactiveCheckThreshold                                            proto::hosts-manager
-  Device.Hosts.X_PRPL-COM_HostConfig.MaxDevices                                                        proto::hosts-manager
-  Device.Hosts.X_PRPL-COM_HostConfig.MaxInactiveTime                                                   proto::hosts-manager
-  Device.Hosts.X_PRPL-COM_HostConfig.MaxInactiveTimeThreshold                                          proto::hosts-manager
-  Device.Hosts.X_PRPL-COM_HostConfig.RemoveInactiveDevices()                                           proto::hosts-manager
-  Device.Hosts.X_PRPL-COM_HostConfig.RemoveInactiveDevices() input:minimumInactiveInterval
-  Device.Hosts.X_PRPL-COM_HostConfig.RemoveInactiveDevices() output:nrOfRemovedDevices
+  Device.Hosts.X_PRPLWARE-COM_HostConfig.                                                              proto::hosts-manager
+  Device.Hosts.X_PRPLWARE-COM_HostConfig.InactiveCheckInterval                                         proto::hosts-manager
+  Device.Hosts.X_PRPLWARE-COM_HostConfig.InactiveCheckThreshold                                        proto::hosts-manager
+  Device.Hosts.X_PRPLWARE-COM_HostConfig.MaxDevices                                                    proto::hosts-manager
+  Device.Hosts.X_PRPLWARE-COM_HostConfig.MaxInactiveTime                                               proto::hosts-manager
+  Device.Hosts.X_PRPLWARE-COM_HostConfig.MaxInactiveTimeThreshold                                      proto::hosts-manager
+  Device.Hosts.X_PRPLWARE-COM_HostConfig.RemoveInactiveDevices()                                       proto::hosts-manager
+  Device.Hosts.X_PRPLWARE-COM_HostConfig.RemoveInactiveDevices() input:minimumInactiveInterval
+  Device.Hosts.X_PRPLWARE-COM_HostConfig.RemoveInactiveDevices() output:nrOfRemovedDevices
   Device.IP.
   Device.IP.ActivePort.{i}.                                                                            proto::ip-manager
   Device.IP.ActivePortNumberOfEntries                                                                  proto::ip-manager
@@ -1315,91 +1332,91 @@ Check that obuspa has expected datamodel available (minus the platform specific 
   Device.IP.Diagnostics.UploadDiagnosticsMaxConnections                                                proto::tr181-ipdiagnostics
   Device.IP.Diagnostics.UploadDiagnosticsMaxIncrementalResult                                          proto::tr181-ipdiagnostics
   Device.IP.Diagnostics.UploadTransports                                                               proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_DownloadConfig.                                                     proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_DownloadConfig.DSCP                                                 proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_DownloadConfig.DownloadURL                                          proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_DownloadConfig.EnablePerConnectionResults                           proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_DownloadConfig.EthernetPriority                                     proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_DownloadConfig.Interface                                            proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_DownloadConfig.NumberOfConnections                                  proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_DownloadConfig.ProtocolVersion                                      proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_DownloadConfig.TimeBasedTestDuration                                proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_DownloadConfig.TimeBasedTestMeasurementInterval                     proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_DownloadConfig.TimeBasedTestMeasurementOffset                       proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_DownloadResult.{i}.                                                 proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_DownloadResult.{i}.BOMTime                                          proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_DownloadResult.{i}.EOMTime                                          proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_DownloadResult.{i}.IPAddressUsed                                    proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_DownloadResult.{i}.IncrementalResult.{i}.                           proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_DownloadResult.{i}.IncrementalResult.{i}.EndTime                    proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_DownloadResult.{i}.IncrementalResult.{i}.StartTime                  proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_DownloadResult.{i}.IncrementalResult.{i}.TestBytesReceived          proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_DownloadResult.{i}.IncrementalResult.{i}.TotalBytesReceived         proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_DownloadResult.{i}.IncrementalResult.{i}.TotalBytesSent             proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_DownloadResult.{i}.PerConnectionResult.{i}.                         proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_DownloadResult.{i}.PerConnectionResult.{i}.BOMTime                  proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_DownloadResult.{i}.PerConnectionResult.{i}.EOMTime                  proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_DownloadResult.{i}.PerConnectionResult.{i}.ROMTime                  proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_DownloadResult.{i}.PerConnectionResult.{i}.TCPOpenRequestTime       proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_DownloadResult.{i}.PerConnectionResult.{i}.TCPOpenResponseTime      proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_DownloadResult.{i}.PerConnectionResult.{i}.TestBytesReceived        proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_DownloadResult.{i}.PerConnectionResult.{i}.TotalBytesReceived       proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_DownloadResult.{i}.PerConnectionResult.{i}.TotalBytesSent           proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_DownloadResult.{i}.PeriodOfFullLoading                              proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_DownloadResult.{i}.ROMTime                                          proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_DownloadResult.{i}.Status                                           proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_DownloadResult.{i}.TCPOpenRequestTime                               proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_DownloadResult.{i}.TCPOpenResponseTime                              proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_DownloadResult.{i}.TestBytesReceived                                proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_DownloadResult.{i}.TestBytesReceivedUnderFullLoading                proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_DownloadResult.{i}.TotalBytesReceived                               proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_DownloadResult.{i}.TotalBytesReceivedUnderFullLoading               proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_DownloadResult.{i}.TotalBytesSent                                   proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_DownloadResult.{i}.TotalBytesSentUnderFullLoading                   proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_NumberOfDownloadResult                                              proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_NumberOfUploadResult                                                proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_UploadConfig.                                                       proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_UploadConfig.DSCP                                                   proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_UploadConfig.EnablePerConnectionResults                             proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_UploadConfig.EthernetPriority                                       proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_UploadConfig.Interface                                              proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_UploadConfig.NumberOfConnections                                    proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_UploadConfig.ProtocolVersion                                        proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_UploadConfig.TestFileLength                                         proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_UploadConfig.TimeBasedTestDuration                                  proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_UploadConfig.TimeBasedTestMeasurementInterval                       proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_UploadConfig.TimeBasedTestMeasurementOffset                         proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_UploadConfig.UploadURL                                              proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_UploadResult.{i}.                                                   proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_UploadResult.{i}.BOMTime                                            proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_UploadResult.{i}.EOMTime                                            proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_UploadResult.{i}.IPAddressUsed                                      proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_UploadResult.{i}.IncrementalResult.{i}.                             proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_UploadResult.{i}.IncrementalResult.{i}.EndTime                      proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_UploadResult.{i}.IncrementalResult.{i}.StartTime                    proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_UploadResult.{i}.IncrementalResult.{i}.TestBytesSent                proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_UploadResult.{i}.IncrementalResult.{i}.TotalBytesReceived           proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_UploadResult.{i}.IncrementalResult.{i}.TotalBytesSent               proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_UploadResult.{i}.PerConnectionResult.{i}.                           proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_UploadResult.{i}.PerConnectionResult.{i}.BOMTime                    proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_UploadResult.{i}.PerConnectionResult.{i}.EOMTime                    proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_UploadResult.{i}.PerConnectionResult.{i}.ROMTime                    proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_UploadResult.{i}.PerConnectionResult.{i}.TCPOpenRequestTime         proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_UploadResult.{i}.PerConnectionResult.{i}.TCPOpenResponseTime        proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_UploadResult.{i}.PerConnectionResult.{i}.TestBytesSent              proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_UploadResult.{i}.PerConnectionResult.{i}.TotalBytesReceived         proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_UploadResult.{i}.PerConnectionResult.{i}.TotalBytesSent             proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_UploadResult.{i}.PeriodOfFullLoading                                proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_UploadResult.{i}.ROMTime                                            proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_UploadResult.{i}.Status                                             proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_UploadResult.{i}.TCPOpenRequestTime                                 proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_UploadResult.{i}.TCPOpenResponseTime                                proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_UploadResult.{i}.TestBytesSent                                      proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_UploadResult.{i}.TestBytesSentUnderFullLoading                      proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_UploadResult.{i}.TotalBytesReceived                                 proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_UploadResult.{i}.TotalBytesReceivedUnderFullLoading                 proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_UploadResult.{i}.TotalBytesSent                                     proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_UploadResult.{i}.TotalBytesSentUnderFullLoading                     proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_DownloadConfig.                                                 proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_DownloadConfig.DSCP                                             proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_DownloadConfig.DownloadURL                                      proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_DownloadConfig.EnablePerConnectionResults                       proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_DownloadConfig.EthernetPriority                                 proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_DownloadConfig.Interface                                        proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_DownloadConfig.NumberOfConnections                              proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_DownloadConfig.ProtocolVersion                                  proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_DownloadConfig.TimeBasedTestDuration                            proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_DownloadConfig.TimeBasedTestMeasurementInterval                 proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_DownloadConfig.TimeBasedTestMeasurementOffset                   proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_DownloadResult.{i}.                                             proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_DownloadResult.{i}.BOMTime                                      proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_DownloadResult.{i}.EOMTime                                      proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_DownloadResult.{i}.IPAddressUsed                                proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_DownloadResult.{i}.IncrementalResult.{i}.                       proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_DownloadResult.{i}.IncrementalResult.{i}.EndTime                proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_DownloadResult.{i}.IncrementalResult.{i}.StartTime              proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_DownloadResult.{i}.IncrementalResult.{i}.TestBytesReceived      proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_DownloadResult.{i}.IncrementalResult.{i}.TotalBytesReceived     proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_DownloadResult.{i}.IncrementalResult.{i}.TotalBytesSent         proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_DownloadResult.{i}.PerConnectionResult.{i}.                     proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_DownloadResult.{i}.PerConnectionResult.{i}.BOMTime              proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_DownloadResult.{i}.PerConnectionResult.{i}.EOMTime              proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_DownloadResult.{i}.PerConnectionResult.{i}.ROMTime              proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_DownloadResult.{i}.PerConnectionResult.{i}.TCPOpenRequestTime   proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_DownloadResult.{i}.PerConnectionResult.{i}.TCPOpenResponseTime  proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_DownloadResult.{i}.PerConnectionResult.{i}.TestBytesReceived    proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_DownloadResult.{i}.PerConnectionResult.{i}.TotalBytesReceived   proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_DownloadResult.{i}.PerConnectionResult.{i}.TotalBytesSent       proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_DownloadResult.{i}.PeriodOfFullLoading                          proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_DownloadResult.{i}.ROMTime                                      proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_DownloadResult.{i}.Status                                       proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_DownloadResult.{i}.TCPOpenRequestTime                           proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_DownloadResult.{i}.TCPOpenResponseTime                          proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_DownloadResult.{i}.TestBytesReceived                            proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_DownloadResult.{i}.TestBytesReceivedUnderFullLoading            proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_DownloadResult.{i}.TotalBytesReceived                           proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_DownloadResult.{i}.TotalBytesReceivedUnderFullLoading           proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_DownloadResult.{i}.TotalBytesSent                               proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_DownloadResult.{i}.TotalBytesSentUnderFullLoading               proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_NumberOfDownloadResult                                          proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_NumberOfUploadResult                                            proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_UploadConfig.                                                   proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_UploadConfig.DSCP                                               proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_UploadConfig.EnablePerConnectionResults                         proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_UploadConfig.EthernetPriority                                   proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_UploadConfig.Interface                                          proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_UploadConfig.NumberOfConnections                                proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_UploadConfig.ProtocolVersion                                    proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_UploadConfig.TestFileLength                                     proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_UploadConfig.TimeBasedTestDuration                              proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_UploadConfig.TimeBasedTestMeasurementInterval                   proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_UploadConfig.TimeBasedTestMeasurementOffset                     proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_UploadConfig.UploadURL                                          proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_UploadResult.{i}.                                               proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_UploadResult.{i}.BOMTime                                        proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_UploadResult.{i}.EOMTime                                        proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_UploadResult.{i}.IPAddressUsed                                  proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_UploadResult.{i}.IncrementalResult.{i}.                         proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_UploadResult.{i}.IncrementalResult.{i}.EndTime                  proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_UploadResult.{i}.IncrementalResult.{i}.StartTime                proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_UploadResult.{i}.IncrementalResult.{i}.TestBytesSent            proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_UploadResult.{i}.IncrementalResult.{i}.TotalBytesReceived       proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_UploadResult.{i}.IncrementalResult.{i}.TotalBytesSent           proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_UploadResult.{i}.PerConnectionResult.{i}.                       proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_UploadResult.{i}.PerConnectionResult.{i}.BOMTime                proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_UploadResult.{i}.PerConnectionResult.{i}.EOMTime                proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_UploadResult.{i}.PerConnectionResult.{i}.ROMTime                proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_UploadResult.{i}.PerConnectionResult.{i}.TCPOpenRequestTime     proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_UploadResult.{i}.PerConnectionResult.{i}.TCPOpenResponseTime    proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_UploadResult.{i}.PerConnectionResult.{i}.TestBytesSent          proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_UploadResult.{i}.PerConnectionResult.{i}.TotalBytesReceived     proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_UploadResult.{i}.PerConnectionResult.{i}.TotalBytesSent         proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_UploadResult.{i}.PeriodOfFullLoading                            proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_UploadResult.{i}.ROMTime                                        proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_UploadResult.{i}.Status                                         proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_UploadResult.{i}.TCPOpenRequestTime                             proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_UploadResult.{i}.TCPOpenResponseTime                            proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_UploadResult.{i}.TestBytesSent                                  proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_UploadResult.{i}.TestBytesSentUnderFullLoading                  proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_UploadResult.{i}.TotalBytesReceived                             proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_UploadResult.{i}.TotalBytesReceivedUnderFullLoading             proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_UploadResult.{i}.TotalBytesSent                                 proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_UploadResult.{i}.TotalBytesSentUnderFullLoading                 proto::tr181-ipdiagnostics
   Device.IP.IPv4Capable                                                                                proto::ip-manager
   Device.IP.IPv4Enable                                                                                 proto::ip-manager
   Device.IP.IPv4Status                                                                                 proto::ip-manager
@@ -1474,12 +1491,12 @@ Check that obuspa has expected datamodel available (minus the platform specific 
   Device.IP.Interface.{i}.Status                                                                       proto::ip-manager
   Device.IP.Interface.{i}.Type                                                                         proto::ip-manager
   Device.IP.Interface.{i}.ULAEnable                                                                    proto::ip-manager
-  Device.IP.Interface.{i}.X_PRPL-COM_Description                                                       proto::ip-manager
-  Device.IP.Interface.{i}.X_PRPL-COM_IPv4Config.                                                       proto::ip-manager
-  Device.IP.Interface.{i}.X_PRPL-COM_IPv4Config.NeighborReachableTime                                  proto::ip-manager
-  Device.IP.Interface.{i}.X_PRPL-COM_IPv6Config.                                                       proto::ip-manager
-  Device.IP.Interface.{i}.X_PRPL-COM_IPv6Config.NeighborReachableTime                                  proto::ip-manager
-  Device.IP.Interface.{i}.X_PRPL-COM_MTUMode                                                           proto::ip-manager
+  Device.IP.Interface.{i}.X_PRPLWARE-COM_Description                                                   proto::ip-manager
+  Device.IP.Interface.{i}.X_PRPLWARE-COM_IPv4Config.                                                   proto::ip-manager
+  Device.IP.Interface.{i}.X_PRPLWARE-COM_IPv4Config.NeighborReachableTime                              proto::ip-manager
+  Device.IP.Interface.{i}.X_PRPLWARE-COM_IPv6Config.                                                   proto::ip-manager
+  Device.IP.Interface.{i}.X_PRPLWARE-COM_IPv6Config.NeighborReachableTime                              proto::ip-manager
+  Device.IP.Interface.{i}.X_PRPLWARE-COM_MTUMode                                                       proto::ip-manager
   Device.IP.InterfaceNumberOfEntries                                                                   proto::ip-manager
   Device.IP.ULAPrefix                                                                                  proto::ip-manager
   Device.InterfaceStack.{i}.                                                                           proto::tr181-device
@@ -1490,6 +1507,7 @@ Check that obuspa has expected datamodel available (minus the platform specific 
   Device.InterfaceStack.{i}.LowerLayer                                                                 proto::tr181-device
   Device.InterfaceStackNumberOfEntries                                                                 proto::tr181-device
   Device.LEDs.                                                                                         proto::tr181-led
+  Device.LEDs.BrightnessLimiter                                                                        proto::tr181-led
   Device.LEDs.LED.{i}.                                                                                 proto::tr181-led
   Device.LEDs.LED.{i}.Alias                                                                            proto::tr181-led
   Device.LEDs.LED.{i}.CurrentCycleElement.                                                             proto::tr181-led
@@ -1536,11 +1554,6 @@ Check that obuspa has expected datamodel available (minus the platform specific 
   Device.LocalAgent.Controller.{i}.InheritedRole
   Device.LocalAgent.Controller.{i}.MTP.{i}.
   Device.LocalAgent.Controller.{i}.MTP.{i}.Alias
-  Device.LocalAgent.Controller.{i}.MTP.{i}.CoAP.
-  Device.LocalAgent.Controller.{i}.MTP.{i}.CoAP.EnableEncryption
-  Device.LocalAgent.Controller.{i}.MTP.{i}.CoAP.Host
-  Device.LocalAgent.Controller.{i}.MTP.{i}.CoAP.Path
-  Device.LocalAgent.Controller.{i}.MTP.{i}.CoAP.Port
   Device.LocalAgent.Controller.{i}.MTP.{i}.Enable
   Device.LocalAgent.Controller.{i}.MTP.{i}.MQTT.
   Device.LocalAgent.Controller.{i}.MTP.{i}.MQTT.Reference
@@ -1609,10 +1622,6 @@ Check that obuspa has expected datamodel available (minus the platform specific 
   Device.LocalAgent.EndpointID
   Device.LocalAgent.MTP.{i}.
   Device.LocalAgent.MTP.{i}.Alias
-  Device.LocalAgent.MTP.{i}.CoAP.
-  Device.LocalAgent.MTP.{i}.CoAP.EnableEncryption
-  Device.LocalAgent.MTP.{i}.CoAP.Path
-  Device.LocalAgent.MTP.{i}.CoAP.Port
   Device.LocalAgent.MTP.{i}.Enable
   Device.LocalAgent.MTP.{i}.MQTT.
   Device.LocalAgent.MTP.{i}.MQTT.PublishQoS
@@ -1678,89 +1687,89 @@ Check that obuspa has expected datamodel available (minus the platform specific 
   Device.Logical.Interface.{i}.Stats.UnicastPacketsSent                                                proto::tr181-logical
   Device.Logical.Interface.{i}.Stats.UnknownProtoPacketsReceived                                       proto::tr181-logical
   Device.Logical.Interface.{i}.Status                                                                  proto::tr181-logical
-  Device.Logical.Interface.{i}.X_PRPL-COM_LAN.                                                         proto::tr181-logical
-  Device.Logical.Interface.{i}.X_PRPL-COM_LAN.AddLowerLayerInterface()                                 proto::tr181-logical
-  Device.Logical.Interface.{i}.X_PRPL-COM_LAN.AddLowerLayerInterface() input:LowerLayerInterface
-  Device.Logical.Interface.{i}.X_PRPL-COM_LAN.DHCPv4PoolReference                                      proto::tr181-logical
-  Device.Logical.Interface.{i}.X_PRPL-COM_LAN.DHCPv6PoolReference                                      proto::tr181-logical
-  Device.Logical.Interface.{i}.X_PRPL-COM_LAN.DomainName                                               proto::tr181-logical
-  Device.Logical.Interface.{i}.X_PRPL-COM_LAN.DomainSearchList                                         proto::tr181-logical
-  Device.Logical.Interface.{i}.X_PRPL-COM_LAN.GetAlternativeIPv4Config()                               proto::tr181-logical
-  Device.Logical.Interface.{i}.X_PRPL-COM_LAN.GetAlternativeIPv4Config() output:Enable
-  Device.Logical.Interface.{i}.X_PRPL-COM_LAN.GetAlternativeIPv4Config() output:IPAddress
-  Device.Logical.Interface.{i}.X_PRPL-COM_LAN.GetAlternativeIPv4Config() output:SubnetMask
-  Device.Logical.Interface.{i}.X_PRPL-COM_LAN.GetIPv4Config()                                          proto::tr181-logical
-  Device.Logical.Interface.{i}.X_PRPL-COM_LAN.GetIPv4Config() output:DHCPParameters
-  Device.Logical.Interface.{i}.X_PRPL-COM_LAN.GetIPv4Config() output:Enable
-  Device.Logical.Interface.{i}.X_PRPL-COM_LAN.GetIPv4Config() output:IPAddress
-  Device.Logical.Interface.{i}.X_PRPL-COM_LAN.GetIPv4Config() output:SubnetMask
-  Device.Logical.Interface.{i}.X_PRPL-COM_LAN.GetIPv4ConfigExt()                                       proto::tr181-logical
-  Device.Logical.Interface.{i}.X_PRPL-COM_LAN.GetIPv4ConfigExt() output:IPConfigs
-  Device.Logical.Interface.{i}.X_PRPL-COM_LAN.GetIPv4ConfigExt() output:Pools
-  Device.Logical.Interface.{i}.X_PRPL-COM_LAN.GetIPv6Config()                                          proto::tr181-logical
-  Device.Logical.Interface.{i}.X_PRPL-COM_LAN.GetIPv6Config() output:DHCPParameters
-  Device.Logical.Interface.{i}.X_PRPL-COM_LAN.GetIPv6Config() output:Enable
-  Device.Logical.Interface.{i}.X_PRPL-COM_LAN.GetIPv6Config() output:RAParameters
-  Device.Logical.Interface.{i}.X_PRPL-COM_LAN.GetIPv6Config() output:RAPool
-  Device.Logical.Interface.{i}.X_PRPL-COM_LAN.HostName.{i}.                                            proto::tr181-logical
-  Device.Logical.Interface.{i}.X_PRPL-COM_LAN.HostName.{i}.Alias                                       proto::tr181-logical
-  Device.Logical.Interface.{i}.X_PRPL-COM_LAN.HostName.{i}.Enable                                      proto::tr181-logical
-  Device.Logical.Interface.{i}.X_PRPL-COM_LAN.HostName.{i}.IPVersion                                   proto::tr181-logical
-  Device.Logical.Interface.{i}.X_PRPL-COM_LAN.HostName.{i}.Name                                        proto::tr181-logical
-  Device.Logical.Interface.{i}.X_PRPL-COM_LAN.HostNameNumberOfEntries                                  proto::tr181-logical
-  Device.Logical.Interface.{i}.X_PRPL-COM_LAN.RemoveLowerLayerInterface()                              proto::tr181-logical
-  Device.Logical.Interface.{i}.X_PRPL-COM_LAN.RemoveLowerLayerInterface() input:LowerLayerInterface
-  Device.Logical.Interface.{i}.X_PRPL-COM_LAN.SetAlternativeIPv4Config()                               proto::tr181-logical
-  Device.Logical.Interface.{i}.X_PRPL-COM_LAN.SetAlternativeIPv4Config() input:Enable
-  Device.Logical.Interface.{i}.X_PRPL-COM_LAN.SetAlternativeIPv4Config() input:IPAddress
-  Device.Logical.Interface.{i}.X_PRPL-COM_LAN.SetAlternativeIPv4Config() input:SubnetMask
-  Device.Logical.Interface.{i}.X_PRPL-COM_LAN.SetIPv4Config()                                          proto::tr181-logical
-  Device.Logical.Interface.{i}.X_PRPL-COM_LAN.SetIPv4Config() input:DHCPEnable
-  Device.Logical.Interface.{i}.X_PRPL-COM_LAN.SetIPv4Config() input:DNSServers
-  Device.Logical.Interface.{i}.X_PRPL-COM_LAN.SetIPv4Config() input:Enable
-  Device.Logical.Interface.{i}.X_PRPL-COM_LAN.SetIPv4Config() input:ForceDoraCycle
-  Device.Logical.Interface.{i}.X_PRPL-COM_LAN.SetIPv4Config() input:IPAddress
-  Device.Logical.Interface.{i}.X_PRPL-COM_LAN.SetIPv4Config() input:LeaseTime
-  Device.Logical.Interface.{i}.X_PRPL-COM_LAN.SetIPv4Config() input:MaxAddress
-  Device.Logical.Interface.{i}.X_PRPL-COM_LAN.SetIPv4Config() input:MinAddress
-  Device.Logical.Interface.{i}.X_PRPL-COM_LAN.SetIPv4Config() input:Pool
-  Device.Logical.Interface.{i}.X_PRPL-COM_LAN.SetIPv4Config() input:SubnetMask
-  Device.Logical.Interface.{i}.X_PRPL-COM_LAN.SetIPv4ConfigExt()                                       proto::tr181-logical
-  Device.Logical.Interface.{i}.X_PRPL-COM_LAN.SetIPv4ConfigExt() input:ForceDoraCycle
-  Device.Logical.Interface.{i}.X_PRPL-COM_LAN.SetIPv4ConfigExt() input:IPConfigs
-  Device.Logical.Interface.{i}.X_PRPL-COM_LAN.SetIPv4ConfigExt() input:Pools
-  Device.Logical.Interface.{i}.X_PRPL-COM_LAN.SetIPv6Config()                                          proto::tr181-logical
-  Device.Logical.Interface.{i}.X_PRPL-COM_LAN.SetIPv6Config() input:DHCPv6Enable
-  Device.Logical.Interface.{i}.X_PRPL-COM_LAN.SetIPv6Config() input:DHCPv6Pool
-  Device.Logical.Interface.{i}.X_PRPL-COM_LAN.SetIPv6Config() input:Enable
-  Device.Logical.Interface.{i}.X_PRPL-COM_LAN.SetIPv6Config() input:IANAEnable
-  Device.Logical.Interface.{i}.X_PRPL-COM_LAN.SetIPv6Config() input:IAPDEnable
-  Device.Logical.Interface.{i}.X_PRPL-COM_LAN.SetIPv6Config() input:RAEnable
-  Device.Logical.Interface.{i}.X_PRPL-COM_LAN.SetIPv6Config() input:RAPool
-  Device.Logical.Interface.{i}.X_PRPL-COM_LAN.Status                                                   proto::tr181-logical
-  Device.Logical.Interface.{i}.X_PRPL-COM_WAN.                                                         proto::tr181-logical
-  Device.Logical.Interface.{i}.X_PRPL-COM_WAN.GetWANStatus()                                           proto::tr181-logical
-  Device.Logical.Interface.{i}.X_PRPL-COM_WAN.IPv4Address                                              proto::tr181-logical
-  Device.Logical.Interface.{i}.X_PRPL-COM_WAN.IPv6Address                                              proto::tr181-logical
-  Device.Logical.Interface.{i}.X_PRPL-COM_WAN.Status                                                   proto::tr181-logical
+  Device.Logical.Interface.{i}.X_PRPLWARE-COM_LAN.                                                     proto::tr181-logical
+  Device.Logical.Interface.{i}.X_PRPLWARE-COM_LAN.AddLowerLayerInterface()                             proto::tr181-logical
+  Device.Logical.Interface.{i}.X_PRPLWARE-COM_LAN.AddLowerLayerInterface() input:LowerLayerInterface
+  Device.Logical.Interface.{i}.X_PRPLWARE-COM_LAN.DHCPv4PoolReference                                  proto::tr181-logical
+  Device.Logical.Interface.{i}.X_PRPLWARE-COM_LAN.DHCPv6PoolReference                                  proto::tr181-logical
+  Device.Logical.Interface.{i}.X_PRPLWARE-COM_LAN.DomainName                                           proto::tr181-logical
+  Device.Logical.Interface.{i}.X_PRPLWARE-COM_LAN.DomainSearchList                                     proto::tr181-logical
+  Device.Logical.Interface.{i}.X_PRPLWARE-COM_LAN.GetAlternativeIPv4Config()                           proto::tr181-logical
+  Device.Logical.Interface.{i}.X_PRPLWARE-COM_LAN.GetAlternativeIPv4Config() output:Enable
+  Device.Logical.Interface.{i}.X_PRPLWARE-COM_LAN.GetAlternativeIPv4Config() output:IPAddress
+  Device.Logical.Interface.{i}.X_PRPLWARE-COM_LAN.GetAlternativeIPv4Config() output:SubnetMask
+  Device.Logical.Interface.{i}.X_PRPLWARE-COM_LAN.GetIPv4Config()                                      proto::tr181-logical
+  Device.Logical.Interface.{i}.X_PRPLWARE-COM_LAN.GetIPv4Config() output:DHCPParameters
+  Device.Logical.Interface.{i}.X_PRPLWARE-COM_LAN.GetIPv4Config() output:Enable
+  Device.Logical.Interface.{i}.X_PRPLWARE-COM_LAN.GetIPv4Config() output:IPAddress
+  Device.Logical.Interface.{i}.X_PRPLWARE-COM_LAN.GetIPv4Config() output:SubnetMask
+  Device.Logical.Interface.{i}.X_PRPLWARE-COM_LAN.GetIPv4ConfigExt()                                   proto::tr181-logical
+  Device.Logical.Interface.{i}.X_PRPLWARE-COM_LAN.GetIPv4ConfigExt() output:IPConfigs
+  Device.Logical.Interface.{i}.X_PRPLWARE-COM_LAN.GetIPv4ConfigExt() output:Pools
+  Device.Logical.Interface.{i}.X_PRPLWARE-COM_LAN.GetIPv6Config()                                      proto::tr181-logical
+  Device.Logical.Interface.{i}.X_PRPLWARE-COM_LAN.GetIPv6Config() output:DHCPParameters
+  Device.Logical.Interface.{i}.X_PRPLWARE-COM_LAN.GetIPv6Config() output:Enable
+  Device.Logical.Interface.{i}.X_PRPLWARE-COM_LAN.GetIPv6Config() output:RAParameters
+  Device.Logical.Interface.{i}.X_PRPLWARE-COM_LAN.GetIPv6Config() output:RAPool
+  Device.Logical.Interface.{i}.X_PRPLWARE-COM_LAN.HostName.{i}.                                        proto::tr181-logical
+  Device.Logical.Interface.{i}.X_PRPLWARE-COM_LAN.HostName.{i}.Alias                                   proto::tr181-logical
+  Device.Logical.Interface.{i}.X_PRPLWARE-COM_LAN.HostName.{i}.Enable                                  proto::tr181-logical
+  Device.Logical.Interface.{i}.X_PRPLWARE-COM_LAN.HostName.{i}.IPVersion                               proto::tr181-logical
+  Device.Logical.Interface.{i}.X_PRPLWARE-COM_LAN.HostName.{i}.Name                                    proto::tr181-logical
+  Device.Logical.Interface.{i}.X_PRPLWARE-COM_LAN.HostNameNumberOfEntries                              proto::tr181-logical
+  Device.Logical.Interface.{i}.X_PRPLWARE-COM_LAN.RemoveLowerLayerInterface()                          proto::tr181-logical
+  Device.Logical.Interface.{i}.X_PRPLWARE-COM_LAN.RemoveLowerLayerInterface() input:LowerLayerInterface
+  Device.Logical.Interface.{i}.X_PRPLWARE-COM_LAN.SetAlternativeIPv4Config()                           proto::tr181-logical
+  Device.Logical.Interface.{i}.X_PRPLWARE-COM_LAN.SetAlternativeIPv4Config() input:Enable
+  Device.Logical.Interface.{i}.X_PRPLWARE-COM_LAN.SetAlternativeIPv4Config() input:IPAddress
+  Device.Logical.Interface.{i}.X_PRPLWARE-COM_LAN.SetAlternativeIPv4Config() input:SubnetMask
+  Device.Logical.Interface.{i}.X_PRPLWARE-COM_LAN.SetIPv4Config()                                      proto::tr181-logical
+  Device.Logical.Interface.{i}.X_PRPLWARE-COM_LAN.SetIPv4Config() input:DHCPEnable
+  Device.Logical.Interface.{i}.X_PRPLWARE-COM_LAN.SetIPv4Config() input:DNSServers
+  Device.Logical.Interface.{i}.X_PRPLWARE-COM_LAN.SetIPv4Config() input:Enable
+  Device.Logical.Interface.{i}.X_PRPLWARE-COM_LAN.SetIPv4Config() input:ForceDoraCycle
+  Device.Logical.Interface.{i}.X_PRPLWARE-COM_LAN.SetIPv4Config() input:IPAddress
+  Device.Logical.Interface.{i}.X_PRPLWARE-COM_LAN.SetIPv4Config() input:LeaseTime
+  Device.Logical.Interface.{i}.X_PRPLWARE-COM_LAN.SetIPv4Config() input:MaxAddress
+  Device.Logical.Interface.{i}.X_PRPLWARE-COM_LAN.SetIPv4Config() input:MinAddress
+  Device.Logical.Interface.{i}.X_PRPLWARE-COM_LAN.SetIPv4Config() input:Pool
+  Device.Logical.Interface.{i}.X_PRPLWARE-COM_LAN.SetIPv4Config() input:SubnetMask
+  Device.Logical.Interface.{i}.X_PRPLWARE-COM_LAN.SetIPv4ConfigExt()                                   proto::tr181-logical
+  Device.Logical.Interface.{i}.X_PRPLWARE-COM_LAN.SetIPv4ConfigExt() input:ForceDoraCycle
+  Device.Logical.Interface.{i}.X_PRPLWARE-COM_LAN.SetIPv4ConfigExt() input:IPConfigs
+  Device.Logical.Interface.{i}.X_PRPLWARE-COM_LAN.SetIPv4ConfigExt() input:Pools
+  Device.Logical.Interface.{i}.X_PRPLWARE-COM_LAN.SetIPv6Config()                                      proto::tr181-logical
+  Device.Logical.Interface.{i}.X_PRPLWARE-COM_LAN.SetIPv6Config() input:DHCPv6Enable
+  Device.Logical.Interface.{i}.X_PRPLWARE-COM_LAN.SetIPv6Config() input:DHCPv6Pool
+  Device.Logical.Interface.{i}.X_PRPLWARE-COM_LAN.SetIPv6Config() input:Enable
+  Device.Logical.Interface.{i}.X_PRPLWARE-COM_LAN.SetIPv6Config() input:IANAEnable
+  Device.Logical.Interface.{i}.X_PRPLWARE-COM_LAN.SetIPv6Config() input:IAPDEnable
+  Device.Logical.Interface.{i}.X_PRPLWARE-COM_LAN.SetIPv6Config() input:RAEnable
+  Device.Logical.Interface.{i}.X_PRPLWARE-COM_LAN.SetIPv6Config() input:RAPool
+  Device.Logical.Interface.{i}.X_PRPLWARE-COM_LAN.Status                                               proto::tr181-logical
+  Device.Logical.Interface.{i}.X_PRPLWARE-COM_WAN.                                                     proto::tr181-logical
+  Device.Logical.Interface.{i}.X_PRPLWARE-COM_WAN.GetWANStatus()                                       proto::tr181-logical
+  Device.Logical.Interface.{i}.X_PRPLWARE-COM_WAN.IPv4Address                                          proto::tr181-logical
+  Device.Logical.Interface.{i}.X_PRPLWARE-COM_WAN.IPv6Address                                          proto::tr181-logical
+  Device.Logical.Interface.{i}.X_PRPLWARE-COM_WAN.Status                                               proto::tr181-logical
   Device.Logical.InterfaceNumberOfEntries                                                              proto::tr181-logical
-  Device.Logical.X_PRPL-COM_Subnet.                                                                    proto::tr181-logical
-  Device.Logical.X_PRPL-COM_Subnet.CreateSubnet()                                                      proto::tr181-logical
-  Device.Logical.X_PRPL-COM_Subnet.CreateSubnet() input:BridgeInterface
-  Device.Logical.X_PRPL-COM_Subnet.CreateSubnet() input:EthernetLinkInterface
-  Device.Logical.X_PRPL-COM_Subnet.CreateSubnet() input:IPInterface
-  Device.Logical.X_PRPL-COM_Subnet.CreateSubnet() input:LogicalInterface
-  Device.Logical.X_PRPL-COM_Subnet.DeleteSubnet()                                                      proto::tr181-logical
-  Device.Logical.X_PRPL-COM_Subnet.DeleteSubnet() input:BridgeInterface
-  Device.Logical.X_PRPL-COM_Subnet.DeleteSubnet() input:EthernetLinkInterface
-  Device.Logical.X_PRPL-COM_Subnet.DeleteSubnet() input:IPInterface
-  Device.Logical.X_PRPL-COM_Subnet.DeleteSubnet() input:LogicalInterface
-  Device.Logical.X_PRPL-COM_Subnet.GetSubnet()                                                         proto::tr181-logical
-  Device.Logical.X_PRPL-COM_Subnet.GetSubnet() input:Alias
-  Device.Logical.X_PRPL-COM_Subnet.GetSubnet() output:BridgeInterface
-  Device.Logical.X_PRPL-COM_Subnet.GetSubnet() output:EthernetLinkInterface
-  Device.Logical.X_PRPL-COM_Subnet.GetSubnet() output:IPInterface
-  Device.Logical.X_PRPL-COM_Subnet.GetSubnet() output:LogicalInterface
+  Device.Logical.X_PRPLWARE-COM_Subnet.                                                                proto::tr181-logical
+  Device.Logical.X_PRPLWARE-COM_Subnet.CreateSubnet()                                                  proto::tr181-logical
+  Device.Logical.X_PRPLWARE-COM_Subnet.CreateSubnet() input:BridgeInterface
+  Device.Logical.X_PRPLWARE-COM_Subnet.CreateSubnet() input:EthernetLinkInterface
+  Device.Logical.X_PRPLWARE-COM_Subnet.CreateSubnet() input:IPInterface
+  Device.Logical.X_PRPLWARE-COM_Subnet.CreateSubnet() input:LogicalInterface
+  Device.Logical.X_PRPLWARE-COM_Subnet.DeleteSubnet()                                                  proto::tr181-logical
+  Device.Logical.X_PRPLWARE-COM_Subnet.DeleteSubnet() input:BridgeInterface
+  Device.Logical.X_PRPLWARE-COM_Subnet.DeleteSubnet() input:EthernetLinkInterface
+  Device.Logical.X_PRPLWARE-COM_Subnet.DeleteSubnet() input:IPInterface
+  Device.Logical.X_PRPLWARE-COM_Subnet.DeleteSubnet() input:LogicalInterface
+  Device.Logical.X_PRPLWARE-COM_Subnet.GetSubnet()                                                     proto::tr181-logical
+  Device.Logical.X_PRPLWARE-COM_Subnet.GetSubnet() input:Alias
+  Device.Logical.X_PRPLWARE-COM_Subnet.GetSubnet() output:BridgeInterface
+  Device.Logical.X_PRPLWARE-COM_Subnet.GetSubnet() output:EthernetLinkInterface
+  Device.Logical.X_PRPLWARE-COM_Subnet.GetSubnet() output:IPInterface
+  Device.Logical.X_PRPLWARE-COM_Subnet.GetSubnet() output:LogicalInterface
   Device.MQTT.
   Device.MQTT.Capabilities.
   Device.MQTT.Capabilities.MaxNumberOfClientSubscriptions
@@ -1836,16 +1845,16 @@ Check that obuspa has expected datamodel available (minus the platform specific 
   Device.MQTTBroker.Broker.{i}.Port                                                                    proto::tr181-mqttbroker
   Device.MQTTBroker.Broker.{i}.Status                                                                  proto::tr181-mqttbroker
   Device.MQTTBroker.Broker.{i}.Username                                                                proto::tr181-mqttbroker
-  Device.MQTTBroker.Broker.{i}.X_PRPL-COM_User.{i}.                                                    proto::tr181-mqttbroker
-  Device.MQTTBroker.Broker.{i}.X_PRPL-COM_User.{i}.ACL.{i}.                                            proto::tr181-mqttbroker
-  Device.MQTTBroker.Broker.{i}.X_PRPL-COM_User.{i}.ACL.{i}.AccessRights                                proto::tr181-mqttbroker
-  Device.MQTTBroker.Broker.{i}.X_PRPL-COM_User.{i}.ACL.{i}.Alias                                       proto::tr181-mqttbroker
-  Device.MQTTBroker.Broker.{i}.X_PRPL-COM_User.{i}.ACL.{i}.Topic                                       proto::tr181-mqttbroker
-  Device.MQTTBroker.Broker.{i}.X_PRPL-COM_User.{i}.ACLNumberOfEntries                                  proto::tr181-mqttbroker
-  Device.MQTTBroker.Broker.{i}.X_PRPL-COM_User.{i}.Alias                                               proto::tr181-mqttbroker
-  Device.MQTTBroker.Broker.{i}.X_PRPL-COM_User.{i}.Password                                            proto::tr181-mqttbroker
-  Device.MQTTBroker.Broker.{i}.X_PRPL-COM_User.{i}.Username                                            proto::tr181-mqttbroker
-  Device.MQTTBroker.Broker.{i}.X_PRPL-COM_UserNumberOfEntries                                          proto::tr181-mqttbroker
+  Device.MQTTBroker.Broker.{i}.X_PRPLWARE-COM_User.{i}.                                                proto::tr181-mqttbroker
+  Device.MQTTBroker.Broker.{i}.X_PRPLWARE-COM_User.{i}.ACL.{i}.                                        proto::tr181-mqttbroker
+  Device.MQTTBroker.Broker.{i}.X_PRPLWARE-COM_User.{i}.ACL.{i}.AccessRights                            proto::tr181-mqttbroker
+  Device.MQTTBroker.Broker.{i}.X_PRPLWARE-COM_User.{i}.ACL.{i}.Alias                                   proto::tr181-mqttbroker
+  Device.MQTTBroker.Broker.{i}.X_PRPLWARE-COM_User.{i}.ACL.{i}.Topic                                   proto::tr181-mqttbroker
+  Device.MQTTBroker.Broker.{i}.X_PRPLWARE-COM_User.{i}.ACLNumberOfEntries                              proto::tr181-mqttbroker
+  Device.MQTTBroker.Broker.{i}.X_PRPLWARE-COM_User.{i}.Alias                                           proto::tr181-mqttbroker
+  Device.MQTTBroker.Broker.{i}.X_PRPLWARE-COM_User.{i}.Password                                        proto::tr181-mqttbroker
+  Device.MQTTBroker.Broker.{i}.X_PRPLWARE-COM_User.{i}.Username                                        proto::tr181-mqttbroker
+  Device.MQTTBroker.Broker.{i}.X_PRPLWARE-COM_UserNumberOfEntries                                      proto::tr181-mqttbroker
   Device.MQTTBroker.BrokerNumberOfEntries                                                              proto::tr181-mqttbroker
   Device.NAT.                                                                                          proto::tr181-firewall
   Device.NAT.InterfaceSetting.{i}.                                                                     proto::tr181-firewall
@@ -1853,10 +1862,10 @@ Check that obuspa has expected datamodel available (minus the platform specific 
   Device.NAT.InterfaceSetting.{i}.Enable                                                               proto::tr181-firewall
   Device.NAT.InterfaceSetting.{i}.Interface                                                            proto::tr181-firewall
   Device.NAT.InterfaceSetting.{i}.Status                                                               proto::tr181-firewall
-  Device.NAT.InterfaceSetting.{i}.X_PRPL-COM_NATInterface.{i}.                                         proto::tr181-firewall
-  Device.NAT.InterfaceSetting.{i}.X_PRPL-COM_NATInterface.{i}.Alias                                    proto::tr181-firewall
-  Device.NAT.InterfaceSetting.{i}.X_PRPL-COM_NATInterface.{i}.Interface                                proto::tr181-firewall
-  Device.NAT.InterfaceSetting.{i}.X_PRPL-COM_NATInterfaceNumberOfEntries                               proto::tr181-firewall
+  Device.NAT.InterfaceSetting.{i}.X_PRPLWARE-COM_NATInterface.{i}.                                     proto::tr181-firewall
+  Device.NAT.InterfaceSetting.{i}.X_PRPLWARE-COM_NATInterface.{i}.Alias                                proto::tr181-firewall
+  Device.NAT.InterfaceSetting.{i}.X_PRPLWARE-COM_NATInterface.{i}.Interface                            proto::tr181-firewall
+  Device.NAT.InterfaceSetting.{i}.X_PRPLWARE-COM_NATInterfaceNumberOfEntries                           proto::tr181-firewall
   Device.NAT.InterfaceSettingNumberOfEntries                                                           proto::tr181-firewall
   Device.NAT.MaxNumberOfPortMappings                                                                   proto::tr181-firewall
   Device.NAT.MaxNumberOfPortTriggers                                                                   proto::tr181-firewall
@@ -1877,7 +1886,7 @@ Check that obuspa has expected datamodel available (minus the platform specific 
   Device.NAT.PortMapping.{i}.RemoteHost                                                                proto::tr181-firewall
   Device.NAT.PortMapping.{i}.ScheduleRef                                                               proto::tr181-firewall
   Device.NAT.PortMapping.{i}.Status                                                                    proto::tr181-firewall
-  Device.NAT.PortMapping.{i}.X_PRPL-COM_Log                                                            proto::tr181-firewall
+  Device.NAT.PortMapping.{i}.X_PRPLWARE-COM_Log                                                        proto::tr181-firewall
   Device.NAT.PortMappingNumberOfEntries                                                                proto::tr181-firewall
   Device.NAT.PortTrigger.{i}.                                                                          proto::tr181-firewall
   Device.NAT.PortTrigger.{i}.ActivationDate                                                            proto::tr181-firewall
@@ -1895,31 +1904,31 @@ Check that obuspa has expected datamodel available (minus the platform specific 
   Device.NAT.PortTrigger.{i}.Rule.{i}.Port                                                             proto::tr181-firewall
   Device.NAT.PortTrigger.{i}.Rule.{i}.PortEndRange                                                     proto::tr181-firewall
   Device.NAT.PortTrigger.{i}.Rule.{i}.Protocol                                                         proto::tr181-firewall
-  Device.NAT.PortTrigger.{i}.Rule.{i}.X_PRPL-COM_Log                                                   proto::tr181-firewall
+  Device.NAT.PortTrigger.{i}.Rule.{i}.X_PRPLWARE-COM_Log                                               proto::tr181-firewall
   Device.NAT.PortTrigger.{i}.RuleNumberOfEntries                                                       proto::tr181-firewall
   Device.NAT.PortTrigger.{i}.ScheduleRef                                                               proto::tr181-firewall
   Device.NAT.PortTrigger.{i}.Status                                                                    proto::tr181-firewall
   Device.NAT.PortTriggerNumberOfEntries                                                                proto::tr181-firewall
-  Device.NAT.X_PRPL-COM_MaximumConntrackEntries                                                        proto::tr181-firewall
-  Device.NAT.X_PRPL-COM_NumberOfConntrackEntries                                                       proto::tr181-firewall
-  Device.NAT.X_PRPL-COM_StaticNAT.                                                                     proto::tr181-firewall
-  Device.NAT.X_PRPL-COM_StaticNAT.Host.{i}.                                                            proto::tr181-firewall
-  Device.NAT.X_PRPL-COM_StaticNAT.Host.{i}.Alias                                                       proto::tr181-firewall
-  Device.NAT.X_PRPL-COM_StaticNAT.Host.{i}.Enable                                                      proto::tr181-firewall
-  Device.NAT.X_PRPL-COM_StaticNAT.Host.{i}.LANDevice                                                   proto::tr181-firewall
-  Device.NAT.X_PRPL-COM_StaticNAT.Host.{i}.PortMapping.{i}.                                            proto::tr181-firewall
-  Device.NAT.X_PRPL-COM_StaticNAT.Host.{i}.PortMapping.{i}.Alias                                       proto::tr181-firewall
-  Device.NAT.X_PRPL-COM_StaticNAT.Host.{i}.PortMapping.{i}.Description                                 proto::tr181-firewall
-  Device.NAT.X_PRPL-COM_StaticNAT.Host.{i}.PortMapping.{i}.DestPort                                    proto::tr181-firewall
-  Device.NAT.X_PRPL-COM_StaticNAT.Host.{i}.PortMapping.{i}.DestPortRangeMax                            proto::tr181-firewall
-  Device.NAT.X_PRPL-COM_StaticNAT.Host.{i}.PortMapping.{i}.Enable                                      proto::tr181-firewall
-  Device.NAT.X_PRPL-COM_StaticNAT.Host.{i}.PortMapping.{i}.Protocol                                    proto::tr181-firewall
-  Device.NAT.X_PRPL-COM_StaticNAT.Host.{i}.PortMapping.{i}.Status                                      proto::tr181-firewall
-  Device.NAT.X_PRPL-COM_StaticNAT.Host.{i}.PortMapping.{i}.X_PRPL-COM_Log                              proto::tr181-firewall
-  Device.NAT.X_PRPL-COM_StaticNAT.Host.{i}.PortMappingNumberOfEntries                                  proto::tr181-firewall
-  Device.NAT.X_PRPL-COM_StaticNAT.Host.{i}.PublicIPAddress                                             proto::tr181-firewall
-  Device.NAT.X_PRPL-COM_StaticNAT.Host.{i}.Status                                                      proto::tr181-firewall
-  Device.NAT.X_PRPL-COM_StaticNAT.HostNumberOfEntries                                                  proto::tr181-firewall
+  Device.NAT.X_PRPLWARE-COM_MaximumConntrackEntries                                                    proto::tr181-firewall
+  Device.NAT.X_PRPLWARE-COM_NumberOfConntrackEntries                                                   proto::tr181-firewall
+  Device.NAT.X_PRPLWARE-COM_StaticNAT.                                                                 proto::tr181-firewall
+  Device.NAT.X_PRPLWARE-COM_StaticNAT.Host.{i}.                                                        proto::tr181-firewall
+  Device.NAT.X_PRPLWARE-COM_StaticNAT.Host.{i}.Alias                                                   proto::tr181-firewall
+  Device.NAT.X_PRPLWARE-COM_StaticNAT.Host.{i}.Enable                                                  proto::tr181-firewall
+  Device.NAT.X_PRPLWARE-COM_StaticNAT.Host.{i}.LANDevice                                               proto::tr181-firewall
+  Device.NAT.X_PRPLWARE-COM_StaticNAT.Host.{i}.PortMapping.{i}.                                        proto::tr181-firewall
+  Device.NAT.X_PRPLWARE-COM_StaticNAT.Host.{i}.PortMapping.{i}.Alias                                   proto::tr181-firewall
+  Device.NAT.X_PRPLWARE-COM_StaticNAT.Host.{i}.PortMapping.{i}.Description                             proto::tr181-firewall
+  Device.NAT.X_PRPLWARE-COM_StaticNAT.Host.{i}.PortMapping.{i}.DestPort                                proto::tr181-firewall
+  Device.NAT.X_PRPLWARE-COM_StaticNAT.Host.{i}.PortMapping.{i}.DestPortRangeMax                        proto::tr181-firewall
+  Device.NAT.X_PRPLWARE-COM_StaticNAT.Host.{i}.PortMapping.{i}.Enable                                  proto::tr181-firewall
+  Device.NAT.X_PRPLWARE-COM_StaticNAT.Host.{i}.PortMapping.{i}.Protocol                                proto::tr181-firewall
+  Device.NAT.X_PRPLWARE-COM_StaticNAT.Host.{i}.PortMapping.{i}.Status                                  proto::tr181-firewall
+  Device.NAT.X_PRPLWARE-COM_StaticNAT.Host.{i}.PortMapping.{i}.X_PRPLWARE-COM_Log                      proto::tr181-firewall
+  Device.NAT.X_PRPLWARE-COM_StaticNAT.Host.{i}.PortMappingNumberOfEntries                              proto::tr181-firewall
+  Device.NAT.X_PRPLWARE-COM_StaticNAT.Host.{i}.PublicIPAddress                                         proto::tr181-firewall
+  Device.NAT.X_PRPLWARE-COM_StaticNAT.Host.{i}.Status                                                  proto::tr181-firewall
+  Device.NAT.X_PRPLWARE-COM_StaticNAT.HostNumberOfEntries                                              proto::tr181-firewall
   Device.NeighborDiscovery.                                                                            proto::tr181-neighbordiscovery
   Device.NeighborDiscovery.Enable                                                                      proto::tr181-neighbordiscovery
   Device.NeighborDiscovery.InterfaceSetting.{i}.                                                       proto::tr181-neighbordiscovery
@@ -2205,8 +2214,10 @@ Check that obuspa has expected datamodel available (minus the platform specific 
   Device.QoS.Classification.{i}.TCPACK                                                                 proto::tr181-qos
   Device.QoS.Classification.{i}.TCPACKExclude                                                          proto::tr181-qos
   Device.QoS.Classification.{i}.TrafficClass                                                           proto::tr181-qos
-  Device.QoS.Classification.{i}.X_PRPL-COM_Direction                                                   proto::tr181-qos
-  Device.QoS.Classification.{i}.X_PRPL-COM_OutputInterface                                             proto::tr181-qos
+  Device.QoS.Classification.{i}.X_PRPLWARE-COM_BridgeInputInterface                                    proto::tr181-qos
+  Device.QoS.Classification.{i}.X_PRPLWARE-COM_BridgeOutputInterface                                   proto::tr181-qos
+  Device.QoS.Classification.{i}.X_PRPLWARE-COM_Direction                                               proto::tr181-qos
+  Device.QoS.Classification.{i}.X_PRPLWARE-COM_OutputInterface                                         proto::tr181-qos
   Device.QoS.ClassificationNumberOfEntries                                                             proto::tr181-qos
   Device.QoS.MaxClassificationEntries                                                                  proto::tr181-qos
   Device.QoS.MaxQueueEntries                                                                           proto::tr181-qos
@@ -2334,7 +2345,7 @@ Check that obuspa has expected datamodel available (minus the platform specific 
   Device.Routing.RouteInformation.InterfaceSetting.{i}.RouteLifetime                                   proto::routing-manager
   Device.Routing.RouteInformation.InterfaceSetting.{i}.SourceRouter                                    proto::routing-manager
   Device.Routing.RouteInformation.InterfaceSetting.{i}.Status                                          proto::routing-manager
-  Device.Routing.RouteInformation.InterfaceSetting.{i}.X_PRPL-COM_LastAdvertisement                    proto::routing-manager
+  Device.Routing.RouteInformation.InterfaceSetting.{i}.X_PRPLWARE-COM_LastAdvertisement                proto::routing-manager
   Device.Routing.RouteInformation.InterfaceSettingNumberOfEntries                                      proto::routing-manager
   Device.Routing.Router.{i}.                                                                           proto::routing-manager
   Device.Routing.Router.{i}.Alias                                                                      proto::routing-manager
@@ -2351,6 +2362,7 @@ Check that obuspa has expected datamodel available (minus the platform specific 
   Device.Routing.Router.{i}.IPv4Forwarding.{i}.Origin                                                  proto::routing-manager
   Device.Routing.Router.{i}.IPv4Forwarding.{i}.StaticRoute                                             proto::routing-manager
   Device.Routing.Router.{i}.IPv4Forwarding.{i}.Status                                                  proto::routing-manager
+  Device.Routing.Router.{i}.IPv4Forwarding.{i}.X_PRPLWARE-COM_MTU                                      proto::routing-manager
   Device.Routing.Router.{i}.IPv4ForwardingNumberOfEntries                                              proto::routing-manager
   Device.Routing.Router.{i}.IPv6Forwarding.{i}.                                                        proto::routing-manager
   Device.Routing.Router.{i}.IPv6Forwarding.{i}.Alias                                                   proto::routing-manager
@@ -2364,6 +2376,8 @@ Check that obuspa has expected datamodel available (minus the platform specific 
   Device.Routing.Router.{i}.IPv6Forwarding.{i}.Origin                                                  proto::routing-manager
   Device.Routing.Router.{i}.IPv6Forwarding.{i}.Status                                                  proto::routing-manager
   Device.Routing.Router.{i}.IPv6Forwarding.{i}.Type                                                    proto::routing-manager
+  Device.Routing.Router.{i}.IPv6Forwarding.{i}.X_PRPLWARE-COM_MTU                                      proto::routing-manager
+  Device.Routing.Router.{i}.IPv6Forwarding.{i}.X_PRPLWARE-COM_SourceIPPrefix                           proto::routing-manager
   Device.Routing.Router.{i}.IPv6ForwardingNumberOfEntries                                              proto::routing-manager
   Device.Routing.Router.{i}.Status                                                                     proto::routing-manager
   Device.Routing.RouterNumberOfEntries                                                                 proto::routing-manager
@@ -2400,19 +2414,19 @@ Check that obuspa has expected datamodel available (minus the platform specific 
   Device.SSH.Server.{i}.Session.{i}.User                                                               proto::ssh_server
   Device.SSH.Server.{i}.SessionNumberOfEntries                                                         proto::ssh_server
   Device.SSH.Server.{i}.Status                                                                         proto::ssh_server
-  Device.SSH.Server.{i}.X_PRPL-COM_FailedAttempt.{i}.                                                  proto::ssh_server
-  Device.SSH.Server.{i}.X_PRPL-COM_FailedAttempt.{i}.Alias                                             proto::ssh_server
-  Device.SSH.Server.{i}.X_PRPL-COM_FailedAttempt.{i}.IPAddress                                         proto::ssh_server
-  Device.SSH.Server.{i}.X_PRPL-COM_FailedAttempt.{i}.Port                                              proto::ssh_server
-  Device.SSH.Server.{i}.X_PRPL-COM_FailedAttempt.{i}.Time                                              proto::ssh_server
-  Device.SSH.Server.{i}.X_PRPL-COM_FailedAttempt.{i}.User                                              proto::ssh_server
-  Device.SSH.Server.{i}.X_PRPL-COM_FailedAttemptNumberOfEntries                                        proto::ssh_server
-  Device.SSH.Server.{i}.X_PRPL-COM_GroupRestriction                                                    proto::ssh_server
-  Device.SSH.Server.{i}.X_PRPL-COM_Stats.                                                              proto::ssh_server
-  Device.SSH.Server.{i}.X_PRPL-COM_Stats.NumberOfFailedAttempts                                        proto::ssh_server
-  Device.SSH.Server.{i}.X_PRPL-COM_Stats.NumberOfFailedAttemptsSinceActivation                         proto::ssh_server
-  Device.SSH.Server.{i}.X_PRPL-COM_Stats.NumberOfSuccessAttempts                                       proto::ssh_server
-  Device.SSH.Server.{i}.X_PRPL-COM_Stats.NumberOfSuccessAttemptsSinceActivation                        proto::ssh_server
+  Device.SSH.Server.{i}.X_PRPLWARE-COM_FailedAttempt.{i}.                                              proto::ssh_server
+  Device.SSH.Server.{i}.X_PRPLWARE-COM_FailedAttempt.{i}.Alias                                         proto::ssh_server
+  Device.SSH.Server.{i}.X_PRPLWARE-COM_FailedAttempt.{i}.IPAddress                                     proto::ssh_server
+  Device.SSH.Server.{i}.X_PRPLWARE-COM_FailedAttempt.{i}.Port                                          proto::ssh_server
+  Device.SSH.Server.{i}.X_PRPLWARE-COM_FailedAttempt.{i}.Time                                          proto::ssh_server
+  Device.SSH.Server.{i}.X_PRPLWARE-COM_FailedAttempt.{i}.User                                          proto::ssh_server
+  Device.SSH.Server.{i}.X_PRPLWARE-COM_FailedAttemptNumberOfEntries                                    proto::ssh_server
+  Device.SSH.Server.{i}.X_PRPLWARE-COM_GroupRestriction                                                proto::ssh_server
+  Device.SSH.Server.{i}.X_PRPLWARE-COM_Stats.                                                          proto::ssh_server
+  Device.SSH.Server.{i}.X_PRPLWARE-COM_Stats.NumberOfFailedAttempts                                    proto::ssh_server
+  Device.SSH.Server.{i}.X_PRPLWARE-COM_Stats.NumberOfFailedAttemptsSinceActivation                     proto::ssh_server
+  Device.SSH.Server.{i}.X_PRPLWARE-COM_Stats.NumberOfSuccessAttempts                                   proto::ssh_server
+  Device.SSH.Server.{i}.X_PRPLWARE-COM_Stats.NumberOfSuccessAttemptsSinceActivation                    proto::ssh_server
   Device.SSH.ServerNumberOfEntries                                                                     proto::ssh_server
   Device.SSH.Status                                                                                    proto::ssh_server
   Device.STOMP.
@@ -2602,7 +2616,7 @@ Check that obuspa has expected datamodel available (minus the platform specific 
   Device.SoftwareModules.ExecutionUnit.{i}.NetworkConfig.PortForwarding.{i}.Interface                  proto::timingila
   Device.SoftwareModules.ExecutionUnit.{i}.NetworkConfig.PortForwarding.{i}.InternalPort               proto::timingila
   Device.SoftwareModules.ExecutionUnit.{i}.NetworkConfig.PortForwarding.{i}.Protocol                   proto::timingila
-  Device.SoftwareModules.ExecutionUnit.{i}.NetworkConfig.X_PRPL-COM_DNSSDRefList                       proto::timingila
+  Device.SoftwareModules.ExecutionUnit.{i}.NetworkConfig.X_PRPLWARE-COM_DNSSDRefList                   proto::timingila
   Device.SoftwareModules.ExecutionUnit.{i}.References                                                  proto::timingila
   Device.SoftwareModules.ExecutionUnit.{i}.RunLevel                                                    proto::timingila
   Device.SoftwareModules.ExecutionUnit.{i}.SetRequestedState()                                         proto::timingila
@@ -2659,8 +2673,8 @@ Check that obuspa has expected datamodel available (minus the platform specific 
   Device.Syslog.Action.{i}.LogRemote.PeerVerify                                                        proto::tr181-syslog
   Device.Syslog.Action.{i}.LogRemote.Port                                                              proto::tr181-syslog
   Device.Syslog.Action.{i}.LogRemote.Protocol                                                          proto::tr181-syslog
-  Device.Syslog.Action.{i}.LogRemote.X_PRPL-COM_CACertificate                                          proto::tr181-syslog
-  Device.Syslog.Action.{i}.LogRemote.X_PRPL-COM_Status                                                 proto::tr181-syslog
+  Device.Syslog.Action.{i}.LogRemote.X_PRPLWARE-COM_CACertificate                                      proto::tr181-syslog
+  Device.Syslog.Action.{i}.LogRemote.X_PRPLWARE-COM_Status                                             proto::tr181-syslog
   Device.Syslog.Action.{i}.SourceRef                                                                   proto::tr181-syslog
   Device.Syslog.Action.{i}.StructuredData                                                              proto::tr181-syslog
   Device.Syslog.Action.{i}.TemplateRef                                                                 proto::tr181-syslog
@@ -2683,10 +2697,10 @@ Check that obuspa has expected datamodel available (minus the platform specific 
   Device.Syslog.Source.{i}.Network.Interface                                                           proto::tr181-syslog
   Device.Syslog.Source.{i}.Network.Port                                                                proto::tr181-syslog
   Device.Syslog.Source.{i}.Network.Protocol                                                            proto::tr181-syslog
-  Device.Syslog.Source.{i}.Network.X_PRPL-COM_CACertificate                                            proto::tr181-syslog
-  Device.Syslog.Source.{i}.Network.X_PRPL-COM_Certificate                                              proto::tr181-syslog
-  Device.Syslog.Source.{i}.Network.X_PRPL-COM_PeerVerify                                               proto::tr181-syslog
-  Device.Syslog.Source.{i}.Network.X_PRPL-COM_StructuredData                                           proto::tr181-syslog
+  Device.Syslog.Source.{i}.Network.X_PRPLWARE-COM_CACertificate                                        proto::tr181-syslog
+  Device.Syslog.Source.{i}.Network.X_PRPLWARE-COM_Certificate                                          proto::tr181-syslog
+  Device.Syslog.Source.{i}.Network.X_PRPLWARE-COM_PeerVerify                                           proto::tr181-syslog
+  Device.Syslog.Source.{i}.Network.X_PRPLWARE-COM_StructuredData                                       proto::tr181-syslog
   Device.Syslog.Source.{i}.Severity                                                                    proto::tr181-syslog
   Device.Syslog.Source.{i}.SystemMessages                                                              proto::tr181-syslog
   Device.Syslog.SourceNumberOfEntries                                                                  proto::tr181-syslog
@@ -2750,9 +2764,9 @@ Check that obuspa has expected datamodel available (minus the platform specific 
   Device.Time.Server.{i}.Version                                                                       proto::time-manager
   Device.Time.ServerNumberOfEntries                                                                    proto::time-manager
   Device.Time.Status                                                                                   proto::time-manager
-  Device.Time.X_PRPL-COM_SetTime()                                                                     proto::time-manager
-  Device.Time.X_PRPL-COM_SetTime() input:Time
-  Device.Time.X_PRPL-COM_SetTime() input:TimeZone
+  Device.Time.X_PRPLWARE-COM_SetTime()                                                                 proto::time-manager
+  Device.Time.X_PRPLWARE-COM_SetTime() input:Time
+  Device.Time.X_PRPLWARE-COM_SetTime() input:TimeZone
   Device.Time.update_status()                                                                          proto::time-manager
   Device.UPnP.                                                                                         proto::tr181-upnp
   Device.UPnP.Device.                                                                                  proto::tr181-upnp
@@ -2771,13 +2785,91 @@ Check that obuspa has expected datamodel available (minus the platform specific 
   Device.UPnP.Device.Capabilities.UPnPWLANAccessPoint                                                  proto::tr181-upnp
   Device.UPnP.Device.Enable                                                                            proto::tr181-upnp
   Device.UPnP.Device.UPnPIGD                                                                           proto::tr181-upnp
-  Device.UPnP.X_PRPL-COM_IGDConfig.                                                                    proto::tr181-upnp
-  Device.UPnP.X_PRPL-COM_IGDConfig.AllowReservedAddr                                                   proto::tr181-upnp
-  Device.UPnP.X_PRPL-COM_IGDConfig.AutoCleanupEnable                                                   proto::tr181-upnp
-  Device.UPnP.X_PRPL-COM_IGDConfig.CleanupInterval                                                     proto::tr181-upnp
-  Device.UPnP.X_PRPL-COM_IGDConfig.EnableIPv6                                                          proto::tr181-upnp
-  Device.UPnP.X_PRPL-COM_IGDConfig.MaxLifetime                                                         proto::tr181-upnp
-  Device.UPnP.X_PRPL-COM_IGDConfig.UPnPInterface                                                       proto::tr181-upnp
+  Device.UPnP.X_PRPLWARE-COM_IGDConfig.                                                                proto::tr181-upnp
+  Device.UPnP.X_PRPLWARE-COM_IGDConfig.AllowReservedAddr                                               proto::tr181-upnp
+  Device.UPnP.X_PRPLWARE-COM_IGDConfig.AutoCleanupEnable                                               proto::tr181-upnp
+  Device.UPnP.X_PRPLWARE-COM_IGDConfig.CleanupInterval                                                 proto::tr181-upnp
+  Device.UPnP.X_PRPLWARE-COM_IGDConfig.EnableIPv6                                                      proto::tr181-upnp
+  Device.UPnP.X_PRPLWARE-COM_IGDConfig.MaxLifetime                                                     proto::tr181-upnp
+  Device.UPnP.X_PRPLWARE-COM_IGDConfig.UPnPInterface                                                   proto::tr181-upnp
+  Device.USB.                                                                                          proto::tr181-usb
+  Device.USB.Interface.{i}.                                                                            proto::tr181-usb
+  Device.USB.Interface.{i}.Alias                                                                       proto::tr181-usb
+  Device.USB.Interface.{i}.Enable                                                                      proto::tr181-usb
+  Device.USB.Interface.{i}.LastChange                                                                  proto::tr181-usb
+  Device.USB.Interface.{i}.LowerLayers                                                                 proto::tr181-usb
+  Device.USB.Interface.{i}.MACAddress                                                                  proto::tr181-usb
+  Device.USB.Interface.{i}.MaxBitRate                                                                  proto::tr181-usb
+  Device.USB.Interface.{i}.Name                                                                        proto::tr181-usb
+  Device.USB.Interface.{i}.Port                                                                        proto::tr181-usb
+  Device.USB.Interface.{i}.Stats.                                                                      proto::tr181-usb
+  Device.USB.Interface.{i}.Stats.BroadcastPacketsReceived                                              proto::tr181-usb
+  Device.USB.Interface.{i}.Stats.BroadcastPacketsSent                                                  proto::tr181-usb
+  Device.USB.Interface.{i}.Stats.BytesReceived                                                         proto::tr181-usb
+  Device.USB.Interface.{i}.Stats.BytesSent                                                             proto::tr181-usb
+  Device.USB.Interface.{i}.Stats.DiscardPacketsReceived                                                proto::tr181-usb
+  Device.USB.Interface.{i}.Stats.DiscardPacketsSent                                                    proto::tr181-usb
+  Device.USB.Interface.{i}.Stats.ErrorsReceived                                                        proto::tr181-usb
+  Device.USB.Interface.{i}.Stats.ErrorsSent                                                            proto::tr181-usb
+  Device.USB.Interface.{i}.Stats.MulticastPacketsReceived                                              proto::tr181-usb
+  Device.USB.Interface.{i}.Stats.MulticastPacketsSent                                                  proto::tr181-usb
+  Device.USB.Interface.{i}.Stats.PacketsReceived                                                       proto::tr181-usb
+  Device.USB.Interface.{i}.Stats.PacketsSent                                                           proto::tr181-usb
+  Device.USB.Interface.{i}.Stats.UnicastPacketsReceived                                                proto::tr181-usb
+  Device.USB.Interface.{i}.Stats.UnicastPacketsSent                                                    proto::tr181-usb
+  Device.USB.Interface.{i}.Stats.UnknownProtoPacketsReceived                                           proto::tr181-usb
+  Device.USB.Interface.{i}.Status                                                                      proto::tr181-usb
+  Device.USB.Interface.{i}.Upstream                                                                    proto::tr181-usb
+  Device.USB.InterfaceNumberOfEntries                                                                  proto::tr181-usb
+  Device.USB.Port.{i}.                                                                                 proto::tr181-usb
+  Device.USB.Port.{i}.Alias                                                                            proto::tr181-usb
+  Device.USB.Port.{i}.Name                                                                             proto::tr181-usb
+  Device.USB.Port.{i}.Power                                                                            proto::tr181-usb
+  Device.USB.Port.{i}.Rate                                                                             proto::tr181-usb
+  Device.USB.Port.{i}.Receptacle                                                                       proto::tr181-usb
+  Device.USB.Port.{i}.Standard                                                                         proto::tr181-usb
+  Device.USB.Port.{i}.Type                                                                             proto::tr181-usb
+  Device.USB.PortNumberOfEntries                                                                       proto::tr181-usb
+  Device.USB.USBHosts.                                                                                 proto::tr181-usb
+  Device.USB.USBHosts.Host.{i}.                                                                        proto::tr181-usb
+  Device.USB.USBHosts.Host.{i}.Alias                                                                   proto::tr181-usb
+  Device.USB.USBHosts.Host.{i}.Device.{i}.                                                             proto::tr181-usb
+  Device.USB.USBHosts.Host.{i}.Device.{i}.Configuration.{i}.                                           proto::tr181-usb
+  Device.USB.USBHosts.Host.{i}.Device.{i}.Configuration.{i}.ConfigurationNumber                        proto::tr181-usb
+  Device.USB.USBHosts.Host.{i}.Device.{i}.Configuration.{i}.Interface.{i}.                             proto::tr181-usb
+  Device.USB.USBHosts.Host.{i}.Device.{i}.Configuration.{i}.Interface.{i}.InterfaceClass               proto::tr181-usb
+  Device.USB.USBHosts.Host.{i}.Device.{i}.Configuration.{i}.Interface.{i}.InterfaceNumber              proto::tr181-usb
+  Device.USB.USBHosts.Host.{i}.Device.{i}.Configuration.{i}.Interface.{i}.InterfaceProtocol            proto::tr181-usb
+  Device.USB.USBHosts.Host.{i}.Device.{i}.Configuration.{i}.Interface.{i}.InterfaceSubClass            proto::tr181-usb
+  Device.USB.USBHosts.Host.{i}.Device.{i}.Configuration.{i}.InterfaceNumberOfEntries                   proto::tr181-usb
+  Device.USB.USBHosts.Host.{i}.Device.{i}.ConfigurationNumberOfEntries                                 proto::tr181-usb
+  Device.USB.USBHosts.Host.{i}.Device.{i}.DeviceClass                                                  proto::tr181-usb
+  Device.USB.USBHosts.Host.{i}.Device.{i}.DeviceNumber                                                 proto::tr181-usb
+  Device.USB.USBHosts.Host.{i}.Device.{i}.DeviceProtocol                                               proto::tr181-usb
+  Device.USB.USBHosts.Host.{i}.Device.{i}.DeviceSubClass                                               proto::tr181-usb
+  Device.USB.USBHosts.Host.{i}.Device.{i}.DeviceVersion                                                proto::tr181-usb
+  Device.USB.USBHosts.Host.{i}.Device.{i}.IsSelfPowered                                                proto::tr181-usb
+  Device.USB.USBHosts.Host.{i}.Device.{i}.IsSuspended                                                  proto::tr181-usb
+  Device.USB.USBHosts.Host.{i}.Device.{i}.Manufacturer                                                 proto::tr181-usb
+  Device.USB.USBHosts.Host.{i}.Device.{i}.MaxChildren                                                  proto::tr181-usb
+  Device.USB.USBHosts.Host.{i}.Device.{i}.Parent                                                       proto::tr181-usb
+  Device.USB.USBHosts.Host.{i}.Device.{i}.Port                                                         proto::tr181-usb
+  Device.USB.USBHosts.Host.{i}.Device.{i}.ProductClass                                                 proto::tr181-usb
+  Device.USB.USBHosts.Host.{i}.Device.{i}.ProductID                                                    proto::tr181-usb
+  Device.USB.USBHosts.Host.{i}.Device.{i}.Rate                                                         proto::tr181-usb
+  Device.USB.USBHosts.Host.{i}.Device.{i}.SerialNumber                                                 proto::tr181-usb
+  Device.USB.USBHosts.Host.{i}.Device.{i}.USBPort                                                      proto::tr181-usb
+  Device.USB.USBHosts.Host.{i}.Device.{i}.USBVersion                                                   proto::tr181-usb
+  Device.USB.USBHosts.Host.{i}.Device.{i}.VendorID                                                     proto::tr181-usb
+  Device.USB.USBHosts.Host.{i}.DeviceNumberOfEntries                                                   proto::tr181-usb
+  Device.USB.USBHosts.Host.{i}.Enable                                                                  proto::tr181-usb
+  Device.USB.USBHosts.Host.{i}.Name                                                                    proto::tr181-usb
+  Device.USB.USBHosts.Host.{i}.PowerManagementEnable                                                   proto::tr181-usb
+  Device.USB.USBHosts.Host.{i}.Reset                                                                   proto::tr181-usb
+  Device.USB.USBHosts.Host.{i}.Reset()                                                                 proto::tr181-usb
+  Device.USB.USBHosts.Host.{i}.Type                                                                    proto::tr181-usb
+  Device.USB.USBHosts.Host.{i}.USBVersion                                                              proto::tr181-usb
+  Device.USB.USBHosts.HostNumberOfEntries                                                              proto::tr181-usb
   Device.USPServices.
   Device.USPServices.USPService.{i}.
   Device.USPServices.USPService.{i}.DataModelPaths
@@ -2820,12 +2912,12 @@ Check that obuspa has expected datamodel available (minus the platform specific 
   Device.UserInterface.HTTPAccess.{i}.Session.{i}.User                                                 proto::tr181-httpaccess
   Device.UserInterface.HTTPAccess.{i}.SessionNumberOfEntries                                           proto::tr181-httpaccess
   Device.UserInterface.HTTPAccess.{i}.Status                                                           proto::tr181-httpaccess
-  Device.UserInterface.HTTPAccess.{i}.X_PRPL-COM_HTTPConfig.                                           proto::tr181-httpaccess
-  Device.UserInterface.HTTPAccess.{i}.X_PRPL-COM_HTTPConfig.ProxyIP                                    proto::tr181-httpaccess
-  Device.UserInterface.HTTPAccess.{i}.X_PRPL-COM_HTTPConfig.ProxyPort                                  proto::tr181-httpaccess
-  Device.UserInterface.HTTPAccess.{i}.X_PRPL-COM_HTTPConfig.Type                                       proto::tr181-httpaccess
-  Device.UserInterface.HTTPAccess.{i}.X_PRPL-COM_HTTPConfig.VHostDocumentRoot                          proto::tr181-httpaccess
-  Device.UserInterface.HTTPAccess.{i}.X_PRPL-COM_LoginAttempts                                         proto::tr181-httpaccess
+  Device.UserInterface.HTTPAccess.{i}.X_PRPLWARE-COM_HTTPConfig.                                       proto::tr181-httpaccess
+  Device.UserInterface.HTTPAccess.{i}.X_PRPLWARE-COM_HTTPConfig.ProxyIP                                proto::tr181-httpaccess
+  Device.UserInterface.HTTPAccess.{i}.X_PRPLWARE-COM_HTTPConfig.ProxyPort                              proto::tr181-httpaccess
+  Device.UserInterface.HTTPAccess.{i}.X_PRPLWARE-COM_HTTPConfig.Type                                   proto::tr181-httpaccess
+  Device.UserInterface.HTTPAccess.{i}.X_PRPLWARE-COM_HTTPConfig.VHostDocumentRoot                      proto::tr181-httpaccess
+  Device.UserInterface.HTTPAccess.{i}.X_PRPLWARE-COM_LoginAttempts                                     proto::tr181-httpaccess
   Device.UserInterface.HTTPAccessNumberOfEntries                                                       proto::tr181-httpaccess
   Device.UserInterface.HTTPAccessSupportedProtocols                                                    proto::tr181-httpaccess
   Device.UserInterface.HTTPAccessSupportedTLSOptions                                                   proto::tr181-httpaccess
@@ -2866,8 +2958,8 @@ Check that obuspa has expected datamodel available (minus the platform specific 
   Device.Users.User.{i}.StaticUser                                                                     proto::tr181-usermanagement
   Device.Users.User.{i}.UserID                                                                         proto::tr181-usermanagement
   Device.Users.User.{i}.Username                                                                       proto::tr181-usermanagement
-  Device.Users.User.{i}.X_PRPL-COM_HashedPassword                                                      proto::tr181-usermanagement
-  Device.Users.User.{i}.X_PRPL-COM_HomeDirectory                                                       proto::tr181-usermanagement
+  Device.Users.User.{i}.X_PRPLWARE-COM_HashedPassword                                                  proto::tr181-usermanagement
+  Device.Users.User.{i}.X_PRPLWARE-COM_HomeDirectory                                                   proto::tr181-usermanagement
   Device.Users.UserNumberOfEntries                                                                     proto::tr181-usermanagement
   Device.WiFi.                                                                                         proto::wld
   Device.WiFi.AccessPoint.{i}.                                                                         proto::wld
@@ -3015,9 +3107,11 @@ Check that obuspa has expected datamodel available (minus the platform specific 
   Device.WiFi.AccessPoint.{i}.AssociationCount.FastReconnects                                          proto::wld
   Device.WiFi.AccessPoint.{i}.AssociationCount.ResetCounters                                           proto::wld
   Device.WiFi.AccessPoint.{i}.AssociationCount.Success                                                 proto::wld
+  Device.WiFi.AccessPoint.{i}.BSS-TM-RESP!                                                             proto::wld
   Device.WiFi.AccessPoint.{i}.BridgeInterface                                                          proto::wld
   Device.WiFi.AccessPoint.{i}.CpeOperationMode                                                         proto::wld
   Device.WiFi.AccessPoint.{i}.DefaultDeviceType                                                        proto::wld
+  Device.WiFi.AccessPoint.{i}.Disassociation!                                                          proto::wld
   Device.WiFi.AccessPoint.{i}.DiscoveryMethodEnabled                                                   proto::wld
   Device.WiFi.AccessPoint.{i}.DriverConfig.                                                            proto::wld
   Device.WiFi.AccessPoint.{i}.DriverConfig.BssMaxIdlePeriod                                            proto::wld
@@ -3098,6 +3192,9 @@ Check that obuspa has expected datamodel available (minus the platform specific 
   Device.WiFi.AccessPoint.{i}.MLOStats.UnicastBytesReceived                                            proto::wld
   Device.WiFi.AccessPoint.{i}.MLOStats.UnicastBytesSent                                                proto::wld
   Device.WiFi.AccessPoint.{i}.MaxAssociatedDevices                                                     proto::wld
+  Device.WiFi.AccessPoint.{i}.MgmtActionFrameReceived!                                                 proto::wld
+  Device.WiFi.AccessPoint.{i}.MgmtDeauthFrame!                                                         proto::wld
+  Device.WiFi.AccessPoint.{i}.MgmtDisassocFrame!                                                       proto::wld
   Device.WiFi.AccessPoint.{i}.MultiAPProfile                                                           proto::wld
   Device.WiFi.AccessPoint.{i}.MultiAPType                                                              proto::wld
   Device.WiFi.AccessPoint.{i}.MultiAPVlanId                                                            proto::wld
@@ -3129,6 +3226,10 @@ Check that obuspa has expected datamodel available (minus the platform specific 
   Device.WiFi.AccessPoint.{i}.RssiEventing.HistoryLen                                                  proto::wld
   Device.WiFi.AccessPoint.{i}.RssiEventing.Interval                                                    proto::wld
   Device.WiFi.AccessPoint.{i}.RssiEventing.RssiInterval                                                proto::wld
+  Device.WiFi.AccessPoint.{i}.RssiEventing.RssiUpdate!                                                 proto::wld
+  Device.WiFi.AccessPoint.{i}.RssiEventing.RssiUpdateShortHistory!                                     proto::wld
+  Device.WiFi.AccessPoint.{i}.RssiEventing.RssiUpdateShortHistoryAssoc!                                proto::wld
+  Device.WiFi.AccessPoint.{i}.RssiEventing.RssiUpdateShortHistoryDisassoc!                             proto::wld
   Device.WiFi.AccessPoint.{i}.RssiEventing.SendEventOnAssoc                                            proto::wld
   Device.WiFi.AccessPoint.{i}.RssiEventing.SendEventOnDisassoc                                         proto::wld
   Device.WiFi.AccessPoint.{i}.RssiEventing.SendPeriodicEvent                                           proto::wld
@@ -3184,6 +3285,10 @@ Check that obuspa has expected datamodel available (minus the platform specific 
   Device.WiFi.AccessPoint.{i}.WPS.Version                                                              proto::wld
   Device.WiFi.AccessPoint.{i}.WPS.cancelWPSPairing()                                                   proto::wld
   Device.WiFi.AccessPoint.{i}.WPS.generateSelfPIN()                                                    proto::wld
+  Device.WiFi.AccessPoint.{i}.WPS.pairingDone!                                                         proto::wld
+  Device.WiFi.AccessPoint.{i}.WPS.pairingError!                                                        proto::wld
+  Device.WiFi.AccessPoint.{i}.WPS.pairingNoMessage!                                                    proto::wld
+  Device.WiFi.AccessPoint.{i}.WPS.pairingReady!                                                        proto::wld
   Device.WiFi.AccessPoint.{i}.WPS.setCompatibilityWPS()                                                proto::wld
   Device.WiFi.AccessPoint.{i}.WPS.setCompatibilityWPS() input:supVerWPS
   Device.WiFi.AccessPoint.{i}.WPS.useRelayCredentials()                                                proto::wld
@@ -3250,6 +3355,7 @@ Check that obuspa has expected datamodel available (minus the platform specific 
   Device.WiFi.AccessPoint.{i}.setNeighbourAP() input:PhyType
   Device.WiFi.AccessPoint.{i}.setNeighbourAP() input:R0KHKey
   Device.WiFi.AccessPoint.{i}.setNeighbourAP() input:SSID
+  Device.WiFi.AccessPoint.{i}.wpaCtrlEvents!                                                           proto::wld
   Device.WiFi.AccessPointNumberOfEntries                                                               proto::wld
   Device.WiFi.AutoCommitMgr.                                                                           proto::wld
   Device.WiFi.AutoCommitMgr.BootDelayTime                                                              proto::wld
@@ -3335,6 +3441,10 @@ Check that obuspa has expected datamodel available (minus the platform specific 
   Device.WiFi.EndPoint.{i}.WPS.Enable                                                                  proto::wld
   Device.WiFi.EndPoint.{i}.WPS.PairingInProgress                                                       proto::wld
   Device.WiFi.EndPoint.{i}.WPS.cancelPairing()                                                         proto::wld
+  Device.WiFi.EndPoint.{i}.WPS.pairingDone!                                                            proto::wld
+  Device.WiFi.EndPoint.{i}.WPS.pairingError!                                                           proto::wld
+  Device.WiFi.EndPoint.{i}.WPS.pairingNoMessage!                                                       proto::wld
+  Device.WiFi.EndPoint.{i}.WPS.pairingReady!                                                           proto::wld
   Device.WiFi.EndPoint.{i}.WPS.pushButton()                                                            proto::wld
   Device.WiFi.EndPoint.{i}.WPS.pushButton() input:bssid
   Device.WiFi.EndPoint.{i}.WPS.pushButton() input:clientPIN
@@ -3352,6 +3462,7 @@ Check that obuspa has expected datamodel available (minus the platform specific 
   Device.WiFi.EndPoint.{i}.sendManagementFrame() input:data
   Device.WiFi.EndPoint.{i}.sendManagementFrame() input:fc
   Device.WiFi.EndPoint.{i}.sendManagementFrame() input:mac
+  Device.WiFi.EndPoint.{i}.wpaCtrlEvents!                                                              proto::wld
   Device.WiFi.EndPointNumberOfEntries                                                                  proto::wld
   Device.WiFi.FSM_Start()                                                                              proto::wld
   Device.WiFi.FSM_Start() input:bitnr
@@ -3383,6 +3494,7 @@ Check that obuspa has expected datamodel available (minus the platform specific 
   Device.WiFi.Radio.{i}.Capabilities.WiFi7STARole.NSTRSupport                                          proto::wld
   Device.WiFi.Radio.{i}.Capabilities.WiFi7STARole.STRSupport                                           proto::wld
   Device.WiFi.Radio.{i}.Channel                                                                        proto::wld
+  Device.WiFi.Radio.{i}.Channel change event!                                                          proto::wld
   Device.WiFi.Radio.{i}.ChannelBandwidthChangeReason                                                   proto::wld
   Device.WiFi.Radio.{i}.ChannelChangeReason                                                            proto::wld
   Device.WiFi.Radio.{i}.ChannelLoad                                                                    proto::wld
@@ -3439,9 +3551,11 @@ Check that obuspa has expected datamodel available (minus the platform specific 
   Device.WiFi.Radio.{i}.ChannelMgt.TargetChanspec.LastChangeTime                                       proto::wld
   Device.WiFi.Radio.{i}.ChannelMgt.TargetChanspec.Reason                                               proto::wld
   Device.WiFi.Radio.{i}.ChannelMgt.TargetChanspec.ReasonExt                                            proto::wld
+  Device.WiFi.Radio.{i}.ChannelSwitchComplete!                                                         proto::wld
   Device.WiFi.Radio.{i}.ChannelsInUse                                                                  proto::wld
   Device.WiFi.Radio.{i}.ChipsetVendor                                                                  proto::wld
   Device.WiFi.Radio.{i}.CurrentOperatingChannelBandwidth                                               proto::wld
+  Device.WiFi.Radio.{i}.DFS Done!                                                                      proto::wld
   Device.WiFi.Radio.{i}.DFS.                                                                           proto::wld
   Device.WiFi.Radio.{i}.DFS.Event.{i}.                                                                 proto::wld
   Device.WiFi.Radio.{i}.DFS.Event.{i}.Bandwidth                                                        proto::wld
@@ -3572,6 +3686,8 @@ Check that obuspa has expected datamodel available (minus the platform specific 
   Device.WiFi.Radio.{i}.RxPowerSaveRepeaterEnable                                                      proto::wld
   Device.WiFi.Radio.{i}.STASupported_Mode                                                              proto::wld
   Device.WiFi.Radio.{i}.STA_Mode                                                                       proto::wld
+  Device.WiFi.Radio.{i}.ScanChange!                                                                    proto::wld
+  Device.WiFi.Radio.{i}.ScanComplete!                                                                  proto::wld
   Device.WiFi.Radio.{i}.ScanConfig.                                                                    proto::wld
   Device.WiFi.Radio.{i}.ScanConfig.ActiveChannelTime                                                   proto::wld
   Device.WiFi.Radio.{i}.ScanConfig.FastScanReasons                                                     proto::wld
@@ -3750,6 +3866,7 @@ Check that obuspa has expected datamodel available (minus the platform specific 
   Device.WiFi.Radio.{i}.startScan() input:scanReason
   Device.WiFi.Radio.{i}.startScan() input:updateUsage
   Device.WiFi.Radio.{i}.stopScan()                                                                     proto::wld
+  Device.WiFi.Radio.{i}.wpaCtrlEvents!                                                                 proto::wld
   Device.WiFi.RadioNumberOfEntries                                                                     proto::wld
   Device.WiFi.Reset()                                                                                  proto::wld
   Device.WiFi.SSID.{i}.                                                                                proto::wld
@@ -3861,161 +3978,260 @@ Check that obuspa has expected datamodel available (minus the platform specific 
   Device.WiFi.wps_DefParam.wpsSupVer                                                                   proto::wld
   Device.WiFi.wps_DefParam.wpsUUIDShared                                                               proto::wld
   Device.WiFi.wps_DefParam.wps_GenSelfPIN()                                                            proto::wld
-  Device.X_PRPL-COM_Buttons.                                                                           proto::tr181-button
-  Device.X_PRPL-COM_Buttons.Button.{i}.                                                                proto::tr181-button
-  Device.X_PRPL-COM_Buttons.Button.{i}.Alias                                                           proto::tr181-button
-  Device.X_PRPL-COM_Buttons.Button.{i}.MaxInterval                                                     proto::tr181-button
-  Device.X_PRPL-COM_Buttons.Button.{i}.MinInterval                                                     proto::tr181-button
-  Device.X_PRPL-COM_Buttons.Button.{i}.Push()                                                          proto::tr181-button
-  Device.X_PRPL-COM_Buttons.Button.{i}.Push() input:duration
-  Device.X_PRPL-COM_Buttons.Button.{i}.Release()                                                       proto::tr181-button
-  Device.X_PRPL-COM_Buttons.Button.{i}.Status                                                          proto::tr181-button
-  Device.X_PRPL-COM_Buttons.ButtonNumberOfEntries                                                      proto::tr181-button
-  Device.X_PRPL-COM_MultiSettings.                                                                     proto::multisettings
-  Device.X_PRPL-COM_MultiSettings.CurrentProfile                                                       proto::multisettings
-  Device.X_PRPL-COM_MultiSettings.DecisionMadeBy                                                       proto::multisettings
-  Device.X_PRPL-COM_MultiSettings.DetectionAtBoot                                                      proto::multisettings
-  Device.X_PRPL-COM_MultiSettings.DetectionState                                                       proto::multisettings
-  Device.X_PRPL-COM_MultiSettings.Enable                                                               proto::multisettings
-  Device.X_PRPL-COM_MultiSettings.Profile.{i}.                                                         proto::multisettings
-  Device.X_PRPL-COM_MultiSettings.Profile.{i}.Alias                                                    proto::multisettings
-  Device.X_PRPL-COM_MultiSettings.Profile.{i}.Enable                                                   proto::multisettings
-  Device.X_PRPL-COM_MultiSettings.Profile.{i}.ImpactedModules                                          proto::multisettings
-  Device.X_PRPL-COM_MultiSettings.Profile.{i}.Name                                                     proto::multisettings
-  Device.X_PRPL-COM_MultiSettings.Profile.{i}.Status                                                   proto::multisettings
-  Device.X_PRPL-COM_MultiSettings.Profile.{i}.Trigger.{i}.                                             proto::multisettings
-  Device.X_PRPL-COM_MultiSettings.Profile.{i}.Trigger.{i}.Alias                                        proto::multisettings
-  Device.X_PRPL-COM_MultiSettings.Profile.{i}.Trigger.{i}.LeftMember                                   proto::multisettings
-  Device.X_PRPL-COM_MultiSettings.Profile.{i}.Trigger.{i}.RelationalOperator                           proto::multisettings
-  Device.X_PRPL-COM_MultiSettings.Profile.{i}.Trigger.{i}.RightMember                                  proto::multisettings
-  Device.X_PRPL-COM_MultiSettings.Profile.{i}.Trigger.{i}.Triggered                                    proto::multisettings
-  Device.X_PRPL-COM_MultiSettings.Profile.{i}.TriggerNumberOfEntries                                   proto::multisettings
-  Device.X_PRPL-COM_MultiSettings.ProfileNumberOfEntries                                               proto::multisettings
-  Device.X_PRPL-COM_MultiSettings.Status                                                               proto::multisettings
-  Device.X_PRPL-COM_PersistentConfiguration.                                                           proto::pcm-manager
-  Device.X_PRPL-COM_PersistentConfiguration.AddBackupFile()                                            proto::pcm-manager
-  Device.X_PRPL-COM_PersistentConfiguration.AddBackupFile() input:FileName
-  Device.X_PRPL-COM_PersistentConfiguration.AddBackupFile() input:Tag
-  Device.X_PRPL-COM_PersistentConfiguration.Backup()                                                   proto::pcm-manager
-  Device.X_PRPL-COM_PersistentConfiguration.Backup() input:Flags
-  Device.X_PRPL-COM_PersistentConfiguration.Backup() input:Tag
-  Device.X_PRPL-COM_PersistentConfiguration.Backup() input:Type
-  Device.X_PRPL-COM_PersistentConfiguration.BackupFile.{i}.                                            proto::pcm-manager
-  Device.X_PRPL-COM_PersistentConfiguration.BackupFile.{i}.Alias                                       proto::pcm-manager
-  Device.X_PRPL-COM_PersistentConfiguration.BackupFile.{i}.CreationDate                                proto::pcm-manager
-  Device.X_PRPL-COM_PersistentConfiguration.BackupFile.{i}.FileName                                    proto::pcm-manager
-  Device.X_PRPL-COM_PersistentConfiguration.BackupFile.{i}.Tag                                         proto::pcm-manager
-  Device.X_PRPL-COM_PersistentConfiguration.BackupFileNumberOfEntries                                  proto::pcm-manager
-  Device.X_PRPL-COM_PersistentConfiguration.BackupStatus                                               proto::pcm-manager
-  Device.X_PRPL-COM_PersistentConfiguration.Config.                                                    proto::pcm-manager
-  Device.X_PRPL-COM_PersistentConfiguration.Config.AutoSync                                            proto::pcm-manager
-  Device.X_PRPL-COM_PersistentConfiguration.Config.BackupFileType                                      proto::pcm-manager
-  Device.X_PRPL-COM_PersistentConfiguration.Config.Security.                                           proto::pcm-manager
-  Device.X_PRPL-COM_PersistentConfiguration.Config.Security.EncryptKey                                 proto::pcm-manager
-  Device.X_PRPL-COM_PersistentConfiguration.Config.Security.EncryptUserFile                            proto::pcm-manager
-  Device.X_PRPL-COM_PersistentConfiguration.Enable                                                     proto::pcm-manager
-  Device.X_PRPL-COM_PersistentConfiguration.Error                                                      proto::pcm-manager
-  Device.X_PRPL-COM_PersistentConfiguration.Import()                                                   proto::pcm-manager
-  Device.X_PRPL-COM_PersistentConfiguration.Import() input:content
-  Device.X_PRPL-COM_PersistentConfiguration.MaxNumberOfDynamicFiles                                    proto::pcm-manager
-  Device.X_PRPL-COM_PersistentConfiguration.NumberOfDynamicFiles                                       proto::pcm-manager
-  Device.X_PRPL-COM_PersistentConfiguration.Restore()                                                  proto::pcm-manager
-  Device.X_PRPL-COM_PersistentConfiguration.Restore() input:FileRef
-  Device.X_PRPL-COM_PersistentConfiguration.Restore() input:Type
-  Device.X_PRPL-COM_PersistentConfiguration.RestoreStatus                                              proto::pcm-manager
-  Device.X_PRPL-COM_PersistentConfiguration.Service.{i}.                                               proto::pcm-manager
-  Device.X_PRPL-COM_PersistentConfiguration.Service.{i}.Alias                                          proto::pcm-manager
-  Device.X_PRPL-COM_PersistentConfiguration.Service.{i}.ExportCallback                                 proto::pcm-manager
-  Device.X_PRPL-COM_PersistentConfiguration.Service.{i}.ExportStatus                                   proto::pcm-manager
-  Device.X_PRPL-COM_PersistentConfiguration.Service.{i}.ImportCallback                                 proto::pcm-manager
-  Device.X_PRPL-COM_PersistentConfiguration.Service.{i}.ImportStatus                                   proto::pcm-manager
-  Device.X_PRPL-COM_PersistentConfiguration.Service.{i}.Name                                           proto::pcm-manager
-  Device.X_PRPL-COM_PersistentConfiguration.Service.{i}.Order                                          proto::pcm-manager
-  Device.X_PRPL-COM_PersistentConfiguration.Service.{i}.Schema.{i}.                                    proto::pcm-manager
-  Device.X_PRPL-COM_PersistentConfiguration.Service.{i}.Schema.{i}.Alias                               proto::pcm-manager
-  Device.X_PRPL-COM_PersistentConfiguration.Service.{i}.Schema.{i}.Name                                proto::pcm-manager
-  Device.X_PRPL-COM_PersistentConfiguration.Service.{i}.SchemaNumberOfEntries                          proto::pcm-manager
-  Device.X_PRPL-COM_PersistentConfiguration.Service.{i}.ServiceStatus                                  proto::pcm-manager
-  Device.X_PRPL-COM_PersistentConfiguration.Service.{i}.SetActionStatus()                              proto::pcm-manager
-  Device.X_PRPL-COM_PersistentConfiguration.Service.{i}.SetActionStatus() input:ActionStatus
-  Device.X_PRPL-COM_PersistentConfiguration.Service.{i}.SetActionStatus() input:State
-  Device.X_PRPL-COM_PersistentConfiguration.ServiceConfigurationChanged()                              proto::pcm-manager
-  Device.X_PRPL-COM_PersistentConfiguration.ServiceConfigurationChanged() input:name
-  Device.X_PRPL-COM_PersistentConfiguration.ServiceNumberOfEntries                                     proto::pcm-manager
-  Device.X_PRPL-COM_PersistentConfiguration.Status                                                     proto::pcm-manager
-  Device.X_PRPL-COM_PersistentConfiguration.registerSvc()                                              proto::pcm-manager
-  Device.X_PRPL-COM_PersistentConfiguration.registerSvc() input:data
-  Device.X_PRPL-COM_PersistentConfiguration.registerSvc() input:name
-  Device.X_PRPL-COM_PersistentConfiguration.unregisterSvc()                                            proto::pcm-manager
-  Device.X_PRPL-COM_PersistentConfiguration.unregisterSvc() input:name
-  Device.X_PRPL-COM_WANManager.                                                                        proto::wan-manager
-  Device.X_PRPL-COM_WANManager.OperationMode                                                           proto::wan-manager
-  Device.X_PRPL-COM_WANManager.Reset()                                                                 proto::wan-manager
-  Device.X_PRPL-COM_WANManager.SensingPolicy                                                           proto::wan-manager
-  Device.X_PRPL-COM_WANManager.SensingTimeout                                                          proto::wan-manager
-  Device.X_PRPL-COM_WANManager.WAN.{i}.                                                                proto::wan-manager
-  Device.X_PRPL-COM_WANManager.WAN.{i}.Alias                                                           proto::wan-manager
-  Device.X_PRPL-COM_WANManager.WAN.{i}.DNSMode                                                         proto::wan-manager
-  Device.X_PRPL-COM_WANManager.WAN.{i}.EnableSensing                                                   proto::wan-manager
-  Device.X_PRPL-COM_WANManager.WAN.{i}.IPv6DNSMode                                                     proto::wan-manager
-  Device.X_PRPL-COM_WANManager.WAN.{i}.Intf.{i}.                                                       proto::wan-manager
-  Device.X_PRPL-COM_WANManager.WAN.{i}.Intf.{i}.Alias                                                  proto::wan-manager
-  Device.X_PRPL-COM_WANManager.WAN.{i}.Intf.{i}.BridgeReference                                        proto::wan-manager
-  Device.X_PRPL-COM_WANManager.WAN.{i}.Intf.{i}.DHCPv4Reference                                        proto::wan-manager
-  Device.X_PRPL-COM_WANManager.WAN.{i}.Intf.{i}.DHCPv6Reference                                        proto::wan-manager
-  Device.X_PRPL-COM_WANManager.WAN.{i}.Intf.{i}.DSLiteReference                                        proto::wan-manager
-  Device.X_PRPL-COM_WANManager.WAN.{i}.Intf.{i}.DefaultRouteReference                                  proto::wan-manager
-  Device.X_PRPL-COM_WANManager.WAN.{i}.Intf.{i}.DeferredIPv6Instances                                  proto::wan-manager
-  Device.X_PRPL-COM_WANManager.WAN.{i}.Intf.{i}.IPv4Address.{i}.                                       proto::wan-manager
-  Device.X_PRPL-COM_WANManager.WAN.{i}.Intf.{i}.IPv4Address.{i}.Alias                                  proto::wan-manager
-  Device.X_PRPL-COM_WANManager.WAN.{i}.Intf.{i}.IPv4Address.{i}.DNSServers                             proto::wan-manager
-  Device.X_PRPL-COM_WANManager.WAN.{i}.Intf.{i}.IPv4Address.{i}.DefaultRouter                          proto::wan-manager
-  Device.X_PRPL-COM_WANManager.WAN.{i}.Intf.{i}.IPv4Address.{i}.IPv4Address                            proto::wan-manager
-  Device.X_PRPL-COM_WANManager.WAN.{i}.Intf.{i}.IPv4Address.{i}.SubnetMask                             proto::wan-manager
-  Device.X_PRPL-COM_WANManager.WAN.{i}.Intf.{i}.IPv4Mode                                               proto::wan-manager
-  Device.X_PRPL-COM_WANManager.WAN.{i}.Intf.{i}.IPv4Reference                                          proto::wan-manager
-  Device.X_PRPL-COM_WANManager.WAN.{i}.Intf.{i}.IPv6Address.{i}.                                       proto::wan-manager
-  Device.X_PRPL-COM_WANManager.WAN.{i}.Intf.{i}.IPv6Address.{i}.Alias                                  proto::wan-manager
-  Device.X_PRPL-COM_WANManager.WAN.{i}.Intf.{i}.IPv6Address.{i}.DNSServers                             proto::wan-manager
-  Device.X_PRPL-COM_WANManager.WAN.{i}.Intf.{i}.IPv6Address.{i}.DefaultRouter                          proto::wan-manager
-  Device.X_PRPL-COM_WANManager.WAN.{i}.Intf.{i}.IPv6Address.{i}.IPv6Address                            proto::wan-manager
-  Device.X_PRPL-COM_WANManager.WAN.{i}.Intf.{i}.IPv6Address.{i}.PrefixLength                           proto::wan-manager
-  Device.X_PRPL-COM_WANManager.WAN.{i}.Intf.{i}.IPv6AddressDelegate                                    proto::wan-manager
-  Device.X_PRPL-COM_WANManager.WAN.{i}.Intf.{i}.IPv6Mode                                               proto::wan-manager
-  Device.X_PRPL-COM_WANManager.WAN.{i}.Intf.{i}.IPv6Reference                                          proto::wan-manager
-  Device.X_PRPL-COM_WANManager.WAN.{i}.Intf.{i}.Name                                                   proto::wan-manager
-  Device.X_PRPL-COM_WANManager.WAN.{i}.Intf.{i}.NeighborDiscoveryReference                             proto::wan-manager
-  Device.X_PRPL-COM_WANManager.WAN.{i}.Intf.{i}.PCPReference                                           proto::wan-manager
-  Device.X_PRPL-COM_WANManager.WAN.{i}.Intf.{i}.PPPv4Reference                                         proto::wan-manager
-  Device.X_PRPL-COM_WANManager.WAN.{i}.Intf.{i}.PPPv6Reference                                         proto::wan-manager
-  Device.X_PRPL-COM_WANManager.WAN.{i}.Intf.{i}.Password                                               proto::wan-manager
-  Device.X_PRPL-COM_WANManager.WAN.{i}.Intf.{i}.Type                                                   proto::wan-manager
-  Device.X_PRPL-COM_WANManager.WAN.{i}.Intf.{i}.UserName                                               proto::wan-manager
-  Device.X_PRPL-COM_WANManager.WAN.{i}.Intf.{i}.VlanID                                                 proto::wan-manager
-  Device.X_PRPL-COM_WANManager.WAN.{i}.Intf.{i}.VlanPriority                                           proto::wan-manager
-  Device.X_PRPL-COM_WANManager.WAN.{i}.Origin                                                          proto::wan-manager
-  Device.X_PRPL-COM_WANManager.WAN.{i}.PhysicalReference                                               proto::wan-manager
-  Device.X_PRPL-COM_WANManager.WAN.{i}.PhysicalType                                                    proto::wan-manager
-  Device.X_PRPL-COM_WANManager.WAN.{i}.SFPType                                                         proto::wan-manager
-  Device.X_PRPL-COM_WANManager.WAN.{i}.SensingPriority                                                 proto::wan-manager
-  Device.X_PRPL-COM_WANManager.WAN.{i}.Status                                                          proto::wan-manager
-  Device.X_PRPL-COM_WANManager.WANMode                                                                 proto::wan-manager
-  Device.X_PRPL-COM_WANManager.WANModeDisable()                                                        proto::wan-manager
-  Device.X_PRPL-COM_WANManager.WANModeDisable() input:Autosensing
-  Device.X_PRPL-COM_WANManager.WANModeDisable() input:WANMode
-  Device.X_PRPL-COM_WANManager.WANModeEnable()                                                         proto::wan-manager
-  Device.X_PRPL-COM_WANManager.WANModeEnable() input:Autosensing
-  Device.X_PRPL-COM_WANManager.WANModeEnable() input:WANMode
-  Device.X_PRPL-COM_WANManager.getWANMode()                                                            proto::wan-manager
-  Device.X_PRPL-COM_WANManager.setIPv4Mode()                                                           proto::wan-manager
-  Device.X_PRPL-COM_WANManager.setIPv4Mode() input:IPv4Mode
-  Device.X_PRPL-COM_WANManager.setIPv4Mode() input:InterfaceAlias
-  Device.X_PRPL-COM_WANManager.setIPv6Mode()                                                           proto::wan-manager
-  Device.X_PRPL-COM_WANManager.setIPv6Mode() input:IPv6Mode
-  Device.X_PRPL-COM_WANManager.setIPv6Mode() input:InterfaceAlias
-  Device.X_PRPL-COM_WANManager.setWANMode()                                                            proto::wan-manager
-  Device.X_PRPL-COM_WANManager.setWANMode() input:Autosensing
-  Device.X_PRPL-COM_WANManager.setWANMode() input:WANMode
+  Device.XPON.                                                                                         proto::tr181-xpon
+  Device.XPON.ONU.{i}.                                                                                 proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.                                                                         proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.Alias                                                                    proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.Enable                                                                   proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.LastChange                                                               proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.Name                                                                     proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.PONMode                                                                  proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.Status                                                                   proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.TC.                                                                      proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.TC.Alarms.                                                               proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.TC.Alarms.DACT                                                           proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.TC.Alarms.DIS                                                            proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.TC.Alarms.LCDG                                                           proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.TC.Alarms.LODS                                                           proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.TC.Alarms.LOF                                                            proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.TC.Alarms.LOS                                                            proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.TC.Alarms.MEM                                                            proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.TC.Alarms.MIS                                                            proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.TC.Alarms.PEE                                                            proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.TC.Alarms.RDI                                                            proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.TC.Alarms.ROGUE                                                          proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.TC.Alarms.SD                                                             proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.TC.Alarms.SF                                                             proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.TC.Alarms.SUF                                                            proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.TC.Alarms.TF                                                             proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.TC.Authentication.                                                       proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.TC.Authentication.HexadecimalPassword                                    proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.TC.Authentication.Password                                               proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.TC.GEM.                                                                  proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.TC.GEM.Port.{i}.                                                         proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.TC.GEM.Port.{i}.Direction                                                proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.TC.GEM.Port.{i}.PM.                                                      proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.TC.GEM.Port.{i}.PM.FramesReceived                                        proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.TC.GEM.Port.{i}.PM.FramesSent                                            proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.TC.GEM.Port.{i}.PortID                                                   proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.TC.GEM.Port.{i}.PortType                                                 proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.TC.GEM.PortNumberOfEntries                                               proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.TC.ONUActivation.                                                        proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.TC.ONUActivation.ONUID                                                   proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.TC.ONUActivation.ONUState                                                proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.TC.ONUActivation.SerialNumber                                            proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.TC.ONUActivation.VendorID                                                proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.TC.PM.                                                                   proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.TC.PM.GEM.                                                               proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.TC.PM.GEM.FrameHeaderHECErrors                                           proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.TC.PM.GEM.FramesReceived                                                 proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.TC.PM.GEM.FramesSent                                                     proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.TC.PM.GEM.KeyErrors                                                      proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.TC.PM.OMCI.                                                              proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.TC.PM.OMCI.BaselineMessagesReceived                                      proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.TC.PM.OMCI.ExtendedMessagesReceived                                      proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.TC.PM.OMCI.MICErrors                                                     proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.TC.PM.PHY.                                                               proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.TC.PM.PHY.CorrectedFECBytes                                              proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.TC.PM.PHY.CorrectedFECCodewords                                          proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.TC.PM.PHY.HeaderHECErrorCount                                            proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.TC.PM.PHY.PSBdHECErrorCount                                              proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.TC.PM.PHY.TotalFECCodewords                                              proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.TC.PM.PHY.UncorrectableFECCodewords                                      proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.TC.PM.PHY.UnknownProfile                                                 proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.TC.PM.PLOAM.                                                             proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.TC.PM.PLOAM.DownstreamMessageCount                                       proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.TC.PM.PLOAM.MICErrors                                                    proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.TC.PM.PLOAM.RangingTime                                                  proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.TC.PM.PLOAM.UpstreamMessageCount                                         proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.TC.PerformanceThresholds.                                                proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.TC.PerformanceThresholds.SignalDegrade                                   proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.TC.PerformanceThresholds.SignalFail                                      proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.Transceiver.{i}.                                                         proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.Transceiver.{i}.Bias                                                     proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.Transceiver.{i}.Connector                                                proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.Transceiver.{i}.ID                                                       proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.Transceiver.{i}.Identifier                                               proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.Transceiver.{i}.NominalBitRateDownstream                                 proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.Transceiver.{i}.NominalBitRateUpstream                                   proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.Transceiver.{i}.PONMode                                                  proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.Transceiver.{i}.RxPower                                                  proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.Transceiver.{i}.Temperature                                              proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.Transceiver.{i}.TxPower                                                  proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.Transceiver.{i}.VendorName                                               proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.Transceiver.{i}.VendorPartNumber                                         proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.Transceiver.{i}.VendorRevision                                           proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.Transceiver.{i}.Voltage                                                  proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.Transceiver.{i}.X_PRPLWARE-COM_SFPReference                              proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.TransceiverNumberOfEntries                                               proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANINumberOfEntries                                                               proto::tr181-xpon
+  Device.XPON.ONU.{i}.Enable                                                                           proto::tr181-xpon
+  Device.XPON.ONU.{i}.EquipmentID                                                                      proto::tr181-xpon
+  Device.XPON.ONU.{i}.EthernetUNI.{i}.                                                                 proto::tr181-xpon
+  Device.XPON.ONU.{i}.EthernetUNI.{i}.ANIs                                                             proto::tr181-xpon
+  Device.XPON.ONU.{i}.EthernetUNI.{i}.Alias                                                            proto::tr181-xpon
+  Device.XPON.ONU.{i}.EthernetUNI.{i}.Enable                                                           proto::tr181-xpon
+  Device.XPON.ONU.{i}.EthernetUNI.{i}.InterdomainID                                                    proto::tr181-xpon
+  Device.XPON.ONU.{i}.EthernetUNI.{i}.InterdomainName                                                  proto::tr181-xpon
+  Device.XPON.ONU.{i}.EthernetUNI.{i}.LastChange                                                       proto::tr181-xpon
+  Device.XPON.ONU.{i}.EthernetUNI.{i}.LowerLayers                                                      proto::tr181-xpon
+  Device.XPON.ONU.{i}.EthernetUNI.{i}.Name                                                             proto::tr181-xpon
+  Device.XPON.ONU.{i}.EthernetUNI.{i}.Status                                                           proto::tr181-xpon
+  Device.XPON.ONU.{i}.EthernetUNINumberOfEntries                                                       proto::tr181-xpon
+  Device.XPON.ONU.{i}.Name                                                                             proto::tr181-xpon
+  Device.XPON.ONU.{i}.SoftwareImage.{i}.                                                               proto::tr181-xpon
+  Device.XPON.ONU.{i}.SoftwareImage.{i}.ID                                                             proto::tr181-xpon
+  Device.XPON.ONU.{i}.SoftwareImage.{i}.IsActive                                                       proto::tr181-xpon
+  Device.XPON.ONU.{i}.SoftwareImage.{i}.IsCommitted                                                    proto::tr181-xpon
+  Device.XPON.ONU.{i}.SoftwareImage.{i}.IsValid                                                        proto::tr181-xpon
+  Device.XPON.ONU.{i}.SoftwareImage.{i}.Version                                                        proto::tr181-xpon
+  Device.XPON.ONU.{i}.SoftwareImageNumberOfEntries                                                     proto::tr181-xpon
+  Device.XPON.ONU.{i}.Version                                                                          proto::tr181-xpon
+  Device.XPON.ONUNumberOfEntries                                                                       proto::tr181-xpon
+  Device.X_PRPLWARE-COM_Buttons.                                                                       proto::tr181-button
+  Device.X_PRPLWARE-COM_Buttons.Action.{i}.                                                            proto::tr181-button
+  Device.X_PRPLWARE-COM_Buttons.Action.{i}.Alias                                                       proto::tr181-button
+  Device.X_PRPLWARE-COM_Buttons.Action.{i}.Message                                                     proto::tr181-button
+  Device.X_PRPLWARE-COM_Buttons.Action.{i}.Method                                                      proto::tr181-button
+  Device.X_PRPLWARE-COM_Buttons.Action.{i}.Name                                                        proto::tr181-button
+  Device.X_PRPLWARE-COM_Buttons.Action.{i}.Object                                                      proto::tr181-button
+  Device.X_PRPLWARE-COM_Buttons.ActionNumberOfEntries                                                  proto::tr181-button
+  Device.X_PRPLWARE-COM_Buttons.Button.{i}.                                                            proto::tr181-button
+  Device.X_PRPLWARE-COM_Buttons.Button.{i}.Alias                                                       proto::tr181-button
+  Device.X_PRPLWARE-COM_Buttons.Button.{i}.Event.{i}.                                                  proto::tr181-button
+  Device.X_PRPLWARE-COM_Buttons.Button.{i}.Event.{i}.ActionsReference                                  proto::tr181-button
+  Device.X_PRPLWARE-COM_Buttons.Button.{i}.Event.{i}.Alias                                             proto::tr181-button
+  Device.X_PRPLWARE-COM_Buttons.Button.{i}.Event.{i}.Enable                                            proto::tr181-button
+  Device.X_PRPLWARE-COM_Buttons.Button.{i}.Event.{i}.Max                                               proto::tr181-button
+  Device.X_PRPLWARE-COM_Buttons.Button.{i}.Event.{i}.Min                                               proto::tr181-button
+  Device.X_PRPLWARE-COM_Buttons.Button.{i}.Event.{i}.Name                                              proto::tr181-button
+  Device.X_PRPLWARE-COM_Buttons.Button.{i}.Event.{i}.Timeout                                           proto::tr181-button
+  Device.X_PRPLWARE-COM_Buttons.Button.{i}.Event.{i}.Type                                              proto::tr181-button
+  Device.X_PRPLWARE-COM_Buttons.Button.{i}.EventNumberOfEntries                                        proto::tr181-button
+  Device.X_PRPLWARE-COM_Buttons.Button.{i}.Location                                                    proto::tr181-button
+  Device.X_PRPLWARE-COM_Buttons.Button.{i}.Name                                                        proto::tr181-button
+  Device.X_PRPLWARE-COM_Buttons.Button.{i}.Push()                                                      proto::tr181-button
+  Device.X_PRPLWARE-COM_Buttons.Button.{i}.Release()                                                   proto::tr181-button
+  Device.X_PRPLWARE-COM_Buttons.Button.{i}.Status                                                      proto::tr181-button
+  Device.X_PRPLWARE-COM_Buttons.ButtonNumberOfEntries                                                  proto::tr181-button
+  Device.X_PRPLWARE-COM_MultiSettings.                                                                 proto::multisettings
+  Device.X_PRPLWARE-COM_MultiSettings.CurrentProfile                                                   proto::multisettings
+  Device.X_PRPLWARE-COM_MultiSettings.DecisionMadeBy                                                   proto::multisettings
+  Device.X_PRPLWARE-COM_MultiSettings.DetectionAtBoot                                                  proto::multisettings
+  Device.X_PRPLWARE-COM_MultiSettings.DetectionState                                                   proto::multisettings
+  Device.X_PRPLWARE-COM_MultiSettings.Enable                                                           proto::multisettings
+  Device.X_PRPLWARE-COM_MultiSettings.Profile.{i}.                                                     proto::multisettings
+  Device.X_PRPLWARE-COM_MultiSettings.Profile.{i}.Alias                                                proto::multisettings
+  Device.X_PRPLWARE-COM_MultiSettings.Profile.{i}.Enable                                               proto::multisettings
+  Device.X_PRPLWARE-COM_MultiSettings.Profile.{i}.ImpactedModules                                      proto::multisettings
+  Device.X_PRPLWARE-COM_MultiSettings.Profile.{i}.Name                                                 proto::multisettings
+  Device.X_PRPLWARE-COM_MultiSettings.Profile.{i}.Status                                               proto::multisettings
+  Device.X_PRPLWARE-COM_MultiSettings.Profile.{i}.Trigger.{i}.                                         proto::multisettings
+  Device.X_PRPLWARE-COM_MultiSettings.Profile.{i}.Trigger.{i}.Alias                                    proto::multisettings
+  Device.X_PRPLWARE-COM_MultiSettings.Profile.{i}.Trigger.{i}.LeftMember                               proto::multisettings
+  Device.X_PRPLWARE-COM_MultiSettings.Profile.{i}.Trigger.{i}.RelationalOperator                       proto::multisettings
+  Device.X_PRPLWARE-COM_MultiSettings.Profile.{i}.Trigger.{i}.RightMember                              proto::multisettings
+  Device.X_PRPLWARE-COM_MultiSettings.Profile.{i}.Trigger.{i}.Triggered                                proto::multisettings
+  Device.X_PRPLWARE-COM_MultiSettings.Profile.{i}.TriggerNumberOfEntries                               proto::multisettings
+  Device.X_PRPLWARE-COM_MultiSettings.ProfileNumberOfEntries                                           proto::multisettings
+  Device.X_PRPLWARE-COM_MultiSettings.Status                                                           proto::multisettings
+  Device.X_PRPLWARE-COM_PeriodicFileUpload.                                                            proto::tr181-periodicfileupload
+  Device.X_PRPLWARE-COM_PeriodicFileUpload.Enable                                                      proto::tr181-periodicfileupload
+  Device.X_PRPLWARE-COM_PeriodicFileUpload.File.{i}.                                                   proto::tr181-periodicfileupload
+  Device.X_PRPLWARE-COM_PeriodicFileUpload.File.{i}.Alias                                              proto::tr181-periodicfileupload
+  Device.X_PRPLWARE-COM_PeriodicFileUpload.File.{i}.Enable                                             proto::tr181-periodicfileupload
+  Device.X_PRPLWARE-COM_PeriodicFileUpload.File.{i}.InternalPath                                       proto::tr181-periodicfileupload
+  Device.X_PRPLWARE-COM_PeriodicFileUpload.File.{i}.Origin                                             proto::tr181-periodicfileupload
+  Device.X_PRPLWARE-COM_PeriodicFileUpload.File.{i}.Policy.                                            proto::tr181-periodicfileupload
+  Device.X_PRPLWARE-COM_PeriodicFileUpload.File.{i}.Policy.Name                                        proto::tr181-periodicfileupload
+  Device.X_PRPLWARE-COM_PeriodicFileUpload.File.{i}.Policy.Retry                                       proto::tr181-periodicfileupload
+  Device.X_PRPLWARE-COM_PeriodicFileUpload.File.{i}.PostScript                                         proto::tr181-periodicfileupload
+  Device.X_PRPLWARE-COM_PeriodicFileUpload.File.{i}.PreScript                                          proto::tr181-periodicfileupload
+  Device.X_PRPLWARE-COM_PeriodicFileUpload.File.{i}.ProfileReferences                                  proto::tr181-periodicfileupload
+  Device.X_PRPLWARE-COM_PeriodicFileUpload.File.{i}.UploadInterval                                     proto::tr181-periodicfileupload
+  Device.X_PRPLWARE-COM_PeriodicFileUpload.FileNumberOfEntries                                         proto::tr181-periodicfileupload
+  Device.X_PRPLWARE-COM_PeriodicFileUpload.Profile.{i}.                                                proto::tr181-periodicfileupload
+  Device.X_PRPLWARE-COM_PeriodicFileUpload.Profile.{i}.Alias                                           proto::tr181-periodicfileupload
+  Device.X_PRPLWARE-COM_PeriodicFileUpload.Profile.{i}.Enable                                          proto::tr181-periodicfileupload
+  Device.X_PRPLWARE-COM_PeriodicFileUpload.Profile.{i}.HTTP.                                           proto::tr181-periodicfileupload
+  Device.X_PRPLWARE-COM_PeriodicFileUpload.Profile.{i}.HTTP.CACert                                     proto::tr181-periodicfileupload
+  Device.X_PRPLWARE-COM_PeriodicFileUpload.Profile.{i}.HTTP.CAPath                                     proto::tr181-periodicfileupload
+  Device.X_PRPLWARE-COM_PeriodicFileUpload.Profile.{i}.HTTP.ClientCert                                 proto::tr181-periodicfileupload
+  Device.X_PRPLWARE-COM_PeriodicFileUpload.Profile.{i}.HTTP.Compression                                proto::tr181-periodicfileupload
+  Device.X_PRPLWARE-COM_PeriodicFileUpload.Profile.{i}.HTTP.Method                                     proto::tr181-periodicfileupload
+  Device.X_PRPLWARE-COM_PeriodicFileUpload.Profile.{i}.HTTP.Password                                   proto::tr181-periodicfileupload
+  Device.X_PRPLWARE-COM_PeriodicFileUpload.Profile.{i}.HTTP.PersistAcrossReboot                        proto::tr181-periodicfileupload
+  Device.X_PRPLWARE-COM_PeriodicFileUpload.Profile.{i}.HTTP.PrivateKey                                 proto::tr181-periodicfileupload
+  Device.X_PRPLWARE-COM_PeriodicFileUpload.Profile.{i}.HTTP.RetryEnable                                proto::tr181-periodicfileupload
+  Device.X_PRPLWARE-COM_PeriodicFileUpload.Profile.{i}.HTTP.RetryIntervalMultiplier                    proto::tr181-periodicfileupload
+  Device.X_PRPLWARE-COM_PeriodicFileUpload.Profile.{i}.HTTP.RetryMinimumWaitInterval                   proto::tr181-periodicfileupload
+  Device.X_PRPLWARE-COM_PeriodicFileUpload.Profile.{i}.HTTP.SupportedCompressions                      proto::tr181-periodicfileupload
+  Device.X_PRPLWARE-COM_PeriodicFileUpload.Profile.{i}.HTTP.SupportedMethods                           proto::tr181-periodicfileupload
+  Device.X_PRPLWARE-COM_PeriodicFileUpload.Profile.{i}.HTTP.URL                                        proto::tr181-periodicfileupload
+  Device.X_PRPLWARE-COM_PeriodicFileUpload.Profile.{i}.HTTP.UseDateHeader                              proto::tr181-periodicfileupload
+  Device.X_PRPLWARE-COM_PeriodicFileUpload.Profile.{i}.HTTP.Username                                   proto::tr181-periodicfileupload
+  Device.X_PRPLWARE-COM_PeriodicFileUpload.Profile.{i}.Name                                            proto::tr181-periodicfileupload
+  Device.X_PRPLWARE-COM_PeriodicFileUpload.Profile.{i}.Protocol                                        proto::tr181-periodicfileupload
+  Device.X_PRPLWARE-COM_PeriodicFileUpload.Profile.{i}.TimeReference                                   proto::tr181-periodicfileupload
+  Device.X_PRPLWARE-COM_PeriodicFileUpload.ProfileNumberOfEntries                                      proto::tr181-periodicfileupload
+  Device.X_PRPLWARE-COM_PeriodicFileUpload.SupportedPolicies                                           proto::tr181-periodicfileupload
+  Device.X_PRPLWARE-COM_PeriodicFileUpload.SupportedProtocols                                          proto::tr181-periodicfileupload
+  Device.X_PRPLWARE-COM_PersistentConfiguration.                                                       proto::pcm-manager
+  Device.X_PRPLWARE-COM_PersistentConfiguration.AddBackupFile()                                        proto::pcm-manager
+  Device.X_PRPLWARE-COM_PersistentConfiguration.AddBackupFile() input:FileName
+  Device.X_PRPLWARE-COM_PersistentConfiguration.AddBackupFile() input:Tag
+  Device.X_PRPLWARE-COM_PersistentConfiguration.Backup()                                               proto::pcm-manager
+  Device.X_PRPLWARE-COM_PersistentConfiguration.Backup() input:Flags
+  Device.X_PRPLWARE-COM_PersistentConfiguration.Backup() input:Tag
+  Device.X_PRPLWARE-COM_PersistentConfiguration.Backup() input:Type
+  Device.X_PRPLWARE-COM_PersistentConfiguration.BackupFile.{i}.                                        proto::pcm-manager
+  Device.X_PRPLWARE-COM_PersistentConfiguration.BackupFile.{i}.Alias                                   proto::pcm-manager
+  Device.X_PRPLWARE-COM_PersistentConfiguration.BackupFile.{i}.CreationDate                            proto::pcm-manager
+  Device.X_PRPLWARE-COM_PersistentConfiguration.BackupFile.{i}.FileName                                proto::pcm-manager
+  Device.X_PRPLWARE-COM_PersistentConfiguration.BackupFile.{i}.Tag                                     proto::pcm-manager
+  Device.X_PRPLWARE-COM_PersistentConfiguration.BackupFileNumberOfEntries                              proto::pcm-manager
+  Device.X_PRPLWARE-COM_PersistentConfiguration.BackupStatus                                           proto::pcm-manager
+  Device.X_PRPLWARE-COM_PersistentConfiguration.Config.                                                proto::pcm-manager
+  Device.X_PRPLWARE-COM_PersistentConfiguration.Config.AutoSync                                        proto::pcm-manager
+  Device.X_PRPLWARE-COM_PersistentConfiguration.Config.BackupFileType                                  proto::pcm-manager
+  Device.X_PRPLWARE-COM_PersistentConfiguration.Config.Security.                                       proto::pcm-manager
+  Device.X_PRPLWARE-COM_PersistentConfiguration.Config.Security.EncryptKey                             proto::pcm-manager
+  Device.X_PRPLWARE-COM_PersistentConfiguration.Config.Security.EncryptUserFile                        proto::pcm-manager
+  Device.X_PRPLWARE-COM_PersistentConfiguration.Enable                                                 proto::pcm-manager
+  Device.X_PRPLWARE-COM_PersistentConfiguration.Error                                                  proto::pcm-manager
+  Device.X_PRPLWARE-COM_PersistentConfiguration.Import()                                               proto::pcm-manager
+  Device.X_PRPLWARE-COM_PersistentConfiguration.Import() input:content
+  Device.X_PRPLWARE-COM_PersistentConfiguration.MaxNumberOfDynamicFiles                                proto::pcm-manager
+  Device.X_PRPLWARE-COM_PersistentConfiguration.NumberOfDynamicFiles                                   proto::pcm-manager
+  Device.X_PRPLWARE-COM_PersistentConfiguration.Restore()                                              proto::pcm-manager
+  Device.X_PRPLWARE-COM_PersistentConfiguration.Restore() input:FileRef
+  Device.X_PRPLWARE-COM_PersistentConfiguration.Restore() input:Type
+  Device.X_PRPLWARE-COM_PersistentConfiguration.RestoreStatus                                          proto::pcm-manager
+  Device.X_PRPLWARE-COM_PersistentConfiguration.Service.{i}.                                           proto::pcm-manager
+  Device.X_PRPLWARE-COM_PersistentConfiguration.Service.{i}.Alias                                      proto::pcm-manager
+  Device.X_PRPLWARE-COM_PersistentConfiguration.Service.{i}.ExportCallback                             proto::pcm-manager
+  Device.X_PRPLWARE-COM_PersistentConfiguration.Service.{i}.ExportStatus                               proto::pcm-manager
+  Device.X_PRPLWARE-COM_PersistentConfiguration.Service.{i}.ImportCallback                             proto::pcm-manager
+  Device.X_PRPLWARE-COM_PersistentConfiguration.Service.{i}.ImportStatus                               proto::pcm-manager
+  Device.X_PRPLWARE-COM_PersistentConfiguration.Service.{i}.Name                                       proto::pcm-manager
+  Device.X_PRPLWARE-COM_PersistentConfiguration.Service.{i}.Order                                      proto::pcm-manager
+  Device.X_PRPLWARE-COM_PersistentConfiguration.Service.{i}.Schema.{i}.                                proto::pcm-manager
+  Device.X_PRPLWARE-COM_PersistentConfiguration.Service.{i}.Schema.{i}.Alias                           proto::pcm-manager
+  Device.X_PRPLWARE-COM_PersistentConfiguration.Service.{i}.Schema.{i}.Name                            proto::pcm-manager
+  Device.X_PRPLWARE-COM_PersistentConfiguration.Service.{i}.SchemaNumberOfEntries                      proto::pcm-manager
+  Device.X_PRPLWARE-COM_PersistentConfiguration.Service.{i}.ServiceStatus                              proto::pcm-manager
+  Device.X_PRPLWARE-COM_PersistentConfiguration.Service.{i}.SetActionStatus()                          proto::pcm-manager
+  Device.X_PRPLWARE-COM_PersistentConfiguration.Service.{i}.SetActionStatus() input:ActionStatus
+  Device.X_PRPLWARE-COM_PersistentConfiguration.Service.{i}.SetActionStatus() input:State
+  Device.X_PRPLWARE-COM_PersistentConfiguration.ServiceConfigurationChanged()                          proto::pcm-manager
+  Device.X_PRPLWARE-COM_PersistentConfiguration.ServiceConfigurationChanged() input:name
+  Device.X_PRPLWARE-COM_PersistentConfiguration.ServiceNumberOfEntries                                 proto::pcm-manager
+  Device.X_PRPLWARE-COM_PersistentConfiguration.Status                                                 proto::pcm-manager
+  Device.X_PRPLWARE-COM_PersistentConfiguration.registerSvc()                                          proto::pcm-manager
+  Device.X_PRPLWARE-COM_PersistentConfiguration.registerSvc() input:data
+  Device.X_PRPLWARE-COM_PersistentConfiguration.registerSvc() input:name
+  Device.X_PRPLWARE-COM_PersistentConfiguration.unregisterSvc()                                        proto::pcm-manager
+  Device.X_PRPLWARE-COM_PersistentConfiguration.unregisterSvc() input:name
   Device.X_PRPLWARE-COM_SFPs.                                                                          proto::tr181-sfp
   Device.X_PRPLWARE-COM_SFPs.Cage.{i}.                                                                 proto::tr181-sfp
   Device.X_PRPLWARE-COM_SFPs.Cage.{i}.SFP.                                                             proto::tr181-sfp
@@ -4125,6 +4341,74 @@ Check that obuspa has expected datamodel available (minus the platform specific 
   Device.X_PRPLWARE-COM_SFPs.Cage.{i}.SFP.Transceiver.sfpmgr_get_ifname() input:index
   Device.X_PRPLWARE-COM_SFPs.Cage.{i}.SFP.Transceiver.sfpmgr_get_ifname() output:ifname
   Device.X_PRPLWARE-COM_SFPs.CageNumberOfEntries                                                       proto::tr181-sfp
+  Device.X_PRPLWARE-COM_WANManager.                                                                    proto::wan-manager
+  Device.X_PRPLWARE-COM_WANManager.OperationMode                                                       proto::wan-manager
+  Device.X_PRPLWARE-COM_WANManager.Reset()                                                             proto::wan-manager
+  Device.X_PRPLWARE-COM_WANManager.SensingPolicy                                                       proto::wan-manager
+  Device.X_PRPLWARE-COM_WANManager.SensingTimeout                                                      proto::wan-manager
+  Device.X_PRPLWARE-COM_WANManager.WAN.{i}.                                                            proto::wan-manager
+  Device.X_PRPLWARE-COM_WANManager.WAN.{i}.Alias                                                       proto::wan-manager
+  Device.X_PRPLWARE-COM_WANManager.WAN.{i}.DNSMode                                                     proto::wan-manager
+  Device.X_PRPLWARE-COM_WANManager.WAN.{i}.EnableSensing                                               proto::wan-manager
+  Device.X_PRPLWARE-COM_WANManager.WAN.{i}.IPv6DNSMode                                                 proto::wan-manager
+  Device.X_PRPLWARE-COM_WANManager.WAN.{i}.Intf.{i}.                                                   proto::wan-manager
+  Device.X_PRPLWARE-COM_WANManager.WAN.{i}.Intf.{i}.Alias                                              proto::wan-manager
+  Device.X_PRPLWARE-COM_WANManager.WAN.{i}.Intf.{i}.BridgeReference                                    proto::wan-manager
+  Device.X_PRPLWARE-COM_WANManager.WAN.{i}.Intf.{i}.DHCPv4Reference                                    proto::wan-manager
+  Device.X_PRPLWARE-COM_WANManager.WAN.{i}.Intf.{i}.DHCPv6Reference                                    proto::wan-manager
+  Device.X_PRPLWARE-COM_WANManager.WAN.{i}.Intf.{i}.DSLiteReference                                    proto::wan-manager
+  Device.X_PRPLWARE-COM_WANManager.WAN.{i}.Intf.{i}.DefaultRouteReference                              proto::wan-manager
+  Device.X_PRPLWARE-COM_WANManager.WAN.{i}.Intf.{i}.DeferredIPv6Instances                              proto::wan-manager
+  Device.X_PRPLWARE-COM_WANManager.WAN.{i}.Intf.{i}.IPv4Address.{i}.                                   proto::wan-manager
+  Device.X_PRPLWARE-COM_WANManager.WAN.{i}.Intf.{i}.IPv4Address.{i}.Alias                              proto::wan-manager
+  Device.X_PRPLWARE-COM_WANManager.WAN.{i}.Intf.{i}.IPv4Address.{i}.DNSServers                         proto::wan-manager
+  Device.X_PRPLWARE-COM_WANManager.WAN.{i}.Intf.{i}.IPv4Address.{i}.DefaultRouter                      proto::wan-manager
+  Device.X_PRPLWARE-COM_WANManager.WAN.{i}.Intf.{i}.IPv4Address.{i}.IPv4Address                        proto::wan-manager
+  Device.X_PRPLWARE-COM_WANManager.WAN.{i}.Intf.{i}.IPv4Address.{i}.SubnetMask                         proto::wan-manager
+  Device.X_PRPLWARE-COM_WANManager.WAN.{i}.Intf.{i}.IPv4Mode                                           proto::wan-manager
+  Device.X_PRPLWARE-COM_WANManager.WAN.{i}.Intf.{i}.IPv4Reference                                      proto::wan-manager
+  Device.X_PRPLWARE-COM_WANManager.WAN.{i}.Intf.{i}.IPv6Address.{i}.                                   proto::wan-manager
+  Device.X_PRPLWARE-COM_WANManager.WAN.{i}.Intf.{i}.IPv6Address.{i}.Alias                              proto::wan-manager
+  Device.X_PRPLWARE-COM_WANManager.WAN.{i}.Intf.{i}.IPv6Address.{i}.DNSServers                         proto::wan-manager
+  Device.X_PRPLWARE-COM_WANManager.WAN.{i}.Intf.{i}.IPv6Address.{i}.DefaultRouter                      proto::wan-manager
+  Device.X_PRPLWARE-COM_WANManager.WAN.{i}.Intf.{i}.IPv6Address.{i}.IPv6Address                        proto::wan-manager
+  Device.X_PRPLWARE-COM_WANManager.WAN.{i}.Intf.{i}.IPv6Address.{i}.PrefixLength                       proto::wan-manager
+  Device.X_PRPLWARE-COM_WANManager.WAN.{i}.Intf.{i}.IPv6AddressDelegate                                proto::wan-manager
+  Device.X_PRPLWARE-COM_WANManager.WAN.{i}.Intf.{i}.IPv6Mode                                           proto::wan-manager
+  Device.X_PRPLWARE-COM_WANManager.WAN.{i}.Intf.{i}.IPv6Reference                                      proto::wan-manager
+  Device.X_PRPLWARE-COM_WANManager.WAN.{i}.Intf.{i}.Name                                               proto::wan-manager
+  Device.X_PRPLWARE-COM_WANManager.WAN.{i}.Intf.{i}.NeighborDiscoveryReference                         proto::wan-manager
+  Device.X_PRPLWARE-COM_WANManager.WAN.{i}.Intf.{i}.PCPReference                                       proto::wan-manager
+  Device.X_PRPLWARE-COM_WANManager.WAN.{i}.Intf.{i}.PPPv4Reference                                     proto::wan-manager
+  Device.X_PRPLWARE-COM_WANManager.WAN.{i}.Intf.{i}.PPPv6Reference                                     proto::wan-manager
+  Device.X_PRPLWARE-COM_WANManager.WAN.{i}.Intf.{i}.Password                                           proto::wan-manager
+  Device.X_PRPLWARE-COM_WANManager.WAN.{i}.Intf.{i}.Type                                               proto::wan-manager
+  Device.X_PRPLWARE-COM_WANManager.WAN.{i}.Intf.{i}.UserName                                           proto::wan-manager
+  Device.X_PRPLWARE-COM_WANManager.WAN.{i}.Intf.{i}.VlanID                                             proto::wan-manager
+  Device.X_PRPLWARE-COM_WANManager.WAN.{i}.Intf.{i}.VlanPriority                                       proto::wan-manager
+  Device.X_PRPLWARE-COM_WANManager.WAN.{i}.Origin                                                      proto::wan-manager
+  Device.X_PRPLWARE-COM_WANManager.WAN.{i}.PhysicalReference                                           proto::wan-manager
+  Device.X_PRPLWARE-COM_WANManager.WAN.{i}.PhysicalType                                                proto::wan-manager
+  Device.X_PRPLWARE-COM_WANManager.WAN.{i}.SFPType                                                     proto::wan-manager
+  Device.X_PRPLWARE-COM_WANManager.WAN.{i}.SensingPriority                                             proto::wan-manager
+  Device.X_PRPLWARE-COM_WANManager.WAN.{i}.Status                                                      proto::wan-manager
+  Device.X_PRPLWARE-COM_WANManager.WANMode                                                             proto::wan-manager
+  Device.X_PRPLWARE-COM_WANManager.WANModeDisable()                                                    proto::wan-manager
+  Device.X_PRPLWARE-COM_WANManager.WANModeDisable() input:Autosensing
+  Device.X_PRPLWARE-COM_WANManager.WANModeDisable() input:WANMode
+  Device.X_PRPLWARE-COM_WANManager.WANModeEnable()                                                     proto::wan-manager
+  Device.X_PRPLWARE-COM_WANManager.WANModeEnable() input:Autosensing
+  Device.X_PRPLWARE-COM_WANManager.WANModeEnable() input:WANMode
+  Device.X_PRPLWARE-COM_WANManager.getWANMode()                                                        proto::wan-manager
+  Device.X_PRPLWARE-COM_WANManager.setIPv4Mode()                                                       proto::wan-manager
+  Device.X_PRPLWARE-COM_WANManager.setIPv4Mode() input:IPv4Mode
+  Device.X_PRPLWARE-COM_WANManager.setIPv4Mode() input:InterfaceAlias
+  Device.X_PRPLWARE-COM_WANManager.setIPv6Mode()                                                       proto::wan-manager
+  Device.X_PRPLWARE-COM_WANManager.setIPv6Mode() input:IPv6Mode
+  Device.X_PRPLWARE-COM_WANManager.setIPv6Mode() input:InterfaceAlias
+  Device.X_PRPLWARE-COM_WANManager.setWANMode()                                                        proto::wan-manager
+  Device.X_PRPLWARE-COM_WANManager.setWANMode() input:Autosensing
+  Device.X_PRPLWARE-COM_WANManager.setWANMode() input:WANMode
 
 Check that USP stack is handling the reconnection scenario properly PCF-1198/PPW-65 by restarting obuspa:
 
@@ -4132,7 +4416,7 @@ Check that USP stack is handling the reconnection scenario properly PCF-1198/PPW
 
 Check that obuspa provides the same datamodel again (minus the platform specific WiFi Vendor extensions):
 
-  $ R "obuspa -f /etc/obuspa.db -c dump datamodel | grep '^Device.' | grep -v -e 'Device.WiFi.AccessPoint.{i}.Vendor.' -e 'Device.WiFi.EndPoint.{i}.Vendor.' -e 'Device.WiFi.Radio.{i}.Vendor.' -e 'Device.WiFi.Radio.{i}.NaStaMonitor.'"
+  $ R "obuspa -f /etc/obuspa.db -c dump datamodel | grep '^Device.' | grep -v -e 'Device.Cellular.' -e 'Device.WiFi.AccessPoint.{i}.Vendor.' -e 'Device.WiFi.EndPoint.{i}.Vendor.' -e 'Device.WiFi.Radio.{i}.Vendor.' -e 'Device.WiFi.Radio.{i}.NaStaMonitor.'"
   Device.
   Device.Boot!                                                                                         proto::tr181-device
   Device.Bridging.                                                                                     proto::tr181-bridging
@@ -4172,7 +4456,7 @@ Check that obuspa provides the same datamodel again (minus the platform specific
   Device.Bridging.Bridge.{i}.Port.{i}.Stats.UnknownProtoPacketsReceived                                proto::tr181-bridging
   Device.Bridging.Bridge.{i}.Port.{i}.Status                                                           proto::tr181-bridging
   Device.Bridging.Bridge.{i}.Port.{i}.Type                                                             proto::tr181-bridging
-  Device.Bridging.Bridge.{i}.Port.{i}.X_PRPL-COM_IGMP                                                  proto::tr181-bridging
+  Device.Bridging.Bridge.{i}.Port.{i}.X_PRPLWARE-COM_IGMP                                              proto::tr181-bridging
   Device.Bridging.Bridge.{i}.PortNumberOfEntries                                                       proto::tr181-bridging
   Device.Bridging.Bridge.{i}.STP.                                                                      proto::tr181-bridging
   Device.Bridging.Bridge.{i}.STP.BridgePriority                                                        proto::tr181-bridging
@@ -4202,54 +4486,64 @@ Check that obuspa provides the same datamodel again (minus the platform specific
   Device.Bridging.MaxDBridgeEntries                                                                    proto::tr181-bridging
   Device.Bridging.MaxQBridgeEntries                                                                    proto::tr181-bridging
   Device.Bridging.MaxVLANEntries                                                                       proto::tr181-bridging
-  Device.BulkData.
-  Device.BulkData.Enable
-  Device.BulkData.EncodingTypes
-  Device.BulkData.MaxNumberOfParameterReferences
-  Device.BulkData.MaxNumberOfProfiles
-  Device.BulkData.MinReportingInterval
-  Device.BulkData.ParameterWildCardSupported
-  Device.BulkData.Profile.{i}.
-  Device.BulkData.Profile.{i}.Alias
-  Device.BulkData.Profile.{i}.Enable
-  Device.BulkData.Profile.{i}.EncodingType
-  Device.BulkData.Profile.{i}.HTTP.
-  Device.BulkData.Profile.{i}.HTTP.Compression
-  Device.BulkData.Profile.{i}.HTTP.CompressionsSupported
-  Device.BulkData.Profile.{i}.HTTP.Method
-  Device.BulkData.Profile.{i}.HTTP.MethodsSupported
-  Device.BulkData.Profile.{i}.HTTP.Password
-  Device.BulkData.Profile.{i}.HTTP.RequestURIParameter.{i}.
-  Device.BulkData.Profile.{i}.HTTP.RequestURIParameter.{i}.Name
-  Device.BulkData.Profile.{i}.HTTP.RequestURIParameter.{i}.Reference
-  Device.BulkData.Profile.{i}.HTTP.RequestURIParameterNumberOfEntries
-  Device.BulkData.Profile.{i}.HTTP.RetryEnable
-  Device.BulkData.Profile.{i}.HTTP.RetryIntervalMultiplier
-  Device.BulkData.Profile.{i}.HTTP.RetryMinimumWaitInterval
-  Device.BulkData.Profile.{i}.HTTP.URL
-  Device.BulkData.Profile.{i}.HTTP.UseDateHeader
-  Device.BulkData.Profile.{i}.HTTP.Username
-  Device.BulkData.Profile.{i}.JSONEncoding.
-  Device.BulkData.Profile.{i}.JSONEncoding.ReportFormat
-  Device.BulkData.Profile.{i}.JSONEncoding.ReportTimestamp
-  Device.BulkData.Profile.{i}.MQTT.
-  Device.BulkData.Profile.{i}.MQTT.PublishTopic
-  Device.BulkData.Profile.{i}.MQTT.Reference
-  Device.BulkData.Profile.{i}.Name
-  Device.BulkData.Profile.{i}.NumberOfRetainedFailedReports
-  Device.BulkData.Profile.{i}.Parameter.{i}.
-  Device.BulkData.Profile.{i}.Parameter.{i}.Name
-  Device.BulkData.Profile.{i}.Parameter.{i}.Reference
-  Device.BulkData.Profile.{i}.ParameterNumberOfEntries
-  Device.BulkData.Profile.{i}.Protocol
-  Device.BulkData.Profile.{i}.Push!
-  Device.BulkData.Profile.{i}.Push! event_arg:Data
-  Device.BulkData.Profile.{i}.ReportingInterval
-  Device.BulkData.Profile.{i}.TimeReference
-  Device.BulkData.Profile.{i}.X_ARRIS-COM_Status
-  Device.BulkData.ProfileNumberOfEntries
-  Device.BulkData.Protocols
-  Device.BulkData.Status
+  Device.BulkData.                                                                                     proto::tr181-bulkdata
+  Device.BulkData.Enable                                                                               proto::tr181-bulkdata
+  Device.BulkData.EncodingTypes                                                                        proto::tr181-bulkdata
+  Device.BulkData.MaxNumberOfParameterReferences                                                       proto::tr181-bulkdata
+  Device.BulkData.MaxNumberOfProfiles                                                                  proto::tr181-bulkdata
+  Device.BulkData.MinReportingInterval                                                                 proto::tr181-bulkdata
+  Device.BulkData.ParameterWildCardSupported                                                           proto::tr181-bulkdata
+  Device.BulkData.Profile.{i}.                                                                         proto::tr181-bulkdata
+  Device.BulkData.Profile.{i}.Alias                                                                    proto::tr181-bulkdata
+  Device.BulkData.Profile.{i}.CSVEncoding.                                                             proto::tr181-bulkdata
+  Device.BulkData.Profile.{i}.CSVEncoding.EscapeCharacter                                              proto::tr181-bulkdata
+  Device.BulkData.Profile.{i}.CSVEncoding.FieldSeparator                                               proto::tr181-bulkdata
+  Device.BulkData.Profile.{i}.CSVEncoding.ReportFormat                                                 proto::tr181-bulkdata
+  Device.BulkData.Profile.{i}.CSVEncoding.RowSeparator                                                 proto::tr181-bulkdata
+  Device.BulkData.Profile.{i}.CSVEncoding.RowTimestamp                                                 proto::tr181-bulkdata
+  Device.BulkData.Profile.{i}.Controller                                                               proto::tr181-bulkdata
+  Device.BulkData.Profile.{i}.Enable                                                                   proto::tr181-bulkdata
+  Device.BulkData.Profile.{i}.EncodingType                                                             proto::tr181-bulkdata
+  Device.BulkData.Profile.{i}.ForceCollection()                                                        proto::tr181-bulkdata
+  Device.BulkData.Profile.{i}.HTTP.                                                                    proto::tr181-bulkdata
+  Device.BulkData.Profile.{i}.HTTP.CACertificate                                                       proto::tr181-bulkdata
+  Device.BulkData.Profile.{i}.HTTP.Compression                                                         proto::tr181-bulkdata
+  Device.BulkData.Profile.{i}.HTTP.CompressionsSupported                                               proto::tr181-bulkdata
+  Device.BulkData.Profile.{i}.HTTP.Method                                                              proto::tr181-bulkdata
+  Device.BulkData.Profile.{i}.HTTP.MethodsSupported                                                    proto::tr181-bulkdata
+  Device.BulkData.Profile.{i}.HTTP.Password                                                            proto::tr181-bulkdata
+  Device.BulkData.Profile.{i}.HTTP.PersistAcrossReboot                                                 proto::tr181-bulkdata
+  Device.BulkData.Profile.{i}.HTTP.RequestURIParameter.{i}.                                            proto::tr181-bulkdata
+  Device.BulkData.Profile.{i}.HTTP.RequestURIParameter.{i}.Name                                        proto::tr181-bulkdata
+  Device.BulkData.Profile.{i}.HTTP.RequestURIParameter.{i}.Reference                                   proto::tr181-bulkdata
+  Device.BulkData.Profile.{i}.HTTP.RequestURIParameterNumberOfEntries                                  proto::tr181-bulkdata
+  Device.BulkData.Profile.{i}.HTTP.RetryEnable                                                         proto::tr181-bulkdata
+  Device.BulkData.Profile.{i}.HTTP.RetryIntervalMultiplier                                             proto::tr181-bulkdata
+  Device.BulkData.Profile.{i}.HTTP.RetryMinimumWaitInterval                                            proto::tr181-bulkdata
+  Device.BulkData.Profile.{i}.HTTP.URL                                                                 proto::tr181-bulkdata
+  Device.BulkData.Profile.{i}.HTTP.UseDateHeader                                                       proto::tr181-bulkdata
+  Device.BulkData.Profile.{i}.HTTP.Username                                                            proto::tr181-bulkdata
+  Device.BulkData.Profile.{i}.JSONEncoding.                                                            proto::tr181-bulkdata
+  Device.BulkData.Profile.{i}.JSONEncoding.ReportFormat                                                proto::tr181-bulkdata
+  Device.BulkData.Profile.{i}.JSONEncoding.ReportTimestamp                                             proto::tr181-bulkdata
+  Device.BulkData.Profile.{i}.MQTT.                                                                    proto::tr181-bulkdata
+  Device.BulkData.Profile.{i}.MQTT.PublishQoS                                                          proto::tr181-bulkdata
+  Device.BulkData.Profile.{i}.MQTT.PublishRetain                                                       proto::tr181-bulkdata
+  Device.BulkData.Profile.{i}.MQTT.PublishTopic                                                        proto::tr181-bulkdata
+  Device.BulkData.Profile.{i}.MQTT.Reference                                                           proto::tr181-bulkdata
+  Device.BulkData.Profile.{i}.Name                                                                     proto::tr181-bulkdata
+  Device.BulkData.Profile.{i}.NumberOfRetainedFailedReports                                            proto::tr181-bulkdata
+  Device.BulkData.Profile.{i}.Parameter.{i}.                                                           proto::tr181-bulkdata
+  Device.BulkData.Profile.{i}.Parameter.{i}.Name                                                       proto::tr181-bulkdata
+  Device.BulkData.Profile.{i}.Parameter.{i}.Reference                                                  proto::tr181-bulkdata
+  Device.BulkData.Profile.{i}.ParameterNumberOfEntries                                                 proto::tr181-bulkdata
+  Device.BulkData.Profile.{i}.Protocol                                                                 proto::tr181-bulkdata
+  Device.BulkData.Profile.{i}.Push!                                                                    proto::tr181-bulkdata
+  Device.BulkData.Profile.{i}.ReportingInterval                                                        proto::tr181-bulkdata
+  Device.BulkData.Profile.{i}.TimeReference                                                            proto::tr181-bulkdata
+  Device.BulkData.ProfileNumberOfEntries                                                               proto::tr181-bulkdata
+  Device.BulkData.Protocols                                                                            proto::tr181-bulkdata
+  Device.BulkData.Status                                                                               proto::tr181-bulkdata
   Device.CaptivePortal.                                                                                proto::tr181-captiveportal
   Device.CaptivePortal.AllowedList                                                                     proto::tr181-captiveportal
   Device.CaptivePortal.Enable                                                                          proto::tr181-captiveportal
@@ -4285,14 +4579,15 @@ Check that obuspa provides the same datamodel again (minus the platform specific
   Device.DHCPv4.Client.{i}.SentOptionNumberOfEntries                                                   proto::tr181-dhcpv4client
   Device.DHCPv4.Client.{i}.Status                                                                      proto::tr181-dhcpv4client
   Device.DHCPv4.Client.{i}.SubnetMask                                                                  proto::tr181-dhcpv4client
-  Device.DHCPv4.Client.{i}.X_PRPL-COM_Release                                                          proto::tr181-dhcpv4client
-  Device.DHCPv4.Client.{i}.X_PRPL-COM_Release()                                                        proto::tr181-dhcpv4client
+  Device.DHCPv4.Client.{i}.X_PRPLWARE-COM_Release                                                      proto::tr181-dhcpv4client
+  Device.DHCPv4.Client.{i}.X_PRPLWARE-COM_Release()                                                    proto::tr181-dhcpv4client
   Device.DHCPv4.ClientNumberOfEntries                                                                  proto::tr181-dhcpv4client
   Device.DHCPv4.Server.                                                                                proto::dhcpv4-manager
   Device.DHCPv4.Server.Enable                                                                          proto::dhcpv4-manager
   Device.DHCPv4.Server.Pool.{i}.                                                                       proto::dhcpv4-manager
   Device.DHCPv4.Server.Pool.{i}.Alias                                                                  proto::dhcpv4-manager
   Device.DHCPv4.Server.Pool.{i}.AllowedDevices                                                         proto::dhcpv4-manager
+  Device.DHCPv4.Server.Pool.{i}.AssignedLeasesNumberOfEntries                                          proto::dhcpv4-manager
   Device.DHCPv4.Server.Pool.{i}.Chaddr                                                                 proto::dhcpv4-manager
   Device.DHCPv4.Server.Pool.{i}.ChaddrExclude                                                          proto::dhcpv4-manager
   Device.DHCPv4.Server.Pool.{i}.ChaddrMask                                                             proto::dhcpv4-manager
@@ -4325,7 +4620,7 @@ Check that obuspa provides the same datamodel again (minus the platform specific
   Device.DHCPv4.Server.Pool.{i}.Option.{i}.Enable                                                      proto::dhcpv4-manager
   Device.DHCPv4.Server.Pool.{i}.Option.{i}.Tag                                                         proto::dhcpv4-manager
   Device.DHCPv4.Server.Pool.{i}.Option.{i}.Value                                                       proto::dhcpv4-manager
-  Device.DHCPv4.Server.Pool.{i}.Option.{i}.X_PRPL-COM_Force                                            proto::dhcpv4-manager
+  Device.DHCPv4.Server.Pool.{i}.Option.{i}.X_PRPLWARE-COM_Force                                        proto::dhcpv4-manager
   Device.DHCPv4.Server.Pool.{i}.OptionNumberOfEntries                                                  proto::dhcpv4-manager
   Device.DHCPv4.Server.Pool.{i}.Order                                                                  proto::dhcpv4-manager
   Device.DHCPv4.Server.Pool.{i}.ReservedAddresses                                                      proto::dhcpv4-manager
@@ -4342,11 +4637,12 @@ Check that obuspa provides the same datamodel again (minus the platform specific
   Device.DHCPv4.Server.Pool.{i}.VendorClassID                                                          proto::dhcpv4-manager
   Device.DHCPv4.Server.Pool.{i}.VendorClassIDExclude                                                   proto::dhcpv4-manager
   Device.DHCPv4.Server.Pool.{i}.VendorClassIDMode                                                      proto::dhcpv4-manager
-  Device.DHCPv4.Server.Pool.{i}.X_PRPL-COM_WINSServer                                                  proto::dhcpv4-manager
+  Device.DHCPv4.Server.Pool.{i}.X_PRPLWARE-COM_WINSServer                                              proto::dhcpv4-manager
   Device.DHCPv4.Server.PoolNumberOfEntries                                                             proto::dhcpv4-manager
   Device.DHCPv6.
   Device.DHCPv6.Client.{i}.                                                                            proto::tr181-dhcpv6client
   Device.DHCPv6.Client.{i}.Alias                                                                       proto::tr181-dhcpv6client
+  Device.DHCPv6.Client.{i}.AuthenticationProtocol                                                      proto::tr181-dhcpv6client
   Device.DHCPv6.Client.{i}.DUID                                                                        proto::tr181-dhcpv6client
   Device.DHCPv6.Client.{i}.Enable                                                                      proto::tr181-dhcpv6client
   Device.DHCPv6.Client.{i}.Interface                                                                   proto::tr181-dhcpv6client
@@ -4421,12 +4717,12 @@ Check that obuspa provides the same datamodel again (minus the platform specific
   Device.DHCPv6.Client.{i}.SuggestedT1                                                                 proto::tr181-dhcpv6client
   Device.DHCPv6.Client.{i}.SuggestedT2                                                                 proto::tr181-dhcpv6client
   Device.DHCPv6.Client.{i}.SupportedOptions                                                            proto::tr181-dhcpv6client
-  Device.DHCPv6.Client.{i}.X_PRPL-COM_Config.                                                          proto::tr181-dhcpv6client
-  Device.DHCPv6.Client.{i}.X_PRPL-COM_Config.LastT1SentWhen                                            proto::tr181-dhcpv6client
-  Device.DHCPv6.Client.{i}.X_PRPL-COM_Config.LastT2SentWhen                                            proto::tr181-dhcpv6client
-  Device.DHCPv6.Client.{i}.X_PRPL-COM_Config.LeaseRenewedWhen                                          proto::tr181-dhcpv6client
-  Device.DHCPv6.Client.{i}.X_PRPL-COM_Config.T1Renewed                                                 proto::tr181-dhcpv6client
-  Device.DHCPv6.Client.{i}.X_PRPL-COM_Config.T2Renewed                                                 proto::tr181-dhcpv6client
+  Device.DHCPv6.Client.{i}.X_PRPLWARE-COM_Config.                                                      proto::tr181-dhcpv6client
+  Device.DHCPv6.Client.{i}.X_PRPLWARE-COM_Config.LastT1SentWhen                                        proto::tr181-dhcpv6client
+  Device.DHCPv6.Client.{i}.X_PRPLWARE-COM_Config.LastT2SentWhen                                        proto::tr181-dhcpv6client
+  Device.DHCPv6.Client.{i}.X_PRPLWARE-COM_Config.LeaseRenewedWhen                                      proto::tr181-dhcpv6client
+  Device.DHCPv6.Client.{i}.X_PRPLWARE-COM_Config.T1Renewed                                             proto::tr181-dhcpv6client
+  Device.DHCPv6.Client.{i}.X_PRPLWARE-COM_Config.T2Renewed                                             proto::tr181-dhcpv6client
   Device.DHCPv6.ClientNumberOfEntries                                                                  proto::tr181-dhcpv6client
   Device.DHCPv6.Server.                                                                                proto::dhcpv6s-manager
   Device.DHCPv6.Server.Enable                                                                          proto::dhcpv6s-manager
@@ -4478,14 +4774,14 @@ Check that obuspa provides the same datamodel again (minus the platform specific
   Device.DHCPv6.Server.Pool.{i}.UserClassIDExclude                                                     proto::dhcpv6s-manager
   Device.DHCPv6.Server.Pool.{i}.VendorClassID                                                          proto::dhcpv6s-manager
   Device.DHCPv6.Server.Pool.{i}.VendorClassIDExclude                                                   proto::dhcpv6s-manager
-  Device.DHCPv6.Server.Pool.{i}.X_PRPL-COM_DNS.                                                        proto::dhcpv6s-manager
-  Device.DHCPv6.Server.Pool.{i}.X_PRPL-COM_DNS.DNSMode                                                 proto::dhcpv6s-manager
-  Device.DHCPv6.Server.Pool.{i}.X_PRPL-COM_DNS.DNSServers                                              proto::dhcpv6s-manager
-  Device.DHCPv6.Server.Pool.{i}.X_PRPL-COM_DNS.StaticServers                                           proto::dhcpv6s-manager
-  Device.DHCPv6.Server.Pool.{i}.X_PRPL-COM_IANAConfig.                                                 proto::dhcpv6s-manager
-  Device.DHCPv6.Server.Pool.{i}.X_PRPL-COM_IANAConfig.LeaseTime                                        proto::dhcpv6s-manager
-  Device.DHCPv6.Server.Pool.{i}.X_PRPL-COM_IANAConfig.MaxAddress                                       proto::dhcpv6s-manager
-  Device.DHCPv6.Server.Pool.{i}.X_PRPL-COM_IANAConfig.MinAddress                                       proto::dhcpv6s-manager
+  Device.DHCPv6.Server.Pool.{i}.X_PRPLWARE-COM_DNS.                                                    proto::dhcpv6s-manager
+  Device.DHCPv6.Server.Pool.{i}.X_PRPLWARE-COM_DNS.DNSMode                                             proto::dhcpv6s-manager
+  Device.DHCPv6.Server.Pool.{i}.X_PRPLWARE-COM_DNS.DNSServers                                          proto::dhcpv6s-manager
+  Device.DHCPv6.Server.Pool.{i}.X_PRPLWARE-COM_DNS.StaticServers                                       proto::dhcpv6s-manager
+  Device.DHCPv6.Server.Pool.{i}.X_PRPLWARE-COM_IANAConfig.                                             proto::dhcpv6s-manager
+  Device.DHCPv6.Server.Pool.{i}.X_PRPLWARE-COM_IANAConfig.LeaseTime                                    proto::dhcpv6s-manager
+  Device.DHCPv6.Server.Pool.{i}.X_PRPLWARE-COM_IANAConfig.MaxAddress                                   proto::dhcpv6s-manager
+  Device.DHCPv6.Server.Pool.{i}.X_PRPLWARE-COM_IANAConfig.MinAddress                                   proto::dhcpv6s-manager
   Device.DHCPv6.Server.PoolNumberOfEntries                                                             proto::dhcpv6s-manager
   Device.DNS.
   Device.DNS.Client.                                                                                   proto::tr181-dns
@@ -4592,26 +4888,26 @@ Check that obuspa provides the same datamodel again (minus the platform specific
   Device.DNS.SD.service_unsubscribe()                                                                  proto::tr181-dnssd
   Device.DNS.SD.service_unsubscribe() input:key
   Device.DNS.SupportedRecordTypes                                                                      proto::tr181-dns
-  Device.DNS.X_PRPL-COM_ForwardZoneNumberOfEntries                                                     proto::tr181-dns
-  Device.DNS.X_PRPL-COM_Host.{i}.                                                                      proto::tr181-dns
-  Device.DNS.X_PRPL-COM_Host.{i}.Alias                                                                 proto::tr181-dns
-  Device.DNS.X_PRPL-COM_Host.{i}.Enable                                                                proto::tr181-dns
-  Device.DNS.X_PRPL-COM_Host.{i}.IPAddress.{i}.                                                        proto::tr181-dns
-  Device.DNS.X_PRPL-COM_Host.{i}.IPAddress.{i}.Alias                                                   proto::tr181-dns
-  Device.DNS.X_PRPL-COM_Host.{i}.IPAddress.{i}.IPAddress                                               proto::tr181-dns
-  Device.DNS.X_PRPL-COM_Host.{i}.IPAddressNumberOfEntries                                              proto::tr181-dns
-  Device.DNS.X_PRPL-COM_Host.{i}.Interface                                                             proto::tr181-dns
-  Device.DNS.X_PRPL-COM_Host.{i}.Name                                                                  proto::tr181-dns
-  Device.DNS.X_PRPL-COM_Host.{i}.Origin                                                                proto::tr181-dns
-  Device.DNS.X_PRPL-COM_HostNumberOfEntries                                                            proto::tr181-dns
-  Device.DNS.X_PRPL-COM_RebindProtection.                                                              proto::tr181-dns
-  Device.DNS.X_PRPL-COM_RebindProtection.DomainExceptions.{i}.                                         proto::tr181-dns
-  Device.DNS.X_PRPL-COM_RebindProtection.DomainExceptions.{i}.Address                                  proto::tr181-dns
-  Device.DNS.X_PRPL-COM_RebindProtection.DomainExceptionsNumberOfEntries                               proto::tr181-dns
-  Device.DNS.X_PRPL-COM_RebindProtection.Enable                                                        proto::tr181-dns
-  Device.DNS.X_PRPL-COM_RebindProtection.IPExceptions.{i}.                                             proto::tr181-dns
-  Device.DNS.X_PRPL-COM_RebindProtection.IPExceptions.{i}.Address                                      proto::tr181-dns
-  Device.DNS.X_PRPL-COM_RebindProtection.IPExceptionsNumberOfEntries                                   proto::tr181-dns
+  Device.DNS.X_PRPLWARE-COM_ForwardZoneNumberOfEntries                                                 proto::tr181-dns
+  Device.DNS.X_PRPLWARE-COM_Host.{i}.                                                                  proto::tr181-dns
+  Device.DNS.X_PRPLWARE-COM_Host.{i}.Alias                                                             proto::tr181-dns
+  Device.DNS.X_PRPLWARE-COM_Host.{i}.Enable                                                            proto::tr181-dns
+  Device.DNS.X_PRPLWARE-COM_Host.{i}.IPAddress.{i}.                                                    proto::tr181-dns
+  Device.DNS.X_PRPLWARE-COM_Host.{i}.IPAddress.{i}.Alias                                               proto::tr181-dns
+  Device.DNS.X_PRPLWARE-COM_Host.{i}.IPAddress.{i}.IPAddress                                           proto::tr181-dns
+  Device.DNS.X_PRPLWARE-COM_Host.{i}.IPAddressNumberOfEntries                                          proto::tr181-dns
+  Device.DNS.X_PRPLWARE-COM_Host.{i}.Interface                                                         proto::tr181-dns
+  Device.DNS.X_PRPLWARE-COM_Host.{i}.Name                                                              proto::tr181-dns
+  Device.DNS.X_PRPLWARE-COM_Host.{i}.Origin                                                            proto::tr181-dns
+  Device.DNS.X_PRPLWARE-COM_HostNumberOfEntries                                                        proto::tr181-dns
+  Device.DNS.X_PRPLWARE-COM_RebindProtection.                                                          proto::tr181-dns
+  Device.DNS.X_PRPLWARE-COM_RebindProtection.DomainExceptions.{i}.                                     proto::tr181-dns
+  Device.DNS.X_PRPLWARE-COM_RebindProtection.DomainExceptions.{i}.Address                              proto::tr181-dns
+  Device.DNS.X_PRPLWARE-COM_RebindProtection.DomainExceptionsNumberOfEntries                           proto::tr181-dns
+  Device.DNS.X_PRPLWARE-COM_RebindProtection.Enable                                                    proto::tr181-dns
+  Device.DNS.X_PRPLWARE-COM_RebindProtection.IPExceptions.{i}.                                         proto::tr181-dns
+  Device.DNS.X_PRPLWARE-COM_RebindProtection.IPExceptions.{i}.Address                                  proto::tr181-dns
+  Device.DNS.X_PRPLWARE-COM_RebindProtection.IPExceptionsNumberOfEntries                               proto::tr181-dns
   Device.DSLite.                                                                                       proto::tr181-dslite
   Device.DSLite.Enable                                                                                 proto::tr181-dslite
   Device.DSLite.InterfaceSetting.{i}.                                                                  proto::tr181-dslite
@@ -4710,17 +5006,6 @@ Check that obuspa provides the same datamodel again (minus the platform specific
   Device.DeviceInfo.ModelName                                                                          proto::deviceinfo-manager
   Device.DeviceInfo.ModelNumber                                                                        proto::deviceinfo-manager
   Device.DeviceInfo.PEN                                                                                proto::deviceinfo-manager
-  Device.DeviceInfo.PowerStatus.                                                                       proto::tr181-powerstatus
-  Device.DeviceInfo.PowerStatus.PowerSensor.{i}.                                                       proto::tr181-powerstatus
-  Device.DeviceInfo.PowerStatus.PowerSensor.{i}.Alias                                                  proto::tr181-powerstatus
-  Device.DeviceInfo.PowerStatus.PowerSensor.{i}.Current                                                proto::tr181-powerstatus
-  Device.DeviceInfo.PowerStatus.PowerSensor.{i}.Enable                                                 proto::tr181-powerstatus
-  Device.DeviceInfo.PowerStatus.PowerSensor.{i}.LastUpdate                                             proto::tr181-powerstatus
-  Device.DeviceInfo.PowerStatus.PowerSensor.{i}.Name                                                   proto::tr181-powerstatus
-  Device.DeviceInfo.PowerStatus.PowerSensor.{i}.Power                                                  proto::tr181-powerstatus
-  Device.DeviceInfo.PowerStatus.PowerSensor.{i}.Status                                                 proto::tr181-powerstatus
-  Device.DeviceInfo.PowerStatus.PowerSensor.{i}.Voltage                                                proto::tr181-powerstatus
-  Device.DeviceInfo.PowerStatus.PowerSensorNumberOfEntries                                             proto::tr181-powerstatus
   Device.DeviceInfo.ProcessFaults.                                                                     proto::amx-faultmonitor
   Device.DeviceInfo.ProcessFaults.LastUpgradeCount                                                     proto::amx-faultmonitor
   Device.DeviceInfo.ProcessFaults.MaxProcessFaultEntries                                               proto::amx-faultmonitor
@@ -4774,10 +5059,10 @@ Check that obuspa provides the same datamodel again (minus the platform specific
   Device.DeviceInfo.Reboots.RemoveAllReboots()                                                         proto::reboot-service
   Device.DeviceInfo.Reboots.WarmBootCount                                                              proto::reboot-service
   Device.DeviceInfo.Reboots.WatchdogBootCount                                                          proto::reboot-service
-  Device.DeviceInfo.Reboots.X_PRPL-COM_CurrentBootCycle                                                proto::reboot-service
-  Device.DeviceInfo.Reboots.X_PRPL-COM_Reasons.{i}.                                                    proto::reboot-service
-  Device.DeviceInfo.Reboots.X_PRPL-COM_Reasons.{i}.Alias                                               proto::reboot-service
-  Device.DeviceInfo.Reboots.X_PRPL-COM_Reasons.{i}.Format                                              proto::reboot-service
+  Device.DeviceInfo.Reboots.X_PRPLWARE-COM_CurrentBootCycle                                            proto::reboot-service
+  Device.DeviceInfo.Reboots.X_PRPLWARE-COM_Reasons.{i}.                                                proto::reboot-service
+  Device.DeviceInfo.Reboots.X_PRPLWARE-COM_Reasons.{i}.Alias                                           proto::reboot-service
+  Device.DeviceInfo.Reboots.X_PRPLWARE-COM_Reasons.{i}.Format                                          proto::reboot-service
   Device.DeviceInfo.Reboots.reboot()                                                                   proto::reboot-service
   Device.DeviceInfo.Reboots.reboot() input:Cause
   Device.DeviceInfo.Reboots.reboot() input:Reason
@@ -4835,12 +5120,12 @@ Check that obuspa provides the same datamodel again (minus the platform specific
   Device.DeviceInfo.VendorLogFile.{i}.Upload() input:URL
   Device.DeviceInfo.VendorLogFile.{i}.Upload() input:Username
   Device.DeviceInfo.VendorLogFileNumberOfEntries                                                       proto::deviceinfo-manager
-  Device.DeviceInfo.X_PRPL-COM_CloneMACAddress()                                                       proto::deviceinfo-manager
-  Device.DeviceInfo.X_PRPL-COM_CloneMACAddress() input:MACAddress
-  Device.DeviceInfo.X_PRPL-COM_ClonedMACAddress                                                        proto::deviceinfo-manager
-  Device.DeviceInfo.X_PRPL-COM_Country                                                                 proto::deviceinfo-manager
-  Device.DeviceInfo.X_PRPL-COM_LastUpgradeDate                                                         proto::deviceinfo-manager
-  Device.DeviceInfo.X_PRPL-COM_RestoreMACAddress()                                                     proto::deviceinfo-manager
+  Device.DeviceInfo.X_PRPLWARE-COM_CloneMACAddress()                                                   proto::deviceinfo-manager
+  Device.DeviceInfo.X_PRPLWARE-COM_CloneMACAddress() input:MACAddress
+  Device.DeviceInfo.X_PRPLWARE-COM_ClonedMACAddress                                                    proto::deviceinfo-manager
+  Device.DeviceInfo.X_PRPLWARE-COM_Country                                                             proto::deviceinfo-manager
+  Device.DeviceInfo.X_PRPLWARE-COM_LastUpgradeDate                                                     proto::deviceinfo-manager
+  Device.DeviceInfo.X_PRPLWARE-COM_RestoreMACAddress()                                                 proto::deviceinfo-manager
   Device.DynamicDNS.                                                                                   proto::tr181-dynamicdns
   Device.DynamicDNS.Client.{i}.                                                                        proto::tr181-dynamicdns
   Device.DynamicDNS.Client.{i}.Alias                                                                   proto::tr181-dynamicdns
@@ -4857,9 +5142,10 @@ Check that obuspa provides the same datamodel again (minus the platform specific
   Device.DynamicDNS.Client.{i}.Server                                                                  proto::tr181-dynamicdns
   Device.DynamicDNS.Client.{i}.Status                                                                  proto::tr181-dynamicdns
   Device.DynamicDNS.Client.{i}.Username                                                                proto::tr181-dynamicdns
-  Device.DynamicDNS.Client.{i}.X_PRPL-COM_DNSServer                                                    proto::tr181-dynamicdns
-  Device.DynamicDNS.Client.{i}.X_PRPL-COM_IP                                                           proto::tr181-dynamicdns
-  Device.DynamicDNS.Client.{i}.X_PRPL-COM_IPVersion                                                    proto::tr181-dynamicdns
+  Device.DynamicDNS.Client.{i}.X_PRPLWARE-COM_DNSServer                                                proto::tr181-dynamicdns
+  Device.DynamicDNS.Client.{i}.X_PRPLWARE-COM_IP                                                       proto::tr181-dynamicdns
+  Device.DynamicDNS.Client.{i}.X_PRPLWARE-COM_IPInterfaceRef                                           proto::tr181-dynamicdns
+  Device.DynamicDNS.Client.{i}.X_PRPLWARE-COM_IPVersion                                                proto::tr181-dynamicdns
   Device.DynamicDNS.ClientNumberOfEntries                                                              proto::tr181-dynamicdns
   Device.DynamicDNS.Server.{i}.                                                                        proto::tr181-dynamicdns
   Device.DynamicDNS.Server.{i}.Alias                                                                   proto::tr181-dynamicdns
@@ -4911,12 +5197,12 @@ Check that obuspa provides the same datamodel again (minus the platform specific
   Device.Ethernet.Interface.{i}.Stats.UnknownProtoPacketsReceived                                      proto::ethernet-manager
   Device.Ethernet.Interface.{i}.Status                                                                 proto::ethernet-manager
   Device.Ethernet.Interface.{i}.Upstream                                                               proto::ethernet-manager
-  Device.Ethernet.Interface.{i}.X_PRPL-COM_Description                                                 proto::ethernet-manager
-  Device.Ethernet.Interface.{i}.X_PRPL-COM_LED.                                                        proto::ethernet-manager
-  Device.Ethernet.Interface.{i}.X_PRPL-COM_LED.Enable                                                  proto::ethernet-manager
-  Device.Ethernet.Interface.{i}.X_PRPL-COM_LED.Status                                                  proto::ethernet-manager
-  Device.Ethernet.Interface.{i}.X_PRPL-COM_MTU                                                         proto::ethernet-manager
-  Device.Ethernet.Interface.{i}.X_PRPL-COM_MTUMode                                                     proto::ethernet-manager
+  Device.Ethernet.Interface.{i}.X_PRPLWARE-COM_Description                                             proto::ethernet-manager
+  Device.Ethernet.Interface.{i}.X_PRPLWARE-COM_LED.                                                    proto::ethernet-manager
+  Device.Ethernet.Interface.{i}.X_PRPLWARE-COM_LED.Enable                                              proto::ethernet-manager
+  Device.Ethernet.Interface.{i}.X_PRPLWARE-COM_LED.Status                                              proto::ethernet-manager
+  Device.Ethernet.Interface.{i}.X_PRPLWARE-COM_MTU                                                     proto::ethernet-manager
+  Device.Ethernet.Interface.{i}.X_PRPLWARE-COM_MTUMode                                                 proto::ethernet-manager
   Device.Ethernet.Interface.{i}.X_PRPLWARE-COM_SFPReference                                            proto::ethernet-manager
   Device.Ethernet.InterfaceNumberOfEntries                                                             proto::ethernet-manager
   Device.Ethernet.Link.{i}.                                                                            proto::ethernet-manager
@@ -5049,7 +5335,7 @@ Check that obuspa provides the same datamodel again (minus the platform specific
   Device.Firewall.Chain.{i}.Rule.{i}.Status                                                            proto::tr181-firewall
   Device.Firewall.Chain.{i}.Rule.{i}.Target                                                            proto::tr181-firewall
   Device.Firewall.Chain.{i}.Rule.{i}.TargetChain                                                       proto::tr181-firewall
-  Device.Firewall.Chain.{i}.Rule.{i}.X_PRPL-COM_VendorClassID                                          proto::tr181-firewall
+  Device.Firewall.Chain.{i}.Rule.{i}.X_PRPLWARE-COM_VendorClassID                                      proto::tr181-firewall
   Device.Firewall.Chain.{i}.RuleNumberOfEntries                                                        proto::tr181-firewall
   Device.Firewall.ChainNumberOfEntries                                                                 proto::tr181-firewall
   Device.Firewall.Config                                                                               proto::tr181-firewall
@@ -5072,9 +5358,21 @@ Check that obuspa provides the same datamodel again (minus the platform specific
   Device.Firewall.DMZ.{i}.RemainingLeaseTime                                                           proto::tr181-firewall
   Device.Firewall.DMZ.{i}.SourcePrefix                                                                 proto::tr181-firewall
   Device.Firewall.DMZ.{i}.Status                                                                       proto::tr181-firewall
-  Device.Firewall.DMZ.{i}.X_PRPL-COM_Log                                                               proto::tr181-firewall
+  Device.Firewall.DMZ.{i}.X_PRPLWARE-COM_Log                                                           proto::tr181-firewall
   Device.Firewall.DMZNumberOfEntries                                                                   proto::tr181-firewall
   Device.Firewall.Enable                                                                               proto::tr181-firewall
+  Device.Firewall.InterfaceSetting.{i}.                                                                proto::tr181-firewall
+  Device.Firewall.InterfaceSetting.{i}.Alias                                                           proto::tr181-firewall
+  Device.Firewall.InterfaceSetting.{i}.Enable                                                          proto::tr181-firewall
+  Device.Firewall.InterfaceSetting.{i}.IPv4AcceptICMPEchoRequest                                       proto::tr181-firewall
+  Device.Firewall.InterfaceSetting.{i}.IPv4SpoofingProtection                                          proto::tr181-firewall
+  Device.Firewall.InterfaceSetting.{i}.IPv6AcceptICMPEchoRequest                                       proto::tr181-firewall
+  Device.Firewall.InterfaceSetting.{i}.IPv6PassThroughICMPEchoRequest                                  proto::tr181-firewall
+  Device.Firewall.InterfaceSetting.{i}.IPv6SpoofingProtection                                          proto::tr181-firewall
+  Device.Firewall.InterfaceSetting.{i}.Interface                                                       proto::tr181-firewall
+  Device.Firewall.InterfaceSetting.{i}.Status                                                          proto::tr181-firewall
+  Device.Firewall.InterfaceSetting.{i}.StealthMode                                                     proto::tr181-firewall
+  Device.Firewall.InterfaceSettingNumberOfEntries                                                      proto::tr181-firewall
   Device.Firewall.LastChange                                                                           proto::tr181-firewall
   Device.Firewall.Level.{i}.                                                                           proto::tr181-firewall
   Device.Firewall.Level.{i}.Alias                                                                      proto::tr181-firewall
@@ -5106,7 +5404,7 @@ Check that obuspa provides the same datamodel again (minus the platform specific
   Device.Firewall.Pinhole.{i}.SourcePortRangeMax                                                       proto::tr181-firewall
   Device.Firewall.Pinhole.{i}.SourcePrefixes                                                           proto::tr181-firewall
   Device.Firewall.Pinhole.{i}.Status                                                                   proto::tr181-firewall
-  Device.Firewall.Pinhole.{i}.X_PRPL-COM_Log                                                           proto::tr181-firewall
+  Device.Firewall.Pinhole.{i}.X_PRPLWARE-COM_Log                                                       proto::tr181-firewall
   Device.Firewall.PinholeNumberOfEntries                                                               proto::tr181-firewall
   Device.Firewall.Policy.{i}.                                                                          proto::tr181-firewall
   Device.Firewall.Policy.{i}.Alias                                                                     proto::tr181-firewall
@@ -5119,7 +5417,7 @@ Check that obuspa provides the same datamodel again (minus the platform specific
   Device.Firewall.Policy.{i}.SourceInterface                                                           proto::tr181-firewall
   Device.Firewall.Policy.{i}.Status                                                                    proto::tr181-firewall
   Device.Firewall.Policy.{i}.TargetChain                                                               proto::tr181-firewall
-  Device.Firewall.Policy.{i}.X_PRPL-COM_Log                                                            proto::tr181-firewall
+  Device.Firewall.Policy.{i}.X_PRPLWARE-COM_Log                                                        proto::tr181-firewall
   Device.Firewall.PolicyLevel                                                                          proto::tr181-firewall
   Device.Firewall.PolicyNumberOfEntries                                                                proto::tr181-firewall
   Device.Firewall.Service.{i}.                                                                         proto::tr181-firewall
@@ -5133,7 +5431,7 @@ Check that obuspa provides the same datamodel again (minus the platform specific
   Device.Firewall.Service.{i}.Protocol                                                                 proto::tr181-firewall
   Device.Firewall.Service.{i}.SourcePrefixes                                                           proto::tr181-firewall
   Device.Firewall.Service.{i}.Status                                                                   proto::tr181-firewall
-  Device.Firewall.Service.{i}.X_PRPL-COM_Log                                                           proto::tr181-firewall
+  Device.Firewall.Service.{i}.X_PRPLWARE-COM_Log                                                       proto::tr181-firewall
   Device.Firewall.ServiceNumberOfEntries                                                               proto::tr181-firewall
   Device.Firewall.Set.{i}.                                                                             proto::tr181-firewall
   Device.Firewall.Set.{i}.Alias                                                                        proto::tr181-firewall
@@ -5152,60 +5450,65 @@ Check that obuspa provides the same datamodel again (minus the platform specific
   Device.Firewall.SetNumberOfEntries                                                                   proto::tr181-firewall
   Device.Firewall.Type                                                                                 proto::tr181-firewall
   Device.Firewall.Version                                                                              proto::tr181-firewall
-  Device.Firewall.X_PRPL-COM_Enable                                                                    proto::tr181-firewall
-  Device.Firewall.X_PRPL-COM_ICMPLogs                                                                  proto::tr181-firewall
-  Device.Firewall.X_PRPL-COM_InterfaceSetting.{i}.                                                     proto::tr181-firewall
-  Device.Firewall.X_PRPL-COM_InterfaceSetting.{i}.AcceptICMPEchoRequest                                proto::tr181-firewall
-  Device.Firewall.X_PRPL-COM_InterfaceSetting.{i}.AcceptUDPTraceroute                                  proto::tr181-firewall
-  Device.Firewall.X_PRPL-COM_InterfaceSetting.{i}.AcceptUDPTracerouteStatus                            proto::tr181-firewall
-  Device.Firewall.X_PRPL-COM_InterfaceSetting.{i}.Alias                                                proto::tr181-firewall
-  Device.Firewall.X_PRPL-COM_InterfaceSetting.{i}.ICMPv4EchoRequestStatus                              proto::tr181-firewall
-  Device.Firewall.X_PRPL-COM_InterfaceSetting.{i}.ICMPv6EchoRequestStatus                              proto::tr181-firewall
-  Device.Firewall.X_PRPL-COM_InterfaceSetting.{i}.Interface                                            proto::tr181-firewall
-  Device.Firewall.X_PRPL-COM_InterfaceSetting.{i}.IsolateInterface                                     proto::tr181-firewall
-  Device.Firewall.X_PRPL-COM_InterfaceSetting.{i}.LOGAcceptOutgoingConnection                          proto::tr181-firewall
-  Device.Firewall.X_PRPL-COM_InterfaceSetting.{i}.LOGAcceptOutgoingConnectionStatus                    proto::tr181-firewall
-  Device.Firewall.X_PRPL-COM_InterfaceSetting.{i}.LOGDroppedIncomingConnection                         proto::tr181-firewall
-  Device.Firewall.X_PRPL-COM_InterfaceSetting.{i}.LOGDroppedIncomingConnectionStatus                   proto::tr181-firewall
-  Device.Firewall.X_PRPL-COM_InterfaceSetting.{i}.LOGDroppedOutgoingConnection                         proto::tr181-firewall
-  Device.Firewall.X_PRPL-COM_InterfaceSetting.{i}.LOGDroppedOutgoingConnectionStatus                   proto::tr181-firewall
-  Device.Firewall.X_PRPL-COM_InterfaceSetting.{i}.PassthroughICMPv6EchoRequest                         proto::tr181-firewall
-  Device.Firewall.X_PRPL-COM_InterfaceSetting.{i}.PassthroughICMPv6Status                              proto::tr181-firewall
-  Device.Firewall.X_PRPL-COM_InterfaceSetting.{i}.SpoofingProtection                                   proto::tr181-firewall
-  Device.Firewall.X_PRPL-COM_InterfaceSetting.{i}.SpoofingProtectionIPv4Status                         proto::tr181-firewall
-  Device.Firewall.X_PRPL-COM_InterfaceSetting.{i}.SpoofingProtectionIPv6Status                         proto::tr181-firewall
-  Device.Firewall.X_PRPL-COM_InterfaceSetting.{i}.StealthMode                                          proto::tr181-firewall
-  Device.Firewall.X_PRPL-COM_InterfaceSetting.{i}.StealthModeStatus                                    proto::tr181-firewall
-  Device.Firewall.X_PRPL-COM_InterfaceSettingNumberOfEntries                                           proto::tr181-firewall
-  Device.Firewall.X_PRPL-COM_Log.{i}.                                                                  proto::tr181-firewall
-  Device.Firewall.X_PRPL-COM_Log.{i}.Alias                                                             proto::tr181-firewall
-  Device.Firewall.X_PRPL-COM_Log.{i}.Description                                                       proto::tr181-firewall
-  Device.Firewall.X_PRPL-COM_Log.{i}.Enable                                                            proto::tr181-firewall
-  Device.Firewall.X_PRPL-COM_Log.{i}.FilterDestinationInterface                                        proto::tr181-firewall
-  Device.Firewall.X_PRPL-COM_Log.{i}.FilterPolicy                                                      proto::tr181-firewall
-  Device.Firewall.X_PRPL-COM_Log.{i}.FilterSourceInterface                                             proto::tr181-firewall
-  Device.Firewall.X_PRPL-COM_Log.{i}.Level                                                             proto::tr181-firewall
-  Device.Firewall.X_PRPL-COM_Log.{i}.Prefix                                                            proto::tr181-firewall
-  Device.Firewall.X_PRPL-COM_LogNumberOfEntries                                                        proto::tr181-firewall
-  Device.Firewall.X_PRPL-COM_MaxPinholeNumberOfEntries                                                 proto::tr181-firewall
-  Device.Firewall.X_PRPL-COM_WANAccess.                                                                proto::tr181-firewall
-  Device.Firewall.X_PRPL-COM_WANAccess.BlockList.{i}.                                                  proto::tr181-firewall
-  Device.Firewall.X_PRPL-COM_WANAccess.BlockList.{i}.Alias                                             proto::tr181-firewall
-  Device.Firewall.X_PRPL-COM_WANAccess.BlockList.{i}.DeviceType                                        proto::tr181-firewall
-  Device.Firewall.X_PRPL-COM_WANAccess.BlockList.{i}.DiscoverySource                                   proto::tr181-firewall
-  Device.Firewall.X_PRPL-COM_WANAccess.BlockList.{i}.IPAddress                                         proto::tr181-firewall
-  Device.Firewall.X_PRPL-COM_WANAccess.BlockList.{i}.IPAddressSource                                   proto::tr181-firewall
-  Device.Firewall.X_PRPL-COM_WANAccess.BlockList.{i}.InterfaceName                                     proto::tr181-firewall
-  Device.Firewall.X_PRPL-COM_WANAccess.BlockList.{i}.PhysAddress                                       proto::tr181-firewall
-  Device.Firewall.X_PRPL-COM_WANAccess.BlockList.{i}.Tags                                              proto::tr181-firewall
-  Device.Firewall.X_PRPL-COM_WANAccess.BlockListNumberOfEntries                                        proto::tr181-firewall
+  Device.Firewall.X_PRPLWARE-COM_Enable                                                                proto::tr181-firewall
+  Device.Firewall.X_PRPLWARE-COM_ICMPLogs                                                              proto::tr181-firewall
+  Device.Firewall.X_PRPLWARE-COM_InterfaceSetting.{i}.                                                 proto::tr181-firewall
+  Device.Firewall.X_PRPLWARE-COM_InterfaceSetting.{i}.AcceptICMPEchoRequest                            proto::tr181-firewall
+  Device.Firewall.X_PRPLWARE-COM_InterfaceSetting.{i}.Alias                                            proto::tr181-firewall
+  Device.Firewall.X_PRPLWARE-COM_InterfaceSetting.{i}.Enable                                           proto::tr181-firewall
+  Device.Firewall.X_PRPLWARE-COM_InterfaceSetting.{i}.ICMPv4EchoRequestStatus                          proto::tr181-firewall
+  Device.Firewall.X_PRPLWARE-COM_InterfaceSetting.{i}.ICMPv6EchoRequestStatus                          proto::tr181-firewall
+  Device.Firewall.X_PRPLWARE-COM_InterfaceSetting.{i}.IPv4AcceptUDPTraceroute                          proto::tr181-firewall
+  Device.Firewall.X_PRPLWARE-COM_InterfaceSetting.{i}.IPv4AcceptUDPTracerouteStatus                    proto::tr181-firewall
+  Device.Firewall.X_PRPLWARE-COM_InterfaceSetting.{i}.IPv6AcceptUDPTraceroute                          proto::tr181-firewall
+  Device.Firewall.X_PRPLWARE-COM_InterfaceSetting.{i}.IPv6AcceptUDPTracerouteStatus                    proto::tr181-firewall
+  Device.Firewall.X_PRPLWARE-COM_InterfaceSetting.{i}.Interface                                        proto::tr181-firewall
+  Device.Firewall.X_PRPLWARE-COM_InterfaceSetting.{i}.IsolateInterface                                 proto::tr181-firewall
+  Device.Firewall.X_PRPLWARE-COM_InterfaceSetting.{i}.LOGAcceptOutgoingConnection                      proto::tr181-firewall
+  Device.Firewall.X_PRPLWARE-COM_InterfaceSetting.{i}.LOGAcceptOutgoingConnectionStatus                proto::tr181-firewall
+  Device.Firewall.X_PRPLWARE-COM_InterfaceSetting.{i}.LOGDroppedIncomingConnection                     proto::tr181-firewall
+  Device.Firewall.X_PRPLWARE-COM_InterfaceSetting.{i}.LOGDroppedIncomingConnectionStatus               proto::tr181-firewall
+  Device.Firewall.X_PRPLWARE-COM_InterfaceSetting.{i}.LOGDroppedOutgoingConnection                     proto::tr181-firewall
+  Device.Firewall.X_PRPLWARE-COM_InterfaceSetting.{i}.LOGDroppedOutgoingConnectionStatus               proto::tr181-firewall
+  Device.Firewall.X_PRPLWARE-COM_InterfaceSetting.{i}.PassthroughICMPv6EchoRequest                     proto::tr181-firewall
+  Device.Firewall.X_PRPLWARE-COM_InterfaceSetting.{i}.PassthroughICMPv6Status                          proto::tr181-firewall
+  Device.Firewall.X_PRPLWARE-COM_InterfaceSetting.{i}.SpoofingProtection                               proto::tr181-firewall
+  Device.Firewall.X_PRPLWARE-COM_InterfaceSetting.{i}.SpoofingProtectionIPv4Status                     proto::tr181-firewall
+  Device.Firewall.X_PRPLWARE-COM_InterfaceSetting.{i}.SpoofingProtectionIPv6Status                     proto::tr181-firewall
+  Device.Firewall.X_PRPLWARE-COM_InterfaceSetting.{i}.StealthMode                                      proto::tr181-firewall
+  Device.Firewall.X_PRPLWARE-COM_InterfaceSetting.{i}.StealthModeStatus                                proto::tr181-firewall
+  Device.Firewall.X_PRPLWARE-COM_InterfaceSettingNumberOfEntries                                       proto::tr181-firewall
+  Device.Firewall.X_PRPLWARE-COM_Log.{i}.                                                              proto::tr181-firewall
+  Device.Firewall.X_PRPLWARE-COM_Log.{i}.Alias                                                         proto::tr181-firewall
+  Device.Firewall.X_PRPLWARE-COM_Log.{i}.Description                                                   proto::tr181-firewall
+  Device.Firewall.X_PRPLWARE-COM_Log.{i}.Enable                                                        proto::tr181-firewall
+  Device.Firewall.X_PRPLWARE-COM_Log.{i}.FilterDestinationInterface                                    proto::tr181-firewall
+  Device.Firewall.X_PRPLWARE-COM_Log.{i}.FilterPolicy                                                  proto::tr181-firewall
+  Device.Firewall.X_PRPLWARE-COM_Log.{i}.FilterSourceInterface                                         proto::tr181-firewall
+  Device.Firewall.X_PRPLWARE-COM_Log.{i}.Level                                                         proto::tr181-firewall
+  Device.Firewall.X_PRPLWARE-COM_Log.{i}.Prefix                                                        proto::tr181-firewall
+  Device.Firewall.X_PRPLWARE-COM_LogNumberOfEntries                                                    proto::tr181-firewall
+  Device.Firewall.X_PRPLWARE-COM_MaxPinholeNumberOfEntries                                             proto::tr181-firewall
+  Device.Firewall.X_PRPLWARE-COM_WANAccess.                                                            proto::tr181-firewall
+  Device.Firewall.X_PRPLWARE-COM_WANAccess.BlockList.{i}.                                              proto::tr181-firewall
+  Device.Firewall.X_PRPLWARE-COM_WANAccess.BlockList.{i}.Alias                                         proto::tr181-firewall
+  Device.Firewall.X_PRPLWARE-COM_WANAccess.BlockList.{i}.DeviceType                                    proto::tr181-firewall
+  Device.Firewall.X_PRPLWARE-COM_WANAccess.BlockList.{i}.DiscoverySource                               proto::tr181-firewall
+  Device.Firewall.X_PRPLWARE-COM_WANAccess.BlockList.{i}.IPAddress                                     proto::tr181-firewall
+  Device.Firewall.X_PRPLWARE-COM_WANAccess.BlockList.{i}.IPAddressSource                               proto::tr181-firewall
+  Device.Firewall.X_PRPLWARE-COM_WANAccess.BlockList.{i}.InterfaceName                                 proto::tr181-firewall
+  Device.Firewall.X_PRPLWARE-COM_WANAccess.BlockList.{i}.PhysAddress                                   proto::tr181-firewall
+  Device.Firewall.X_PRPLWARE-COM_WANAccess.BlockList.{i}.Tags                                          proto::tr181-firewall
+  Device.Firewall.X_PRPLWARE-COM_WANAccess.BlockListNumberOfEntries                                    proto::tr181-firewall
   Device.Hosts.                                                                                        proto::hosts-manager
   Device.Hosts.AccessControl.{i}.                                                                      proto::hosts-manager
   Device.Hosts.AccessControl.{i}.AccessPolicy                                                          proto::hosts-manager
   Device.Hosts.AccessControl.{i}.Alias                                                                 proto::hosts-manager
   Device.Hosts.AccessControl.{i}.Enable                                                                proto::hosts-manager
   Device.Hosts.AccessControl.{i}.HostName                                                              proto::hosts-manager
+  Device.Hosts.AccessControl.{i}.Origin                                                                proto::hosts-manager
   Device.Hosts.AccessControl.{i}.PhysAddress                                                           proto::hosts-manager
+  Device.Hosts.AccessControl.{i}.PhysAddressMask                                                       proto::hosts-manager
   Device.Hosts.AccessControl.{i}.Schedule.{i}.                                                         proto::hosts-manager
   Device.Hosts.AccessControl.{i}.Schedule.{i}.Alias                                                    proto::hosts-manager
   Device.Hosts.AccessControl.{i}.Schedule.{i}.Day                                                      proto::hosts-manager
@@ -5214,8 +5517,6 @@ Check that obuspa provides the same datamodel again (minus the platform specific
   Device.Hosts.AccessControl.{i}.Schedule.{i}.StartTime                                                proto::hosts-manager
   Device.Hosts.AccessControl.{i}.ScheduleNumberOfEntries                                               proto::hosts-manager
   Device.Hosts.AccessControl.{i}.ScheduleRef                                                           proto::hosts-manager
-  Device.Hosts.AccessControl.{i}.X_PRPL-COM_Origin                                                     proto::hosts-manager
-  Device.Hosts.AccessControl.{i}.X_PRPL-COM_PhysAddressMask                                            proto::hosts-manager
   Device.Hosts.AccessControlNumberOfEntries                                                            proto::hosts-manager
   Device.Hosts.Host.{i}.                                                                               proto::hosts-manager
   Device.Hosts.Host.{i}.Active                                                                         proto::hosts-manager
@@ -5239,17 +5540,17 @@ Check that obuspa provides the same datamodel again (minus the platform specific
   Device.Hosts.Host.{i}.WANStats.BytesSent                                                             proto::hosts-manager
   Device.Hosts.Host.{i}.WANStats.PacketsReceived                                                       proto::hosts-manager
   Device.Hosts.Host.{i}.WANStats.PacketsSent                                                           proto::hosts-manager
-  Device.Hosts.Host.{i}.X_PRPL-COM_Protected                                                           proto::hosts-manager
+  Device.Hosts.Host.{i}.X_PRPLWARE-COM_Protected                                                       proto::hosts-manager
   Device.Hosts.HostNumberOfEntries                                                                     proto::hosts-manager
-  Device.Hosts.X_PRPL-COM_HostConfig.                                                                  proto::hosts-manager
-  Device.Hosts.X_PRPL-COM_HostConfig.InactiveCheckInterval                                             proto::hosts-manager
-  Device.Hosts.X_PRPL-COM_HostConfig.InactiveCheckThreshold                                            proto::hosts-manager
-  Device.Hosts.X_PRPL-COM_HostConfig.MaxDevices                                                        proto::hosts-manager
-  Device.Hosts.X_PRPL-COM_HostConfig.MaxInactiveTime                                                   proto::hosts-manager
-  Device.Hosts.X_PRPL-COM_HostConfig.MaxInactiveTimeThreshold                                          proto::hosts-manager
-  Device.Hosts.X_PRPL-COM_HostConfig.RemoveInactiveDevices()                                           proto::hosts-manager
-  Device.Hosts.X_PRPL-COM_HostConfig.RemoveInactiveDevices() input:minimumInactiveInterval
-  Device.Hosts.X_PRPL-COM_HostConfig.RemoveInactiveDevices() output:nrOfRemovedDevices
+  Device.Hosts.X_PRPLWARE-COM_HostConfig.                                                              proto::hosts-manager
+  Device.Hosts.X_PRPLWARE-COM_HostConfig.InactiveCheckInterval                                         proto::hosts-manager
+  Device.Hosts.X_PRPLWARE-COM_HostConfig.InactiveCheckThreshold                                        proto::hosts-manager
+  Device.Hosts.X_PRPLWARE-COM_HostConfig.MaxDevices                                                    proto::hosts-manager
+  Device.Hosts.X_PRPLWARE-COM_HostConfig.MaxInactiveTime                                               proto::hosts-manager
+  Device.Hosts.X_PRPLWARE-COM_HostConfig.MaxInactiveTimeThreshold                                      proto::hosts-manager
+  Device.Hosts.X_PRPLWARE-COM_HostConfig.RemoveInactiveDevices()                                       proto::hosts-manager
+  Device.Hosts.X_PRPLWARE-COM_HostConfig.RemoveInactiveDevices() input:minimumInactiveInterval
+  Device.Hosts.X_PRPLWARE-COM_HostConfig.RemoveInactiveDevices() output:nrOfRemovedDevices
   Device.IP.
   Device.IP.ActivePort.{i}.                                                                            proto::ip-manager
   Device.IP.ActivePortNumberOfEntries                                                                  proto::ip-manager
@@ -5443,91 +5744,91 @@ Check that obuspa provides the same datamodel again (minus the platform specific
   Device.IP.Diagnostics.UploadDiagnosticsMaxConnections                                                proto::tr181-ipdiagnostics
   Device.IP.Diagnostics.UploadDiagnosticsMaxIncrementalResult                                          proto::tr181-ipdiagnostics
   Device.IP.Diagnostics.UploadTransports                                                               proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_DownloadConfig.                                                     proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_DownloadConfig.DSCP                                                 proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_DownloadConfig.DownloadURL                                          proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_DownloadConfig.EnablePerConnectionResults                           proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_DownloadConfig.EthernetPriority                                     proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_DownloadConfig.Interface                                            proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_DownloadConfig.NumberOfConnections                                  proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_DownloadConfig.ProtocolVersion                                      proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_DownloadConfig.TimeBasedTestDuration                                proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_DownloadConfig.TimeBasedTestMeasurementInterval                     proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_DownloadConfig.TimeBasedTestMeasurementOffset                       proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_DownloadResult.{i}.                                                 proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_DownloadResult.{i}.BOMTime                                          proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_DownloadResult.{i}.EOMTime                                          proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_DownloadResult.{i}.IPAddressUsed                                    proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_DownloadResult.{i}.IncrementalResult.{i}.                           proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_DownloadResult.{i}.IncrementalResult.{i}.EndTime                    proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_DownloadResult.{i}.IncrementalResult.{i}.StartTime                  proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_DownloadResult.{i}.IncrementalResult.{i}.TestBytesReceived          proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_DownloadResult.{i}.IncrementalResult.{i}.TotalBytesReceived         proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_DownloadResult.{i}.IncrementalResult.{i}.TotalBytesSent             proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_DownloadResult.{i}.PerConnectionResult.{i}.                         proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_DownloadResult.{i}.PerConnectionResult.{i}.BOMTime                  proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_DownloadResult.{i}.PerConnectionResult.{i}.EOMTime                  proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_DownloadResult.{i}.PerConnectionResult.{i}.ROMTime                  proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_DownloadResult.{i}.PerConnectionResult.{i}.TCPOpenRequestTime       proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_DownloadResult.{i}.PerConnectionResult.{i}.TCPOpenResponseTime      proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_DownloadResult.{i}.PerConnectionResult.{i}.TestBytesReceived        proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_DownloadResult.{i}.PerConnectionResult.{i}.TotalBytesReceived       proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_DownloadResult.{i}.PerConnectionResult.{i}.TotalBytesSent           proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_DownloadResult.{i}.PeriodOfFullLoading                              proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_DownloadResult.{i}.ROMTime                                          proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_DownloadResult.{i}.Status                                           proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_DownloadResult.{i}.TCPOpenRequestTime                               proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_DownloadResult.{i}.TCPOpenResponseTime                              proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_DownloadResult.{i}.TestBytesReceived                                proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_DownloadResult.{i}.TestBytesReceivedUnderFullLoading                proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_DownloadResult.{i}.TotalBytesReceived                               proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_DownloadResult.{i}.TotalBytesReceivedUnderFullLoading               proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_DownloadResult.{i}.TotalBytesSent                                   proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_DownloadResult.{i}.TotalBytesSentUnderFullLoading                   proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_NumberOfDownloadResult                                              proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_NumberOfUploadResult                                                proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_UploadConfig.                                                       proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_UploadConfig.DSCP                                                   proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_UploadConfig.EnablePerConnectionResults                             proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_UploadConfig.EthernetPriority                                       proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_UploadConfig.Interface                                              proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_UploadConfig.NumberOfConnections                                    proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_UploadConfig.ProtocolVersion                                        proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_UploadConfig.TestFileLength                                         proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_UploadConfig.TimeBasedTestDuration                                  proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_UploadConfig.TimeBasedTestMeasurementInterval                       proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_UploadConfig.TimeBasedTestMeasurementOffset                         proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_UploadConfig.UploadURL                                              proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_UploadResult.{i}.                                                   proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_UploadResult.{i}.BOMTime                                            proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_UploadResult.{i}.EOMTime                                            proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_UploadResult.{i}.IPAddressUsed                                      proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_UploadResult.{i}.IncrementalResult.{i}.                             proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_UploadResult.{i}.IncrementalResult.{i}.EndTime                      proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_UploadResult.{i}.IncrementalResult.{i}.StartTime                    proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_UploadResult.{i}.IncrementalResult.{i}.TestBytesSent                proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_UploadResult.{i}.IncrementalResult.{i}.TotalBytesReceived           proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_UploadResult.{i}.IncrementalResult.{i}.TotalBytesSent               proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_UploadResult.{i}.PerConnectionResult.{i}.                           proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_UploadResult.{i}.PerConnectionResult.{i}.BOMTime                    proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_UploadResult.{i}.PerConnectionResult.{i}.EOMTime                    proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_UploadResult.{i}.PerConnectionResult.{i}.ROMTime                    proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_UploadResult.{i}.PerConnectionResult.{i}.TCPOpenRequestTime         proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_UploadResult.{i}.PerConnectionResult.{i}.TCPOpenResponseTime        proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_UploadResult.{i}.PerConnectionResult.{i}.TestBytesSent              proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_UploadResult.{i}.PerConnectionResult.{i}.TotalBytesReceived         proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_UploadResult.{i}.PerConnectionResult.{i}.TotalBytesSent             proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_UploadResult.{i}.PeriodOfFullLoading                                proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_UploadResult.{i}.ROMTime                                            proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_UploadResult.{i}.Status                                             proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_UploadResult.{i}.TCPOpenRequestTime                                 proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_UploadResult.{i}.TCPOpenResponseTime                                proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_UploadResult.{i}.TestBytesSent                                      proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_UploadResult.{i}.TestBytesSentUnderFullLoading                      proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_UploadResult.{i}.TotalBytesReceived                                 proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_UploadResult.{i}.TotalBytesReceivedUnderFullLoading                 proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_UploadResult.{i}.TotalBytesSent                                     proto::tr181-ipdiagnostics
-  Device.IP.Diagnostics.X_PRPL-COM_UploadResult.{i}.TotalBytesSentUnderFullLoading                     proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_DownloadConfig.                                                 proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_DownloadConfig.DSCP                                             proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_DownloadConfig.DownloadURL                                      proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_DownloadConfig.EnablePerConnectionResults                       proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_DownloadConfig.EthernetPriority                                 proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_DownloadConfig.Interface                                        proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_DownloadConfig.NumberOfConnections                              proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_DownloadConfig.ProtocolVersion                                  proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_DownloadConfig.TimeBasedTestDuration                            proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_DownloadConfig.TimeBasedTestMeasurementInterval                 proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_DownloadConfig.TimeBasedTestMeasurementOffset                   proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_DownloadResult.{i}.                                             proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_DownloadResult.{i}.BOMTime                                      proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_DownloadResult.{i}.EOMTime                                      proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_DownloadResult.{i}.IPAddressUsed                                proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_DownloadResult.{i}.IncrementalResult.{i}.                       proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_DownloadResult.{i}.IncrementalResult.{i}.EndTime                proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_DownloadResult.{i}.IncrementalResult.{i}.StartTime              proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_DownloadResult.{i}.IncrementalResult.{i}.TestBytesReceived      proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_DownloadResult.{i}.IncrementalResult.{i}.TotalBytesReceived     proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_DownloadResult.{i}.IncrementalResult.{i}.TotalBytesSent         proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_DownloadResult.{i}.PerConnectionResult.{i}.                     proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_DownloadResult.{i}.PerConnectionResult.{i}.BOMTime              proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_DownloadResult.{i}.PerConnectionResult.{i}.EOMTime              proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_DownloadResult.{i}.PerConnectionResult.{i}.ROMTime              proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_DownloadResult.{i}.PerConnectionResult.{i}.TCPOpenRequestTime   proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_DownloadResult.{i}.PerConnectionResult.{i}.TCPOpenResponseTime  proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_DownloadResult.{i}.PerConnectionResult.{i}.TestBytesReceived    proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_DownloadResult.{i}.PerConnectionResult.{i}.TotalBytesReceived   proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_DownloadResult.{i}.PerConnectionResult.{i}.TotalBytesSent       proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_DownloadResult.{i}.PeriodOfFullLoading                          proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_DownloadResult.{i}.ROMTime                                      proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_DownloadResult.{i}.Status                                       proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_DownloadResult.{i}.TCPOpenRequestTime                           proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_DownloadResult.{i}.TCPOpenResponseTime                          proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_DownloadResult.{i}.TestBytesReceived                            proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_DownloadResult.{i}.TestBytesReceivedUnderFullLoading            proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_DownloadResult.{i}.TotalBytesReceived                           proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_DownloadResult.{i}.TotalBytesReceivedUnderFullLoading           proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_DownloadResult.{i}.TotalBytesSent                               proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_DownloadResult.{i}.TotalBytesSentUnderFullLoading               proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_NumberOfDownloadResult                                          proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_NumberOfUploadResult                                            proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_UploadConfig.                                                   proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_UploadConfig.DSCP                                               proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_UploadConfig.EnablePerConnectionResults                         proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_UploadConfig.EthernetPriority                                   proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_UploadConfig.Interface                                          proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_UploadConfig.NumberOfConnections                                proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_UploadConfig.ProtocolVersion                                    proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_UploadConfig.TestFileLength                                     proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_UploadConfig.TimeBasedTestDuration                              proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_UploadConfig.TimeBasedTestMeasurementInterval                   proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_UploadConfig.TimeBasedTestMeasurementOffset                     proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_UploadConfig.UploadURL                                          proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_UploadResult.{i}.                                               proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_UploadResult.{i}.BOMTime                                        proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_UploadResult.{i}.EOMTime                                        proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_UploadResult.{i}.IPAddressUsed                                  proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_UploadResult.{i}.IncrementalResult.{i}.                         proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_UploadResult.{i}.IncrementalResult.{i}.EndTime                  proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_UploadResult.{i}.IncrementalResult.{i}.StartTime                proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_UploadResult.{i}.IncrementalResult.{i}.TestBytesSent            proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_UploadResult.{i}.IncrementalResult.{i}.TotalBytesReceived       proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_UploadResult.{i}.IncrementalResult.{i}.TotalBytesSent           proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_UploadResult.{i}.PerConnectionResult.{i}.                       proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_UploadResult.{i}.PerConnectionResult.{i}.BOMTime                proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_UploadResult.{i}.PerConnectionResult.{i}.EOMTime                proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_UploadResult.{i}.PerConnectionResult.{i}.ROMTime                proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_UploadResult.{i}.PerConnectionResult.{i}.TCPOpenRequestTime     proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_UploadResult.{i}.PerConnectionResult.{i}.TCPOpenResponseTime    proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_UploadResult.{i}.PerConnectionResult.{i}.TestBytesSent          proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_UploadResult.{i}.PerConnectionResult.{i}.TotalBytesReceived     proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_UploadResult.{i}.PerConnectionResult.{i}.TotalBytesSent         proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_UploadResult.{i}.PeriodOfFullLoading                            proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_UploadResult.{i}.ROMTime                                        proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_UploadResult.{i}.Status                                         proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_UploadResult.{i}.TCPOpenRequestTime                             proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_UploadResult.{i}.TCPOpenResponseTime                            proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_UploadResult.{i}.TestBytesSent                                  proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_UploadResult.{i}.TestBytesSentUnderFullLoading                  proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_UploadResult.{i}.TotalBytesReceived                             proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_UploadResult.{i}.TotalBytesReceivedUnderFullLoading             proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_UploadResult.{i}.TotalBytesSent                                 proto::tr181-ipdiagnostics
+  Device.IP.Diagnostics.X_PRPLWARE-COM_UploadResult.{i}.TotalBytesSentUnderFullLoading                 proto::tr181-ipdiagnostics
   Device.IP.IPv4Capable                                                                                proto::ip-manager
   Device.IP.IPv4Enable                                                                                 proto::ip-manager
   Device.IP.IPv4Status                                                                                 proto::ip-manager
@@ -5602,12 +5903,12 @@ Check that obuspa provides the same datamodel again (minus the platform specific
   Device.IP.Interface.{i}.Status                                                                       proto::ip-manager
   Device.IP.Interface.{i}.Type                                                                         proto::ip-manager
   Device.IP.Interface.{i}.ULAEnable                                                                    proto::ip-manager
-  Device.IP.Interface.{i}.X_PRPL-COM_Description                                                       proto::ip-manager
-  Device.IP.Interface.{i}.X_PRPL-COM_IPv4Config.                                                       proto::ip-manager
-  Device.IP.Interface.{i}.X_PRPL-COM_IPv4Config.NeighborReachableTime                                  proto::ip-manager
-  Device.IP.Interface.{i}.X_PRPL-COM_IPv6Config.                                                       proto::ip-manager
-  Device.IP.Interface.{i}.X_PRPL-COM_IPv6Config.NeighborReachableTime                                  proto::ip-manager
-  Device.IP.Interface.{i}.X_PRPL-COM_MTUMode                                                           proto::ip-manager
+  Device.IP.Interface.{i}.X_PRPLWARE-COM_Description                                                   proto::ip-manager
+  Device.IP.Interface.{i}.X_PRPLWARE-COM_IPv4Config.                                                   proto::ip-manager
+  Device.IP.Interface.{i}.X_PRPLWARE-COM_IPv4Config.NeighborReachableTime                              proto::ip-manager
+  Device.IP.Interface.{i}.X_PRPLWARE-COM_IPv6Config.                                                   proto::ip-manager
+  Device.IP.Interface.{i}.X_PRPLWARE-COM_IPv6Config.NeighborReachableTime                              proto::ip-manager
+  Device.IP.Interface.{i}.X_PRPLWARE-COM_MTUMode                                                       proto::ip-manager
   Device.IP.InterfaceNumberOfEntries                                                                   proto::ip-manager
   Device.IP.ULAPrefix                                                                                  proto::ip-manager
   Device.InterfaceStack.{i}.                                                                           proto::tr181-device
@@ -5618,6 +5919,7 @@ Check that obuspa provides the same datamodel again (minus the platform specific
   Device.InterfaceStack.{i}.LowerLayer                                                                 proto::tr181-device
   Device.InterfaceStackNumberOfEntries                                                                 proto::tr181-device
   Device.LEDs.                                                                                         proto::tr181-led
+  Device.LEDs.BrightnessLimiter                                                                        proto::tr181-led
   Device.LEDs.LED.{i}.                                                                                 proto::tr181-led
   Device.LEDs.LED.{i}.Alias                                                                            proto::tr181-led
   Device.LEDs.LED.{i}.CurrentCycleElement.                                                             proto::tr181-led
@@ -5664,11 +5966,6 @@ Check that obuspa provides the same datamodel again (minus the platform specific
   Device.LocalAgent.Controller.{i}.InheritedRole
   Device.LocalAgent.Controller.{i}.MTP.{i}.
   Device.LocalAgent.Controller.{i}.MTP.{i}.Alias
-  Device.LocalAgent.Controller.{i}.MTP.{i}.CoAP.
-  Device.LocalAgent.Controller.{i}.MTP.{i}.CoAP.EnableEncryption
-  Device.LocalAgent.Controller.{i}.MTP.{i}.CoAP.Host
-  Device.LocalAgent.Controller.{i}.MTP.{i}.CoAP.Path
-  Device.LocalAgent.Controller.{i}.MTP.{i}.CoAP.Port
   Device.LocalAgent.Controller.{i}.MTP.{i}.Enable
   Device.LocalAgent.Controller.{i}.MTP.{i}.MQTT.
   Device.LocalAgent.Controller.{i}.MTP.{i}.MQTT.Reference
@@ -5737,10 +6034,6 @@ Check that obuspa provides the same datamodel again (minus the platform specific
   Device.LocalAgent.EndpointID
   Device.LocalAgent.MTP.{i}.
   Device.LocalAgent.MTP.{i}.Alias
-  Device.LocalAgent.MTP.{i}.CoAP.
-  Device.LocalAgent.MTP.{i}.CoAP.EnableEncryption
-  Device.LocalAgent.MTP.{i}.CoAP.Path
-  Device.LocalAgent.MTP.{i}.CoAP.Port
   Device.LocalAgent.MTP.{i}.Enable
   Device.LocalAgent.MTP.{i}.MQTT.
   Device.LocalAgent.MTP.{i}.MQTT.PublishQoS
@@ -5806,89 +6099,89 @@ Check that obuspa provides the same datamodel again (minus the platform specific
   Device.Logical.Interface.{i}.Stats.UnicastPacketsSent                                                proto::tr181-logical
   Device.Logical.Interface.{i}.Stats.UnknownProtoPacketsReceived                                       proto::tr181-logical
   Device.Logical.Interface.{i}.Status                                                                  proto::tr181-logical
-  Device.Logical.Interface.{i}.X_PRPL-COM_LAN.                                                         proto::tr181-logical
-  Device.Logical.Interface.{i}.X_PRPL-COM_LAN.AddLowerLayerInterface()                                 proto::tr181-logical
-  Device.Logical.Interface.{i}.X_PRPL-COM_LAN.AddLowerLayerInterface() input:LowerLayerInterface
-  Device.Logical.Interface.{i}.X_PRPL-COM_LAN.DHCPv4PoolReference                                      proto::tr181-logical
-  Device.Logical.Interface.{i}.X_PRPL-COM_LAN.DHCPv6PoolReference                                      proto::tr181-logical
-  Device.Logical.Interface.{i}.X_PRPL-COM_LAN.DomainName                                               proto::tr181-logical
-  Device.Logical.Interface.{i}.X_PRPL-COM_LAN.DomainSearchList                                         proto::tr181-logical
-  Device.Logical.Interface.{i}.X_PRPL-COM_LAN.GetAlternativeIPv4Config()                               proto::tr181-logical
-  Device.Logical.Interface.{i}.X_PRPL-COM_LAN.GetAlternativeIPv4Config() output:Enable
-  Device.Logical.Interface.{i}.X_PRPL-COM_LAN.GetAlternativeIPv4Config() output:IPAddress
-  Device.Logical.Interface.{i}.X_PRPL-COM_LAN.GetAlternativeIPv4Config() output:SubnetMask
-  Device.Logical.Interface.{i}.X_PRPL-COM_LAN.GetIPv4Config()                                          proto::tr181-logical
-  Device.Logical.Interface.{i}.X_PRPL-COM_LAN.GetIPv4Config() output:DHCPParameters
-  Device.Logical.Interface.{i}.X_PRPL-COM_LAN.GetIPv4Config() output:Enable
-  Device.Logical.Interface.{i}.X_PRPL-COM_LAN.GetIPv4Config() output:IPAddress
-  Device.Logical.Interface.{i}.X_PRPL-COM_LAN.GetIPv4Config() output:SubnetMask
-  Device.Logical.Interface.{i}.X_PRPL-COM_LAN.GetIPv4ConfigExt()                                       proto::tr181-logical
-  Device.Logical.Interface.{i}.X_PRPL-COM_LAN.GetIPv4ConfigExt() output:IPConfigs
-  Device.Logical.Interface.{i}.X_PRPL-COM_LAN.GetIPv4ConfigExt() output:Pools
-  Device.Logical.Interface.{i}.X_PRPL-COM_LAN.GetIPv6Config()                                          proto::tr181-logical
-  Device.Logical.Interface.{i}.X_PRPL-COM_LAN.GetIPv6Config() output:DHCPParameters
-  Device.Logical.Interface.{i}.X_PRPL-COM_LAN.GetIPv6Config() output:Enable
-  Device.Logical.Interface.{i}.X_PRPL-COM_LAN.GetIPv6Config() output:RAParameters
-  Device.Logical.Interface.{i}.X_PRPL-COM_LAN.GetIPv6Config() output:RAPool
-  Device.Logical.Interface.{i}.X_PRPL-COM_LAN.HostName.{i}.                                            proto::tr181-logical
-  Device.Logical.Interface.{i}.X_PRPL-COM_LAN.HostName.{i}.Alias                                       proto::tr181-logical
-  Device.Logical.Interface.{i}.X_PRPL-COM_LAN.HostName.{i}.Enable                                      proto::tr181-logical
-  Device.Logical.Interface.{i}.X_PRPL-COM_LAN.HostName.{i}.IPVersion                                   proto::tr181-logical
-  Device.Logical.Interface.{i}.X_PRPL-COM_LAN.HostName.{i}.Name                                        proto::tr181-logical
-  Device.Logical.Interface.{i}.X_PRPL-COM_LAN.HostNameNumberOfEntries                                  proto::tr181-logical
-  Device.Logical.Interface.{i}.X_PRPL-COM_LAN.RemoveLowerLayerInterface()                              proto::tr181-logical
-  Device.Logical.Interface.{i}.X_PRPL-COM_LAN.RemoveLowerLayerInterface() input:LowerLayerInterface
-  Device.Logical.Interface.{i}.X_PRPL-COM_LAN.SetAlternativeIPv4Config()                               proto::tr181-logical
-  Device.Logical.Interface.{i}.X_PRPL-COM_LAN.SetAlternativeIPv4Config() input:Enable
-  Device.Logical.Interface.{i}.X_PRPL-COM_LAN.SetAlternativeIPv4Config() input:IPAddress
-  Device.Logical.Interface.{i}.X_PRPL-COM_LAN.SetAlternativeIPv4Config() input:SubnetMask
-  Device.Logical.Interface.{i}.X_PRPL-COM_LAN.SetIPv4Config()                                          proto::tr181-logical
-  Device.Logical.Interface.{i}.X_PRPL-COM_LAN.SetIPv4Config() input:DHCPEnable
-  Device.Logical.Interface.{i}.X_PRPL-COM_LAN.SetIPv4Config() input:DNSServers
-  Device.Logical.Interface.{i}.X_PRPL-COM_LAN.SetIPv4Config() input:Enable
-  Device.Logical.Interface.{i}.X_PRPL-COM_LAN.SetIPv4Config() input:ForceDoraCycle
-  Device.Logical.Interface.{i}.X_PRPL-COM_LAN.SetIPv4Config() input:IPAddress
-  Device.Logical.Interface.{i}.X_PRPL-COM_LAN.SetIPv4Config() input:LeaseTime
-  Device.Logical.Interface.{i}.X_PRPL-COM_LAN.SetIPv4Config() input:MaxAddress
-  Device.Logical.Interface.{i}.X_PRPL-COM_LAN.SetIPv4Config() input:MinAddress
-  Device.Logical.Interface.{i}.X_PRPL-COM_LAN.SetIPv4Config() input:Pool
-  Device.Logical.Interface.{i}.X_PRPL-COM_LAN.SetIPv4Config() input:SubnetMask
-  Device.Logical.Interface.{i}.X_PRPL-COM_LAN.SetIPv4ConfigExt()                                       proto::tr181-logical
-  Device.Logical.Interface.{i}.X_PRPL-COM_LAN.SetIPv4ConfigExt() input:ForceDoraCycle
-  Device.Logical.Interface.{i}.X_PRPL-COM_LAN.SetIPv4ConfigExt() input:IPConfigs
-  Device.Logical.Interface.{i}.X_PRPL-COM_LAN.SetIPv4ConfigExt() input:Pools
-  Device.Logical.Interface.{i}.X_PRPL-COM_LAN.SetIPv6Config()                                          proto::tr181-logical
-  Device.Logical.Interface.{i}.X_PRPL-COM_LAN.SetIPv6Config() input:DHCPv6Enable
-  Device.Logical.Interface.{i}.X_PRPL-COM_LAN.SetIPv6Config() input:DHCPv6Pool
-  Device.Logical.Interface.{i}.X_PRPL-COM_LAN.SetIPv6Config() input:Enable
-  Device.Logical.Interface.{i}.X_PRPL-COM_LAN.SetIPv6Config() input:IANAEnable
-  Device.Logical.Interface.{i}.X_PRPL-COM_LAN.SetIPv6Config() input:IAPDEnable
-  Device.Logical.Interface.{i}.X_PRPL-COM_LAN.SetIPv6Config() input:RAEnable
-  Device.Logical.Interface.{i}.X_PRPL-COM_LAN.SetIPv6Config() input:RAPool
-  Device.Logical.Interface.{i}.X_PRPL-COM_LAN.Status                                                   proto::tr181-logical
-  Device.Logical.Interface.{i}.X_PRPL-COM_WAN.                                                         proto::tr181-logical
-  Device.Logical.Interface.{i}.X_PRPL-COM_WAN.GetWANStatus()                                           proto::tr181-logical
-  Device.Logical.Interface.{i}.X_PRPL-COM_WAN.IPv4Address                                              proto::tr181-logical
-  Device.Logical.Interface.{i}.X_PRPL-COM_WAN.IPv6Address                                              proto::tr181-logical
-  Device.Logical.Interface.{i}.X_PRPL-COM_WAN.Status                                                   proto::tr181-logical
+  Device.Logical.Interface.{i}.X_PRPLWARE-COM_LAN.                                                     proto::tr181-logical
+  Device.Logical.Interface.{i}.X_PRPLWARE-COM_LAN.AddLowerLayerInterface()                             proto::tr181-logical
+  Device.Logical.Interface.{i}.X_PRPLWARE-COM_LAN.AddLowerLayerInterface() input:LowerLayerInterface
+  Device.Logical.Interface.{i}.X_PRPLWARE-COM_LAN.DHCPv4PoolReference                                  proto::tr181-logical
+  Device.Logical.Interface.{i}.X_PRPLWARE-COM_LAN.DHCPv6PoolReference                                  proto::tr181-logical
+  Device.Logical.Interface.{i}.X_PRPLWARE-COM_LAN.DomainName                                           proto::tr181-logical
+  Device.Logical.Interface.{i}.X_PRPLWARE-COM_LAN.DomainSearchList                                     proto::tr181-logical
+  Device.Logical.Interface.{i}.X_PRPLWARE-COM_LAN.GetAlternativeIPv4Config()                           proto::tr181-logical
+  Device.Logical.Interface.{i}.X_PRPLWARE-COM_LAN.GetAlternativeIPv4Config() output:Enable
+  Device.Logical.Interface.{i}.X_PRPLWARE-COM_LAN.GetAlternativeIPv4Config() output:IPAddress
+  Device.Logical.Interface.{i}.X_PRPLWARE-COM_LAN.GetAlternativeIPv4Config() output:SubnetMask
+  Device.Logical.Interface.{i}.X_PRPLWARE-COM_LAN.GetIPv4Config()                                      proto::tr181-logical
+  Device.Logical.Interface.{i}.X_PRPLWARE-COM_LAN.GetIPv4Config() output:DHCPParameters
+  Device.Logical.Interface.{i}.X_PRPLWARE-COM_LAN.GetIPv4Config() output:Enable
+  Device.Logical.Interface.{i}.X_PRPLWARE-COM_LAN.GetIPv4Config() output:IPAddress
+  Device.Logical.Interface.{i}.X_PRPLWARE-COM_LAN.GetIPv4Config() output:SubnetMask
+  Device.Logical.Interface.{i}.X_PRPLWARE-COM_LAN.GetIPv4ConfigExt()                                   proto::tr181-logical
+  Device.Logical.Interface.{i}.X_PRPLWARE-COM_LAN.GetIPv4ConfigExt() output:IPConfigs
+  Device.Logical.Interface.{i}.X_PRPLWARE-COM_LAN.GetIPv4ConfigExt() output:Pools
+  Device.Logical.Interface.{i}.X_PRPLWARE-COM_LAN.GetIPv6Config()                                      proto::tr181-logical
+  Device.Logical.Interface.{i}.X_PRPLWARE-COM_LAN.GetIPv6Config() output:DHCPParameters
+  Device.Logical.Interface.{i}.X_PRPLWARE-COM_LAN.GetIPv6Config() output:Enable
+  Device.Logical.Interface.{i}.X_PRPLWARE-COM_LAN.GetIPv6Config() output:RAParameters
+  Device.Logical.Interface.{i}.X_PRPLWARE-COM_LAN.GetIPv6Config() output:RAPool
+  Device.Logical.Interface.{i}.X_PRPLWARE-COM_LAN.HostName.{i}.                                        proto::tr181-logical
+  Device.Logical.Interface.{i}.X_PRPLWARE-COM_LAN.HostName.{i}.Alias                                   proto::tr181-logical
+  Device.Logical.Interface.{i}.X_PRPLWARE-COM_LAN.HostName.{i}.Enable                                  proto::tr181-logical
+  Device.Logical.Interface.{i}.X_PRPLWARE-COM_LAN.HostName.{i}.IPVersion                               proto::tr181-logical
+  Device.Logical.Interface.{i}.X_PRPLWARE-COM_LAN.HostName.{i}.Name                                    proto::tr181-logical
+  Device.Logical.Interface.{i}.X_PRPLWARE-COM_LAN.HostNameNumberOfEntries                              proto::tr181-logical
+  Device.Logical.Interface.{i}.X_PRPLWARE-COM_LAN.RemoveLowerLayerInterface()                          proto::tr181-logical
+  Device.Logical.Interface.{i}.X_PRPLWARE-COM_LAN.RemoveLowerLayerInterface() input:LowerLayerInterface
+  Device.Logical.Interface.{i}.X_PRPLWARE-COM_LAN.SetAlternativeIPv4Config()                           proto::tr181-logical
+  Device.Logical.Interface.{i}.X_PRPLWARE-COM_LAN.SetAlternativeIPv4Config() input:Enable
+  Device.Logical.Interface.{i}.X_PRPLWARE-COM_LAN.SetAlternativeIPv4Config() input:IPAddress
+  Device.Logical.Interface.{i}.X_PRPLWARE-COM_LAN.SetAlternativeIPv4Config() input:SubnetMask
+  Device.Logical.Interface.{i}.X_PRPLWARE-COM_LAN.SetIPv4Config()                                      proto::tr181-logical
+  Device.Logical.Interface.{i}.X_PRPLWARE-COM_LAN.SetIPv4Config() input:DHCPEnable
+  Device.Logical.Interface.{i}.X_PRPLWARE-COM_LAN.SetIPv4Config() input:DNSServers
+  Device.Logical.Interface.{i}.X_PRPLWARE-COM_LAN.SetIPv4Config() input:Enable
+  Device.Logical.Interface.{i}.X_PRPLWARE-COM_LAN.SetIPv4Config() input:ForceDoraCycle
+  Device.Logical.Interface.{i}.X_PRPLWARE-COM_LAN.SetIPv4Config() input:IPAddress
+  Device.Logical.Interface.{i}.X_PRPLWARE-COM_LAN.SetIPv4Config() input:LeaseTime
+  Device.Logical.Interface.{i}.X_PRPLWARE-COM_LAN.SetIPv4Config() input:MaxAddress
+  Device.Logical.Interface.{i}.X_PRPLWARE-COM_LAN.SetIPv4Config() input:MinAddress
+  Device.Logical.Interface.{i}.X_PRPLWARE-COM_LAN.SetIPv4Config() input:Pool
+  Device.Logical.Interface.{i}.X_PRPLWARE-COM_LAN.SetIPv4Config() input:SubnetMask
+  Device.Logical.Interface.{i}.X_PRPLWARE-COM_LAN.SetIPv4ConfigExt()                                   proto::tr181-logical
+  Device.Logical.Interface.{i}.X_PRPLWARE-COM_LAN.SetIPv4ConfigExt() input:ForceDoraCycle
+  Device.Logical.Interface.{i}.X_PRPLWARE-COM_LAN.SetIPv4ConfigExt() input:IPConfigs
+  Device.Logical.Interface.{i}.X_PRPLWARE-COM_LAN.SetIPv4ConfigExt() input:Pools
+  Device.Logical.Interface.{i}.X_PRPLWARE-COM_LAN.SetIPv6Config()                                      proto::tr181-logical
+  Device.Logical.Interface.{i}.X_PRPLWARE-COM_LAN.SetIPv6Config() input:DHCPv6Enable
+  Device.Logical.Interface.{i}.X_PRPLWARE-COM_LAN.SetIPv6Config() input:DHCPv6Pool
+  Device.Logical.Interface.{i}.X_PRPLWARE-COM_LAN.SetIPv6Config() input:Enable
+  Device.Logical.Interface.{i}.X_PRPLWARE-COM_LAN.SetIPv6Config() input:IANAEnable
+  Device.Logical.Interface.{i}.X_PRPLWARE-COM_LAN.SetIPv6Config() input:IAPDEnable
+  Device.Logical.Interface.{i}.X_PRPLWARE-COM_LAN.SetIPv6Config() input:RAEnable
+  Device.Logical.Interface.{i}.X_PRPLWARE-COM_LAN.SetIPv6Config() input:RAPool
+  Device.Logical.Interface.{i}.X_PRPLWARE-COM_LAN.Status                                               proto::tr181-logical
+  Device.Logical.Interface.{i}.X_PRPLWARE-COM_WAN.                                                     proto::tr181-logical
+  Device.Logical.Interface.{i}.X_PRPLWARE-COM_WAN.GetWANStatus()                                       proto::tr181-logical
+  Device.Logical.Interface.{i}.X_PRPLWARE-COM_WAN.IPv4Address                                          proto::tr181-logical
+  Device.Logical.Interface.{i}.X_PRPLWARE-COM_WAN.IPv6Address                                          proto::tr181-logical
+  Device.Logical.Interface.{i}.X_PRPLWARE-COM_WAN.Status                                               proto::tr181-logical
   Device.Logical.InterfaceNumberOfEntries                                                              proto::tr181-logical
-  Device.Logical.X_PRPL-COM_Subnet.                                                                    proto::tr181-logical
-  Device.Logical.X_PRPL-COM_Subnet.CreateSubnet()                                                      proto::tr181-logical
-  Device.Logical.X_PRPL-COM_Subnet.CreateSubnet() input:BridgeInterface
-  Device.Logical.X_PRPL-COM_Subnet.CreateSubnet() input:EthernetLinkInterface
-  Device.Logical.X_PRPL-COM_Subnet.CreateSubnet() input:IPInterface
-  Device.Logical.X_PRPL-COM_Subnet.CreateSubnet() input:LogicalInterface
-  Device.Logical.X_PRPL-COM_Subnet.DeleteSubnet()                                                      proto::tr181-logical
-  Device.Logical.X_PRPL-COM_Subnet.DeleteSubnet() input:BridgeInterface
-  Device.Logical.X_PRPL-COM_Subnet.DeleteSubnet() input:EthernetLinkInterface
-  Device.Logical.X_PRPL-COM_Subnet.DeleteSubnet() input:IPInterface
-  Device.Logical.X_PRPL-COM_Subnet.DeleteSubnet() input:LogicalInterface
-  Device.Logical.X_PRPL-COM_Subnet.GetSubnet()                                                         proto::tr181-logical
-  Device.Logical.X_PRPL-COM_Subnet.GetSubnet() input:Alias
-  Device.Logical.X_PRPL-COM_Subnet.GetSubnet() output:BridgeInterface
-  Device.Logical.X_PRPL-COM_Subnet.GetSubnet() output:EthernetLinkInterface
-  Device.Logical.X_PRPL-COM_Subnet.GetSubnet() output:IPInterface
-  Device.Logical.X_PRPL-COM_Subnet.GetSubnet() output:LogicalInterface
+  Device.Logical.X_PRPLWARE-COM_Subnet.                                                                proto::tr181-logical
+  Device.Logical.X_PRPLWARE-COM_Subnet.CreateSubnet()                                                  proto::tr181-logical
+  Device.Logical.X_PRPLWARE-COM_Subnet.CreateSubnet() input:BridgeInterface
+  Device.Logical.X_PRPLWARE-COM_Subnet.CreateSubnet() input:EthernetLinkInterface
+  Device.Logical.X_PRPLWARE-COM_Subnet.CreateSubnet() input:IPInterface
+  Device.Logical.X_PRPLWARE-COM_Subnet.CreateSubnet() input:LogicalInterface
+  Device.Logical.X_PRPLWARE-COM_Subnet.DeleteSubnet()                                                  proto::tr181-logical
+  Device.Logical.X_PRPLWARE-COM_Subnet.DeleteSubnet() input:BridgeInterface
+  Device.Logical.X_PRPLWARE-COM_Subnet.DeleteSubnet() input:EthernetLinkInterface
+  Device.Logical.X_PRPLWARE-COM_Subnet.DeleteSubnet() input:IPInterface
+  Device.Logical.X_PRPLWARE-COM_Subnet.DeleteSubnet() input:LogicalInterface
+  Device.Logical.X_PRPLWARE-COM_Subnet.GetSubnet()                                                     proto::tr181-logical
+  Device.Logical.X_PRPLWARE-COM_Subnet.GetSubnet() input:Alias
+  Device.Logical.X_PRPLWARE-COM_Subnet.GetSubnet() output:BridgeInterface
+  Device.Logical.X_PRPLWARE-COM_Subnet.GetSubnet() output:EthernetLinkInterface
+  Device.Logical.X_PRPLWARE-COM_Subnet.GetSubnet() output:IPInterface
+  Device.Logical.X_PRPLWARE-COM_Subnet.GetSubnet() output:LogicalInterface
   Device.MQTT.
   Device.MQTT.Capabilities.
   Device.MQTT.Capabilities.MaxNumberOfClientSubscriptions
@@ -5964,16 +6257,16 @@ Check that obuspa provides the same datamodel again (minus the platform specific
   Device.MQTTBroker.Broker.{i}.Port                                                                    proto::tr181-mqttbroker
   Device.MQTTBroker.Broker.{i}.Status                                                                  proto::tr181-mqttbroker
   Device.MQTTBroker.Broker.{i}.Username                                                                proto::tr181-mqttbroker
-  Device.MQTTBroker.Broker.{i}.X_PRPL-COM_User.{i}.                                                    proto::tr181-mqttbroker
-  Device.MQTTBroker.Broker.{i}.X_PRPL-COM_User.{i}.ACL.{i}.                                            proto::tr181-mqttbroker
-  Device.MQTTBroker.Broker.{i}.X_PRPL-COM_User.{i}.ACL.{i}.AccessRights                                proto::tr181-mqttbroker
-  Device.MQTTBroker.Broker.{i}.X_PRPL-COM_User.{i}.ACL.{i}.Alias                                       proto::tr181-mqttbroker
-  Device.MQTTBroker.Broker.{i}.X_PRPL-COM_User.{i}.ACL.{i}.Topic                                       proto::tr181-mqttbroker
-  Device.MQTTBroker.Broker.{i}.X_PRPL-COM_User.{i}.ACLNumberOfEntries                                  proto::tr181-mqttbroker
-  Device.MQTTBroker.Broker.{i}.X_PRPL-COM_User.{i}.Alias                                               proto::tr181-mqttbroker
-  Device.MQTTBroker.Broker.{i}.X_PRPL-COM_User.{i}.Password                                            proto::tr181-mqttbroker
-  Device.MQTTBroker.Broker.{i}.X_PRPL-COM_User.{i}.Username                                            proto::tr181-mqttbroker
-  Device.MQTTBroker.Broker.{i}.X_PRPL-COM_UserNumberOfEntries                                          proto::tr181-mqttbroker
+  Device.MQTTBroker.Broker.{i}.X_PRPLWARE-COM_User.{i}.                                                proto::tr181-mqttbroker
+  Device.MQTTBroker.Broker.{i}.X_PRPLWARE-COM_User.{i}.ACL.{i}.                                        proto::tr181-mqttbroker
+  Device.MQTTBroker.Broker.{i}.X_PRPLWARE-COM_User.{i}.ACL.{i}.AccessRights                            proto::tr181-mqttbroker
+  Device.MQTTBroker.Broker.{i}.X_PRPLWARE-COM_User.{i}.ACL.{i}.Alias                                   proto::tr181-mqttbroker
+  Device.MQTTBroker.Broker.{i}.X_PRPLWARE-COM_User.{i}.ACL.{i}.Topic                                   proto::tr181-mqttbroker
+  Device.MQTTBroker.Broker.{i}.X_PRPLWARE-COM_User.{i}.ACLNumberOfEntries                              proto::tr181-mqttbroker
+  Device.MQTTBroker.Broker.{i}.X_PRPLWARE-COM_User.{i}.Alias                                           proto::tr181-mqttbroker
+  Device.MQTTBroker.Broker.{i}.X_PRPLWARE-COM_User.{i}.Password                                        proto::tr181-mqttbroker
+  Device.MQTTBroker.Broker.{i}.X_PRPLWARE-COM_User.{i}.Username                                        proto::tr181-mqttbroker
+  Device.MQTTBroker.Broker.{i}.X_PRPLWARE-COM_UserNumberOfEntries                                      proto::tr181-mqttbroker
   Device.MQTTBroker.BrokerNumberOfEntries                                                              proto::tr181-mqttbroker
   Device.NAT.                                                                                          proto::tr181-firewall
   Device.NAT.InterfaceSetting.{i}.                                                                     proto::tr181-firewall
@@ -5981,10 +6274,10 @@ Check that obuspa provides the same datamodel again (minus the platform specific
   Device.NAT.InterfaceSetting.{i}.Enable                                                               proto::tr181-firewall
   Device.NAT.InterfaceSetting.{i}.Interface                                                            proto::tr181-firewall
   Device.NAT.InterfaceSetting.{i}.Status                                                               proto::tr181-firewall
-  Device.NAT.InterfaceSetting.{i}.X_PRPL-COM_NATInterface.{i}.                                         proto::tr181-firewall
-  Device.NAT.InterfaceSetting.{i}.X_PRPL-COM_NATInterface.{i}.Alias                                    proto::tr181-firewall
-  Device.NAT.InterfaceSetting.{i}.X_PRPL-COM_NATInterface.{i}.Interface                                proto::tr181-firewall
-  Device.NAT.InterfaceSetting.{i}.X_PRPL-COM_NATInterfaceNumberOfEntries                               proto::tr181-firewall
+  Device.NAT.InterfaceSetting.{i}.X_PRPLWARE-COM_NATInterface.{i}.                                     proto::tr181-firewall
+  Device.NAT.InterfaceSetting.{i}.X_PRPLWARE-COM_NATInterface.{i}.Alias                                proto::tr181-firewall
+  Device.NAT.InterfaceSetting.{i}.X_PRPLWARE-COM_NATInterface.{i}.Interface                            proto::tr181-firewall
+  Device.NAT.InterfaceSetting.{i}.X_PRPLWARE-COM_NATInterfaceNumberOfEntries                           proto::tr181-firewall
   Device.NAT.InterfaceSettingNumberOfEntries                                                           proto::tr181-firewall
   Device.NAT.MaxNumberOfPortMappings                                                                   proto::tr181-firewall
   Device.NAT.MaxNumberOfPortTriggers                                                                   proto::tr181-firewall
@@ -6005,7 +6298,7 @@ Check that obuspa provides the same datamodel again (minus the platform specific
   Device.NAT.PortMapping.{i}.RemoteHost                                                                proto::tr181-firewall
   Device.NAT.PortMapping.{i}.ScheduleRef                                                               proto::tr181-firewall
   Device.NAT.PortMapping.{i}.Status                                                                    proto::tr181-firewall
-  Device.NAT.PortMapping.{i}.X_PRPL-COM_Log                                                            proto::tr181-firewall
+  Device.NAT.PortMapping.{i}.X_PRPLWARE-COM_Log                                                        proto::tr181-firewall
   Device.NAT.PortMappingNumberOfEntries                                                                proto::tr181-firewall
   Device.NAT.PortTrigger.{i}.                                                                          proto::tr181-firewall
   Device.NAT.PortTrigger.{i}.ActivationDate                                                            proto::tr181-firewall
@@ -6023,31 +6316,31 @@ Check that obuspa provides the same datamodel again (minus the platform specific
   Device.NAT.PortTrigger.{i}.Rule.{i}.Port                                                             proto::tr181-firewall
   Device.NAT.PortTrigger.{i}.Rule.{i}.PortEndRange                                                     proto::tr181-firewall
   Device.NAT.PortTrigger.{i}.Rule.{i}.Protocol                                                         proto::tr181-firewall
-  Device.NAT.PortTrigger.{i}.Rule.{i}.X_PRPL-COM_Log                                                   proto::tr181-firewall
+  Device.NAT.PortTrigger.{i}.Rule.{i}.X_PRPLWARE-COM_Log                                               proto::tr181-firewall
   Device.NAT.PortTrigger.{i}.RuleNumberOfEntries                                                       proto::tr181-firewall
   Device.NAT.PortTrigger.{i}.ScheduleRef                                                               proto::tr181-firewall
   Device.NAT.PortTrigger.{i}.Status                                                                    proto::tr181-firewall
   Device.NAT.PortTriggerNumberOfEntries                                                                proto::tr181-firewall
-  Device.NAT.X_PRPL-COM_MaximumConntrackEntries                                                        proto::tr181-firewall
-  Device.NAT.X_PRPL-COM_NumberOfConntrackEntries                                                       proto::tr181-firewall
-  Device.NAT.X_PRPL-COM_StaticNAT.                                                                     proto::tr181-firewall
-  Device.NAT.X_PRPL-COM_StaticNAT.Host.{i}.                                                            proto::tr181-firewall
-  Device.NAT.X_PRPL-COM_StaticNAT.Host.{i}.Alias                                                       proto::tr181-firewall
-  Device.NAT.X_PRPL-COM_StaticNAT.Host.{i}.Enable                                                      proto::tr181-firewall
-  Device.NAT.X_PRPL-COM_StaticNAT.Host.{i}.LANDevice                                                   proto::tr181-firewall
-  Device.NAT.X_PRPL-COM_StaticNAT.Host.{i}.PortMapping.{i}.                                            proto::tr181-firewall
-  Device.NAT.X_PRPL-COM_StaticNAT.Host.{i}.PortMapping.{i}.Alias                                       proto::tr181-firewall
-  Device.NAT.X_PRPL-COM_StaticNAT.Host.{i}.PortMapping.{i}.Description                                 proto::tr181-firewall
-  Device.NAT.X_PRPL-COM_StaticNAT.Host.{i}.PortMapping.{i}.DestPort                                    proto::tr181-firewall
-  Device.NAT.X_PRPL-COM_StaticNAT.Host.{i}.PortMapping.{i}.DestPortRangeMax                            proto::tr181-firewall
-  Device.NAT.X_PRPL-COM_StaticNAT.Host.{i}.PortMapping.{i}.Enable                                      proto::tr181-firewall
-  Device.NAT.X_PRPL-COM_StaticNAT.Host.{i}.PortMapping.{i}.Protocol                                    proto::tr181-firewall
-  Device.NAT.X_PRPL-COM_StaticNAT.Host.{i}.PortMapping.{i}.Status                                      proto::tr181-firewall
-  Device.NAT.X_PRPL-COM_StaticNAT.Host.{i}.PortMapping.{i}.X_PRPL-COM_Log                              proto::tr181-firewall
-  Device.NAT.X_PRPL-COM_StaticNAT.Host.{i}.PortMappingNumberOfEntries                                  proto::tr181-firewall
-  Device.NAT.X_PRPL-COM_StaticNAT.Host.{i}.PublicIPAddress                                             proto::tr181-firewall
-  Device.NAT.X_PRPL-COM_StaticNAT.Host.{i}.Status                                                      proto::tr181-firewall
-  Device.NAT.X_PRPL-COM_StaticNAT.HostNumberOfEntries                                                  proto::tr181-firewall
+  Device.NAT.X_PRPLWARE-COM_MaximumConntrackEntries                                                    proto::tr181-firewall
+  Device.NAT.X_PRPLWARE-COM_NumberOfConntrackEntries                                                   proto::tr181-firewall
+  Device.NAT.X_PRPLWARE-COM_StaticNAT.                                                                 proto::tr181-firewall
+  Device.NAT.X_PRPLWARE-COM_StaticNAT.Host.{i}.                                                        proto::tr181-firewall
+  Device.NAT.X_PRPLWARE-COM_StaticNAT.Host.{i}.Alias                                                   proto::tr181-firewall
+  Device.NAT.X_PRPLWARE-COM_StaticNAT.Host.{i}.Enable                                                  proto::tr181-firewall
+  Device.NAT.X_PRPLWARE-COM_StaticNAT.Host.{i}.LANDevice                                               proto::tr181-firewall
+  Device.NAT.X_PRPLWARE-COM_StaticNAT.Host.{i}.PortMapping.{i}.                                        proto::tr181-firewall
+  Device.NAT.X_PRPLWARE-COM_StaticNAT.Host.{i}.PortMapping.{i}.Alias                                   proto::tr181-firewall
+  Device.NAT.X_PRPLWARE-COM_StaticNAT.Host.{i}.PortMapping.{i}.Description                             proto::tr181-firewall
+  Device.NAT.X_PRPLWARE-COM_StaticNAT.Host.{i}.PortMapping.{i}.DestPort                                proto::tr181-firewall
+  Device.NAT.X_PRPLWARE-COM_StaticNAT.Host.{i}.PortMapping.{i}.DestPortRangeMax                        proto::tr181-firewall
+  Device.NAT.X_PRPLWARE-COM_StaticNAT.Host.{i}.PortMapping.{i}.Enable                                  proto::tr181-firewall
+  Device.NAT.X_PRPLWARE-COM_StaticNAT.Host.{i}.PortMapping.{i}.Protocol                                proto::tr181-firewall
+  Device.NAT.X_PRPLWARE-COM_StaticNAT.Host.{i}.PortMapping.{i}.Status                                  proto::tr181-firewall
+  Device.NAT.X_PRPLWARE-COM_StaticNAT.Host.{i}.PortMapping.{i}.X_PRPLWARE-COM_Log                      proto::tr181-firewall
+  Device.NAT.X_PRPLWARE-COM_StaticNAT.Host.{i}.PortMappingNumberOfEntries                              proto::tr181-firewall
+  Device.NAT.X_PRPLWARE-COM_StaticNAT.Host.{i}.PublicIPAddress                                         proto::tr181-firewall
+  Device.NAT.X_PRPLWARE-COM_StaticNAT.Host.{i}.Status                                                  proto::tr181-firewall
+  Device.NAT.X_PRPLWARE-COM_StaticNAT.HostNumberOfEntries                                              proto::tr181-firewall
   Device.NeighborDiscovery.                                                                            proto::tr181-neighbordiscovery
   Device.NeighborDiscovery.Enable                                                                      proto::tr181-neighbordiscovery
   Device.NeighborDiscovery.InterfaceSetting.{i}.                                                       proto::tr181-neighbordiscovery
@@ -6333,8 +6626,10 @@ Check that obuspa provides the same datamodel again (minus the platform specific
   Device.QoS.Classification.{i}.TCPACK                                                                 proto::tr181-qos
   Device.QoS.Classification.{i}.TCPACKExclude                                                          proto::tr181-qos
   Device.QoS.Classification.{i}.TrafficClass                                                           proto::tr181-qos
-  Device.QoS.Classification.{i}.X_PRPL-COM_Direction                                                   proto::tr181-qos
-  Device.QoS.Classification.{i}.X_PRPL-COM_OutputInterface                                             proto::tr181-qos
+  Device.QoS.Classification.{i}.X_PRPLWARE-COM_BridgeInputInterface                                    proto::tr181-qos
+  Device.QoS.Classification.{i}.X_PRPLWARE-COM_BridgeOutputInterface                                   proto::tr181-qos
+  Device.QoS.Classification.{i}.X_PRPLWARE-COM_Direction                                               proto::tr181-qos
+  Device.QoS.Classification.{i}.X_PRPLWARE-COM_OutputInterface                                         proto::tr181-qos
   Device.QoS.ClassificationNumberOfEntries                                                             proto::tr181-qos
   Device.QoS.MaxClassificationEntries                                                                  proto::tr181-qos
   Device.QoS.MaxQueueEntries                                                                           proto::tr181-qos
@@ -6462,7 +6757,7 @@ Check that obuspa provides the same datamodel again (minus the platform specific
   Device.Routing.RouteInformation.InterfaceSetting.{i}.RouteLifetime                                   proto::routing-manager
   Device.Routing.RouteInformation.InterfaceSetting.{i}.SourceRouter                                    proto::routing-manager
   Device.Routing.RouteInformation.InterfaceSetting.{i}.Status                                          proto::routing-manager
-  Device.Routing.RouteInformation.InterfaceSetting.{i}.X_PRPL-COM_LastAdvertisement                    proto::routing-manager
+  Device.Routing.RouteInformation.InterfaceSetting.{i}.X_PRPLWARE-COM_LastAdvertisement                proto::routing-manager
   Device.Routing.RouteInformation.InterfaceSettingNumberOfEntries                                      proto::routing-manager
   Device.Routing.Router.{i}.                                                                           proto::routing-manager
   Device.Routing.Router.{i}.Alias                                                                      proto::routing-manager
@@ -6479,6 +6774,7 @@ Check that obuspa provides the same datamodel again (minus the platform specific
   Device.Routing.Router.{i}.IPv4Forwarding.{i}.Origin                                                  proto::routing-manager
   Device.Routing.Router.{i}.IPv4Forwarding.{i}.StaticRoute                                             proto::routing-manager
   Device.Routing.Router.{i}.IPv4Forwarding.{i}.Status                                                  proto::routing-manager
+  Device.Routing.Router.{i}.IPv4Forwarding.{i}.X_PRPLWARE-COM_MTU                                      proto::routing-manager
   Device.Routing.Router.{i}.IPv4ForwardingNumberOfEntries                                              proto::routing-manager
   Device.Routing.Router.{i}.IPv6Forwarding.{i}.                                                        proto::routing-manager
   Device.Routing.Router.{i}.IPv6Forwarding.{i}.Alias                                                   proto::routing-manager
@@ -6492,6 +6788,8 @@ Check that obuspa provides the same datamodel again (minus the platform specific
   Device.Routing.Router.{i}.IPv6Forwarding.{i}.Origin                                                  proto::routing-manager
   Device.Routing.Router.{i}.IPv6Forwarding.{i}.Status                                                  proto::routing-manager
   Device.Routing.Router.{i}.IPv6Forwarding.{i}.Type                                                    proto::routing-manager
+  Device.Routing.Router.{i}.IPv6Forwarding.{i}.X_PRPLWARE-COM_MTU                                      proto::routing-manager
+  Device.Routing.Router.{i}.IPv6Forwarding.{i}.X_PRPLWARE-COM_SourceIPPrefix                           proto::routing-manager
   Device.Routing.Router.{i}.IPv6ForwardingNumberOfEntries                                              proto::routing-manager
   Device.Routing.Router.{i}.Status                                                                     proto::routing-manager
   Device.Routing.RouterNumberOfEntries                                                                 proto::routing-manager
@@ -6528,19 +6826,19 @@ Check that obuspa provides the same datamodel again (minus the platform specific
   Device.SSH.Server.{i}.Session.{i}.User                                                               proto::ssh_server
   Device.SSH.Server.{i}.SessionNumberOfEntries                                                         proto::ssh_server
   Device.SSH.Server.{i}.Status                                                                         proto::ssh_server
-  Device.SSH.Server.{i}.X_PRPL-COM_FailedAttempt.{i}.                                                  proto::ssh_server
-  Device.SSH.Server.{i}.X_PRPL-COM_FailedAttempt.{i}.Alias                                             proto::ssh_server
-  Device.SSH.Server.{i}.X_PRPL-COM_FailedAttempt.{i}.IPAddress                                         proto::ssh_server
-  Device.SSH.Server.{i}.X_PRPL-COM_FailedAttempt.{i}.Port                                              proto::ssh_server
-  Device.SSH.Server.{i}.X_PRPL-COM_FailedAttempt.{i}.Time                                              proto::ssh_server
-  Device.SSH.Server.{i}.X_PRPL-COM_FailedAttempt.{i}.User                                              proto::ssh_server
-  Device.SSH.Server.{i}.X_PRPL-COM_FailedAttemptNumberOfEntries                                        proto::ssh_server
-  Device.SSH.Server.{i}.X_PRPL-COM_GroupRestriction                                                    proto::ssh_server
-  Device.SSH.Server.{i}.X_PRPL-COM_Stats.                                                              proto::ssh_server
-  Device.SSH.Server.{i}.X_PRPL-COM_Stats.NumberOfFailedAttempts                                        proto::ssh_server
-  Device.SSH.Server.{i}.X_PRPL-COM_Stats.NumberOfFailedAttemptsSinceActivation                         proto::ssh_server
-  Device.SSH.Server.{i}.X_PRPL-COM_Stats.NumberOfSuccessAttempts                                       proto::ssh_server
-  Device.SSH.Server.{i}.X_PRPL-COM_Stats.NumberOfSuccessAttemptsSinceActivation                        proto::ssh_server
+  Device.SSH.Server.{i}.X_PRPLWARE-COM_FailedAttempt.{i}.                                              proto::ssh_server
+  Device.SSH.Server.{i}.X_PRPLWARE-COM_FailedAttempt.{i}.Alias                                         proto::ssh_server
+  Device.SSH.Server.{i}.X_PRPLWARE-COM_FailedAttempt.{i}.IPAddress                                     proto::ssh_server
+  Device.SSH.Server.{i}.X_PRPLWARE-COM_FailedAttempt.{i}.Port                                          proto::ssh_server
+  Device.SSH.Server.{i}.X_PRPLWARE-COM_FailedAttempt.{i}.Time                                          proto::ssh_server
+  Device.SSH.Server.{i}.X_PRPLWARE-COM_FailedAttempt.{i}.User                                          proto::ssh_server
+  Device.SSH.Server.{i}.X_PRPLWARE-COM_FailedAttemptNumberOfEntries                                    proto::ssh_server
+  Device.SSH.Server.{i}.X_PRPLWARE-COM_GroupRestriction                                                proto::ssh_server
+  Device.SSH.Server.{i}.X_PRPLWARE-COM_Stats.                                                          proto::ssh_server
+  Device.SSH.Server.{i}.X_PRPLWARE-COM_Stats.NumberOfFailedAttempts                                    proto::ssh_server
+  Device.SSH.Server.{i}.X_PRPLWARE-COM_Stats.NumberOfFailedAttemptsSinceActivation                     proto::ssh_server
+  Device.SSH.Server.{i}.X_PRPLWARE-COM_Stats.NumberOfSuccessAttempts                                   proto::ssh_server
+  Device.SSH.Server.{i}.X_PRPLWARE-COM_Stats.NumberOfSuccessAttemptsSinceActivation                    proto::ssh_server
   Device.SSH.ServerNumberOfEntries                                                                     proto::ssh_server
   Device.SSH.Status                                                                                    proto::ssh_server
   Device.STOMP.
@@ -6730,7 +7028,7 @@ Check that obuspa provides the same datamodel again (minus the platform specific
   Device.SoftwareModules.ExecutionUnit.{i}.NetworkConfig.PortForwarding.{i}.Interface                  proto::timingila
   Device.SoftwareModules.ExecutionUnit.{i}.NetworkConfig.PortForwarding.{i}.InternalPort               proto::timingila
   Device.SoftwareModules.ExecutionUnit.{i}.NetworkConfig.PortForwarding.{i}.Protocol                   proto::timingila
-  Device.SoftwareModules.ExecutionUnit.{i}.NetworkConfig.X_PRPL-COM_DNSSDRefList                       proto::timingila
+  Device.SoftwareModules.ExecutionUnit.{i}.NetworkConfig.X_PRPLWARE-COM_DNSSDRefList                   proto::timingila
   Device.SoftwareModules.ExecutionUnit.{i}.References                                                  proto::timingila
   Device.SoftwareModules.ExecutionUnit.{i}.RunLevel                                                    proto::timingila
   Device.SoftwareModules.ExecutionUnit.{i}.SetRequestedState()                                         proto::timingila
@@ -6787,8 +7085,8 @@ Check that obuspa provides the same datamodel again (minus the platform specific
   Device.Syslog.Action.{i}.LogRemote.PeerVerify                                                        proto::tr181-syslog
   Device.Syslog.Action.{i}.LogRemote.Port                                                              proto::tr181-syslog
   Device.Syslog.Action.{i}.LogRemote.Protocol                                                          proto::tr181-syslog
-  Device.Syslog.Action.{i}.LogRemote.X_PRPL-COM_CACertificate                                          proto::tr181-syslog
-  Device.Syslog.Action.{i}.LogRemote.X_PRPL-COM_Status                                                 proto::tr181-syslog
+  Device.Syslog.Action.{i}.LogRemote.X_PRPLWARE-COM_CACertificate                                      proto::tr181-syslog
+  Device.Syslog.Action.{i}.LogRemote.X_PRPLWARE-COM_Status                                             proto::tr181-syslog
   Device.Syslog.Action.{i}.SourceRef                                                                   proto::tr181-syslog
   Device.Syslog.Action.{i}.StructuredData                                                              proto::tr181-syslog
   Device.Syslog.Action.{i}.TemplateRef                                                                 proto::tr181-syslog
@@ -6811,10 +7109,10 @@ Check that obuspa provides the same datamodel again (minus the platform specific
   Device.Syslog.Source.{i}.Network.Interface                                                           proto::tr181-syslog
   Device.Syslog.Source.{i}.Network.Port                                                                proto::tr181-syslog
   Device.Syslog.Source.{i}.Network.Protocol                                                            proto::tr181-syslog
-  Device.Syslog.Source.{i}.Network.X_PRPL-COM_CACertificate                                            proto::tr181-syslog
-  Device.Syslog.Source.{i}.Network.X_PRPL-COM_Certificate                                              proto::tr181-syslog
-  Device.Syslog.Source.{i}.Network.X_PRPL-COM_PeerVerify                                               proto::tr181-syslog
-  Device.Syslog.Source.{i}.Network.X_PRPL-COM_StructuredData                                           proto::tr181-syslog
+  Device.Syslog.Source.{i}.Network.X_PRPLWARE-COM_CACertificate                                        proto::tr181-syslog
+  Device.Syslog.Source.{i}.Network.X_PRPLWARE-COM_Certificate                                          proto::tr181-syslog
+  Device.Syslog.Source.{i}.Network.X_PRPLWARE-COM_PeerVerify                                           proto::tr181-syslog
+  Device.Syslog.Source.{i}.Network.X_PRPLWARE-COM_StructuredData                                       proto::tr181-syslog
   Device.Syslog.Source.{i}.Severity                                                                    proto::tr181-syslog
   Device.Syslog.Source.{i}.SystemMessages                                                              proto::tr181-syslog
   Device.Syslog.SourceNumberOfEntries                                                                  proto::tr181-syslog
@@ -6878,9 +7176,9 @@ Check that obuspa provides the same datamodel again (minus the platform specific
   Device.Time.Server.{i}.Version                                                                       proto::time-manager
   Device.Time.ServerNumberOfEntries                                                                    proto::time-manager
   Device.Time.Status                                                                                   proto::time-manager
-  Device.Time.X_PRPL-COM_SetTime()                                                                     proto::time-manager
-  Device.Time.X_PRPL-COM_SetTime() input:Time
-  Device.Time.X_PRPL-COM_SetTime() input:TimeZone
+  Device.Time.X_PRPLWARE-COM_SetTime()                                                                 proto::time-manager
+  Device.Time.X_PRPLWARE-COM_SetTime() input:Time
+  Device.Time.X_PRPLWARE-COM_SetTime() input:TimeZone
   Device.Time.update_status()                                                                          proto::time-manager
   Device.UPnP.                                                                                         proto::tr181-upnp
   Device.UPnP.Device.                                                                                  proto::tr181-upnp
@@ -6899,13 +7197,91 @@ Check that obuspa provides the same datamodel again (minus the platform specific
   Device.UPnP.Device.Capabilities.UPnPWLANAccessPoint                                                  proto::tr181-upnp
   Device.UPnP.Device.Enable                                                                            proto::tr181-upnp
   Device.UPnP.Device.UPnPIGD                                                                           proto::tr181-upnp
-  Device.UPnP.X_PRPL-COM_IGDConfig.                                                                    proto::tr181-upnp
-  Device.UPnP.X_PRPL-COM_IGDConfig.AllowReservedAddr                                                   proto::tr181-upnp
-  Device.UPnP.X_PRPL-COM_IGDConfig.AutoCleanupEnable                                                   proto::tr181-upnp
-  Device.UPnP.X_PRPL-COM_IGDConfig.CleanupInterval                                                     proto::tr181-upnp
-  Device.UPnP.X_PRPL-COM_IGDConfig.EnableIPv6                                                          proto::tr181-upnp
-  Device.UPnP.X_PRPL-COM_IGDConfig.MaxLifetime                                                         proto::tr181-upnp
-  Device.UPnP.X_PRPL-COM_IGDConfig.UPnPInterface                                                       proto::tr181-upnp
+  Device.UPnP.X_PRPLWARE-COM_IGDConfig.                                                                proto::tr181-upnp
+  Device.UPnP.X_PRPLWARE-COM_IGDConfig.AllowReservedAddr                                               proto::tr181-upnp
+  Device.UPnP.X_PRPLWARE-COM_IGDConfig.AutoCleanupEnable                                               proto::tr181-upnp
+  Device.UPnP.X_PRPLWARE-COM_IGDConfig.CleanupInterval                                                 proto::tr181-upnp
+  Device.UPnP.X_PRPLWARE-COM_IGDConfig.EnableIPv6                                                      proto::tr181-upnp
+  Device.UPnP.X_PRPLWARE-COM_IGDConfig.MaxLifetime                                                     proto::tr181-upnp
+  Device.UPnP.X_PRPLWARE-COM_IGDConfig.UPnPInterface                                                   proto::tr181-upnp
+  Device.USB.                                                                                          proto::tr181-usb
+  Device.USB.Interface.{i}.                                                                            proto::tr181-usb
+  Device.USB.Interface.{i}.Alias                                                                       proto::tr181-usb
+  Device.USB.Interface.{i}.Enable                                                                      proto::tr181-usb
+  Device.USB.Interface.{i}.LastChange                                                                  proto::tr181-usb
+  Device.USB.Interface.{i}.LowerLayers                                                                 proto::tr181-usb
+  Device.USB.Interface.{i}.MACAddress                                                                  proto::tr181-usb
+  Device.USB.Interface.{i}.MaxBitRate                                                                  proto::tr181-usb
+  Device.USB.Interface.{i}.Name                                                                        proto::tr181-usb
+  Device.USB.Interface.{i}.Port                                                                        proto::tr181-usb
+  Device.USB.Interface.{i}.Stats.                                                                      proto::tr181-usb
+  Device.USB.Interface.{i}.Stats.BroadcastPacketsReceived                                              proto::tr181-usb
+  Device.USB.Interface.{i}.Stats.BroadcastPacketsSent                                                  proto::tr181-usb
+  Device.USB.Interface.{i}.Stats.BytesReceived                                                         proto::tr181-usb
+  Device.USB.Interface.{i}.Stats.BytesSent                                                             proto::tr181-usb
+  Device.USB.Interface.{i}.Stats.DiscardPacketsReceived                                                proto::tr181-usb
+  Device.USB.Interface.{i}.Stats.DiscardPacketsSent                                                    proto::tr181-usb
+  Device.USB.Interface.{i}.Stats.ErrorsReceived                                                        proto::tr181-usb
+  Device.USB.Interface.{i}.Stats.ErrorsSent                                                            proto::tr181-usb
+  Device.USB.Interface.{i}.Stats.MulticastPacketsReceived                                              proto::tr181-usb
+  Device.USB.Interface.{i}.Stats.MulticastPacketsSent                                                  proto::tr181-usb
+  Device.USB.Interface.{i}.Stats.PacketsReceived                                                       proto::tr181-usb
+  Device.USB.Interface.{i}.Stats.PacketsSent                                                           proto::tr181-usb
+  Device.USB.Interface.{i}.Stats.UnicastPacketsReceived                                                proto::tr181-usb
+  Device.USB.Interface.{i}.Stats.UnicastPacketsSent                                                    proto::tr181-usb
+  Device.USB.Interface.{i}.Stats.UnknownProtoPacketsReceived                                           proto::tr181-usb
+  Device.USB.Interface.{i}.Status                                                                      proto::tr181-usb
+  Device.USB.Interface.{i}.Upstream                                                                    proto::tr181-usb
+  Device.USB.InterfaceNumberOfEntries                                                                  proto::tr181-usb
+  Device.USB.Port.{i}.                                                                                 proto::tr181-usb
+  Device.USB.Port.{i}.Alias                                                                            proto::tr181-usb
+  Device.USB.Port.{i}.Name                                                                             proto::tr181-usb
+  Device.USB.Port.{i}.Power                                                                            proto::tr181-usb
+  Device.USB.Port.{i}.Rate                                                                             proto::tr181-usb
+  Device.USB.Port.{i}.Receptacle                                                                       proto::tr181-usb
+  Device.USB.Port.{i}.Standard                                                                         proto::tr181-usb
+  Device.USB.Port.{i}.Type                                                                             proto::tr181-usb
+  Device.USB.PortNumberOfEntries                                                                       proto::tr181-usb
+  Device.USB.USBHosts.                                                                                 proto::tr181-usb
+  Device.USB.USBHosts.Host.{i}.                                                                        proto::tr181-usb
+  Device.USB.USBHosts.Host.{i}.Alias                                                                   proto::tr181-usb
+  Device.USB.USBHosts.Host.{i}.Device.{i}.                                                             proto::tr181-usb
+  Device.USB.USBHosts.Host.{i}.Device.{i}.Configuration.{i}.                                           proto::tr181-usb
+  Device.USB.USBHosts.Host.{i}.Device.{i}.Configuration.{i}.ConfigurationNumber                        proto::tr181-usb
+  Device.USB.USBHosts.Host.{i}.Device.{i}.Configuration.{i}.Interface.{i}.                             proto::tr181-usb
+  Device.USB.USBHosts.Host.{i}.Device.{i}.Configuration.{i}.Interface.{i}.InterfaceClass               proto::tr181-usb
+  Device.USB.USBHosts.Host.{i}.Device.{i}.Configuration.{i}.Interface.{i}.InterfaceNumber              proto::tr181-usb
+  Device.USB.USBHosts.Host.{i}.Device.{i}.Configuration.{i}.Interface.{i}.InterfaceProtocol            proto::tr181-usb
+  Device.USB.USBHosts.Host.{i}.Device.{i}.Configuration.{i}.Interface.{i}.InterfaceSubClass            proto::tr181-usb
+  Device.USB.USBHosts.Host.{i}.Device.{i}.Configuration.{i}.InterfaceNumberOfEntries                   proto::tr181-usb
+  Device.USB.USBHosts.Host.{i}.Device.{i}.ConfigurationNumberOfEntries                                 proto::tr181-usb
+  Device.USB.USBHosts.Host.{i}.Device.{i}.DeviceClass                                                  proto::tr181-usb
+  Device.USB.USBHosts.Host.{i}.Device.{i}.DeviceNumber                                                 proto::tr181-usb
+  Device.USB.USBHosts.Host.{i}.Device.{i}.DeviceProtocol                                               proto::tr181-usb
+  Device.USB.USBHosts.Host.{i}.Device.{i}.DeviceSubClass                                               proto::tr181-usb
+  Device.USB.USBHosts.Host.{i}.Device.{i}.DeviceVersion                                                proto::tr181-usb
+  Device.USB.USBHosts.Host.{i}.Device.{i}.IsSelfPowered                                                proto::tr181-usb
+  Device.USB.USBHosts.Host.{i}.Device.{i}.IsSuspended                                                  proto::tr181-usb
+  Device.USB.USBHosts.Host.{i}.Device.{i}.Manufacturer                                                 proto::tr181-usb
+  Device.USB.USBHosts.Host.{i}.Device.{i}.MaxChildren                                                  proto::tr181-usb
+  Device.USB.USBHosts.Host.{i}.Device.{i}.Parent                                                       proto::tr181-usb
+  Device.USB.USBHosts.Host.{i}.Device.{i}.Port                                                         proto::tr181-usb
+  Device.USB.USBHosts.Host.{i}.Device.{i}.ProductClass                                                 proto::tr181-usb
+  Device.USB.USBHosts.Host.{i}.Device.{i}.ProductID                                                    proto::tr181-usb
+  Device.USB.USBHosts.Host.{i}.Device.{i}.Rate                                                         proto::tr181-usb
+  Device.USB.USBHosts.Host.{i}.Device.{i}.SerialNumber                                                 proto::tr181-usb
+  Device.USB.USBHosts.Host.{i}.Device.{i}.USBPort                                                      proto::tr181-usb
+  Device.USB.USBHosts.Host.{i}.Device.{i}.USBVersion                                                   proto::tr181-usb
+  Device.USB.USBHosts.Host.{i}.Device.{i}.VendorID                                                     proto::tr181-usb
+  Device.USB.USBHosts.Host.{i}.DeviceNumberOfEntries                                                   proto::tr181-usb
+  Device.USB.USBHosts.Host.{i}.Enable                                                                  proto::tr181-usb
+  Device.USB.USBHosts.Host.{i}.Name                                                                    proto::tr181-usb
+  Device.USB.USBHosts.Host.{i}.PowerManagementEnable                                                   proto::tr181-usb
+  Device.USB.USBHosts.Host.{i}.Reset                                                                   proto::tr181-usb
+  Device.USB.USBHosts.Host.{i}.Reset()                                                                 proto::tr181-usb
+  Device.USB.USBHosts.Host.{i}.Type                                                                    proto::tr181-usb
+  Device.USB.USBHosts.Host.{i}.USBVersion                                                              proto::tr181-usb
+  Device.USB.USBHosts.HostNumberOfEntries                                                              proto::tr181-usb
   Device.USPServices.
   Device.USPServices.USPService.{i}.
   Device.USPServices.USPService.{i}.DataModelPaths
@@ -6948,12 +7324,12 @@ Check that obuspa provides the same datamodel again (minus the platform specific
   Device.UserInterface.HTTPAccess.{i}.Session.{i}.User                                                 proto::tr181-httpaccess
   Device.UserInterface.HTTPAccess.{i}.SessionNumberOfEntries                                           proto::tr181-httpaccess
   Device.UserInterface.HTTPAccess.{i}.Status                                                           proto::tr181-httpaccess
-  Device.UserInterface.HTTPAccess.{i}.X_PRPL-COM_HTTPConfig.                                           proto::tr181-httpaccess
-  Device.UserInterface.HTTPAccess.{i}.X_PRPL-COM_HTTPConfig.ProxyIP                                    proto::tr181-httpaccess
-  Device.UserInterface.HTTPAccess.{i}.X_PRPL-COM_HTTPConfig.ProxyPort                                  proto::tr181-httpaccess
-  Device.UserInterface.HTTPAccess.{i}.X_PRPL-COM_HTTPConfig.Type                                       proto::tr181-httpaccess
-  Device.UserInterface.HTTPAccess.{i}.X_PRPL-COM_HTTPConfig.VHostDocumentRoot                          proto::tr181-httpaccess
-  Device.UserInterface.HTTPAccess.{i}.X_PRPL-COM_LoginAttempts                                         proto::tr181-httpaccess
+  Device.UserInterface.HTTPAccess.{i}.X_PRPLWARE-COM_HTTPConfig.                                       proto::tr181-httpaccess
+  Device.UserInterface.HTTPAccess.{i}.X_PRPLWARE-COM_HTTPConfig.ProxyIP                                proto::tr181-httpaccess
+  Device.UserInterface.HTTPAccess.{i}.X_PRPLWARE-COM_HTTPConfig.ProxyPort                              proto::tr181-httpaccess
+  Device.UserInterface.HTTPAccess.{i}.X_PRPLWARE-COM_HTTPConfig.Type                                   proto::tr181-httpaccess
+  Device.UserInterface.HTTPAccess.{i}.X_PRPLWARE-COM_HTTPConfig.VHostDocumentRoot                      proto::tr181-httpaccess
+  Device.UserInterface.HTTPAccess.{i}.X_PRPLWARE-COM_LoginAttempts                                     proto::tr181-httpaccess
   Device.UserInterface.HTTPAccessNumberOfEntries                                                       proto::tr181-httpaccess
   Device.UserInterface.HTTPAccessSupportedProtocols                                                    proto::tr181-httpaccess
   Device.UserInterface.HTTPAccessSupportedTLSOptions                                                   proto::tr181-httpaccess
@@ -6994,8 +7370,8 @@ Check that obuspa provides the same datamodel again (minus the platform specific
   Device.Users.User.{i}.StaticUser                                                                     proto::tr181-usermanagement
   Device.Users.User.{i}.UserID                                                                         proto::tr181-usermanagement
   Device.Users.User.{i}.Username                                                                       proto::tr181-usermanagement
-  Device.Users.User.{i}.X_PRPL-COM_HashedPassword                                                      proto::tr181-usermanagement
-  Device.Users.User.{i}.X_PRPL-COM_HomeDirectory                                                       proto::tr181-usermanagement
+  Device.Users.User.{i}.X_PRPLWARE-COM_HashedPassword                                                  proto::tr181-usermanagement
+  Device.Users.User.{i}.X_PRPLWARE-COM_HomeDirectory                                                   proto::tr181-usermanagement
   Device.Users.UserNumberOfEntries                                                                     proto::tr181-usermanagement
   Device.WiFi.                                                                                         proto::wld
   Device.WiFi.AccessPoint.{i}.                                                                         proto::wld
@@ -7143,9 +7519,11 @@ Check that obuspa provides the same datamodel again (minus the platform specific
   Device.WiFi.AccessPoint.{i}.AssociationCount.FastReconnects                                          proto::wld
   Device.WiFi.AccessPoint.{i}.AssociationCount.ResetCounters                                           proto::wld
   Device.WiFi.AccessPoint.{i}.AssociationCount.Success                                                 proto::wld
+  Device.WiFi.AccessPoint.{i}.BSS-TM-RESP!                                                             proto::wld
   Device.WiFi.AccessPoint.{i}.BridgeInterface                                                          proto::wld
   Device.WiFi.AccessPoint.{i}.CpeOperationMode                                                         proto::wld
   Device.WiFi.AccessPoint.{i}.DefaultDeviceType                                                        proto::wld
+  Device.WiFi.AccessPoint.{i}.Disassociation!                                                          proto::wld
   Device.WiFi.AccessPoint.{i}.DiscoveryMethodEnabled                                                   proto::wld
   Device.WiFi.AccessPoint.{i}.DriverConfig.                                                            proto::wld
   Device.WiFi.AccessPoint.{i}.DriverConfig.BssMaxIdlePeriod                                            proto::wld
@@ -7226,6 +7604,9 @@ Check that obuspa provides the same datamodel again (minus the platform specific
   Device.WiFi.AccessPoint.{i}.MLOStats.UnicastBytesReceived                                            proto::wld
   Device.WiFi.AccessPoint.{i}.MLOStats.UnicastBytesSent                                                proto::wld
   Device.WiFi.AccessPoint.{i}.MaxAssociatedDevices                                                     proto::wld
+  Device.WiFi.AccessPoint.{i}.MgmtActionFrameReceived!                                                 proto::wld
+  Device.WiFi.AccessPoint.{i}.MgmtDeauthFrame!                                                         proto::wld
+  Device.WiFi.AccessPoint.{i}.MgmtDisassocFrame!                                                       proto::wld
   Device.WiFi.AccessPoint.{i}.MultiAPProfile                                                           proto::wld
   Device.WiFi.AccessPoint.{i}.MultiAPType                                                              proto::wld
   Device.WiFi.AccessPoint.{i}.MultiAPVlanId                                                            proto::wld
@@ -7257,6 +7638,10 @@ Check that obuspa provides the same datamodel again (minus the platform specific
   Device.WiFi.AccessPoint.{i}.RssiEventing.HistoryLen                                                  proto::wld
   Device.WiFi.AccessPoint.{i}.RssiEventing.Interval                                                    proto::wld
   Device.WiFi.AccessPoint.{i}.RssiEventing.RssiInterval                                                proto::wld
+  Device.WiFi.AccessPoint.{i}.RssiEventing.RssiUpdate!                                                 proto::wld
+  Device.WiFi.AccessPoint.{i}.RssiEventing.RssiUpdateShortHistory!                                     proto::wld
+  Device.WiFi.AccessPoint.{i}.RssiEventing.RssiUpdateShortHistoryAssoc!                                proto::wld
+  Device.WiFi.AccessPoint.{i}.RssiEventing.RssiUpdateShortHistoryDisassoc!                             proto::wld
   Device.WiFi.AccessPoint.{i}.RssiEventing.SendEventOnAssoc                                            proto::wld
   Device.WiFi.AccessPoint.{i}.RssiEventing.SendEventOnDisassoc                                         proto::wld
   Device.WiFi.AccessPoint.{i}.RssiEventing.SendPeriodicEvent                                           proto::wld
@@ -7312,6 +7697,10 @@ Check that obuspa provides the same datamodel again (minus the platform specific
   Device.WiFi.AccessPoint.{i}.WPS.Version                                                              proto::wld
   Device.WiFi.AccessPoint.{i}.WPS.cancelWPSPairing()                                                   proto::wld
   Device.WiFi.AccessPoint.{i}.WPS.generateSelfPIN()                                                    proto::wld
+  Device.WiFi.AccessPoint.{i}.WPS.pairingDone!                                                         proto::wld
+  Device.WiFi.AccessPoint.{i}.WPS.pairingError!                                                        proto::wld
+  Device.WiFi.AccessPoint.{i}.WPS.pairingNoMessage!                                                    proto::wld
+  Device.WiFi.AccessPoint.{i}.WPS.pairingReady!                                                        proto::wld
   Device.WiFi.AccessPoint.{i}.WPS.setCompatibilityWPS()                                                proto::wld
   Device.WiFi.AccessPoint.{i}.WPS.setCompatibilityWPS() input:supVerWPS
   Device.WiFi.AccessPoint.{i}.WPS.useRelayCredentials()                                                proto::wld
@@ -7378,6 +7767,7 @@ Check that obuspa provides the same datamodel again (minus the platform specific
   Device.WiFi.AccessPoint.{i}.setNeighbourAP() input:PhyType
   Device.WiFi.AccessPoint.{i}.setNeighbourAP() input:R0KHKey
   Device.WiFi.AccessPoint.{i}.setNeighbourAP() input:SSID
+  Device.WiFi.AccessPoint.{i}.wpaCtrlEvents!                                                           proto::wld
   Device.WiFi.AccessPointNumberOfEntries                                                               proto::wld
   Device.WiFi.AutoCommitMgr.                                                                           proto::wld
   Device.WiFi.AutoCommitMgr.BootDelayTime                                                              proto::wld
@@ -7463,6 +7853,10 @@ Check that obuspa provides the same datamodel again (minus the platform specific
   Device.WiFi.EndPoint.{i}.WPS.Enable                                                                  proto::wld
   Device.WiFi.EndPoint.{i}.WPS.PairingInProgress                                                       proto::wld
   Device.WiFi.EndPoint.{i}.WPS.cancelPairing()                                                         proto::wld
+  Device.WiFi.EndPoint.{i}.WPS.pairingDone!                                                            proto::wld
+  Device.WiFi.EndPoint.{i}.WPS.pairingError!                                                           proto::wld
+  Device.WiFi.EndPoint.{i}.WPS.pairingNoMessage!                                                       proto::wld
+  Device.WiFi.EndPoint.{i}.WPS.pairingReady!                                                           proto::wld
   Device.WiFi.EndPoint.{i}.WPS.pushButton()                                                            proto::wld
   Device.WiFi.EndPoint.{i}.WPS.pushButton() input:bssid
   Device.WiFi.EndPoint.{i}.WPS.pushButton() input:clientPIN
@@ -7480,6 +7874,7 @@ Check that obuspa provides the same datamodel again (minus the platform specific
   Device.WiFi.EndPoint.{i}.sendManagementFrame() input:data
   Device.WiFi.EndPoint.{i}.sendManagementFrame() input:fc
   Device.WiFi.EndPoint.{i}.sendManagementFrame() input:mac
+  Device.WiFi.EndPoint.{i}.wpaCtrlEvents!                                                              proto::wld
   Device.WiFi.EndPointNumberOfEntries                                                                  proto::wld
   Device.WiFi.FSM_Start()                                                                              proto::wld
   Device.WiFi.FSM_Start() input:bitnr
@@ -7511,6 +7906,7 @@ Check that obuspa provides the same datamodel again (minus the platform specific
   Device.WiFi.Radio.{i}.Capabilities.WiFi7STARole.NSTRSupport                                          proto::wld
   Device.WiFi.Radio.{i}.Capabilities.WiFi7STARole.STRSupport                                           proto::wld
   Device.WiFi.Radio.{i}.Channel                                                                        proto::wld
+  Device.WiFi.Radio.{i}.Channel change event!                                                          proto::wld
   Device.WiFi.Radio.{i}.ChannelBandwidthChangeReason                                                   proto::wld
   Device.WiFi.Radio.{i}.ChannelChangeReason                                                            proto::wld
   Device.WiFi.Radio.{i}.ChannelLoad                                                                    proto::wld
@@ -7567,9 +7963,11 @@ Check that obuspa provides the same datamodel again (minus the platform specific
   Device.WiFi.Radio.{i}.ChannelMgt.TargetChanspec.LastChangeTime                                       proto::wld
   Device.WiFi.Radio.{i}.ChannelMgt.TargetChanspec.Reason                                               proto::wld
   Device.WiFi.Radio.{i}.ChannelMgt.TargetChanspec.ReasonExt                                            proto::wld
+  Device.WiFi.Radio.{i}.ChannelSwitchComplete!                                                         proto::wld
   Device.WiFi.Radio.{i}.ChannelsInUse                                                                  proto::wld
   Device.WiFi.Radio.{i}.ChipsetVendor                                                                  proto::wld
   Device.WiFi.Radio.{i}.CurrentOperatingChannelBandwidth                                               proto::wld
+  Device.WiFi.Radio.{i}.DFS Done!                                                                      proto::wld
   Device.WiFi.Radio.{i}.DFS.                                                                           proto::wld
   Device.WiFi.Radio.{i}.DFS.Event.{i}.                                                                 proto::wld
   Device.WiFi.Radio.{i}.DFS.Event.{i}.Bandwidth                                                        proto::wld
@@ -7700,6 +8098,8 @@ Check that obuspa provides the same datamodel again (minus the platform specific
   Device.WiFi.Radio.{i}.RxPowerSaveRepeaterEnable                                                      proto::wld
   Device.WiFi.Radio.{i}.STASupported_Mode                                                              proto::wld
   Device.WiFi.Radio.{i}.STA_Mode                                                                       proto::wld
+  Device.WiFi.Radio.{i}.ScanChange!                                                                    proto::wld
+  Device.WiFi.Radio.{i}.ScanComplete!                                                                  proto::wld
   Device.WiFi.Radio.{i}.ScanConfig.                                                                    proto::wld
   Device.WiFi.Radio.{i}.ScanConfig.ActiveChannelTime                                                   proto::wld
   Device.WiFi.Radio.{i}.ScanConfig.FastScanReasons                                                     proto::wld
@@ -7878,6 +8278,7 @@ Check that obuspa provides the same datamodel again (minus the platform specific
   Device.WiFi.Radio.{i}.startScan() input:scanReason
   Device.WiFi.Radio.{i}.startScan() input:updateUsage
   Device.WiFi.Radio.{i}.stopScan()                                                                     proto::wld
+  Device.WiFi.Radio.{i}.wpaCtrlEvents!                                                                 proto::wld
   Device.WiFi.RadioNumberOfEntries                                                                     proto::wld
   Device.WiFi.Reset()                                                                                  proto::wld
   Device.WiFi.SSID.{i}.                                                                                proto::wld
@@ -7989,161 +8390,260 @@ Check that obuspa provides the same datamodel again (minus the platform specific
   Device.WiFi.wps_DefParam.wpsSupVer                                                                   proto::wld
   Device.WiFi.wps_DefParam.wpsUUIDShared                                                               proto::wld
   Device.WiFi.wps_DefParam.wps_GenSelfPIN()                                                            proto::wld
-  Device.X_PRPL-COM_Buttons.                                                                           proto::tr181-button
-  Device.X_PRPL-COM_Buttons.Button.{i}.                                                                proto::tr181-button
-  Device.X_PRPL-COM_Buttons.Button.{i}.Alias                                                           proto::tr181-button
-  Device.X_PRPL-COM_Buttons.Button.{i}.MaxInterval                                                     proto::tr181-button
-  Device.X_PRPL-COM_Buttons.Button.{i}.MinInterval                                                     proto::tr181-button
-  Device.X_PRPL-COM_Buttons.Button.{i}.Push()                                                          proto::tr181-button
-  Device.X_PRPL-COM_Buttons.Button.{i}.Push() input:duration
-  Device.X_PRPL-COM_Buttons.Button.{i}.Release()                                                       proto::tr181-button
-  Device.X_PRPL-COM_Buttons.Button.{i}.Status                                                          proto::tr181-button
-  Device.X_PRPL-COM_Buttons.ButtonNumberOfEntries                                                      proto::tr181-button
-  Device.X_PRPL-COM_MultiSettings.                                                                     proto::multisettings
-  Device.X_PRPL-COM_MultiSettings.CurrentProfile                                                       proto::multisettings
-  Device.X_PRPL-COM_MultiSettings.DecisionMadeBy                                                       proto::multisettings
-  Device.X_PRPL-COM_MultiSettings.DetectionAtBoot                                                      proto::multisettings
-  Device.X_PRPL-COM_MultiSettings.DetectionState                                                       proto::multisettings
-  Device.X_PRPL-COM_MultiSettings.Enable                                                               proto::multisettings
-  Device.X_PRPL-COM_MultiSettings.Profile.{i}.                                                         proto::multisettings
-  Device.X_PRPL-COM_MultiSettings.Profile.{i}.Alias                                                    proto::multisettings
-  Device.X_PRPL-COM_MultiSettings.Profile.{i}.Enable                                                   proto::multisettings
-  Device.X_PRPL-COM_MultiSettings.Profile.{i}.ImpactedModules                                          proto::multisettings
-  Device.X_PRPL-COM_MultiSettings.Profile.{i}.Name                                                     proto::multisettings
-  Device.X_PRPL-COM_MultiSettings.Profile.{i}.Status                                                   proto::multisettings
-  Device.X_PRPL-COM_MultiSettings.Profile.{i}.Trigger.{i}.                                             proto::multisettings
-  Device.X_PRPL-COM_MultiSettings.Profile.{i}.Trigger.{i}.Alias                                        proto::multisettings
-  Device.X_PRPL-COM_MultiSettings.Profile.{i}.Trigger.{i}.LeftMember                                   proto::multisettings
-  Device.X_PRPL-COM_MultiSettings.Profile.{i}.Trigger.{i}.RelationalOperator                           proto::multisettings
-  Device.X_PRPL-COM_MultiSettings.Profile.{i}.Trigger.{i}.RightMember                                  proto::multisettings
-  Device.X_PRPL-COM_MultiSettings.Profile.{i}.Trigger.{i}.Triggered                                    proto::multisettings
-  Device.X_PRPL-COM_MultiSettings.Profile.{i}.TriggerNumberOfEntries                                   proto::multisettings
-  Device.X_PRPL-COM_MultiSettings.ProfileNumberOfEntries                                               proto::multisettings
-  Device.X_PRPL-COM_MultiSettings.Status                                                               proto::multisettings
-  Device.X_PRPL-COM_PersistentConfiguration.                                                           proto::pcm-manager
-  Device.X_PRPL-COM_PersistentConfiguration.AddBackupFile()                                            proto::pcm-manager
-  Device.X_PRPL-COM_PersistentConfiguration.AddBackupFile() input:FileName
-  Device.X_PRPL-COM_PersistentConfiguration.AddBackupFile() input:Tag
-  Device.X_PRPL-COM_PersistentConfiguration.Backup()                                                   proto::pcm-manager
-  Device.X_PRPL-COM_PersistentConfiguration.Backup() input:Flags
-  Device.X_PRPL-COM_PersistentConfiguration.Backup() input:Tag
-  Device.X_PRPL-COM_PersistentConfiguration.Backup() input:Type
-  Device.X_PRPL-COM_PersistentConfiguration.BackupFile.{i}.                                            proto::pcm-manager
-  Device.X_PRPL-COM_PersistentConfiguration.BackupFile.{i}.Alias                                       proto::pcm-manager
-  Device.X_PRPL-COM_PersistentConfiguration.BackupFile.{i}.CreationDate                                proto::pcm-manager
-  Device.X_PRPL-COM_PersistentConfiguration.BackupFile.{i}.FileName                                    proto::pcm-manager
-  Device.X_PRPL-COM_PersistentConfiguration.BackupFile.{i}.Tag                                         proto::pcm-manager
-  Device.X_PRPL-COM_PersistentConfiguration.BackupFileNumberOfEntries                                  proto::pcm-manager
-  Device.X_PRPL-COM_PersistentConfiguration.BackupStatus                                               proto::pcm-manager
-  Device.X_PRPL-COM_PersistentConfiguration.Config.                                                    proto::pcm-manager
-  Device.X_PRPL-COM_PersistentConfiguration.Config.AutoSync                                            proto::pcm-manager
-  Device.X_PRPL-COM_PersistentConfiguration.Config.BackupFileType                                      proto::pcm-manager
-  Device.X_PRPL-COM_PersistentConfiguration.Config.Security.                                           proto::pcm-manager
-  Device.X_PRPL-COM_PersistentConfiguration.Config.Security.EncryptKey                                 proto::pcm-manager
-  Device.X_PRPL-COM_PersistentConfiguration.Config.Security.EncryptUserFile                            proto::pcm-manager
-  Device.X_PRPL-COM_PersistentConfiguration.Enable                                                     proto::pcm-manager
-  Device.X_PRPL-COM_PersistentConfiguration.Error                                                      proto::pcm-manager
-  Device.X_PRPL-COM_PersistentConfiguration.Import()                                                   proto::pcm-manager
-  Device.X_PRPL-COM_PersistentConfiguration.Import() input:content
-  Device.X_PRPL-COM_PersistentConfiguration.MaxNumberOfDynamicFiles                                    proto::pcm-manager
-  Device.X_PRPL-COM_PersistentConfiguration.NumberOfDynamicFiles                                       proto::pcm-manager
-  Device.X_PRPL-COM_PersistentConfiguration.Restore()                                                  proto::pcm-manager
-  Device.X_PRPL-COM_PersistentConfiguration.Restore() input:FileRef
-  Device.X_PRPL-COM_PersistentConfiguration.Restore() input:Type
-  Device.X_PRPL-COM_PersistentConfiguration.RestoreStatus                                              proto::pcm-manager
-  Device.X_PRPL-COM_PersistentConfiguration.Service.{i}.                                               proto::pcm-manager
-  Device.X_PRPL-COM_PersistentConfiguration.Service.{i}.Alias                                          proto::pcm-manager
-  Device.X_PRPL-COM_PersistentConfiguration.Service.{i}.ExportCallback                                 proto::pcm-manager
-  Device.X_PRPL-COM_PersistentConfiguration.Service.{i}.ExportStatus                                   proto::pcm-manager
-  Device.X_PRPL-COM_PersistentConfiguration.Service.{i}.ImportCallback                                 proto::pcm-manager
-  Device.X_PRPL-COM_PersistentConfiguration.Service.{i}.ImportStatus                                   proto::pcm-manager
-  Device.X_PRPL-COM_PersistentConfiguration.Service.{i}.Name                                           proto::pcm-manager
-  Device.X_PRPL-COM_PersistentConfiguration.Service.{i}.Order                                          proto::pcm-manager
-  Device.X_PRPL-COM_PersistentConfiguration.Service.{i}.Schema.{i}.                                    proto::pcm-manager
-  Device.X_PRPL-COM_PersistentConfiguration.Service.{i}.Schema.{i}.Alias                               proto::pcm-manager
-  Device.X_PRPL-COM_PersistentConfiguration.Service.{i}.Schema.{i}.Name                                proto::pcm-manager
-  Device.X_PRPL-COM_PersistentConfiguration.Service.{i}.SchemaNumberOfEntries                          proto::pcm-manager
-  Device.X_PRPL-COM_PersistentConfiguration.Service.{i}.ServiceStatus                                  proto::pcm-manager
-  Device.X_PRPL-COM_PersistentConfiguration.Service.{i}.SetActionStatus()                              proto::pcm-manager
-  Device.X_PRPL-COM_PersistentConfiguration.Service.{i}.SetActionStatus() input:ActionStatus
-  Device.X_PRPL-COM_PersistentConfiguration.Service.{i}.SetActionStatus() input:State
-  Device.X_PRPL-COM_PersistentConfiguration.ServiceConfigurationChanged()                              proto::pcm-manager
-  Device.X_PRPL-COM_PersistentConfiguration.ServiceConfigurationChanged() input:name
-  Device.X_PRPL-COM_PersistentConfiguration.ServiceNumberOfEntries                                     proto::pcm-manager
-  Device.X_PRPL-COM_PersistentConfiguration.Status                                                     proto::pcm-manager
-  Device.X_PRPL-COM_PersistentConfiguration.registerSvc()                                              proto::pcm-manager
-  Device.X_PRPL-COM_PersistentConfiguration.registerSvc() input:data
-  Device.X_PRPL-COM_PersistentConfiguration.registerSvc() input:name
-  Device.X_PRPL-COM_PersistentConfiguration.unregisterSvc()                                            proto::pcm-manager
-  Device.X_PRPL-COM_PersistentConfiguration.unregisterSvc() input:name
-  Device.X_PRPL-COM_WANManager.                                                                        proto::wan-manager
-  Device.X_PRPL-COM_WANManager.OperationMode                                                           proto::wan-manager
-  Device.X_PRPL-COM_WANManager.Reset()                                                                 proto::wan-manager
-  Device.X_PRPL-COM_WANManager.SensingPolicy                                                           proto::wan-manager
-  Device.X_PRPL-COM_WANManager.SensingTimeout                                                          proto::wan-manager
-  Device.X_PRPL-COM_WANManager.WAN.{i}.                                                                proto::wan-manager
-  Device.X_PRPL-COM_WANManager.WAN.{i}.Alias                                                           proto::wan-manager
-  Device.X_PRPL-COM_WANManager.WAN.{i}.DNSMode                                                         proto::wan-manager
-  Device.X_PRPL-COM_WANManager.WAN.{i}.EnableSensing                                                   proto::wan-manager
-  Device.X_PRPL-COM_WANManager.WAN.{i}.IPv6DNSMode                                                     proto::wan-manager
-  Device.X_PRPL-COM_WANManager.WAN.{i}.Intf.{i}.                                                       proto::wan-manager
-  Device.X_PRPL-COM_WANManager.WAN.{i}.Intf.{i}.Alias                                                  proto::wan-manager
-  Device.X_PRPL-COM_WANManager.WAN.{i}.Intf.{i}.BridgeReference                                        proto::wan-manager
-  Device.X_PRPL-COM_WANManager.WAN.{i}.Intf.{i}.DHCPv4Reference                                        proto::wan-manager
-  Device.X_PRPL-COM_WANManager.WAN.{i}.Intf.{i}.DHCPv6Reference                                        proto::wan-manager
-  Device.X_PRPL-COM_WANManager.WAN.{i}.Intf.{i}.DSLiteReference                                        proto::wan-manager
-  Device.X_PRPL-COM_WANManager.WAN.{i}.Intf.{i}.DefaultRouteReference                                  proto::wan-manager
-  Device.X_PRPL-COM_WANManager.WAN.{i}.Intf.{i}.DeferredIPv6Instances                                  proto::wan-manager
-  Device.X_PRPL-COM_WANManager.WAN.{i}.Intf.{i}.IPv4Address.{i}.                                       proto::wan-manager
-  Device.X_PRPL-COM_WANManager.WAN.{i}.Intf.{i}.IPv4Address.{i}.Alias                                  proto::wan-manager
-  Device.X_PRPL-COM_WANManager.WAN.{i}.Intf.{i}.IPv4Address.{i}.DNSServers                             proto::wan-manager
-  Device.X_PRPL-COM_WANManager.WAN.{i}.Intf.{i}.IPv4Address.{i}.DefaultRouter                          proto::wan-manager
-  Device.X_PRPL-COM_WANManager.WAN.{i}.Intf.{i}.IPv4Address.{i}.IPv4Address                            proto::wan-manager
-  Device.X_PRPL-COM_WANManager.WAN.{i}.Intf.{i}.IPv4Address.{i}.SubnetMask                             proto::wan-manager
-  Device.X_PRPL-COM_WANManager.WAN.{i}.Intf.{i}.IPv4Mode                                               proto::wan-manager
-  Device.X_PRPL-COM_WANManager.WAN.{i}.Intf.{i}.IPv4Reference                                          proto::wan-manager
-  Device.X_PRPL-COM_WANManager.WAN.{i}.Intf.{i}.IPv6Address.{i}.                                       proto::wan-manager
-  Device.X_PRPL-COM_WANManager.WAN.{i}.Intf.{i}.IPv6Address.{i}.Alias                                  proto::wan-manager
-  Device.X_PRPL-COM_WANManager.WAN.{i}.Intf.{i}.IPv6Address.{i}.DNSServers                             proto::wan-manager
-  Device.X_PRPL-COM_WANManager.WAN.{i}.Intf.{i}.IPv6Address.{i}.DefaultRouter                          proto::wan-manager
-  Device.X_PRPL-COM_WANManager.WAN.{i}.Intf.{i}.IPv6Address.{i}.IPv6Address                            proto::wan-manager
-  Device.X_PRPL-COM_WANManager.WAN.{i}.Intf.{i}.IPv6Address.{i}.PrefixLength                           proto::wan-manager
-  Device.X_PRPL-COM_WANManager.WAN.{i}.Intf.{i}.IPv6AddressDelegate                                    proto::wan-manager
-  Device.X_PRPL-COM_WANManager.WAN.{i}.Intf.{i}.IPv6Mode                                               proto::wan-manager
-  Device.X_PRPL-COM_WANManager.WAN.{i}.Intf.{i}.IPv6Reference                                          proto::wan-manager
-  Device.X_PRPL-COM_WANManager.WAN.{i}.Intf.{i}.Name                                                   proto::wan-manager
-  Device.X_PRPL-COM_WANManager.WAN.{i}.Intf.{i}.NeighborDiscoveryReference                             proto::wan-manager
-  Device.X_PRPL-COM_WANManager.WAN.{i}.Intf.{i}.PCPReference                                           proto::wan-manager
-  Device.X_PRPL-COM_WANManager.WAN.{i}.Intf.{i}.PPPv4Reference                                         proto::wan-manager
-  Device.X_PRPL-COM_WANManager.WAN.{i}.Intf.{i}.PPPv6Reference                                         proto::wan-manager
-  Device.X_PRPL-COM_WANManager.WAN.{i}.Intf.{i}.Password                                               proto::wan-manager
-  Device.X_PRPL-COM_WANManager.WAN.{i}.Intf.{i}.Type                                                   proto::wan-manager
-  Device.X_PRPL-COM_WANManager.WAN.{i}.Intf.{i}.UserName                                               proto::wan-manager
-  Device.X_PRPL-COM_WANManager.WAN.{i}.Intf.{i}.VlanID                                                 proto::wan-manager
-  Device.X_PRPL-COM_WANManager.WAN.{i}.Intf.{i}.VlanPriority                                           proto::wan-manager
-  Device.X_PRPL-COM_WANManager.WAN.{i}.Origin                                                          proto::wan-manager
-  Device.X_PRPL-COM_WANManager.WAN.{i}.PhysicalReference                                               proto::wan-manager
-  Device.X_PRPL-COM_WANManager.WAN.{i}.PhysicalType                                                    proto::wan-manager
-  Device.X_PRPL-COM_WANManager.WAN.{i}.SFPType                                                         proto::wan-manager
-  Device.X_PRPL-COM_WANManager.WAN.{i}.SensingPriority                                                 proto::wan-manager
-  Device.X_PRPL-COM_WANManager.WAN.{i}.Status                                                          proto::wan-manager
-  Device.X_PRPL-COM_WANManager.WANMode                                                                 proto::wan-manager
-  Device.X_PRPL-COM_WANManager.WANModeDisable()                                                        proto::wan-manager
-  Device.X_PRPL-COM_WANManager.WANModeDisable() input:Autosensing
-  Device.X_PRPL-COM_WANManager.WANModeDisable() input:WANMode
-  Device.X_PRPL-COM_WANManager.WANModeEnable()                                                         proto::wan-manager
-  Device.X_PRPL-COM_WANManager.WANModeEnable() input:Autosensing
-  Device.X_PRPL-COM_WANManager.WANModeEnable() input:WANMode
-  Device.X_PRPL-COM_WANManager.getWANMode()                                                            proto::wan-manager
-  Device.X_PRPL-COM_WANManager.setIPv4Mode()                                                           proto::wan-manager
-  Device.X_PRPL-COM_WANManager.setIPv4Mode() input:IPv4Mode
-  Device.X_PRPL-COM_WANManager.setIPv4Mode() input:InterfaceAlias
-  Device.X_PRPL-COM_WANManager.setIPv6Mode()                                                           proto::wan-manager
-  Device.X_PRPL-COM_WANManager.setIPv6Mode() input:IPv6Mode
-  Device.X_PRPL-COM_WANManager.setIPv6Mode() input:InterfaceAlias
-  Device.X_PRPL-COM_WANManager.setWANMode()                                                            proto::wan-manager
-  Device.X_PRPL-COM_WANManager.setWANMode() input:Autosensing
-  Device.X_PRPL-COM_WANManager.setWANMode() input:WANMode
+  Device.XPON.                                                                                         proto::tr181-xpon
+  Device.XPON.ONU.{i}.                                                                                 proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.                                                                         proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.Alias                                                                    proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.Enable                                                                   proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.LastChange                                                               proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.Name                                                                     proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.PONMode                                                                  proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.Status                                                                   proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.TC.                                                                      proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.TC.Alarms.                                                               proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.TC.Alarms.DACT                                                           proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.TC.Alarms.DIS                                                            proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.TC.Alarms.LCDG                                                           proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.TC.Alarms.LODS                                                           proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.TC.Alarms.LOF                                                            proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.TC.Alarms.LOS                                                            proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.TC.Alarms.MEM                                                            proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.TC.Alarms.MIS                                                            proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.TC.Alarms.PEE                                                            proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.TC.Alarms.RDI                                                            proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.TC.Alarms.ROGUE                                                          proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.TC.Alarms.SD                                                             proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.TC.Alarms.SF                                                             proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.TC.Alarms.SUF                                                            proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.TC.Alarms.TF                                                             proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.TC.Authentication.                                                       proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.TC.Authentication.HexadecimalPassword                                    proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.TC.Authentication.Password                                               proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.TC.GEM.                                                                  proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.TC.GEM.Port.{i}.                                                         proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.TC.GEM.Port.{i}.Direction                                                proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.TC.GEM.Port.{i}.PM.                                                      proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.TC.GEM.Port.{i}.PM.FramesReceived                                        proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.TC.GEM.Port.{i}.PM.FramesSent                                            proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.TC.GEM.Port.{i}.PortID                                                   proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.TC.GEM.Port.{i}.PortType                                                 proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.TC.GEM.PortNumberOfEntries                                               proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.TC.ONUActivation.                                                        proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.TC.ONUActivation.ONUID                                                   proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.TC.ONUActivation.ONUState                                                proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.TC.ONUActivation.SerialNumber                                            proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.TC.ONUActivation.VendorID                                                proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.TC.PM.                                                                   proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.TC.PM.GEM.                                                               proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.TC.PM.GEM.FrameHeaderHECErrors                                           proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.TC.PM.GEM.FramesReceived                                                 proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.TC.PM.GEM.FramesSent                                                     proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.TC.PM.GEM.KeyErrors                                                      proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.TC.PM.OMCI.                                                              proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.TC.PM.OMCI.BaselineMessagesReceived                                      proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.TC.PM.OMCI.ExtendedMessagesReceived                                      proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.TC.PM.OMCI.MICErrors                                                     proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.TC.PM.PHY.                                                               proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.TC.PM.PHY.CorrectedFECBytes                                              proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.TC.PM.PHY.CorrectedFECCodewords                                          proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.TC.PM.PHY.HeaderHECErrorCount                                            proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.TC.PM.PHY.PSBdHECErrorCount                                              proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.TC.PM.PHY.TotalFECCodewords                                              proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.TC.PM.PHY.UncorrectableFECCodewords                                      proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.TC.PM.PHY.UnknownProfile                                                 proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.TC.PM.PLOAM.                                                             proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.TC.PM.PLOAM.DownstreamMessageCount                                       proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.TC.PM.PLOAM.MICErrors                                                    proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.TC.PM.PLOAM.RangingTime                                                  proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.TC.PM.PLOAM.UpstreamMessageCount                                         proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.TC.PerformanceThresholds.                                                proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.TC.PerformanceThresholds.SignalDegrade                                   proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.TC.PerformanceThresholds.SignalFail                                      proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.Transceiver.{i}.                                                         proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.Transceiver.{i}.Bias                                                     proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.Transceiver.{i}.Connector                                                proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.Transceiver.{i}.ID                                                       proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.Transceiver.{i}.Identifier                                               proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.Transceiver.{i}.NominalBitRateDownstream                                 proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.Transceiver.{i}.NominalBitRateUpstream                                   proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.Transceiver.{i}.PONMode                                                  proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.Transceiver.{i}.RxPower                                                  proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.Transceiver.{i}.Temperature                                              proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.Transceiver.{i}.TxPower                                                  proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.Transceiver.{i}.VendorName                                               proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.Transceiver.{i}.VendorPartNumber                                         proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.Transceiver.{i}.VendorRevision                                           proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.Transceiver.{i}.Voltage                                                  proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.Transceiver.{i}.X_PRPLWARE-COM_SFPReference                              proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANI.{i}.TransceiverNumberOfEntries                                               proto::tr181-xpon
+  Device.XPON.ONU.{i}.ANINumberOfEntries                                                               proto::tr181-xpon
+  Device.XPON.ONU.{i}.Enable                                                                           proto::tr181-xpon
+  Device.XPON.ONU.{i}.EquipmentID                                                                      proto::tr181-xpon
+  Device.XPON.ONU.{i}.EthernetUNI.{i}.                                                                 proto::tr181-xpon
+  Device.XPON.ONU.{i}.EthernetUNI.{i}.ANIs                                                             proto::tr181-xpon
+  Device.XPON.ONU.{i}.EthernetUNI.{i}.Alias                                                            proto::tr181-xpon
+  Device.XPON.ONU.{i}.EthernetUNI.{i}.Enable                                                           proto::tr181-xpon
+  Device.XPON.ONU.{i}.EthernetUNI.{i}.InterdomainID                                                    proto::tr181-xpon
+  Device.XPON.ONU.{i}.EthernetUNI.{i}.InterdomainName                                                  proto::tr181-xpon
+  Device.XPON.ONU.{i}.EthernetUNI.{i}.LastChange                                                       proto::tr181-xpon
+  Device.XPON.ONU.{i}.EthernetUNI.{i}.LowerLayers                                                      proto::tr181-xpon
+  Device.XPON.ONU.{i}.EthernetUNI.{i}.Name                                                             proto::tr181-xpon
+  Device.XPON.ONU.{i}.EthernetUNI.{i}.Status                                                           proto::tr181-xpon
+  Device.XPON.ONU.{i}.EthernetUNINumberOfEntries                                                       proto::tr181-xpon
+  Device.XPON.ONU.{i}.Name                                                                             proto::tr181-xpon
+  Device.XPON.ONU.{i}.SoftwareImage.{i}.                                                               proto::tr181-xpon
+  Device.XPON.ONU.{i}.SoftwareImage.{i}.ID                                                             proto::tr181-xpon
+  Device.XPON.ONU.{i}.SoftwareImage.{i}.IsActive                                                       proto::tr181-xpon
+  Device.XPON.ONU.{i}.SoftwareImage.{i}.IsCommitted                                                    proto::tr181-xpon
+  Device.XPON.ONU.{i}.SoftwareImage.{i}.IsValid                                                        proto::tr181-xpon
+  Device.XPON.ONU.{i}.SoftwareImage.{i}.Version                                                        proto::tr181-xpon
+  Device.XPON.ONU.{i}.SoftwareImageNumberOfEntries                                                     proto::tr181-xpon
+  Device.XPON.ONU.{i}.Version                                                                          proto::tr181-xpon
+  Device.XPON.ONUNumberOfEntries                                                                       proto::tr181-xpon
+  Device.X_PRPLWARE-COM_Buttons.                                                                       proto::tr181-button
+  Device.X_PRPLWARE-COM_Buttons.Action.{i}.                                                            proto::tr181-button
+  Device.X_PRPLWARE-COM_Buttons.Action.{i}.Alias                                                       proto::tr181-button
+  Device.X_PRPLWARE-COM_Buttons.Action.{i}.Message                                                     proto::tr181-button
+  Device.X_PRPLWARE-COM_Buttons.Action.{i}.Method                                                      proto::tr181-button
+  Device.X_PRPLWARE-COM_Buttons.Action.{i}.Name                                                        proto::tr181-button
+  Device.X_PRPLWARE-COM_Buttons.Action.{i}.Object                                                      proto::tr181-button
+  Device.X_PRPLWARE-COM_Buttons.ActionNumberOfEntries                                                  proto::tr181-button
+  Device.X_PRPLWARE-COM_Buttons.Button.{i}.                                                            proto::tr181-button
+  Device.X_PRPLWARE-COM_Buttons.Button.{i}.Alias                                                       proto::tr181-button
+  Device.X_PRPLWARE-COM_Buttons.Button.{i}.Event.{i}.                                                  proto::tr181-button
+  Device.X_PRPLWARE-COM_Buttons.Button.{i}.Event.{i}.ActionsReference                                  proto::tr181-button
+  Device.X_PRPLWARE-COM_Buttons.Button.{i}.Event.{i}.Alias                                             proto::tr181-button
+  Device.X_PRPLWARE-COM_Buttons.Button.{i}.Event.{i}.Enable                                            proto::tr181-button
+  Device.X_PRPLWARE-COM_Buttons.Button.{i}.Event.{i}.Max                                               proto::tr181-button
+  Device.X_PRPLWARE-COM_Buttons.Button.{i}.Event.{i}.Min                                               proto::tr181-button
+  Device.X_PRPLWARE-COM_Buttons.Button.{i}.Event.{i}.Name                                              proto::tr181-button
+  Device.X_PRPLWARE-COM_Buttons.Button.{i}.Event.{i}.Timeout                                           proto::tr181-button
+  Device.X_PRPLWARE-COM_Buttons.Button.{i}.Event.{i}.Type                                              proto::tr181-button
+  Device.X_PRPLWARE-COM_Buttons.Button.{i}.EventNumberOfEntries                                        proto::tr181-button
+  Device.X_PRPLWARE-COM_Buttons.Button.{i}.Location                                                    proto::tr181-button
+  Device.X_PRPLWARE-COM_Buttons.Button.{i}.Name                                                        proto::tr181-button
+  Device.X_PRPLWARE-COM_Buttons.Button.{i}.Push()                                                      proto::tr181-button
+  Device.X_PRPLWARE-COM_Buttons.Button.{i}.Release()                                                   proto::tr181-button
+  Device.X_PRPLWARE-COM_Buttons.Button.{i}.Status                                                      proto::tr181-button
+  Device.X_PRPLWARE-COM_Buttons.ButtonNumberOfEntries                                                  proto::tr181-button
+  Device.X_PRPLWARE-COM_MultiSettings.                                                                 proto::multisettings
+  Device.X_PRPLWARE-COM_MultiSettings.CurrentProfile                                                   proto::multisettings
+  Device.X_PRPLWARE-COM_MultiSettings.DecisionMadeBy                                                   proto::multisettings
+  Device.X_PRPLWARE-COM_MultiSettings.DetectionAtBoot                                                  proto::multisettings
+  Device.X_PRPLWARE-COM_MultiSettings.DetectionState                                                   proto::multisettings
+  Device.X_PRPLWARE-COM_MultiSettings.Enable                                                           proto::multisettings
+  Device.X_PRPLWARE-COM_MultiSettings.Profile.{i}.                                                     proto::multisettings
+  Device.X_PRPLWARE-COM_MultiSettings.Profile.{i}.Alias                                                proto::multisettings
+  Device.X_PRPLWARE-COM_MultiSettings.Profile.{i}.Enable                                               proto::multisettings
+  Device.X_PRPLWARE-COM_MultiSettings.Profile.{i}.ImpactedModules                                      proto::multisettings
+  Device.X_PRPLWARE-COM_MultiSettings.Profile.{i}.Name                                                 proto::multisettings
+  Device.X_PRPLWARE-COM_MultiSettings.Profile.{i}.Status                                               proto::multisettings
+  Device.X_PRPLWARE-COM_MultiSettings.Profile.{i}.Trigger.{i}.                                         proto::multisettings
+  Device.X_PRPLWARE-COM_MultiSettings.Profile.{i}.Trigger.{i}.Alias                                    proto::multisettings
+  Device.X_PRPLWARE-COM_MultiSettings.Profile.{i}.Trigger.{i}.LeftMember                               proto::multisettings
+  Device.X_PRPLWARE-COM_MultiSettings.Profile.{i}.Trigger.{i}.RelationalOperator                       proto::multisettings
+  Device.X_PRPLWARE-COM_MultiSettings.Profile.{i}.Trigger.{i}.RightMember                              proto::multisettings
+  Device.X_PRPLWARE-COM_MultiSettings.Profile.{i}.Trigger.{i}.Triggered                                proto::multisettings
+  Device.X_PRPLWARE-COM_MultiSettings.Profile.{i}.TriggerNumberOfEntries                               proto::multisettings
+  Device.X_PRPLWARE-COM_MultiSettings.ProfileNumberOfEntries                                           proto::multisettings
+  Device.X_PRPLWARE-COM_MultiSettings.Status                                                           proto::multisettings
+  Device.X_PRPLWARE-COM_PeriodicFileUpload.                                                            proto::tr181-periodicfileupload
+  Device.X_PRPLWARE-COM_PeriodicFileUpload.Enable                                                      proto::tr181-periodicfileupload
+  Device.X_PRPLWARE-COM_PeriodicFileUpload.File.{i}.                                                   proto::tr181-periodicfileupload
+  Device.X_PRPLWARE-COM_PeriodicFileUpload.File.{i}.Alias                                              proto::tr181-periodicfileupload
+  Device.X_PRPLWARE-COM_PeriodicFileUpload.File.{i}.Enable                                             proto::tr181-periodicfileupload
+  Device.X_PRPLWARE-COM_PeriodicFileUpload.File.{i}.InternalPath                                       proto::tr181-periodicfileupload
+  Device.X_PRPLWARE-COM_PeriodicFileUpload.File.{i}.Origin                                             proto::tr181-periodicfileupload
+  Device.X_PRPLWARE-COM_PeriodicFileUpload.File.{i}.Policy.                                            proto::tr181-periodicfileupload
+  Device.X_PRPLWARE-COM_PeriodicFileUpload.File.{i}.Policy.Name                                        proto::tr181-periodicfileupload
+  Device.X_PRPLWARE-COM_PeriodicFileUpload.File.{i}.Policy.Retry                                       proto::tr181-periodicfileupload
+  Device.X_PRPLWARE-COM_PeriodicFileUpload.File.{i}.PostScript                                         proto::tr181-periodicfileupload
+  Device.X_PRPLWARE-COM_PeriodicFileUpload.File.{i}.PreScript                                          proto::tr181-periodicfileupload
+  Device.X_PRPLWARE-COM_PeriodicFileUpload.File.{i}.ProfileReferences                                  proto::tr181-periodicfileupload
+  Device.X_PRPLWARE-COM_PeriodicFileUpload.File.{i}.UploadInterval                                     proto::tr181-periodicfileupload
+  Device.X_PRPLWARE-COM_PeriodicFileUpload.FileNumberOfEntries                                         proto::tr181-periodicfileupload
+  Device.X_PRPLWARE-COM_PeriodicFileUpload.Profile.{i}.                                                proto::tr181-periodicfileupload
+  Device.X_PRPLWARE-COM_PeriodicFileUpload.Profile.{i}.Alias                                           proto::tr181-periodicfileupload
+  Device.X_PRPLWARE-COM_PeriodicFileUpload.Profile.{i}.Enable                                          proto::tr181-periodicfileupload
+  Device.X_PRPLWARE-COM_PeriodicFileUpload.Profile.{i}.HTTP.                                           proto::tr181-periodicfileupload
+  Device.X_PRPLWARE-COM_PeriodicFileUpload.Profile.{i}.HTTP.CACert                                     proto::tr181-periodicfileupload
+  Device.X_PRPLWARE-COM_PeriodicFileUpload.Profile.{i}.HTTP.CAPath                                     proto::tr181-periodicfileupload
+  Device.X_PRPLWARE-COM_PeriodicFileUpload.Profile.{i}.HTTP.ClientCert                                 proto::tr181-periodicfileupload
+  Device.X_PRPLWARE-COM_PeriodicFileUpload.Profile.{i}.HTTP.Compression                                proto::tr181-periodicfileupload
+  Device.X_PRPLWARE-COM_PeriodicFileUpload.Profile.{i}.HTTP.Method                                     proto::tr181-periodicfileupload
+  Device.X_PRPLWARE-COM_PeriodicFileUpload.Profile.{i}.HTTP.Password                                   proto::tr181-periodicfileupload
+  Device.X_PRPLWARE-COM_PeriodicFileUpload.Profile.{i}.HTTP.PersistAcrossReboot                        proto::tr181-periodicfileupload
+  Device.X_PRPLWARE-COM_PeriodicFileUpload.Profile.{i}.HTTP.PrivateKey                                 proto::tr181-periodicfileupload
+  Device.X_PRPLWARE-COM_PeriodicFileUpload.Profile.{i}.HTTP.RetryEnable                                proto::tr181-periodicfileupload
+  Device.X_PRPLWARE-COM_PeriodicFileUpload.Profile.{i}.HTTP.RetryIntervalMultiplier                    proto::tr181-periodicfileupload
+  Device.X_PRPLWARE-COM_PeriodicFileUpload.Profile.{i}.HTTP.RetryMinimumWaitInterval                   proto::tr181-periodicfileupload
+  Device.X_PRPLWARE-COM_PeriodicFileUpload.Profile.{i}.HTTP.SupportedCompressions                      proto::tr181-periodicfileupload
+  Device.X_PRPLWARE-COM_PeriodicFileUpload.Profile.{i}.HTTP.SupportedMethods                           proto::tr181-periodicfileupload
+  Device.X_PRPLWARE-COM_PeriodicFileUpload.Profile.{i}.HTTP.URL                                        proto::tr181-periodicfileupload
+  Device.X_PRPLWARE-COM_PeriodicFileUpload.Profile.{i}.HTTP.UseDateHeader                              proto::tr181-periodicfileupload
+  Device.X_PRPLWARE-COM_PeriodicFileUpload.Profile.{i}.HTTP.Username                                   proto::tr181-periodicfileupload
+  Device.X_PRPLWARE-COM_PeriodicFileUpload.Profile.{i}.Name                                            proto::tr181-periodicfileupload
+  Device.X_PRPLWARE-COM_PeriodicFileUpload.Profile.{i}.Protocol                                        proto::tr181-periodicfileupload
+  Device.X_PRPLWARE-COM_PeriodicFileUpload.Profile.{i}.TimeReference                                   proto::tr181-periodicfileupload
+  Device.X_PRPLWARE-COM_PeriodicFileUpload.ProfileNumberOfEntries                                      proto::tr181-periodicfileupload
+  Device.X_PRPLWARE-COM_PeriodicFileUpload.SupportedPolicies                                           proto::tr181-periodicfileupload
+  Device.X_PRPLWARE-COM_PeriodicFileUpload.SupportedProtocols                                          proto::tr181-periodicfileupload
+  Device.X_PRPLWARE-COM_PersistentConfiguration.                                                       proto::pcm-manager
+  Device.X_PRPLWARE-COM_PersistentConfiguration.AddBackupFile()                                        proto::pcm-manager
+  Device.X_PRPLWARE-COM_PersistentConfiguration.AddBackupFile() input:FileName
+  Device.X_PRPLWARE-COM_PersistentConfiguration.AddBackupFile() input:Tag
+  Device.X_PRPLWARE-COM_PersistentConfiguration.Backup()                                               proto::pcm-manager
+  Device.X_PRPLWARE-COM_PersistentConfiguration.Backup() input:Flags
+  Device.X_PRPLWARE-COM_PersistentConfiguration.Backup() input:Tag
+  Device.X_PRPLWARE-COM_PersistentConfiguration.Backup() input:Type
+  Device.X_PRPLWARE-COM_PersistentConfiguration.BackupFile.{i}.                                        proto::pcm-manager
+  Device.X_PRPLWARE-COM_PersistentConfiguration.BackupFile.{i}.Alias                                   proto::pcm-manager
+  Device.X_PRPLWARE-COM_PersistentConfiguration.BackupFile.{i}.CreationDate                            proto::pcm-manager
+  Device.X_PRPLWARE-COM_PersistentConfiguration.BackupFile.{i}.FileName                                proto::pcm-manager
+  Device.X_PRPLWARE-COM_PersistentConfiguration.BackupFile.{i}.Tag                                     proto::pcm-manager
+  Device.X_PRPLWARE-COM_PersistentConfiguration.BackupFileNumberOfEntries                              proto::pcm-manager
+  Device.X_PRPLWARE-COM_PersistentConfiguration.BackupStatus                                           proto::pcm-manager
+  Device.X_PRPLWARE-COM_PersistentConfiguration.Config.                                                proto::pcm-manager
+  Device.X_PRPLWARE-COM_PersistentConfiguration.Config.AutoSync                                        proto::pcm-manager
+  Device.X_PRPLWARE-COM_PersistentConfiguration.Config.BackupFileType                                  proto::pcm-manager
+  Device.X_PRPLWARE-COM_PersistentConfiguration.Config.Security.                                       proto::pcm-manager
+  Device.X_PRPLWARE-COM_PersistentConfiguration.Config.Security.EncryptKey                             proto::pcm-manager
+  Device.X_PRPLWARE-COM_PersistentConfiguration.Config.Security.EncryptUserFile                        proto::pcm-manager
+  Device.X_PRPLWARE-COM_PersistentConfiguration.Enable                                                 proto::pcm-manager
+  Device.X_PRPLWARE-COM_PersistentConfiguration.Error                                                  proto::pcm-manager
+  Device.X_PRPLWARE-COM_PersistentConfiguration.Import()                                               proto::pcm-manager
+  Device.X_PRPLWARE-COM_PersistentConfiguration.Import() input:content
+  Device.X_PRPLWARE-COM_PersistentConfiguration.MaxNumberOfDynamicFiles                                proto::pcm-manager
+  Device.X_PRPLWARE-COM_PersistentConfiguration.NumberOfDynamicFiles                                   proto::pcm-manager
+  Device.X_PRPLWARE-COM_PersistentConfiguration.Restore()                                              proto::pcm-manager
+  Device.X_PRPLWARE-COM_PersistentConfiguration.Restore() input:FileRef
+  Device.X_PRPLWARE-COM_PersistentConfiguration.Restore() input:Type
+  Device.X_PRPLWARE-COM_PersistentConfiguration.RestoreStatus                                          proto::pcm-manager
+  Device.X_PRPLWARE-COM_PersistentConfiguration.Service.{i}.                                           proto::pcm-manager
+  Device.X_PRPLWARE-COM_PersistentConfiguration.Service.{i}.Alias                                      proto::pcm-manager
+  Device.X_PRPLWARE-COM_PersistentConfiguration.Service.{i}.ExportCallback                             proto::pcm-manager
+  Device.X_PRPLWARE-COM_PersistentConfiguration.Service.{i}.ExportStatus                               proto::pcm-manager
+  Device.X_PRPLWARE-COM_PersistentConfiguration.Service.{i}.ImportCallback                             proto::pcm-manager
+  Device.X_PRPLWARE-COM_PersistentConfiguration.Service.{i}.ImportStatus                               proto::pcm-manager
+  Device.X_PRPLWARE-COM_PersistentConfiguration.Service.{i}.Name                                       proto::pcm-manager
+  Device.X_PRPLWARE-COM_PersistentConfiguration.Service.{i}.Order                                      proto::pcm-manager
+  Device.X_PRPLWARE-COM_PersistentConfiguration.Service.{i}.Schema.{i}.                                proto::pcm-manager
+  Device.X_PRPLWARE-COM_PersistentConfiguration.Service.{i}.Schema.{i}.Alias                           proto::pcm-manager
+  Device.X_PRPLWARE-COM_PersistentConfiguration.Service.{i}.Schema.{i}.Name                            proto::pcm-manager
+  Device.X_PRPLWARE-COM_PersistentConfiguration.Service.{i}.SchemaNumberOfEntries                      proto::pcm-manager
+  Device.X_PRPLWARE-COM_PersistentConfiguration.Service.{i}.ServiceStatus                              proto::pcm-manager
+  Device.X_PRPLWARE-COM_PersistentConfiguration.Service.{i}.SetActionStatus()                          proto::pcm-manager
+  Device.X_PRPLWARE-COM_PersistentConfiguration.Service.{i}.SetActionStatus() input:ActionStatus
+  Device.X_PRPLWARE-COM_PersistentConfiguration.Service.{i}.SetActionStatus() input:State
+  Device.X_PRPLWARE-COM_PersistentConfiguration.ServiceConfigurationChanged()                          proto::pcm-manager
+  Device.X_PRPLWARE-COM_PersistentConfiguration.ServiceConfigurationChanged() input:name
+  Device.X_PRPLWARE-COM_PersistentConfiguration.ServiceNumberOfEntries                                 proto::pcm-manager
+  Device.X_PRPLWARE-COM_PersistentConfiguration.Status                                                 proto::pcm-manager
+  Device.X_PRPLWARE-COM_PersistentConfiguration.registerSvc()                                          proto::pcm-manager
+  Device.X_PRPLWARE-COM_PersistentConfiguration.registerSvc() input:data
+  Device.X_PRPLWARE-COM_PersistentConfiguration.registerSvc() input:name
+  Device.X_PRPLWARE-COM_PersistentConfiguration.unregisterSvc()                                        proto::pcm-manager
+  Device.X_PRPLWARE-COM_PersistentConfiguration.unregisterSvc() input:name
   Device.X_PRPLWARE-COM_SFPs.                                                                          proto::tr181-sfp
   Device.X_PRPLWARE-COM_SFPs.Cage.{i}.                                                                 proto::tr181-sfp
   Device.X_PRPLWARE-COM_SFPs.Cage.{i}.SFP.                                                             proto::tr181-sfp
@@ -8253,3 +8753,71 @@ Check that obuspa provides the same datamodel again (minus the platform specific
   Device.X_PRPLWARE-COM_SFPs.Cage.{i}.SFP.Transceiver.sfpmgr_get_ifname() input:index
   Device.X_PRPLWARE-COM_SFPs.Cage.{i}.SFP.Transceiver.sfpmgr_get_ifname() output:ifname
   Device.X_PRPLWARE-COM_SFPs.CageNumberOfEntries                                                       proto::tr181-sfp
+  Device.X_PRPLWARE-COM_WANManager.                                                                    proto::wan-manager
+  Device.X_PRPLWARE-COM_WANManager.OperationMode                                                       proto::wan-manager
+  Device.X_PRPLWARE-COM_WANManager.Reset()                                                             proto::wan-manager
+  Device.X_PRPLWARE-COM_WANManager.SensingPolicy                                                       proto::wan-manager
+  Device.X_PRPLWARE-COM_WANManager.SensingTimeout                                                      proto::wan-manager
+  Device.X_PRPLWARE-COM_WANManager.WAN.{i}.                                                            proto::wan-manager
+  Device.X_PRPLWARE-COM_WANManager.WAN.{i}.Alias                                                       proto::wan-manager
+  Device.X_PRPLWARE-COM_WANManager.WAN.{i}.DNSMode                                                     proto::wan-manager
+  Device.X_PRPLWARE-COM_WANManager.WAN.{i}.EnableSensing                                               proto::wan-manager
+  Device.X_PRPLWARE-COM_WANManager.WAN.{i}.IPv6DNSMode                                                 proto::wan-manager
+  Device.X_PRPLWARE-COM_WANManager.WAN.{i}.Intf.{i}.                                                   proto::wan-manager
+  Device.X_PRPLWARE-COM_WANManager.WAN.{i}.Intf.{i}.Alias                                              proto::wan-manager
+  Device.X_PRPLWARE-COM_WANManager.WAN.{i}.Intf.{i}.BridgeReference                                    proto::wan-manager
+  Device.X_PRPLWARE-COM_WANManager.WAN.{i}.Intf.{i}.DHCPv4Reference                                    proto::wan-manager
+  Device.X_PRPLWARE-COM_WANManager.WAN.{i}.Intf.{i}.DHCPv6Reference                                    proto::wan-manager
+  Device.X_PRPLWARE-COM_WANManager.WAN.{i}.Intf.{i}.DSLiteReference                                    proto::wan-manager
+  Device.X_PRPLWARE-COM_WANManager.WAN.{i}.Intf.{i}.DefaultRouteReference                              proto::wan-manager
+  Device.X_PRPLWARE-COM_WANManager.WAN.{i}.Intf.{i}.DeferredIPv6Instances                              proto::wan-manager
+  Device.X_PRPLWARE-COM_WANManager.WAN.{i}.Intf.{i}.IPv4Address.{i}.                                   proto::wan-manager
+  Device.X_PRPLWARE-COM_WANManager.WAN.{i}.Intf.{i}.IPv4Address.{i}.Alias                              proto::wan-manager
+  Device.X_PRPLWARE-COM_WANManager.WAN.{i}.Intf.{i}.IPv4Address.{i}.DNSServers                         proto::wan-manager
+  Device.X_PRPLWARE-COM_WANManager.WAN.{i}.Intf.{i}.IPv4Address.{i}.DefaultRouter                      proto::wan-manager
+  Device.X_PRPLWARE-COM_WANManager.WAN.{i}.Intf.{i}.IPv4Address.{i}.IPv4Address                        proto::wan-manager
+  Device.X_PRPLWARE-COM_WANManager.WAN.{i}.Intf.{i}.IPv4Address.{i}.SubnetMask                         proto::wan-manager
+  Device.X_PRPLWARE-COM_WANManager.WAN.{i}.Intf.{i}.IPv4Mode                                           proto::wan-manager
+  Device.X_PRPLWARE-COM_WANManager.WAN.{i}.Intf.{i}.IPv4Reference                                      proto::wan-manager
+  Device.X_PRPLWARE-COM_WANManager.WAN.{i}.Intf.{i}.IPv6Address.{i}.                                   proto::wan-manager
+  Device.X_PRPLWARE-COM_WANManager.WAN.{i}.Intf.{i}.IPv6Address.{i}.Alias                              proto::wan-manager
+  Device.X_PRPLWARE-COM_WANManager.WAN.{i}.Intf.{i}.IPv6Address.{i}.DNSServers                         proto::wan-manager
+  Device.X_PRPLWARE-COM_WANManager.WAN.{i}.Intf.{i}.IPv6Address.{i}.DefaultRouter                      proto::wan-manager
+  Device.X_PRPLWARE-COM_WANManager.WAN.{i}.Intf.{i}.IPv6Address.{i}.IPv6Address                        proto::wan-manager
+  Device.X_PRPLWARE-COM_WANManager.WAN.{i}.Intf.{i}.IPv6Address.{i}.PrefixLength                       proto::wan-manager
+  Device.X_PRPLWARE-COM_WANManager.WAN.{i}.Intf.{i}.IPv6AddressDelegate                                proto::wan-manager
+  Device.X_PRPLWARE-COM_WANManager.WAN.{i}.Intf.{i}.IPv6Mode                                           proto::wan-manager
+  Device.X_PRPLWARE-COM_WANManager.WAN.{i}.Intf.{i}.IPv6Reference                                      proto::wan-manager
+  Device.X_PRPLWARE-COM_WANManager.WAN.{i}.Intf.{i}.Name                                               proto::wan-manager
+  Device.X_PRPLWARE-COM_WANManager.WAN.{i}.Intf.{i}.NeighborDiscoveryReference                         proto::wan-manager
+  Device.X_PRPLWARE-COM_WANManager.WAN.{i}.Intf.{i}.PCPReference                                       proto::wan-manager
+  Device.X_PRPLWARE-COM_WANManager.WAN.{i}.Intf.{i}.PPPv4Reference                                     proto::wan-manager
+  Device.X_PRPLWARE-COM_WANManager.WAN.{i}.Intf.{i}.PPPv6Reference                                     proto::wan-manager
+  Device.X_PRPLWARE-COM_WANManager.WAN.{i}.Intf.{i}.Password                                           proto::wan-manager
+  Device.X_PRPLWARE-COM_WANManager.WAN.{i}.Intf.{i}.Type                                               proto::wan-manager
+  Device.X_PRPLWARE-COM_WANManager.WAN.{i}.Intf.{i}.UserName                                           proto::wan-manager
+  Device.X_PRPLWARE-COM_WANManager.WAN.{i}.Intf.{i}.VlanID                                             proto::wan-manager
+  Device.X_PRPLWARE-COM_WANManager.WAN.{i}.Intf.{i}.VlanPriority                                       proto::wan-manager
+  Device.X_PRPLWARE-COM_WANManager.WAN.{i}.Origin                                                      proto::wan-manager
+  Device.X_PRPLWARE-COM_WANManager.WAN.{i}.PhysicalReference                                           proto::wan-manager
+  Device.X_PRPLWARE-COM_WANManager.WAN.{i}.PhysicalType                                                proto::wan-manager
+  Device.X_PRPLWARE-COM_WANManager.WAN.{i}.SFPType                                                     proto::wan-manager
+  Device.X_PRPLWARE-COM_WANManager.WAN.{i}.SensingPriority                                             proto::wan-manager
+  Device.X_PRPLWARE-COM_WANManager.WAN.{i}.Status                                                      proto::wan-manager
+  Device.X_PRPLWARE-COM_WANManager.WANMode                                                             proto::wan-manager
+  Device.X_PRPLWARE-COM_WANManager.WANModeDisable()                                                    proto::wan-manager
+  Device.X_PRPLWARE-COM_WANManager.WANModeDisable() input:Autosensing
+  Device.X_PRPLWARE-COM_WANManager.WANModeDisable() input:WANMode
+  Device.X_PRPLWARE-COM_WANManager.WANModeEnable()                                                     proto::wan-manager
+  Device.X_PRPLWARE-COM_WANManager.WANModeEnable() input:Autosensing
+  Device.X_PRPLWARE-COM_WANManager.WANModeEnable() input:WANMode
+  Device.X_PRPLWARE-COM_WANManager.getWANMode()                                                        proto::wan-manager
+  Device.X_PRPLWARE-COM_WANManager.setIPv4Mode()                                                       proto::wan-manager
+  Device.X_PRPLWARE-COM_WANManager.setIPv4Mode() input:IPv4Mode
+  Device.X_PRPLWARE-COM_WANManager.setIPv4Mode() input:InterfaceAlias
+  Device.X_PRPLWARE-COM_WANManager.setIPv6Mode()                                                       proto::wan-manager
+  Device.X_PRPLWARE-COM_WANManager.setIPv6Mode() input:IPv6Mode
+  Device.X_PRPLWARE-COM_WANManager.setIPv6Mode() input:InterfaceAlias
+  Device.X_PRPLWARE-COM_WANManager.setWANMode()                                                        proto::wan-manager
+  Device.X_PRPLWARE-COM_WANManager.setWANMode() input:Autosensing
+  Device.X_PRPLWARE-COM_WANManager.setWANMode() input:WANMode

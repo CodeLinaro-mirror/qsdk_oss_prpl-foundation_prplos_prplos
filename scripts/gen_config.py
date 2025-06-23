@@ -131,7 +131,7 @@ if len(sys.argv) < 2:
     usage(1)
 
 rmtree("./tmp", ignore_errors=True)
-rmtree("./packages/feeds/", ignore_errors=True)
+rmtree("./package/feeds/", ignore_errors=True)
 rmtree("./feeds", ignore_errors=True)
 rmtree("./tmp", ignore_errors=True)
 if Path("./feeds.conf").is_file():
@@ -203,7 +203,7 @@ for ap in profile.get("additional_packages"):
         die(f"Error installing additional packages {packages_install} from {feed} feed")
 
 if profile.get("external_target", False):
-    if run_cmd(["./scripts/feeds", "install", profile["target"]]).returncode:
+    if run_cmd(["./scripts/feeds", "install", "-f", profile["target"]]).returncode:
         die(f"Error installing external target {profile['target']}")
 
 config_output = f"""CONFIG_TARGET_{profile["target"]}=y

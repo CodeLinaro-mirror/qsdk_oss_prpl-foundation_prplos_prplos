@@ -3,19 +3,19 @@ description: Add the prpl features
 feeds:
   - name: feed_amx
     uri: https://gitlab.com/prpl-foundation/prplos/feeds/feed_amx.git
-    revision: main@0e3aaf6c05a3a670ad28db0dc5afdcce4feda70f
+    revision: prplos-v4.0.0@4b1ec39befe3441b4742859839cefafef40b4045
 
   - name: feed_lcm
     uri: https://gitlab.com/prpl-foundation/prplos/feeds/feed_lcm.git
-    revision: main@df7c957adf065e8dc64f3df3b08d2147659b3fa3
-
+    revision: prplos-v4.0.0@5e0cc02f4c97cf232cd7e0a30483e5f187159491
+  
   - name: feed_prplmesh
     uri: https://gitlab.com/prpl-foundation/prplos/feeds/feed-prplmesh.git
-    revision: main@c92e71e578c41d80752c040ac76e69480416e9d3
+    revision: prplos-v4.0.0@0c09fe7e3195a8ed4b1c41cc9effaf9fc3747f81
 
   - name: feed_prplos
     uri: https://gitlab.com/prpl-foundation/prplos/feeds/feed-prplos.git
-    revision: main@af17160e9133465723440bd2fe616b97109bc6e3
+    revision: prplos-v4.0.0@057137d5048bdcd6fefaf6d7df70f18a33eb7e97
 
 additional_packages:
   - feed: packages
@@ -124,6 +124,7 @@ packages:
   - mod-wanmgr-sfp
   - mod-wanmgr-system
   - mod-xpon-prpl
+  - mod-routing-dhcp
   - multisettings
   - netdev-plugin
   - netmodel
@@ -178,11 +179,12 @@ packages:
   - tr181-httpaccess
   - tr181-ipdiagnostics
   - tr181-led
-  - tr181-powerstatus
   - tr181-logical
   - tr181-mcastd
+  - tr181-mqtt
   - tr181-mqttbroker
   - tr181-neighbordiscovery
+  - tr181-periodicfileupload
   - tr181-pcp
   - tr181-ppp
   - tr181-qos
@@ -193,6 +195,7 @@ packages:
   - tr181-sfp
   - tr181-temperature
   - tr181-upnp
+  - tr181-usb
   - tr181-usermanagement
   - tr181-xpon
   - wan-manager
@@ -297,3 +300,4 @@ diffconfig: |
           CONFIG_SAH_AMX_TR069_MANAGER_USE_GSDM=y
           CONFIG_SAH_MOD_AMXB_USP_REQUIRES_DEVICE_PREFIX=y
           CONFIG_INCLUDE_CONFIG=y
+          CONFIG_PACKAGE_ipset=y

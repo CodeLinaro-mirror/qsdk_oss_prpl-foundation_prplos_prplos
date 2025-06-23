@@ -8,7 +8,7 @@ Check that Quectel RM520N-GL is available on PCI bus and uses correct mhi-pci-ge
   0000:01:00.0 Unassigned class [ff00]: Qualcomm Technologies, Inc Device 0308
   lspci: Unable to load libkmod resources: error -2
   \tSubsystem: Qualcomm Technologies, Inc Device 5201 (esc)
-  \\tFlags: fast devsel, IRQ \d+.* (re)
+  \tFlags: fast devsel, IRQ 35 (esc)
   \tMemory at 28300000 (64-bit, non-prefetchable) [size=4K] (esc)
   \tMemory at 28301000 (64-bit, non-prefetchable) [size=4K] (esc)
   \tCapabilities: [40] Power Management version 3 (esc)
@@ -32,7 +32,6 @@ Check that Quectel RM520N-GL is available on USB bus:
     iProduct                2 RM520N-GL
 
 Check that expected DTS aliases are provided for ethernet interfaces:
-
   $ R 'cd /sys/firmware/devicetree/base
   > for eth_label in $(find -name label); do
   >   if [ "$(cat ${eth_label/label/device_type} 2>/dev/null)" != "network" ]; then
@@ -40,8 +39,11 @@ Check that expected DTS aliases are provided for ethernet interfaces:
   >   fi
   >   eth_device="${eth_label/\/label/}"
   >   eth_intf="$(cat ${eth_label})"
-  >   eth_alias="$(cd aliases; grep -l "${eth_device/\./}" $(ls * | grep -v ethernet))"
-  >   echo "intf=${eth_intf} => alias=${eth_alias}"
+  >   eth_aliases="$(cd aliases; grep -l "${eth_device/\./}" $(ls * | grep -Ev -e 'label-mac-device' -e '^ethernet[0-9]+$' | grep -E '^[-0-9a-z]+$'))"
+  >   for eth_alias in $eth_aliases; do
+  >      echo "intf=${eth_intf} => alias=${eth_alias}"
+  >      break;
+  >   done
   > done | LC_ALL=C sort'
   intf=lan1 => alias=lan1
   intf=lan2 => alias=lan2
@@ -57,3 +59,19 @@ Check that ethernet-manager configuration contains expected CPE aliases based on
   cpe-lan3
   cpe-lan4
   cpe-wan
+
+Check that we've WPS gpio key available:
+
+  $ R "cat /sys/firmware/devicetree/base/soc@0/gpio_keys/button@1/label"
+  wps\x00 (no-eol) (esc)
+
+  $ R "hexdump -s2 -n2 -e '1/1 \"0x%02x \"' /sys/firmware/devicetree/base/soc@0/gpio_keys/button@1/linux,code"
+  0x02 0x11  (no-eol)
+
+Check that we've Reset gpio key available:
+
+  $ R "cat /sys/firmware/devicetree/base/soc@0/gpio_keys/button@2/label"
+  reset\x00 (no-eol) (esc)
+
+  $ R "hexdump -s2 -n2 -e '1/1 \"0x%02x \"' /sys/firmware/devicetree/base/soc@0/gpio_keys/button@2/linux,code"
+  0x01 0x98  (no-eol)

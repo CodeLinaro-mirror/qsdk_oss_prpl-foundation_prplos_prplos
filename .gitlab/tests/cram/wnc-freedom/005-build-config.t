@@ -13,6 +13,8 @@ Assure expected build configuration (PCF-1413):
   CONFIG_DEVEL=y
   CONFIG_TOOLCHAINOPTS=y
   CONFIG_BUSYBOX_CUSTOM=y
+  CONFIG_AMX_TR181_USB=y
+  CONFIG_AMX_TR181_USB_ORDER=81
   CONFIG_BIND_ENABLE_DOH=y
   CONFIG_BUILD_LOG=y
   CONFIG_BUSYBOX_CONFIG_FLOAT_DURATION=y
@@ -76,6 +78,10 @@ Assure expected build configuration (PCF-1413):
   CONFIG_LXC_SECCOMP=y
   CONFIG_MCASTD_CORE=y
   CONFIG_MCASTD_CORE_NICE=-18
+  CONFIG_MODEMMANAGER_WITH_MBIM=y
+  CONFIG_MODEMMANAGER_WITH_NETIFD=y
+  CONFIG_MODEMMANAGER_WITH_QMI=y
+  CONFIG_MODEMMANAGER_WITH_QRTR=y
   CONFIG_MOSQUITTO_CTRL=y
   CONFIG_MOSQUITTO_DYNAMIC_SECURITY=y
   CONFIG_MOSQUITTO_LWS=y
@@ -97,6 +103,7 @@ Assure expected build configuration (PCF-1413):
   CONFIG_PACKAGE_bind-libs=y
   CONFIG_PACKAGE_cJSON=y
   CONFIG_PACKAGE_ca-certificates=y
+  CONFIG_PACKAGE_cellular-manager=y
   CONFIG_PACKAGE_chrony-prpl=y
   CONFIG_PACKAGE_cthulhu=y
   CONFIG_PACKAGE_cthulhu-dhcpc=y
@@ -105,6 +112,7 @@ Assure expected build configuration (PCF-1413):
   CONFIG_PACKAGE_cthulhu-plugin-usp=y
   CONFIG_PACKAGE_curl=y
   CONFIG_PACKAGE_data-model-mapper=m
+  CONFIG_PACKAGE_dbus=y
   CONFIG_PACKAGE_ddns-scripts=y
   CONFIG_PACKAGE_ddns-scripts-cloudflare=y
   CONFIG_PACKAGE_ddns-scripts-freedns=y
@@ -128,6 +136,7 @@ Assure expected build configuration (PCF-1413):
   CONFIG_PACKAGE_fcgi=y
   # CONFIG_PACKAGE_firewall4 is not set
   CONFIG_PACKAGE_flock=y
+  CONFIG_PACKAGE_freedom-lcm-partitioner=y
   CONFIG_PACKAGE_getopt=y
   CONFIG_PACKAGE_glib2=y
   CONFIG_PACKAGE_gmap-client=y
@@ -145,6 +154,7 @@ Assure expected build configuration (PCF-1413):
   CONFIG_PACKAGE_ip6tables-extra=y
   CONFIG_PACKAGE_ip6tables-zz-legacy=y
   CONFIG_PACKAGE_iperf3=y
+  CONFIG_PACKAGE_ipset=y
   CONFIG_PACKAGE_iptables-mod-conntrack-extra=y
   CONFIG_PACKAGE_iptables-mod-ipopt=y
   CONFIG_PACKAGE_iptables-mod-nfqueue=y
@@ -161,6 +171,9 @@ Assure expected build configuration (PCF-1413):
   CONFIG_PACKAGE_kmod-i2c-mux=y
   CONFIG_PACKAGE_kmod-i2c-mux-pca954x=y
   CONFIG_PACKAGE_kmod-ifb=y
+  CONFIG_PACKAGE_kmod-input-core=y
+  CONFIG_PACKAGE_kmod-input-evdev=y
+  CONFIG_PACKAGE_kmod-input-gpio-keys=y
   CONFIG_PACKAGE_kmod-ip6-tunnel=y
   CONFIG_PACKAGE_kmod-ip6tables=y
   CONFIG_PACKAGE_kmod-ip6tables-extra=y
@@ -243,6 +256,7 @@ Assure expected build configuration (PCF-1413):
   CONFIG_PACKAGE_libatomic=y
   CONFIG_PACKAGE_libattr=y
   CONFIG_PACKAGE_libbpf=y
+  CONFIG_PACKAGE_libbsd=y
   CONFIG_PACKAGE_libbz2=y
   CONFIG_PACKAGE_libcap=y
   CONFIG_PACKAGE_libcap-ng=y
@@ -250,6 +264,7 @@ Assure expected build configuration (PCF-1413):
   CONFIG_PACKAGE_libcthulhu=y
   CONFIG_PACKAGE_libcurl=y
   CONFIG_PACKAGE_libdbi=y
+  CONFIG_PACKAGE_libdbus=y
   CONFIG_PACKAGE_libdhcpoptions=y
   CONFIG_PACKAGE_libdiscoping=y
   CONFIG_PACKAGE_libelf=y
@@ -311,6 +326,7 @@ Assure expected build configuration (PCF-1413):
   CONFIG_PACKAGE_libstdcpp=y
   CONFIG_PACKAGE_libswla=y
   CONFIG_PACKAGE_libswlc=y
+  CONFIG_PACKAGE_libsysfs=y
   CONFIG_PACKAGE_libtr181-schedules=y
   CONFIG_PACKAGE_libtr69-engine=y
   CONFIG_PACKAGE_libudev-zero=y
@@ -338,6 +354,7 @@ Assure expected build configuration (PCF-1413):
   CONFIG_PACKAGE_lrzsz=y
   CONFIG_PACKAGE_lua=y
   CONFIG_PACKAGE_lua-amx=y
+  CONFIG_PACKAGE_lua-cjson=m
   CONFIG_PACKAGE_lxc=y
   CONFIG_PACKAGE_lxc-attach=y
   CONFIG_PACKAGE_lxc-auto=y
@@ -376,6 +393,7 @@ Assure expected build configuration (PCF-1413):
   CONFIG_PACKAGE_mod-autosensing=y
   CONFIG_PACKAGE_mod-ba-cli=y
   CONFIG_PACKAGE_mod-busstats=y
+  CONFIG_PACKAGE_mod-cellular-libmm=y
   CONFIG_PACKAGE_mod-dhcpv4c=y
   CONFIG_PACKAGE_mod-dmext=y
   CONFIG_PACKAGE_mod-dmproxy=y
@@ -393,6 +411,7 @@ Assure expected build configuration (PCF-1413):
   CONFIG_PACKAGE_mod-ppp-daemon=y
   CONFIG_PACKAGE_mod-qos-tc=y
   CONFIG_PACKAGE_mod-ra-radvd=y
+  CONFIG_PACKAGE_mod-routing-dhcp=y
   CONFIG_PACKAGE_mod-sahtrace=y
   CONFIG_PACKAGE_mod-usp-registration=y
   CONFIG_PACKAGE_mod-vlan-ioctl=y
@@ -401,6 +420,7 @@ Assure expected build configuration (PCF-1413):
   CONFIG_PACKAGE_mod-wanmgr-system=y
   CONFIG_PACKAGE_mod-xpon-prpl=y
   CONFIG_PACKAGE_mod-xpon-prpl-mock=m
+  CONFIG_PACKAGE_modemmanager=y
   CONFIG_PACKAGE_mosquitto-client-ssl=y
   CONFIG_PACKAGE_mosquitto-ssl=y
   CONFIG_PACKAGE_mstpd=y
@@ -408,6 +428,7 @@ Assure expected build configuration (PCF-1413):
   CONFIG_PACKAGE_netdev-plugin=y
   CONFIG_PACKAGE_netmodel=y
   CONFIG_PACKAGE_netmodel-bridge=y
+  CONFIG_PACKAGE_netmodel-cellular=y
   CONFIG_PACKAGE_netmodel-clients=y
   CONFIG_PACKAGE_netmodel-dhcpv4=y
   CONFIG_PACKAGE_netmodel-dhcpv6=y
@@ -453,6 +474,7 @@ Assure expected build configuration (PCF-1413):
   CONFIG_PACKAGE_rlyeh=y
   CONFIG_PACKAGE_routing-manager=y
   CONFIG_PACKAGE_rpcd=y
+  CONFIG_PACKAGE_sgdisk=y
   CONFIG_PACKAGE_shadow=y
   CONFIG_PACKAGE_shadow-chage=y
   CONFIG_PACKAGE_shadow-chfn=y
@@ -515,10 +537,11 @@ Assure expected build configuration (PCF-1413):
   CONFIG_PACKAGE_tr181-led=y
   CONFIG_PACKAGE_tr181-logical=y
   CONFIG_PACKAGE_tr181-mcastd=y
+  CONFIG_PACKAGE_tr181-mqtt=y
   CONFIG_PACKAGE_tr181-mqttbroker=y
   CONFIG_PACKAGE_tr181-neighbordiscovery=y
   CONFIG_PACKAGE_tr181-pcp=y
-  CONFIG_PACKAGE_tr181-powerstatus=y
+  CONFIG_PACKAGE_tr181-periodicfileupload=y
   CONFIG_PACKAGE_tr181-ppp=y
   CONFIG_PACKAGE_tr181-qos=y
   CONFIG_PACKAGE_tr181-rest-api=y
@@ -528,6 +551,7 @@ Assure expected build configuration (PCF-1413):
   CONFIG_PACKAGE_tr181-syslog=y
   CONFIG_PACKAGE_tr181-temperature=y
   CONFIG_PACKAGE_tr181-upnp=y
+  CONFIG_PACKAGE_tr181-usb=y
   CONFIG_PACKAGE_tr181-usermanagement=y
   CONFIG_PACKAGE_tr181-xpon=y
   # CONFIG_PACKAGE_ucode-mod-ubus is not set
@@ -608,9 +632,12 @@ Assure expected build configuration (PCF-1413):
   CONFIG_SAH_AMX_TR181_BULKDATA_START_ORDER=90
   CONFIG_SAH_AMX_TR181_BULKDATA_STOP_ORDER=88
   CONFIG_SAH_AMX_TR181_BUTTON=y
-  CONFIG_SAH_AMX_TR181_BUTTON_ORDER=42
+  CONFIG_SAH_AMX_TR181_BUTTON_RUN_AS_GROUP="tr181_app"
+  CONFIG_SAH_AMX_TR181_BUTTON_RUN_AS_USER="tr181_app"
   CONFIG_SAH_AMX_TR181_CAPTIVEPORTAL=y
   CONFIG_SAH_AMX_TR181_CAPTIVEPORTAL_EXAMPLE=y
+  CONFIG_SAH_AMX_TR181_CELLULAR=y
+  CONFIG_SAH_AMX_TR181_CELLULAR_ORDER=97
   CONFIG_SAH_AMX_TR181_DEVICE=y
   CONFIG_SAH_AMX_TR181_DEVICEINFO=y
   CONFIG_SAH_AMX_TR181_DEVICEINFO_NUMBER_OF_EXTRA_MAC_ADDRESSES="7"
@@ -673,10 +700,12 @@ Assure expected build configuration (PCF-1413):
   CONFIG_SAH_AMX_TR181_MCASTD_CORE_PLUGIN_ORDER=22
   CONFIG_SAH_AMX_TR181_MCASTD_CORE_PLUGIN_RUN_AS_GROUP="tr181_app"
   CONFIG_SAH_AMX_TR181_MCASTD_CORE_PLUGIN_RUN_AS_USER="tr181_app"
+  CONFIG_SAH_AMX_TR181_MQTT=y
   CONFIG_SAH_AMX_TR181_MQTTBROKER=y
   CONFIG_SAH_AMX_TR181_MQTTBROKER_ORDER=49
   CONFIG_SAH_AMX_TR181_MQTTBROKER_RUN_AS_GROUP="tr181_app"
   CONFIG_SAH_AMX_TR181_MQTTBROKER_RUN_AS_USER="tr181_app"
+  CONFIG_SAH_AMX_TR181_MQTT_ORDER=49
   CONFIG_SAH_AMX_TR181_NEIGHBORDISCOVERY=y
   CONFIG_SAH_AMX_TR181_NEIGHBORDISCOVERY_ORDER=50
   CONFIG_SAH_AMX_TR181_NEIGHBORDISCOVERY_RUN_AS_GROUP="tr181_app"
@@ -685,10 +714,10 @@ Assure expected build configuration (PCF-1413):
   CONFIG_SAH_AMX_TR181_PCP_ORDER=70
   CONFIG_SAH_AMX_TR181_PCP_RUN_AS_GROUP="tr181_app"
   CONFIG_SAH_AMX_TR181_PCP_RUN_AS_USER="tr181_app"
-  CONFIG_SAH_AMX_TR181_POWERSTATUS=y
-  CONFIG_SAH_AMX_TR181_POWERSTATUS_ORDER=15
-  CONFIG_SAH_AMX_TR181_POWERSTATUS_RUN_AS_GROUP="tr181_app"
-  CONFIG_SAH_AMX_TR181_POWERSTATUS_RUN_AS_USER="tr181_app"
+  CONFIG_SAH_AMX_TR181_PERIODICFILEUPLOAD=y
+  CONFIG_SAH_AMX_TR181_PERIODICFILEUPLOAD_ORDER=99
+  CONFIG_SAH_AMX_TR181_PERIODICFILEUPLOAD_RUN_AS_GROUP="tr181_app"
+  CONFIG_SAH_AMX_TR181_PERIODICFILEUPLOAD_RUN_AS_USER="tr181-app"
   CONFIG_SAH_AMX_TR181_QOS=y
   CONFIG_SAH_AMX_TR181_QOS_DEVICE_BASED_CLASSIFICATION=y
   CONFIG_SAH_AMX_TR181_QOS_ORDER=49

@@ -11,7 +11,6 @@ Get initial state of bridges:
   br-lan@wlan2.1
   br-lan@wlan1
   br-lan@wlan0.1
-  br-lan@eth0_5
   br-lan@eth0_4
   br-lan@eth0_3
   br-lan@eth0_2
@@ -23,7 +22,7 @@ Get initial state of bridges:
 Remove eth0_1 from LAN bridge and add it to the Guest bridge:
 
   $ printf ' \
-  > ubus-cli Bridging.Bridge.lan.Port.ETH0_1-\n
+  > ubus-cli Bridging.Bridge.lan.Port.cpe-10g-\n
   > ubus-cli Bridging.Bridge.guest.Port.+{Name="eth0_1", Alias="ETH0_1", LowerLayers="Device.Ethernet.Interface.2."}\n
   > sleep 1\n
   > ubus-cli Bridging.Bridge.guest.Port.ETH0_1.Enable=1\n
@@ -40,7 +39,6 @@ Check that eth0_1 is added to Guest bridge:
   br-lan@wlan2.1
   br-lan@wlan1
   br-lan@wlan0.1
-  br-lan@eth0_5
   br-lan@eth0_4
   br-lan@eth0_3
   br-lan@eth0_2
@@ -69,7 +67,6 @@ Check for initial state of bridges again:
   br-lan@wlan2.1
   br-lan@wlan1
   br-lan@wlan0.1
-  br-lan@eth0_5
   br-lan@eth0_4
   br-lan@eth0_3
   br-lan@eth0_2

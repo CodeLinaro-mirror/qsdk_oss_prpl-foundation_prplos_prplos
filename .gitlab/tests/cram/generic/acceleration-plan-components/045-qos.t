@@ -111,7 +111,7 @@ Add a new classification instance 5. Mark ICMP packets to network 192.168.25.0/2
   > ba-cli QoS.Classification.+{Alias=icmp_dscp_cs1}
   > ba-cli QoS.Classification.icmp_dscp_cs1.DSCPMark=8
   > ba-cli QoS.Classification.icmp_dscp_cs1.Interface=""
-  > ba-cli QoS.Classification.icmp_dscp_cs1.X_PRPL-COM_Direction="Postrouting"
+  > ba-cli QoS.Classification.icmp_dscp_cs1.X_PRPLWARE-COM_Direction="Postrouting"
   > ba-cli QoS.Classification.icmp_dscp_cs1.Protocol=1
   > ba-cli QoS.Classification.icmp_dscp_cs1.IPVersion=4
   > ba-cli QoS.Classification.icmp_dscp_cs1.DestIP=192.168.25.0
@@ -156,7 +156,7 @@ Check default QoS configuration:
   $ sleep 2
 
   $ R "tc qdisc show dev $DUT_WAN_INTERFACE"
-  qdisc htb 1: root refcnt (2|5|9) r2q 10 default 0x10003 direct_packets_stat [0-9]+ direct_qlen (532|1000|1024) (re)
+  qdisc htb 1: root refcnt (2|5|9|17) r2q 10 default 0x10003 direct_packets_stat [0-9]+ direct_qlen (532|1000|1024) (re)
 
   $ R "tc class show dev $DUT_WAN_INTERFACE" | sort
   class htb 1:1 parent 1:101 prio 5 rate 25Mbit ceil 25Mbit burst *b cburst *b (glob)
@@ -179,7 +179,7 @@ Let all upstream (LAN -> WAN) UDP packets to network 192.168.55.0/24 go through 
   $ cat > /tmp/new-classification <<EOF
   > ba-cli QoS.Classification.+{Alias=subnet1_high_prio}
   > ba-cli QoS.Classification.subnet1_high_prio.Interface=""
-  > ba-cli QoS.Classification.subnet1_high_prio.X_PRPL-COM_Direction="Forward"
+  > ba-cli QoS.Classification.subnet1_high_prio.X_PRPLWARE-COM_Direction="Forward"
   > ba-cli QoS.Classification.subnet1_high_prio.Protocol=17
   > ba-cli QoS.Classification.subnet1_high_prio.IPVersion=4
   > ba-cli QoS.Classification.subnet1_high_prio.DestIP=192.168.55.0
