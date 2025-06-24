@@ -17,7 +17,7 @@ additional_packages:
     packages:
       - kmod-ath12k
       - kmod-mac80211
-      - kmod-cfg80211
+      - qca-cfg80211
       - iw-full
       - wireless-freedom
       - netifd-scripts
@@ -95,6 +95,21 @@ additional_packages:
       - diag
       - cnssdiag
       - sysupgrade-helper
+      - kmod-qca-nss-netfn-tcpst
+      - nss-tcp-st-cli
+      - nss-udp-st
+      - netstandby-drv
+      - kmod-qca-nss-nsm
+      - mcproxy
+      - libmmap-telemetry
+      - qca-nsm-app
+      - qca-sal-qos-test
+      - qca-sal-rule-test
+      - udp-clf
+      - kmod-qca-nss-ecm-wifi-plugin
+      - ath11k-fwtest
+      - kmod-aqr-phy
+
 
 packages:
   - e2fsprogs
@@ -143,5 +158,6 @@ diffconfig: |
   CONFIG_PACKAGE_perf=m
   CONFIG_PACKAGE_libtraceevent=m
   CONFIG_PACKAGE_libunwind=m
+  CONFIG_PACKAGE_lldpd=y
   CONFIG_PACKAGE_kmod-qseecom=m
   CONFIG_PACKAGE_samba4-server=m

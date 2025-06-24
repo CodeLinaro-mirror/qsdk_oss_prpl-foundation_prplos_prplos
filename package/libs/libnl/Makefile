@@ -102,6 +102,7 @@ define Build/InstallDev
 	$(CP) $(PKG_INSTALL_DIR)/usr/include/libnl3/* $(1)/usr/include/libnl3/
 	$(CP) $(PKG_INSTALL_DIR)/usr/lib/* $(1)/usr/lib
 	$(CP) $(PKG_INSTALL_DIR)/usr/lib/pkgconfig/*.pc $(1)/usr/lib/pkgconfig
+	$(CP) $(PKG_BUILD_DIR)/include/* $(1)/usr/include/libnl3/
 
 	# Copy symlinks
 	$(CP) $(PKG_INSTALL_DIR)/usr/lib/libnl-3.so $(1)/usr/lib/libnl.so
