@@ -25,6 +25,7 @@ additional_packages:
       - ubus
       - udebug
       - samba4
+      - openssh
   - feed: feed_qca
     packages:
       - platform_drivers
@@ -161,3 +162,4 @@ diffconfig: |
   CONFIG_PACKAGE_lldpd=y
   CONFIG_PACKAGE_kmod-qseecom=m
   CONFIG_PACKAGE_samba4-server=m
+  CONFIG_PACKAGE_openssh-sftp-server=m

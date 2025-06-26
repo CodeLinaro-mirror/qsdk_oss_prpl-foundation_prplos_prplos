@@ -51,6 +51,7 @@ additional_packages:
       - libubox
       - udebug
       - samba4
+      - openssh
   - feed: nss_host
     packages:
       - kmod-qca-nss-ppe
@@ -171,3 +172,4 @@ diffconfig: |
   CONFIG_PACKAGE_lldpd=y
   CONFIG_PACKAGE_kmod-qseecom=m
   CONFIG_PACKAGE_samba4-server=m
+  CONFIG_PACKAGE_openssh-sftp-server=m
