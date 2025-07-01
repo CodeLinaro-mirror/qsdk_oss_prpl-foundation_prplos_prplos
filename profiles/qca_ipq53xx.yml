@@ -49,12 +49,12 @@ additional_packages:
       - kmod-qca-nss-ppe-bridge-mgr
       - kmod-qca-nss-ppe-ds
       - kmod-qca-nss-ppe-dsa-mgr
-      - kmod-qca-nss-ppe-gretap
+      - kmod-qca-nss-gre-mgr
       - kmod-qca-nss-ppe-lag-mgr
       - kmod-qca-nss-ppe-mapt
       - kmod-qca-nss-ppe-mirror-test
       - kmod-qca-nss-ppe-netlink
-      - kmod-qca-nss-ppe-pppoe-mgr
+      - kmod-qca-nss-pppoe-mgr
       - kmod-qca-nss-ppe-qdisc
       - kmod-qca-nss-ppe-rule
       - kmod-qca-nss-ppe-tun
