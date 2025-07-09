@@ -39,7 +39,6 @@ additional_packages:
       - kmod-usb-storage-uas
       - kmod-fs-vfat
       - kmod-fs-ntfs
-      - wifi-scripts
       - kmod-qca-nss-dp
       - kmod-qca-nss-dscpstats
       - kmod-qca-nss-flowmgr
