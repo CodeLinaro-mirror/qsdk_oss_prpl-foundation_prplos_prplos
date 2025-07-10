@@ -109,6 +109,7 @@ additional_packages:
       - udp-clf
       - kmod-qca-nss-ecm-wifi-plugin
       - ath11k-fwtest
+      - ath11k-qdss
 
 packages:
   - e2fsprogs
