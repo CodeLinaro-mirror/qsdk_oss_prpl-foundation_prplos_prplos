@@ -30,7 +30,6 @@ additional_packages:
   - feed: wlan_utils
     packages:
       - qca-wifi-scripts
-      - wifi-scripts
       - ath-legacy-wifi-scripts
   - feed: ssdk
     packages:
