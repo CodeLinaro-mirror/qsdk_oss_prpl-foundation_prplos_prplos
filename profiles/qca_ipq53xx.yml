@@ -16,6 +16,7 @@ additional_packages:
   - feed: wlan-internal
     packages:
       - kmod-ath12k
+      - kmod-ath11k
       - kmod-mac80211
       - qca-cfg80211
       - iw-full
