@@ -31,6 +31,7 @@ additional_packages:
     packages:
       - qca-wifi-scripts
       - ath-legacy-wifi-scripts
+      - wlan-telemetry
   - feed: ssdk
     packages:
       - qca-ssdk
