@@ -111,7 +111,7 @@ additional_packages:
       - kmod-qca-nss-ecm-wifi-plugin
       - ath11k-fwtest
       - kmod-aqr-phy
-
+      - sigma-dut-open
 
 packages:
   - e2fsprogs
