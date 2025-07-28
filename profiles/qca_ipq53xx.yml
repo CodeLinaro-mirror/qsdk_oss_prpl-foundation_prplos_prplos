@@ -174,3 +174,4 @@ diffconfig: |
   CONFIG_PACKAGE_kmod-qseecom=m
   CONFIG_PACKAGE_samba4-server=m
   CONFIG_PACKAGE_openssh-sftp-server=m
+  CONFIG_LOCALMIRROR="https://sources.cdn.openwrt.org/"
