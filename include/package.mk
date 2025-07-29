@@ -286,6 +286,10 @@ define Build/CoreTargets
   endif
 endef
 
+define Build/prpl-patches
+  $(eval -include $(wildcard $(call FindPackage,$(basename $(notdir $(CURDIR))))/$(PKG_NAME).mk))
+endef
+
 define Build/DefaultTargets
   $(if $(PKG_SKIP_DOWNLOAD),,$(if $(strip $(PKG_SOURCE_URL)),$(call Download,default)))
   $(if $(DUMP),,$(Build/CoreTargets))
@@ -295,6 +299,7 @@ define Build/DefaultTargets
 endef
 
 define BuildPackage
+  $(Build/prpl-patches)
   $(eval $(Package/Default))
   $(eval $(Package/$(1)))
 
