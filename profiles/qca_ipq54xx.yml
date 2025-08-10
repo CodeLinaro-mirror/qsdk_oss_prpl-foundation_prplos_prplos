@@ -9,7 +9,7 @@ description: Build image for Qualcomm IPQ54xx board
 feeds:
   - name: feed_qca
     uri: https://gitlab.com/prpl-foundation/prplOS/feed-qca.git
-    revision: dev/ath13.1@0c858958b52e5ca94502c4a21efcf5a4071f7bdd
+    revision: dev/ath13.1@56a68fb3c781817d0ce64c7d8433af4eee7e54ef
 
 packages:
   - i2c-tools

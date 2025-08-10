@@ -10,7 +10,7 @@ feeds:
     revision: prplos-v4.0.0@5e0cc02f4c97cf232cd7e0a30483e5f187159491
   
   - name: feed_prplmesh
-    uri: ssh://review-android.quicinc.com:29418/oss/prpl-foundation/prplos/feeds/feed-prplmesh
+    uri: https://git.codelinaro.org/clo/qsdk/oss/prpl-foundation/prplos/feeds/feed-prplmesh.git
     branch: prpl-13.1
 
   - name: feed_prplos
