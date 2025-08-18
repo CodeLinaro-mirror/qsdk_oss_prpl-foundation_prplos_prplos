@@ -13,6 +13,10 @@ Assure expected build configuration (PCF-1413):
   CONFIG_DEVEL=y
   CONFIG_TOOLCHAINOPTS=y
   CONFIG_BUSYBOX_CUSTOM=y
+  CONFIG_AMX_TR140_STORAGE_SERVICE=y
+  CONFIG_AMX_TR140_STORAGE_SERVICE_ORDER=70
+  CONFIG_AMX_TR140_STORAGE_SERVICE_RUN_AS_GROUP="tr181_app"
+  CONFIG_AMX_TR140_STORAGE_SERVICE_RUN_AS_USER="tr181_app"
   CONFIG_AMX_TR181_USB=y
   CONFIG_AMX_TR181_USB_ORDER=81
   CONFIG_BIND_ENABLE_DOH=y
@@ -143,6 +147,7 @@ Assure expected build configuration (PCF-1413):
   CONFIG_PACKAGE_gmap-mod-self=y
   CONFIG_PACKAGE_gmap-mod-upnp=y
   CONFIG_PACKAGE_gmap-server=y
+  CONFIG_PACKAGE_hfsfsck=y
   CONFIG_PACKAGE_hostapd-qca-utils=y
   CONFIG_PACKAGE_hosts-manager=y
   CONFIG_PACKAGE_ip-bridge=y
@@ -163,10 +168,24 @@ Assure expected build configuration (PCF-1413):
   CONFIG_PACKAGE_kmod-ath11k=y
   CONFIG_PACKAGE_kmod-crypto-md5=y
   CONFIG_PACKAGE_kmod-crypto-michael-mic=y
+  CONFIG_PACKAGE_kmod-cdrom=y
+  CONFIG_PACKAGE_kmod-crypto-des=y
+  CONFIG_PACKAGE_kmod-crypto-ecb=y
+  CONFIG_PACKAGE_kmod-crypto-md5=y
+  CONFIG_PACKAGE_kmod-crypto-sha256=y
   CONFIG_PACKAGE_kmod-ebtables=y
   CONFIG_PACKAGE_kmod-ebtables-ipv4=y
   CONFIG_PACKAGE_kmod-ebtables-ipv6=y
+  CONFIG_PACKAGE_kmod-fs-exfat=y
+  CONFIG_PACKAGE_kmod-fs-hfs=y
+  CONFIG_PACKAGE_kmod-fs-hfsplus=y
+  CONFIG_PACKAGE_kmod-fs-ksmbd=y
+  CONFIG_PACKAGE_kmod-fs-netfs=y
+  CONFIG_PACKAGE_kmod-fs-ntfs=y
+  CONFIG_PACKAGE_kmod-fs-ntfs3=y
+  CONFIG_PACKAGE_kmod-fs-smbfs-common=y
   CONFIG_PACKAGE_kmod-fs-vfat=y
+  CONFIG_PACKAGE_kmod-fuse=y
   CONFIG_PACKAGE_kmod-gpio-pca953x=y
   CONFIG_PACKAGE_kmod-gre=y
   CONFIG_PACKAGE_kmod-gre6=y
@@ -208,8 +227,10 @@ Assure expected build configuration (PCF-1413):
   # CONFIG_PACKAGE_kmod-nft-fib is not set
   CONFIG_PACKAGE_kmod-nls-cp437=y
   CONFIG_PACKAGE_kmod-nls-iso8859-1=y
+  CONFIG_PACKAGE_kmod-nls-ucs2-utils=y
   CONFIG_PACKAGE_kmod-nls-utf8=y
   CONFIG_PACKAGE_kmod-nss-udp-st-drv=y
+  CONFIG_PACKAGE_kmod-oid-registry=y
   CONFIG_PACKAGE_kmod-ppp=y
   CONFIG_PACKAGE_kmod-pppoe=y
   CONFIG_PACKAGE_kmod-pppol2tp=y
@@ -251,6 +272,7 @@ Assure expected build configuration (PCF-1413):
   CONFIG_PACKAGE_kmod-usb-wdm=y
   CONFIG_PACKAGE_kmod-veth=y
   CONFIG_PACKAGE_kmod-wwan=y
+  CONFIG_PACKAGE_ksmbd-server=y
   CONFIG_PACKAGE_libacl=y
   CONFIG_PACKAGE_libamxa=y
   CONFIG_PACKAGE_libamxb=y
@@ -304,6 +326,7 @@ Assure expected build configuration (PCF-1413):
   CONFIG_PACKAGE_libmbim=y
   CONFIG_PACKAGE_libmicrohttpd-no-ssl=y
   CONFIG_PACKAGE_libmosquitto-ssl=y
+  CONFIG_PACKAGE_libmount=y
   CONFIG_PACKAGE_libncurses=y
   CONFIG_PACKAGE_libnetfilter-conntrack=y
   CONFIG_PACKAGE_libnetfilter-queue=y
@@ -369,6 +392,7 @@ Assure expected build configuration (PCF-1413):
   # CONFIG_PACKAGE_logd is not set
   CONFIG_PACKAGE_logrotate=y
   CONFIG_PACKAGE_lrzsz=y
+  CONFIG_PACKAGE_lsblk=y
   CONFIG_PACKAGE_lua=y
   CONFIG_PACKAGE_lua-amx=y
   CONFIG_PACKAGE_lua-cjson=m
@@ -549,6 +573,7 @@ Assure expected build configuration (PCF-1413):
   CONFIG_PACKAGE_timingila-cthulhu=y
   CONFIG_PACKAGE_timingila-rlyeh=y
   CONFIG_PACKAGE_tr069-manager=y
+  CONFIG_PACKAGE_tr140-storageservice=y
   CONFIG_PACKAGE_tr181-bridging=y
   CONFIG_PACKAGE_tr181-bulkdata=y
   CONFIG_PACKAGE_tr181-button=y

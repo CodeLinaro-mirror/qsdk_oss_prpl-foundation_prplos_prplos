@@ -117,6 +117,8 @@ Check that ubus has expected datamodels available:
   Device.SFPs
   Device.SSH
   Device.Security
+  Device.Services
+  Device.Services.StorageService
   Device.SoftwareModules
   Device.Syslog
   Device.Time
@@ -346,6 +348,7 @@ Check that ubus has expected datamodels available:
   SoftwareModules.LocalManagement.Action
   SoftwareModules.NetworkConfig
   SoftwareModules.NetworkConfig.Interfaces
+  StorageService
   Syslog
   Syslog.Action
   Syslog.Filter
