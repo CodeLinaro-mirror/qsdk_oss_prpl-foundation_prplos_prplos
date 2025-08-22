@@ -104,6 +104,13 @@ def extract_sha1_from_revision(revision: str) -> str:
 
 
 def handle_feed_revision(profile_feed: dict, feeds: list):
+    f = profile_feed
+    branch = profile_feed.get("branch")
+    if branch:
+        feeds.append(
+                f'{f.get("method", "src-git")},{f["name"]},{f["uri"]};{branch}'
+        )
+        return
     method = profile_feed.get("method", "src-git")
     f = f'{method},{profile_feed["name"]},{profile_feed["uri"]}'
 
