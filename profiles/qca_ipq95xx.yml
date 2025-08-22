@@ -28,7 +28,6 @@ additional_packages:
     packages:
       - qca-wifi-scripts
       - wifi-scripts
-      - ath-legacy-wifi-scripts
   - feed: ssdk
     packages:
       - qca-ssdk

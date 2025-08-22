@@ -82,7 +82,6 @@ additional_packages:
       - ath-wifi-scripts
       - wpa-cli
       - qca-wifi-scripts
-      - ath-legacy-wifi-scripts
       - wireless-regdb
       - kmod-fs-vfat
       - kmod-telemetry-agent

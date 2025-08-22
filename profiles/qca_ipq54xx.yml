@@ -37,7 +37,6 @@ additional_packages:
       - kmod-fs-vfat
       - qca-wifi-scripts
       - wifi-scripts
-      - ath-legacy-wifi-scripts
       - kmod-qca-nss-dp
       - kmod-qca-nss-dscpstats
       - kmod-qca-nss-flowmgr
@@ -82,8 +81,6 @@ additional_packages:
       - hostapd-utils
       - ath-wifi-scripts
       - wpa-cli
-      - qca-wifi-scripts
-      - ath-wifi-scripts
       - wireless-regdb
       - kmod-fs-vfat
       - kmod-telemetry-agent
