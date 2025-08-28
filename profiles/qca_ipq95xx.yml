@@ -12,6 +12,7 @@ additional_packages:
       - i2c-tools
       - sysstat
       - u-boot
+      - ntfs-3g
   - feed: platform_utils
     packages:
       - platform_drivers
@@ -24,10 +25,13 @@ additional_packages:
       - kmod-usb-storage-extras
       - kmod-usb-storage-uas
       - kmod-fs-vfat
+      - kmod-fs-ntfs
+      - sysupgrade-helper
   - feed: wlan_utils
     packages:
       - qca-wifi-scripts
       - wifi-scripts
+      - wlan-telemetry
   - feed: ssdk
     packages:
       - qca-ssdk
@@ -35,8 +39,9 @@ additional_packages:
   - feed: wlan-internal
     packages:
       - kmod-ath12k
+      - kmod-ath11k
       - kmod-mac80211
-      - kmod-cfg80211
+      - qca-cfg80211
       - hostapd-common
       - hostapd-utils
       - wpad-mesh-openssl
@@ -46,6 +51,8 @@ additional_packages:
       - ubus
       - libubox
       - udebug
+      - samba4
+      - openssh
   - feed: nss_host
     packages:
       - kmod-qca-nss-ppe
@@ -54,7 +61,7 @@ additional_packages:
       - kmod-qca-nss-ppe-pppoe-mgr
       - kmod-qca-nss-ppe-lag-mgr
       - kmod-qca-nss-ppe-tunipip6
-      - kmod-qca-nss-ppe-gretap
+      - kmod-qca-nss-ppe-gre-mgr
       - kmod-qca-nss-ppe-vxlanmgr
       - kmod-qca-nss-ppe-mapt
       - kmod-qca-nss-ppe-rule
@@ -64,7 +71,7 @@ additional_packages:
       - kmod-qca-nss-ppe-dsa-mgr
       - kmod-qca-nss-dp
       - ppecfg
-      - aqr-phy
+      - kmod-aqr-phy
       - kmod-qca-nss-cfi
       - kmod-qca-nss-ecm
       - kmod-qca-nss-phy
@@ -86,6 +93,27 @@ additional_packages:
       - kmod-qca-nss-nsm
       - kmod-qca-nss-ppe-dtlsmgr
       - kmod-qca8k
+      - ftm
+      - myftm
+      - diag
+      - cnssdiag
+      - kmod-qca-nss-netfn-tcpst
+      - nss-tcp-st-cli
+      - nss-udp-st
+      - netstandby-drv
+      - kmod-qca-nss-nsm
+      - mcproxy
+      - kmod-qca-mmap-telemetry
+      - qca-nsm-app
+      - qca-sal-qos-test
+      - qca-sal-rule-test
+      - udp-clf
+      - kmod-qca-nss-ecm-wifi-plugin
+      - ath11k-fwtest
+      - ath11k-qdss
+      - sigma-dut-open
+      - afc
+      - qca-afc-daemon
 
 packages:
   - e2fsprogs
@@ -108,14 +136,10 @@ packages:
   - kmod-pptp
   - kmod-crypto-authenc
   - kmod-qca-nss-dscpstats
-  - kmod-qca-nss-eip
-  - kmod-qca-nss-eip-crypto
-  - kmod-qca-nss-eip-ipsec
   - kmod-qca-nss-macsec
   - kmod-qca-nss-ppe-vlan-mgr
   - kmod-qca-nss-ecm-premium
   - kmod-qca-nss-fls
-  - kmod-qca-nss-ecm-wifi-plugin
   - hostapd-utils
   - wireless-regdb
   - qca-ssdk-shell
@@ -157,3 +181,13 @@ diffconfig: |
   CONFIG_PACKAGE_libnl-ppe=y
   CONFIG_PACKAGE_mcastd-noforward=n
   CONFIG_PACKAGE_tr181-mcastd=n
+  CONFIG_PACKAGE_perf=m
+  CONFIG_PACKAGE_libtraceevent=m
+  CONFIG_PACKAGE_libunwind=m
+  CONFIG_PACKAGE_lldpd=y
+  CONFIG_PACKAGE_kmod-qseecom=m
+  CONFIG_PACKAGE_samba4-server=m
+  CONFIG_PACKAGE_openssh-sftp-server=m
+  CONFIG_LOCALMIRROR="https://sources.cdn.openwrt.org/"
+  CONFIG_PACKAGE_afc-open=m
+  CONFIG_PACKAGE_qca-afc-daemon-open=m

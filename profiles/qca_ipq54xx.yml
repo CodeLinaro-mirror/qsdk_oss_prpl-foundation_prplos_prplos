@@ -12,17 +12,20 @@ additional_packages:
       - i2c-tools
       - sysstat
       - u-boot
+      - ntfs-3g
   - feed: wlan-internal
     packages:
       - kmod-ath12k
       - kmod-mac80211
-      - kmod-cfg80211
+      - qca-cfg80211
       - iw-full
       - wireless-freedom
       - netifd-scripts
       - libubox
       - ubus
       - udebug
+      - samba4
+      - openssh
   - feed: feed_qca
     packages:
       - platform_drivers
@@ -35,6 +38,7 @@ additional_packages:
       - kmod-usb-storage-extras
       - kmod-usb-storage-uas
       - kmod-fs-vfat
+      - kmod-fs-ntfs
       - qca-wifi-scripts
       - wifi-scripts
       - kmod-qca-nss-dp
@@ -46,7 +50,7 @@ additional_packages:
       - kmod-qca-nss-ppe-bridge-mgr
       - kmod-qca-nss-ppe-ds
       - kmod-qca-nss-ppe-dsa-mgr
-      - kmod-qca-nss-ppe-gretap
+      - kmod-qca-nss-ppe-gre-mgr
       - kmod-qca-nss-ppe-lag-mgr
       - kmod-qca-nss-ppe-mapt
       - kmod-qca-nss-ppe-mirror-test
@@ -59,6 +63,9 @@ additional_packages:
       - kmod-qca-nss-ppe-vlan-mgr
       - kmod-qca-nss-ppe-vp
       - kmod-qca-nss-ppe-vxlanmgr
+      - kmod-qca-nss-netfn-sk-offload
+      - kmod-qca-nss-ppe-ath-clients
+      - kmod-qca-wifi-nss-plugins
       - kmod-qca-ovsmgr
       - kmod-qca-ssdk-nohnat
       - qca-ssdk-shell
@@ -81,10 +88,34 @@ additional_packages:
       - hostapd-utils
       - ath-wifi-scripts
       - wpa-cli
+      - wlan-telemetry
       - wireless-regdb
       - kmod-fs-vfat
       - kmod-telemetry-agent
       - wpa-cli
+      - ftm
+      - myftm
+      - diag
+      - cnssdiag
+      - sysupgrade-helper
+      - kmod-qca-nss-netfn-tcpst
+      - nss-tcp-st-cli
+      - nss-udp-st
+      - netstandby-drv
+      - kmod-qca-nss-nsm
+      - mcproxy
+      - kmod-qca-mmap-telemetry
+      - kmod-qca-mdio
+      - qca-nsm-app
+      - qca-sal-qos-test
+      - qca-sal-rule-test
+      - udp-clf
+      - kmod-qca-nss-ecm-wifi-plugin
+      - ath11k-fwtest
+      - kmod-aqr-phy
+      - sigma-dut-open
+      - afc
+      - qca-afc-daemon
 
 packages:
   - e2fsprogs
@@ -140,3 +171,13 @@ diffconfig: |
   CONFIG_PACKAGE_libnl-ppe=y
   CONFIG_PACKAGE_mcastd-noforward=n
   CONFIG_PACKAGE_tr181-mcastd=n
+  CONFIG_PACKAGE_perf=m
+  CONFIG_PACKAGE_libtraceevent=m
+  CONFIG_PACKAGE_libunwind=m
+  CONFIG_PACKAGE_lldpd=y
+  CONFIG_PACKAGE_kmod-qseecom=m
+  CONFIG_PACKAGE_samba4-server=m
+  CONFIG_PACKAGE_openssh-sftp-server=m
+  CONFIG_LOCALMIRROR="https://sources.cdn.openwrt.org/"
+  CONFIG_PACKAGE_afc-open=m
+  CONFIG_PACKAGE_qca-afc-daemon-open=m
