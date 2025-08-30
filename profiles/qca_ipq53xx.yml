@@ -89,7 +89,6 @@ additional_packages:
       - hostapd-common
       - hostapd-utils
       - ath-wifi-scripts
-      - wpa-cli
       - wlan-telemetry
       - wireless-regdb
       - kmod-fs-vfat
@@ -114,6 +113,7 @@ additional_packages:
       - udp-clf
       - kmod-qca-nss-ecm-wifi-plugin
       - ath11k-fwtest
+      - ath11k-qdss
       - kmod-aqr-phy
       - sigma-dut-open
       - afc
