@@ -116,6 +116,8 @@ additional_packages:
       - sigma-dut-open
       - afc
       - qca-afc-daemon
+      - kmod-qca-nss-ppe-ath-clients
+      - kmod-qca-wifi-nss-plugins
 
 packages:
   - e2fsprogs
