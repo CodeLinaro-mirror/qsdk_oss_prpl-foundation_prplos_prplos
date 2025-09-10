@@ -120,6 +120,7 @@ additional_packages:
       - qca-afc-daemon
       - kmod-qca-nss-ppe-ath-clients
       - kmod-qca-wifi-nss-plugins
+      - athdiag
 
 packages:
   - e2fsprogs
