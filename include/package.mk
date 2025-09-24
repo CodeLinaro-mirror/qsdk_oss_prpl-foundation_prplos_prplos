@@ -384,3 +384,5 @@ dist:
 
 distcheck:
 	$(Build/DistCheck)
+
+include $(INCLUDE_DIR)/overlay-feed/package.mk
