@@ -186,3 +186,4 @@ diffconfig: |
   CONFIG_LOCALMIRROR="https://sources.cdn.openwrt.org/"
   CONFIG_PACKAGE_afc-open=m
   CONFIG_PACKAGE_qca-afc-daemon-open=m
+  CONFIG_MAKE_TOOLCHAIN=y
