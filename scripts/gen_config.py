@@ -111,14 +111,26 @@ def extract_sha1_from_revision(revision: str) -> str:
 def handle_feed_revision(profile_feed: dict, feeds: list):
     f = profile_feed
     branch = profile_feed.get("branch")
+    method = profile_feed.get("method", "src-git")
+
+    # Handle src-link feeds (local directory symbolic links)
+    if method == "src-link":
+        feeds.append(f'{method},{profile_feed["name"]},{profile_feed["uri"]}')
+        return
+
+    # Handle src-cpy feeds (local directory copies)
+    if method == "src-cpy":
+        feeds.append(f'{method},{profile_feed["name"]},{profile_feed["uri"]}')
+        return
+
+    # Handle git-based feeds with branches
     if branch:
         feeds.append(
-                f'{f.get("method", "src-git")},{f["name"]},{f["uri"]};{branch}'
+                f'{method},{f["name"]},{f["uri"]};{branch}'
         )
         return
-    method = profile_feed.get("method", "src-git")
-    f = f'{method},{profile_feed["name"]},{profile_feed["uri"]}'
 
+    f = f'{method},{profile_feed["name"]},{profile_feed["uri"]}'
     if method.startswith('src-git'):
         revision = profile_feed.get("revision")
         if not revision:
