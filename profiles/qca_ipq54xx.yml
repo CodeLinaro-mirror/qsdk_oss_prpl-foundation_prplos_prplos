@@ -143,6 +143,7 @@ packages:
   - ethtool
   - tcpdump
   - taskset
+  - freedom-lcm-partitioner
 
 diffconfig: |
   CONFIG_TARGET_INITRAMFS_COMPRESSION_LZMA=y
