@@ -7,7 +7,7 @@ feeds:
 
   - name: feed_prplmesh
     uri: https://gitlab.com/prpl-foundation/prplos/feeds/feed-prplmesh.git
-    revision: dev/PPM-3488-remove-prpl-org@ba6a54859415cbc79fc27ddb4172b343d6e72882
+    revision: dev/PPM-3488-remove-prpl-org@4c945aee51ea696a01aac75371106137acc2fdbb
 
   - name: feed_prplos
     uri: https://gitlab.com/prpl-foundation/prplos/feeds/feed-prplos.git
