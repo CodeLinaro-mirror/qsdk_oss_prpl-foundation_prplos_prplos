@@ -197,4 +197,3 @@ diffconfig: |
   CONFIG_PACKAGE_afc-open=m
   CONFIG_PACKAGE_qca-afc-daemon-open=m
   CONFIG_MAKE_TOOLCHAIN=y
-  # CONFIG_PACKAGE_wififw_mount_script is not set
