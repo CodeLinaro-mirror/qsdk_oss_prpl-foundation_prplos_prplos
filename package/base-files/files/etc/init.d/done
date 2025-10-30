@@ -14,11 +14,4 @@ boot() {
 	# set leds to normal state
 	. /etc/diag.sh
 	set_state done
-
-	# enable_smp_affinity
-	enable_smp_affinity=$(uci -q get wireless.mac80211.enable_smp_affinity)
-	if [ "$enable_smp_affinity" -eq 1 ] && [ -f "/lib/smp_affinity_settings.sh" ]; then
-		. /lib/smp_affinity_settings.sh
-		enable_smp_affinity_wifi
-	fi
 }
