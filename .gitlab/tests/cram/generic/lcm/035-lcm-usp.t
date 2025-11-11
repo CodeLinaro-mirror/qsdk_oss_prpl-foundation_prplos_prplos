@@ -37,6 +37,7 @@ Check that UDS sockets and the random USP_ENDPOINT_ID are shared with the contai
   $ R "${S} && execute_in_container --uuid --cmd \"ls /run/usp/\""
   broker_agent_path
   broker_controller_path
+  sockets
 
 ## TODO: 
 ## add test to check connection to USP broker: This is requiring support of USP in the test container
@@ -71,7 +72,7 @@ Remove the role foo from the EE and check it cannot be used to install a contain
 ### UNPRIVILEGED CONTAINER SECTION ###
 Install the container and check its status and type:
 
-  $ R "${S} && install_ctr --version prplos-v1 --ee --uuid --privileged false  --usprequired \"Full Access\"" > /dev/null
+  $ R "${S} && install_ctr --version prplos-v1 --ee --uuid --privileged false  --usprequired \"Full Access\" --uspregisterpaths \"Device.LCMSampleApp.\"" > /dev/null
   $ sleep 30
   $ R "${S} && get_container_info --uuid"
   Active
@@ -89,6 +90,7 @@ Check that UDS sockets and the random USP_ENDPOINT_ID are shared with the contai
   $ R "${S} && execute_in_container --uuid --cmd \"ls /run/usp/\""
   broker_agent_path
   broker_controller_path
+  sockets
 
 ## TODO: add test to check connection to USP broker: This is requiring support of USP in the test container
 

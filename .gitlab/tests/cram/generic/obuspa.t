@@ -2926,11 +2926,13 @@ Check that obuspa has expected datamodel available (minus the platform specific 
   Device.SoftwareModules.DeploymentUnit.{i}.Update() input:OptionalRoles
   Device.SoftwareModules.DeploymentUnit.{i}.Update() input:Password
   Device.SoftwareModules.DeploymentUnit.{i}.Update() input:Privileged
+  Device.SoftwareModules.DeploymentUnit.{i}.Update() input:RegisterTrustPaths
   Device.SoftwareModules.DeploymentUnit.{i}.Update() input:RequiredRoles
   Device.SoftwareModules.DeploymentUnit.{i}.Update() input:RequiredUserRoles
   Device.SoftwareModules.DeploymentUnit.{i}.Update() input:RetainData
   Device.SoftwareModules.DeploymentUnit.{i}.Update() input:URL
   Device.SoftwareModules.DeploymentUnit.{i}.Update() input:Username
+  Device.SoftwareModules.DeploymentUnit.{i}.Update() input:X_PRPLWARE-COM_AutoMountIPC
   Device.SoftwareModules.DeploymentUnit.{i}.Vendor                                                     proto::timingila
   Device.SoftwareModules.DeploymentUnit.{i}.VendorConfigList                                           proto::timingila
   Device.SoftwareModules.DeploymentUnit.{i}.VendorLogList                                              proto::timingila
@@ -3049,6 +3051,8 @@ Check that obuspa has expected datamodel available (minus the platform specific 
   Device.SoftwareModules.ExecutionUnit.{i}.VendorConfigList                                            proto::timingila
   Device.SoftwareModules.ExecutionUnit.{i}.VendorLogList                                               proto::timingila
   Device.SoftwareModules.ExecutionUnit.{i}.Version                                                     proto::timingila
+  Device.SoftwareModules.ExecutionUnit.{i}.X_PRPLWARE-COM_AutoMountIPC                                 proto::timingila
+  Device.SoftwareModules.ExecutionUnit.{i}.X_PRPLWARE-COM_RegisterTrustPaths                           proto::timingila
   Device.SoftwareModules.ExecutionUnitNumberOfEntries                                                  proto::timingila
   Device.SoftwareModules.InstallDU()                                                                   proto::timingila
   Device.SoftwareModules.InstallDU() input:AllocatedCPUPercent
@@ -3067,12 +3071,14 @@ Check that obuspa has expected datamodel available (minus the platform specific 
   Device.SoftwareModules.InstallDU() input:OptionalRoles
   Device.SoftwareModules.InstallDU() input:Password
   Device.SoftwareModules.InstallDU() input:Privileged
+  Device.SoftwareModules.InstallDU() input:RegisterTrustPaths
   Device.SoftwareModules.InstallDU() input:RequiredRoles
   Device.SoftwareModules.InstallDU() input:RequiredUserRoles
   Device.SoftwareModules.InstallDU() input:Signature
   Device.SoftwareModules.InstallDU() input:URL
   Device.SoftwareModules.InstallDU() input:UUID
   Device.SoftwareModules.InstallDU() input:Username
+  Device.SoftwareModules.InstallDU() input:X_PRPLWARE-COM_AutoMountIPC
   Device.SoftwareModules.LocalManagement.                                                              proto::timingila
   Device.SoftwareModules.LocalManagement.Action.{i}.                                                   proto::timingila
   Device.SoftwareModules.LocalManagement.Action.{i}.Action                                             proto::timingila
@@ -8432,11 +8438,13 @@ Check that obuspa provides the same datamodel again (minus the platform specific
   Device.SoftwareModules.DeploymentUnit.{i}.Update() input:OptionalRoles
   Device.SoftwareModules.DeploymentUnit.{i}.Update() input:Password
   Device.SoftwareModules.DeploymentUnit.{i}.Update() input:Privileged
+  Device.SoftwareModules.DeploymentUnit.{i}.Update() input:RegisterTrustPaths
   Device.SoftwareModules.DeploymentUnit.{i}.Update() input:RequiredRoles
   Device.SoftwareModules.DeploymentUnit.{i}.Update() input:RequiredUserRoles
   Device.SoftwareModules.DeploymentUnit.{i}.Update() input:RetainData
   Device.SoftwareModules.DeploymentUnit.{i}.Update() input:URL
   Device.SoftwareModules.DeploymentUnit.{i}.Update() input:Username
+  Device.SoftwareModules.DeploymentUnit.{i}.Update() input:X_PRPLWARE-COM_AutoMountIPC
   Device.SoftwareModules.DeploymentUnit.{i}.Vendor                                                     proto::timingila
   Device.SoftwareModules.DeploymentUnit.{i}.VendorConfigList                                           proto::timingila
   Device.SoftwareModules.DeploymentUnit.{i}.VendorLogList                                              proto::timingila
@@ -8555,6 +8563,8 @@ Check that obuspa provides the same datamodel again (minus the platform specific
   Device.SoftwareModules.ExecutionUnit.{i}.VendorConfigList                                            proto::timingila
   Device.SoftwareModules.ExecutionUnit.{i}.VendorLogList                                               proto::timingila
   Device.SoftwareModules.ExecutionUnit.{i}.Version                                                     proto::timingila
+  Device.SoftwareModules.ExecutionUnit.{i}.X_PRPLWARE-COM_AutoMountIPC                                 proto::timingila
+  Device.SoftwareModules.ExecutionUnit.{i}.X_PRPLWARE-COM_RegisterTrustPaths                           proto::timingila
   Device.SoftwareModules.ExecutionUnitNumberOfEntries                                                  proto::timingila
   Device.SoftwareModules.InstallDU()                                                                   proto::timingila
   Device.SoftwareModules.InstallDU() input:AllocatedCPUPercent
@@ -8573,12 +8583,14 @@ Check that obuspa provides the same datamodel again (minus the platform specific
   Device.SoftwareModules.InstallDU() input:OptionalRoles
   Device.SoftwareModules.InstallDU() input:Password
   Device.SoftwareModules.InstallDU() input:Privileged
+  Device.SoftwareModules.InstallDU() input:RegisterTrustPaths
   Device.SoftwareModules.InstallDU() input:RequiredRoles
   Device.SoftwareModules.InstallDU() input:RequiredUserRoles
   Device.SoftwareModules.InstallDU() input:Signature
   Device.SoftwareModules.InstallDU() input:URL
   Device.SoftwareModules.InstallDU() input:UUID
   Device.SoftwareModules.InstallDU() input:Username
+  Device.SoftwareModules.InstallDU() input:X_PRPLWARE-COM_AutoMountIPC
   Device.SoftwareModules.LocalManagement.                                                              proto::timingila
   Device.SoftwareModules.LocalManagement.Action.{i}.                                                   proto::timingila
   Device.SoftwareModules.LocalManagement.Action.{i}.Action                                             proto::timingila
