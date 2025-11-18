@@ -6,8 +6,8 @@ feeds:
     revision: prplware-v4.1.0@8d4aaff276c86846ccf051112b51d168350f6713
 
   - name: feed_prplmesh
-    uri: ../feed-prplmesh
-    method: src-link
+    uri: https://git.codelinaro.org/clo/qsdk/oss/prpl-foundation/prplos/feeds/feed-prplmesh.git
+    branch: NHSS.PRPL.13.1.5
 
   - name: feed_prplos
     uri: https://gitlab.com/prpl-foundation/prplos/feeds/feed-prplos.git
