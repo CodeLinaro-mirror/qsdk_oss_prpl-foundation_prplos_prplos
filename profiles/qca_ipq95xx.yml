@@ -55,7 +55,6 @@ packages:
   - swupdate
   - libubootenv
   - initramfs-generator
-  - lvm2
   - libblkid
   - libuuid
   - libcomerr
@@ -67,7 +66,6 @@ packages:
   - kmod-dm
 
 diffconfig: |
-  CONFIG_TARGET_INITRAMFS_COMPRESSION_GZIP=y
   CONFIG_BUSYBOX_CUSTOM=y
   CONFIG_BUSYBOX_CONFIG_I2CSET=y
   CONFIG_PACKAGE_ATH_DEBUG=y
