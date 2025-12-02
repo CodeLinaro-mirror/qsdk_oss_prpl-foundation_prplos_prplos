@@ -163,7 +163,7 @@ if len(sys.argv) < 2:
 
 rmtree("./tmp", ignore_errors=True)
 rmtree("./package/feeds/", ignore_errors=True)
-rmtree("./feeds", ignore_errors=True)
+#rmtree("./feeds", ignore_errors=True)
 rmtree("./tmp", ignore_errors=True)
 if Path("./feeds.conf").is_file():
     Path("./feeds.conf").unlink()
