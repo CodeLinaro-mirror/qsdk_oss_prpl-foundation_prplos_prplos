@@ -60,7 +60,6 @@ packages:
   - netmodel-gni
   - netmodel-ppp
   - netmodel-xpon
-  - prpl-webui
   - pkcs11-provider
   - softhsm2
   - tr181-bulkdata
