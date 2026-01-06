@@ -185,6 +185,10 @@ define Package/base-files/install
 		fi; \
 	)
 
+	if [ "$(CONFIG_USE_PRPLMESH_WHM)" = "y" ] ; then \
+		$(CP) ./files/etc/banner $(1)/etc/banner; \
+	fi
+
 	$(VERSION_SED_SCRIPT) \
 		$(1)/etc/banner \
 		$(1)/etc/device_info \
