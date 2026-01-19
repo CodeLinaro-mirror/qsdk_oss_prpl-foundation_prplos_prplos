@@ -12,6 +12,7 @@ additional_packages:
       - i2c-tools
       - sysstat
       - u-boot
+      - u-boot-2025
       - ntfs-3g
   - feed: wlan-internal
     packages:
