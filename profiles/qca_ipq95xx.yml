@@ -114,6 +114,7 @@ additional_packages:
       - kmod-qca-nss-nsm
       - mcproxy
       - kmod-qca-mmap-telemetry
+      - kmod-qca-mdio
       - qca-nsm-app
       - qca-sal-qos-test
       - qca-sal-rule-test
