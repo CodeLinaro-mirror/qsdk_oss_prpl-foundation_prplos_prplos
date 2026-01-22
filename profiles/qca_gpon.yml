@@ -11,3 +11,4 @@ additional_packages:
       - apps-scripts
       - util-ubus
       - omci
+      - onu-hal-agent
