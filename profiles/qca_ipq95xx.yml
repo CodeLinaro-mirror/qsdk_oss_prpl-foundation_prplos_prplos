@@ -85,6 +85,8 @@ additional_packages:
       - kmod-emesh-sp
       - kmod-qca-nss-clients
       - kmod-qca-nss-ppe-test
+      - kmod-qca-nss-ppe-ath-clients
+      - kmod-qca-wifi-nss-plugins
       - kmod-qca-ovsmgr
       - kmod-nss-udp-st-drv
       - kmod-qca-nss-crypto
@@ -117,9 +119,11 @@ additional_packages:
       - udp-clf
       - kmod-qca-nss-ecm-wifi-plugin
       - ath11k-fwtest
+      - ath11k-qdss
       - sigma-dut-open
       - afc
       - qca-afc-daemon
+      - athdiag
 
 packages:
   - e2fsprogs
@@ -157,6 +161,7 @@ packages:
   - ethtool
   - tcpdump
   - taskset
+  - freedom-lcm-partitioner
 
 diffconfig: |
   CONFIG_TARGET_INITRAMFS_COMPRESSION_LZMA=y
