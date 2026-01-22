@@ -169,6 +169,8 @@ if Path("./feeds.conf").is_file():
     Path("./feeds.conf").unlink()
 if Path("./.config").is_file():
     Path("./.config").unlink()
+if Path("./qca/src/network/services/hostapd").is_dir() and Path("./feed-qca/qca/feeds/prpl-packages/hostapd").is_dir():
+    rmtree("./feed-qca/qca/feeds/prpl-packages/hostapd", ignore_errors=True)
 
 if "clean" in sys.argv:
     print("Tree is now clean")
