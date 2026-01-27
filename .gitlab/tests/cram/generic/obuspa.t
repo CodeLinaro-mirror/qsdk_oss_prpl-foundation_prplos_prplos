@@ -497,6 +497,20 @@ Check that obuspa has expected datamodel available (minus the platform specific 
   Device.DNS.X_PRPLWARE-COM_RebindProtection.IPExceptions.{i}.                                         proto::tr181-dns
   Device.DNS.X_PRPLWARE-COM_RebindProtection.IPExceptions.{i}.Address                                  proto::tr181-dns
   Device.DNS.X_PRPLWARE-COM_RebindProtection.IPExceptionsNumberOfEntries                               proto::tr181-dns
+  Device.DNS.Zone.{i}.                                                                                 proto::tr181-dns
+  Device.DNS.Zone.{i}.Alias                                                                            proto::tr181-dns
+  Device.DNS.Zone.{i}.Enable                                                                           proto::tr181-dns
+  Device.DNS.Zone.{i}.Host.{i}.                                                                        proto::tr181-dns
+  Device.DNS.Zone.{i}.Host.{i}.Alias                                                                   proto::tr181-dns
+  Device.DNS.Zone.{i}.Host.{i}.Enable                                                                  proto::tr181-dns
+  Device.DNS.Zone.{i}.Host.{i}.Host                                                                    proto::tr181-dns
+  Device.DNS.Zone.{i}.Host.{i}.LastUpdate                                                              proto::tr181-dns
+  Device.DNS.Zone.{i}.Host.{i}.Name                                                                    proto::tr181-dns
+  Device.DNS.Zone.{i}.Host.{i}.Origin                                                                  proto::tr181-dns
+  Device.DNS.Zone.{i}.HostNumberOfEntries                                                              proto::tr181-dns
+  Device.DNS.Zone.{i}.Interface                                                                        proto::tr181-dns
+  Device.DNS.Zone.{i}.Name                                                                             proto::tr181-dns
+  Device.DNS.Zone.{i}.Origin                                                                           proto::tr181-dns
   Device.DSLite.                                                                                       proto::tr181-dslite
   Device.DSLite.Enable                                                                                 proto::tr181-dslite
   Device.DSLite.InterfaceSetting.{i}.                                                                  proto::tr181-dslite
@@ -639,6 +653,7 @@ Check that obuspa has expected datamodel available (minus the platform specific 
   Device.DeviceInfo.ProcessFaults.ProcessFault.{i}.Upload() input:Username
   Device.DeviceInfo.ProcessFaults.ProcessFaultNumberOfEntries                                          proto::amx-faultmonitor
   Device.DeviceInfo.ProcessFaults.RemoveAllProcessFaults()                                             proto::amx-faultmonitor
+  Device.DeviceInfo.ProcessFaults.RotateProcessFaultEntries                                            proto::amx-faultmonitor
   Device.DeviceInfo.ProcessFaults.StoragePath                                                          proto::amx-faultmonitor
   Device.DeviceInfo.ProcessStatus.                                                                     proto::deviceinfo-manager
   Device.DeviceInfo.ProcessStatus.CPU.{i}.                                                             proto::deviceinfo-manager
@@ -702,6 +717,8 @@ Check that obuspa has expected datamodel available (minus the platform specific 
   Device.DeviceInfo.TemperatureStatus.                                                                 proto::tr181-temperature
   Device.DeviceInfo.TemperatureStatus.HighTemperatureAlarm!                                            proto::tr181-temperature
   Device.DeviceInfo.TemperatureStatus.HighTemperatureAlarm! event_arg:Status
+  Device.DeviceInfo.TemperatureStatus.LowTemperatureAlarm!                                             proto::tr181-temperature
+  Device.DeviceInfo.TemperatureStatus.LowTemperatureAlarm! event_arg:Status
   Device.DeviceInfo.TemperatureStatus.TemperatureSensor.{i}.                                           proto::tr181-temperature
   Device.DeviceInfo.TemperatureStatus.TemperatureSensor.{i}.Alias                                      proto::tr181-temperature
   Device.DeviceInfo.TemperatureStatus.TemperatureSensor.{i}.Enable                                     proto::tr181-temperature
@@ -1154,6 +1171,37 @@ Check that obuspa has expected datamodel available (minus the platform specific 
   Device.Hardware.X_PRPLWARE-COM_FlashDevice.{i}.Name                                                  proto::tr181-flashmonitor
   Device.Hardware.X_PRPLWARE-COM_FlashDevice.{i}.Path                                                  proto::tr181-flashmonitor
   Device.Hardware.X_PRPLWARE-COM_FlashDevice.{i}.Version                                               proto::tr181-flashmonitor
+  Device.HomePlug.
+  Device.HomePlug.Interface.{i}.                                                                       proto::tr181-homeplug
+  Device.HomePlug.Interface.{i}.Alias                                                                  proto::tr181-homeplug
+  Device.HomePlug.Interface.{i}.AssociateDeviceNumberOfEntries                                         proto::tr181-homeplug
+  Device.HomePlug.Interface.{i}.AssociatedDevice.{i}.                                                  proto::tr181-homeplug
+  Device.HomePlug.Interface.{i}.AssociatedDevice.{i}.Active                                            proto::tr181-homeplug
+  Device.HomePlug.Interface.{i}.AssociatedDevice.{i}.AvgAttenuation                                    proto::tr181-homeplug
+  Device.HomePlug.Interface.{i}.AssociatedDevice.{i}.EndStationMACs                                    proto::tr181-homeplug
+  Device.HomePlug.Interface.{i}.AssociatedDevice.{i}.FirmwareVersion                                   proto::tr181-homeplug
+  Device.HomePlug.Interface.{i}.AssociatedDevice.{i}.MACAddress                                        proto::tr181-homeplug
+  Device.HomePlug.Interface.{i}.AssociatedDevice.{i}.Manufacturer                                      proto::tr181-homeplug
+  Device.HomePlug.Interface.{i}.AssociatedDevice.{i}.RxPhyRate                                         proto::tr181-homeplug
+  Device.HomePlug.Interface.{i}.AssociatedDevice.{i}.SNRPerTone                                        proto::tr181-homeplug
+  Device.HomePlug.Interface.{i}.AssociatedDevice.{i}.TxPhyRate                                         proto::tr181-homeplug
+  Device.HomePlug.Interface.{i}.Enable                                                                 proto::tr181-homeplug
+  Device.HomePlug.Interface.{i}.FirmwareVersion                                                        proto::tr181-homeplug
+  Device.HomePlug.Interface.{i}.ForceCCo                                                               proto::tr181-homeplug
+  Device.HomePlug.Interface.{i}.Interface                                                              proto::tr181-homeplug
+  Device.HomePlug.Interface.{i}.LastChange                                                             proto::tr181-homeplug
+  Device.HomePlug.Interface.{i}.LogicalNetwork                                                         proto::tr181-homeplug
+  Device.HomePlug.Interface.{i}.LowerLayers                                                            proto::tr181-homeplug
+  Device.HomePlug.Interface.{i}.MACAddress                                                             proto::tr181-homeplug
+  Device.HomePlug.Interface.{i}.MaxBitRate                                                             proto::tr181-homeplug
+  Device.HomePlug.Interface.{i}.Name                                                                   proto::tr181-homeplug
+  Device.HomePlug.Interface.{i}.NetworkPassword                                                        proto::tr181-homeplug
+  Device.HomePlug.Interface.{i}.OtherNetworksPresent                                                   proto::tr181-homeplug
+  Device.HomePlug.Interface.{i}.Status                                                                 proto::tr181-homeplug
+  Device.HomePlug.Interface.{i}.Type                                                                   proto::tr181-homeplug
+  Device.HomePlug.Interface.{i}.Upstream                                                               proto::tr181-homeplug
+  Device.HomePlug.Interface.{i}.Version                                                                proto::tr181-homeplug
+  Device.HomePlug.InterfaceNumberOfEntries                                                             proto::tr181-homeplug
   Device.Hosts.                                                                                        proto::hosts-manager
   Device.Hosts.AccessControl.{i}.                                                                      proto::hosts-manager
   Device.Hosts.AccessControl.{i}.AccessPolicy                                                          proto::hosts-manager
@@ -3305,6 +3353,29 @@ Check that obuspa has expected datamodel available (minus the platform specific 
   Device.Users.User.{i}.X_PRPLWARE-COM_HomeDirectory                                                   proto::tr181-usermanagement
   Device.Users.UserNumberOfEntries                                                                     proto::tr181-usermanagement
   Device.WiFi.                                                                                         proto::wld
+  Device.WiFi.APMLD.{i}.                                                                               proto::wld
+  Device.WiFi.APMLD.{i}.APMLDConfig.                                                                   proto::wld
+  Device.WiFi.APMLD.{i}.APMLDConfig.EMLMREnabled                                                       proto::wld
+  Device.WiFi.APMLD.{i}.APMLDConfig.EMLSREnabled                                                       proto::wld
+  Device.WiFi.APMLD.{i}.APMLDConfig.NSTREnabled                                                        proto::wld
+  Device.WiFi.APMLD.{i}.APMLDConfig.STREnabled                                                         proto::wld
+  Device.WiFi.APMLD.{i}.AffiliatedAP.{i}.                                                              proto::wld
+  Device.WiFi.APMLD.{i}.AffiliatedAP.{i}.BSSID                                                         proto::wld
+  Device.WiFi.APMLD.{i}.AffiliatedAP.{i}.LinkID                                                        proto::wld
+  Device.WiFi.APMLD.{i}.AffiliatedAP.{i}.Stats.                                                        proto::wld
+  Device.WiFi.APMLD.{i}.AffiliatedAP.{i}.Stats.BroadcastBytesReceived                                  proto::wld
+  Device.WiFi.APMLD.{i}.AffiliatedAP.{i}.Stats.BroadcastBytesSent                                      proto::wld
+  Device.WiFi.APMLD.{i}.AffiliatedAP.{i}.Stats.ErrorsSent                                              proto::wld
+  Device.WiFi.APMLD.{i}.AffiliatedAP.{i}.Stats.MulticastBytesReceived                                  proto::wld
+  Device.WiFi.APMLD.{i}.AffiliatedAP.{i}.Stats.MulticastBytesSent                                      proto::wld
+  Device.WiFi.APMLD.{i}.AffiliatedAP.{i}.Stats.PacketsReceived                                         proto::wld
+  Device.WiFi.APMLD.{i}.AffiliatedAP.{i}.Stats.PacketsSent                                             proto::wld
+  Device.WiFi.APMLD.{i}.AffiliatedAP.{i}.Stats.UnicastBytesReceived                                    proto::wld
+  Device.WiFi.APMLD.{i}.AffiliatedAP.{i}.Stats.UnicastBytesSent                                        proto::wld
+  Device.WiFi.APMLD.{i}.AffiliatedAPNumberOfEntries                                                    proto::wld
+  Device.WiFi.APMLD.{i}.MLDID                                                                          proto::wld
+  Device.WiFi.APMLD.{i}.MLDMACAddress                                                                  proto::wld
+  Device.WiFi.APMLDMaxLinks                                                                            proto::wld
   Device.WiFi.AccessPoint.{i}.                                                                         proto::wld
   Device.WiFi.AccessPoint.{i}.APBridgeDisable                                                          proto::wld
   Device.WiFi.AccessPoint.{i}.ActiveAssociatedDeviceNumberOfEntries                                    proto::wld
@@ -3312,6 +3383,7 @@ Check that obuspa has expected datamodel available (minus the platform specific 
   Device.WiFi.AccessPoint.{i}.Alias                                                                    proto::wld
   Device.WiFi.AccessPoint.{i}.ApRole                                                                   proto::wld
   Device.WiFi.AccessPoint.{i}.AssociatedDevice.{i}.                                                    proto::wld
+  Device.WiFi.AccessPoint.{i}.AssociatedDevice.{i}.APMLDMacAddress                                     proto::wld
   Device.WiFi.AccessPoint.{i}.AssociatedDevice.{i}.Active                                              proto::wld
   Device.WiFi.AccessPoint.{i}.AssociatedDevice.{i}.ActiveNumberOfAffiliatedSta                         proto::wld
   Device.WiFi.AccessPoint.{i}.AssociatedDevice.{i}.AffiliatedSta.{i}.                                  proto::wld
@@ -3438,6 +3510,7 @@ Check that obuspa has expected datamodel available (minus the platform specific 
   Device.WiFi.AccessPoint.{i}.AssociatedDevice.{i}.VendorCapabilities                                  proto::wld
   Device.WiFi.AccessPoint.{i}.AssociatedDevice.{i}.VendorOUI                                           proto::wld
   Device.WiFi.AccessPoint.{i}.AssociatedDevice.{i}.VhtCapabilities                                     proto::wld
+  Device.WiFi.AccessPoint.{i}.AssociatedDevice.{i}.WdsInterfaceName                                    proto::wld
   Device.WiFi.AccessPoint.{i}.AssociatedDevice.{i}.getLastAssocReq()                                   proto::wld
   Device.WiFi.AccessPoint.{i}.AssociatedDeviceNumberOfEntries                                          proto::wld
   Device.WiFi.AccessPoint.{i}.AssociationCount.                                                        proto::wld
@@ -3453,6 +3526,7 @@ Check that obuspa has expected datamodel available (minus the platform specific 
   Device.WiFi.AccessPoint.{i}.BSS-TM-RESP!                                                             proto::wld
   Device.WiFi.AccessPoint.{i}.BridgeInterface                                                          proto::wld
   Device.WiFi.AccessPoint.{i}.CpeOperationMode                                                         proto::wld
+  Device.WiFi.AccessPoint.{i}.CustomAlias                                                              proto::wld
   Device.WiFi.AccessPoint.{i}.DefaultDeviceType                                                        proto::wld
   Device.WiFi.AccessPoint.{i}.Disassociation!                                                          proto::wld
   Device.WiFi.AccessPoint.{i}.DiscoveryMethodEnabled                                                   proto::wld
@@ -3513,27 +3587,6 @@ Check that obuspa has expected datamodel available (minus the platform specific 
   Device.WiFi.AccessPoint.{i}.MBOAssocDisallowReason                                                   proto::wld
   Device.WiFi.AccessPoint.{i}.MBOEnable                                                                proto::wld
   Device.WiFi.AccessPoint.{i}.MCEnable                                                                 proto::wld
-  Device.WiFi.AccessPoint.{i}.MLDConfig.                                                               proto::wld
-  Device.WiFi.AccessPoint.{i}.MLDConfig.EMLMREnable                                                    proto::wld
-  Device.WiFi.AccessPoint.{i}.MLDConfig.EMLSREnable                                                    proto::wld
-  Device.WiFi.AccessPoint.{i}.MLDConfig.NSTREnable                                                     proto::wld
-  Device.WiFi.AccessPoint.{i}.MLDConfig.STREnable                                                      proto::wld
-  Device.WiFi.AccessPoint.{i}.MLOStats.                                                                proto::wld
-  Device.WiFi.AccessPoint.{i}.MLOStats.BroadcastBytesReceived                                          proto::wld
-  Device.WiFi.AccessPoint.{i}.MLOStats.BroadcastBytesSent                                              proto::wld
-  Device.WiFi.AccessPoint.{i}.MLOStats.ErrorsSent                                                      proto::wld
-  Device.WiFi.AccessPoint.{i}.MLOStats.EstServiceParametersBE                                          proto::wld
-  Device.WiFi.AccessPoint.{i}.MLOStats.EstServiceParametersBK                                          proto::wld
-  Device.WiFi.AccessPoint.{i}.MLOStats.EstServiceParametersVI                                          proto::wld
-  Device.WiFi.AccessPoint.{i}.MLOStats.EstServiceParametersVO                                          proto::wld
-  Device.WiFi.AccessPoint.{i}.MLOStats.LinkID                                                          proto::wld
-  Device.WiFi.AccessPoint.{i}.MLOStats.MLORole                                                         proto::wld
-  Device.WiFi.AccessPoint.{i}.MLOStats.MulticastBytesReceived                                          proto::wld
-  Device.WiFi.AccessPoint.{i}.MLOStats.MulticastBytesSent                                              proto::wld
-  Device.WiFi.AccessPoint.{i}.MLOStats.PacketsReceived                                                 proto::wld
-  Device.WiFi.AccessPoint.{i}.MLOStats.PacketsSent                                                     proto::wld
-  Device.WiFi.AccessPoint.{i}.MLOStats.UnicastBytesReceived                                            proto::wld
-  Device.WiFi.AccessPoint.{i}.MLOStats.UnicastBytesSent                                                proto::wld
   Device.WiFi.AccessPoint.{i}.MaxAssociatedDevices                                                     proto::wld
   Device.WiFi.AccessPoint.{i}.MgmtActionFrameReceived!                                                 proto::wld
   Device.WiFi.AccessPoint.{i}.MgmtDeauthFrame!                                                         proto::wld
@@ -3743,6 +3796,7 @@ Check that obuspa has expected datamodel available (minus the platform specific 
   Device.WiFi.EndPoint.{i}.ReconnectDelay                                                              proto::wld
   Device.WiFi.EndPoint.{i}.ReconnectInterval                                                           proto::wld
   Device.WiFi.EndPoint.{i}.ReconnectRadioToggleThreshold                                               proto::wld
+  Device.WiFi.EndPoint.{i}.RequiredOperatingStandards                                                  proto::wld
   Device.WiFi.EndPoint.{i}.SSIDReference                                                               proto::wld
   Device.WiFi.EndPoint.{i}.Security.                                                                   proto::wld
   Device.WiFi.EndPoint.{i}.Security.ModesSupported                                                     proto::wld
@@ -3809,6 +3863,7 @@ Check that obuspa has expected datamodel available (minus the platform specific 
   Device.WiFi.FSM_Start()                                                                              proto::wld
   Device.WiFi.FSM_Start() input:bitnr
   Device.WiFi.FSM_Start() input:vap
+  Device.WiFi.MaxNumMLDs                                                                               proto::wld
   Device.WiFi.NeighboringWiFiDiagnostic()                                                              proto::wld
   Device.WiFi.Radio.{i}.                                                                               proto::wld
   Device.WiFi.Radio.{i}.AP_Mode                                                                        proto::wld
@@ -3896,6 +3951,7 @@ Check that obuspa has expected datamodel available (minus the platform specific 
   Device.WiFi.Radio.{i}.ChannelSwitchComplete!                                                         proto::wld
   Device.WiFi.Radio.{i}.ChannelsInUse                                                                  proto::wld
   Device.WiFi.Radio.{i}.ChipsetVendor                                                                  proto::wld
+  Device.WiFi.Radio.{i}.CurrentEhtOperatingIE                                                          proto::wld
   Device.WiFi.Radio.{i}.CurrentOperatingChannelBandwidth                                               proto::wld
   Device.WiFi.Radio.{i}.DFS Done!                                                                      proto::wld
   Device.WiFi.Radio.{i}.DFS.                                                                           proto::wld
@@ -3931,6 +3987,8 @@ Check that obuspa has expected datamodel available (minus the platform specific 
   Device.WiFi.Radio.{i}.DriverStatus.NrActiveTxAntenna                                                 proto::wld
   Device.WiFi.Radio.{i}.DriverStatus.NrRxAntenna                                                       proto::wld
   Device.WiFi.Radio.{i}.DriverStatus.NrTxAntenna                                                       proto::wld
+  Device.WiFi.Radio.{i}.EhtPhyCapabilities                                                             proto::wld
+  Device.WiFi.Radio.{i}.EhtPhyCapabilitiesStr                                                          proto::wld
   Device.WiFi.Radio.{i}.Enable                                                                         proto::wld
   Device.WiFi.Radio.{i}.EventCounter.{i}.                                                              proto::wld
   Device.WiFi.Radio.{i}.EventCounter.{i}.Info                                                          proto::wld
@@ -4034,9 +4092,11 @@ Check that obuspa has expected datamodel available (minus the platform specific 
   Device.WiFi.Radio.{i}.ScanComplete!                                                                  proto::wld
   Device.WiFi.Radio.{i}.ScanConfig.                                                                    proto::wld
   Device.WiFi.Radio.{i}.ScanConfig.ActiveChannelTime                                                   proto::wld
+  Device.WiFi.Radio.{i}.ScanConfig.EnableScanResultsDm                                                 proto::wld
   Device.WiFi.Radio.{i}.ScanConfig.FastScanReasons                                                     proto::wld
   Device.WiFi.Radio.{i}.ScanConfig.HomeTime                                                            proto::wld
   Device.WiFi.Radio.{i}.ScanConfig.MaxChannelsPerScan                                                  proto::wld
+  Device.WiFi.Radio.{i}.ScanConfig.OnlyScanPscChannels                                                 proto::wld
   Device.WiFi.Radio.{i}.ScanConfig.PassiveChannelTime                                                  proto::wld
   Device.WiFi.Radio.{i}.ScanConfig.ScanChannelCount                                                    proto::wld
   Device.WiFi.Radio.{i}.ScanConfig.ScanRequestInterval                                                 proto::wld
@@ -4084,6 +4144,8 @@ Check that obuspa has expected datamodel available (minus the platform specific 
   Device.WiFi.Radio.{i}.Sensing.delClient()                                                            proto::wld
   Device.WiFi.Radio.{i}.Sensing.delClient() input:MACAddress
   Device.WiFi.Radio.{i}.Sensing.resetStats()                                                           proto::wld
+  Device.WiFi.Radio.{i}.StaticPuncturing.                                                              proto::wld
+  Device.WiFi.Radio.{i}.StaticPuncturing.DisabledSubChannels                                           proto::wld
   Device.WiFi.Radio.{i}.Stats.                                                                         proto::wld
   Device.WiFi.Radio.{i}.Stats.BroadcastPacketsReceived                                                 proto::wld
   Device.WiFi.Radio.{i}.Stats.BroadcastPacketsSent                                                     proto::wld
@@ -4163,6 +4225,7 @@ Check that obuspa has expected datamodel available (minus the platform specific 
   Device.WiFi.Radio.{i}.TxBeamformingCapsEnabled                                                       proto::wld
   Device.WiFi.Radio.{i}.TxChainCtrl                                                                    proto::wld
   Device.WiFi.Radio.{i}.Upstream                                                                       proto::wld
+  Device.WiFi.Radio.{i}.VHTCapabilities                                                                proto::wld
   Device.WiFi.Radio.{i}.WDS_Mode                                                                       proto::wld
   Device.WiFi.Radio.{i}.WET_Mode                                                                       proto::wld
   Device.WiFi.Radio.{i}.WPS_Enrollee_Mode                                                              proto::wld
@@ -4174,6 +4237,7 @@ Check that obuspa has expected datamodel available (minus the platform specific 
   Device.WiFi.Radio.{i}.edit()                                                                         proto::wld
   Device.WiFi.Radio.{i}.getChanSurveyReport()                                                          proto::wld
   Device.WiFi.Radio.{i}.getCurrentTransmitPowerdBm()                                                   proto::wld
+  Device.WiFi.Radio.{i}.getEHTOperations()                                                             proto::wld
   Device.WiFi.Radio.{i}.getLatestPower()                                                               proto::wld
   Device.WiFi.Radio.{i}.getMaxTransmitPowerdBm()                                                       proto::wld
   Device.WiFi.Radio.{i}.getMaxTransmitPowerdBm() input:channel
@@ -4228,6 +4292,9 @@ Check that obuspa has expected datamodel available (minus the platform specific 
   Device.WiFi.SSID.{i}.LastStatusChangeTimeStamp                                                       proto::wld
   Device.WiFi.SSID.{i}.LowerLayers                                                                     proto::wld
   Device.WiFi.SSID.{i}.MACAddress                                                                      proto::wld
+  Device.WiFi.SSID.{i}.MLDLinkID                                                                       proto::wld
+  Device.WiFi.SSID.{i}.MLDRole                                                                         proto::wld
+  Device.WiFi.SSID.{i}.MLDStatus                                                                       proto::wld
   Device.WiFi.SSID.{i}.MLDUnit                                                                         proto::wld
   Device.WiFi.SSID.{i}.Name                                                                            proto::wld
   Device.WiFi.SSID.{i}.SSID                                                                            proto::wld
@@ -4305,6 +4372,16 @@ Check that obuspa has expected datamodel available (minus the platform specific 
   Device.WiFi.addVAPIntf() input:ifname
   Device.WiFi.addVAPIntf() input:radio
   Device.WiFi.addVAPIntf() input:vap
+  Device.WiFi.bSTAMLD.{i}.                                                                             proto::wld
+  Device.WiFi.bSTAMLD.{i}.AffiliatedbSTAList                                                           proto::wld
+  Device.WiFi.bSTAMLD.{i}.BSSID                                                                        proto::wld
+  Device.WiFi.bSTAMLD.{i}.MLDID                                                                        proto::wld
+  Device.WiFi.bSTAMLD.{i}.MLDMACAddress                                                                proto::wld
+  Device.WiFi.bSTAMLD.{i}.bSTAMLDConfig.                                                               proto::wld
+  Device.WiFi.bSTAMLD.{i}.bSTAMLDConfig.EMLMREnabled                                                   proto::wld
+  Device.WiFi.bSTAMLD.{i}.bSTAMLDConfig.EMLSREnabled                                                   proto::wld
+  Device.WiFi.bSTAMLD.{i}.bSTAMLDConfig.NSTREnabled                                                    proto::wld
+  Device.WiFi.bSTAMLD.{i}.bSTAMLDConfig.STREnabled                                                     proto::wld
   Device.WiFi.checkWPSPIN()                                                                            proto::wld
   Device.WiFi.checkWPSPIN() input:PIN
   Device.WiFi.delEndPointIntf()                                                                        proto::wld
@@ -4799,6 +4876,7 @@ Check that obuspa has expected datamodel available (minus the platform specific 
   Device.X_PRPLWARE-COM_WANManager.WAN.{i}.Intf.{i}.IPv4Address.{i}.DefaultRouter                      proto::wan-manager
   Device.X_PRPLWARE-COM_WANManager.WAN.{i}.Intf.{i}.IPv4Address.{i}.IPv4Address                        proto::wan-manager
   Device.X_PRPLWARE-COM_WANManager.WAN.{i}.Intf.{i}.IPv4Address.{i}.SubnetMask                         proto::wan-manager
+  Device.X_PRPLWARE-COM_WANManager.WAN.{i}.Intf.{i}.IPv4AddressNumberOfEntries                         proto::wan-manager
   Device.X_PRPLWARE-COM_WANManager.WAN.{i}.Intf.{i}.IPv4Mode                                           proto::wan-manager
   Device.X_PRPLWARE-COM_WANManager.WAN.{i}.Intf.{i}.IPv4Reference                                      proto::wan-manager
   Device.X_PRPLWARE-COM_WANManager.WAN.{i}.Intf.{i}.IPv6Address.{i}.                                   proto::wan-manager
@@ -4808,6 +4886,7 @@ Check that obuspa has expected datamodel available (minus the platform specific 
   Device.X_PRPLWARE-COM_WANManager.WAN.{i}.Intf.{i}.IPv6Address.{i}.IPv6Address                        proto::wan-manager
   Device.X_PRPLWARE-COM_WANManager.WAN.{i}.Intf.{i}.IPv6Address.{i}.PrefixLength                       proto::wan-manager
   Device.X_PRPLWARE-COM_WANManager.WAN.{i}.Intf.{i}.IPv6AddressDelegate                                proto::wan-manager
+  Device.X_PRPLWARE-COM_WANManager.WAN.{i}.Intf.{i}.IPv6AddressNumberOfEntries                         proto::wan-manager
   Device.X_PRPLWARE-COM_WANManager.WAN.{i}.Intf.{i}.IPv6Mode                                           proto::wan-manager
   Device.X_PRPLWARE-COM_WANManager.WAN.{i}.Intf.{i}.IPv6Reference                                      proto::wan-manager
   Device.X_PRPLWARE-COM_WANManager.WAN.{i}.Intf.{i}.Name                                               proto::wan-manager
@@ -4820,6 +4899,7 @@ Check that obuspa has expected datamodel available (minus the platform specific 
   Device.X_PRPLWARE-COM_WANManager.WAN.{i}.Intf.{i}.UserName                                           proto::wan-manager
   Device.X_PRPLWARE-COM_WANManager.WAN.{i}.Intf.{i}.VlanID                                             proto::wan-manager
   Device.X_PRPLWARE-COM_WANManager.WAN.{i}.Intf.{i}.VlanPriority                                       proto::wan-manager
+  Device.X_PRPLWARE-COM_WANManager.WAN.{i}.IntfNumberOfEntries                                         proto::wan-manager
   Device.X_PRPLWARE-COM_WANManager.WAN.{i}.Origin                                                      proto::wan-manager
   Device.X_PRPLWARE-COM_WANManager.WAN.{i}.PhysicalReference                                           proto::wan-manager
   Device.X_PRPLWARE-COM_WANManager.WAN.{i}.PhysicalType                                                proto::wan-manager
@@ -4833,6 +4913,7 @@ Check that obuspa has expected datamodel available (minus the platform specific 
   Device.X_PRPLWARE-COM_WANManager.WANModeEnable()                                                     proto::wan-manager
   Device.X_PRPLWARE-COM_WANManager.WANModeEnable() input:Autosensing
   Device.X_PRPLWARE-COM_WANManager.WANModeEnable() input:WANMode
+  Device.X_PRPLWARE-COM_WANManager.WANNumberOfEntries                                                  proto::wan-manager
   Device.X_PRPLWARE-COM_WANManager.getWANMode()                                                        proto::wan-manager
   Device.X_PRPLWARE-COM_WANManager.setIPv4Mode()                                                       proto::wan-manager
   Device.X_PRPLWARE-COM_WANManager.setIPv4Mode() input:IPv4Mode
@@ -5365,6 +5446,20 @@ Check that obuspa provides the same datamodel again (minus the platform specific
   Device.DNS.X_PRPLWARE-COM_RebindProtection.IPExceptions.{i}.                                         proto::tr181-dns
   Device.DNS.X_PRPLWARE-COM_RebindProtection.IPExceptions.{i}.Address                                  proto::tr181-dns
   Device.DNS.X_PRPLWARE-COM_RebindProtection.IPExceptionsNumberOfEntries                               proto::tr181-dns
+  Device.DNS.Zone.{i}.                                                                                 proto::tr181-dns
+  Device.DNS.Zone.{i}.Alias                                                                            proto::tr181-dns
+  Device.DNS.Zone.{i}.Enable                                                                           proto::tr181-dns
+  Device.DNS.Zone.{i}.Host.{i}.                                                                        proto::tr181-dns
+  Device.DNS.Zone.{i}.Host.{i}.Alias                                                                   proto::tr181-dns
+  Device.DNS.Zone.{i}.Host.{i}.Enable                                                                  proto::tr181-dns
+  Device.DNS.Zone.{i}.Host.{i}.Host                                                                    proto::tr181-dns
+  Device.DNS.Zone.{i}.Host.{i}.LastUpdate                                                              proto::tr181-dns
+  Device.DNS.Zone.{i}.Host.{i}.Name                                                                    proto::tr181-dns
+  Device.DNS.Zone.{i}.Host.{i}.Origin                                                                  proto::tr181-dns
+  Device.DNS.Zone.{i}.HostNumberOfEntries                                                              proto::tr181-dns
+  Device.DNS.Zone.{i}.Interface                                                                        proto::tr181-dns
+  Device.DNS.Zone.{i}.Name                                                                             proto::tr181-dns
+  Device.DNS.Zone.{i}.Origin                                                                           proto::tr181-dns
   Device.DSLite.                                                                                       proto::tr181-dslite
   Device.DSLite.Enable                                                                                 proto::tr181-dslite
   Device.DSLite.InterfaceSetting.{i}.                                                                  proto::tr181-dslite
@@ -5507,6 +5602,7 @@ Check that obuspa provides the same datamodel again (minus the platform specific
   Device.DeviceInfo.ProcessFaults.ProcessFault.{i}.Upload() input:Username
   Device.DeviceInfo.ProcessFaults.ProcessFaultNumberOfEntries                                          proto::amx-faultmonitor
   Device.DeviceInfo.ProcessFaults.RemoveAllProcessFaults()                                             proto::amx-faultmonitor
+  Device.DeviceInfo.ProcessFaults.RotateProcessFaultEntries                                            proto::amx-faultmonitor
   Device.DeviceInfo.ProcessFaults.StoragePath                                                          proto::amx-faultmonitor
   Device.DeviceInfo.ProcessStatus.                                                                     proto::deviceinfo-manager
   Device.DeviceInfo.ProcessStatus.CPU.{i}.                                                             proto::deviceinfo-manager
@@ -5570,6 +5666,8 @@ Check that obuspa provides the same datamodel again (minus the platform specific
   Device.DeviceInfo.TemperatureStatus.                                                                 proto::tr181-temperature
   Device.DeviceInfo.TemperatureStatus.HighTemperatureAlarm!                                            proto::tr181-temperature
   Device.DeviceInfo.TemperatureStatus.HighTemperatureAlarm! event_arg:Status
+  Device.DeviceInfo.TemperatureStatus.LowTemperatureAlarm!                                             proto::tr181-temperature
+  Device.DeviceInfo.TemperatureStatus.LowTemperatureAlarm! event_arg:Status
   Device.DeviceInfo.TemperatureStatus.TemperatureSensor.{i}.                                           proto::tr181-temperature
   Device.DeviceInfo.TemperatureStatus.TemperatureSensor.{i}.Alias                                      proto::tr181-temperature
   Device.DeviceInfo.TemperatureStatus.TemperatureSensor.{i}.Enable                                     proto::tr181-temperature
@@ -6022,6 +6120,37 @@ Check that obuspa provides the same datamodel again (minus the platform specific
   Device.Hardware.X_PRPLWARE-COM_FlashDevice.{i}.Name                                                  proto::tr181-flashmonitor
   Device.Hardware.X_PRPLWARE-COM_FlashDevice.{i}.Path                                                  proto::tr181-flashmonitor
   Device.Hardware.X_PRPLWARE-COM_FlashDevice.{i}.Version                                               proto::tr181-flashmonitor
+  Device.HomePlug.
+  Device.HomePlug.Interface.{i}.                                                                       proto::tr181-homeplug
+  Device.HomePlug.Interface.{i}.Alias                                                                  proto::tr181-homeplug
+  Device.HomePlug.Interface.{i}.AssociateDeviceNumberOfEntries                                         proto::tr181-homeplug
+  Device.HomePlug.Interface.{i}.AssociatedDevice.{i}.                                                  proto::tr181-homeplug
+  Device.HomePlug.Interface.{i}.AssociatedDevice.{i}.Active                                            proto::tr181-homeplug
+  Device.HomePlug.Interface.{i}.AssociatedDevice.{i}.AvgAttenuation                                    proto::tr181-homeplug
+  Device.HomePlug.Interface.{i}.AssociatedDevice.{i}.EndStationMACs                                    proto::tr181-homeplug
+  Device.HomePlug.Interface.{i}.AssociatedDevice.{i}.FirmwareVersion                                   proto::tr181-homeplug
+  Device.HomePlug.Interface.{i}.AssociatedDevice.{i}.MACAddress                                        proto::tr181-homeplug
+  Device.HomePlug.Interface.{i}.AssociatedDevice.{i}.Manufacturer                                      proto::tr181-homeplug
+  Device.HomePlug.Interface.{i}.AssociatedDevice.{i}.RxPhyRate                                         proto::tr181-homeplug
+  Device.HomePlug.Interface.{i}.AssociatedDevice.{i}.SNRPerTone                                        proto::tr181-homeplug
+  Device.HomePlug.Interface.{i}.AssociatedDevice.{i}.TxPhyRate                                         proto::tr181-homeplug
+  Device.HomePlug.Interface.{i}.Enable                                                                 proto::tr181-homeplug
+  Device.HomePlug.Interface.{i}.FirmwareVersion                                                        proto::tr181-homeplug
+  Device.HomePlug.Interface.{i}.ForceCCo                                                               proto::tr181-homeplug
+  Device.HomePlug.Interface.{i}.Interface                                                              proto::tr181-homeplug
+  Device.HomePlug.Interface.{i}.LastChange                                                             proto::tr181-homeplug
+  Device.HomePlug.Interface.{i}.LogicalNetwork                                                         proto::tr181-homeplug
+  Device.HomePlug.Interface.{i}.LowerLayers                                                            proto::tr181-homeplug
+  Device.HomePlug.Interface.{i}.MACAddress                                                             proto::tr181-homeplug
+  Device.HomePlug.Interface.{i}.MaxBitRate                                                             proto::tr181-homeplug
+  Device.HomePlug.Interface.{i}.Name                                                                   proto::tr181-homeplug
+  Device.HomePlug.Interface.{i}.NetworkPassword                                                        proto::tr181-homeplug
+  Device.HomePlug.Interface.{i}.OtherNetworksPresent                                                   proto::tr181-homeplug
+  Device.HomePlug.Interface.{i}.Status                                                                 proto::tr181-homeplug
+  Device.HomePlug.Interface.{i}.Type                                                                   proto::tr181-homeplug
+  Device.HomePlug.Interface.{i}.Upstream                                                               proto::tr181-homeplug
+  Device.HomePlug.Interface.{i}.Version                                                                proto::tr181-homeplug
+  Device.HomePlug.InterfaceNumberOfEntries                                                             proto::tr181-homeplug
   Device.Hosts.                                                                                        proto::hosts-manager
   Device.Hosts.AccessControl.{i}.                                                                      proto::hosts-manager
   Device.Hosts.AccessControl.{i}.AccessPolicy                                                          proto::hosts-manager
@@ -8173,6 +8302,29 @@ Check that obuspa provides the same datamodel again (minus the platform specific
   Device.Users.User.{i}.X_PRPLWARE-COM_HomeDirectory                                                   proto::tr181-usermanagement
   Device.Users.UserNumberOfEntries                                                                     proto::tr181-usermanagement
   Device.WiFi.                                                                                         proto::wld
+  Device.WiFi.APMLD.{i}.                                                                               proto::wld
+  Device.WiFi.APMLD.{i}.APMLDConfig.                                                                   proto::wld
+  Device.WiFi.APMLD.{i}.APMLDConfig.EMLMREnabled                                                       proto::wld
+  Device.WiFi.APMLD.{i}.APMLDConfig.EMLSREnabled                                                       proto::wld
+  Device.WiFi.APMLD.{i}.APMLDConfig.NSTREnabled                                                        proto::wld
+  Device.WiFi.APMLD.{i}.APMLDConfig.STREnabled                                                         proto::wld
+  Device.WiFi.APMLD.{i}.AffiliatedAP.{i}.                                                              proto::wld
+  Device.WiFi.APMLD.{i}.AffiliatedAP.{i}.BSSID                                                         proto::wld
+  Device.WiFi.APMLD.{i}.AffiliatedAP.{i}.LinkID                                                        proto::wld
+  Device.WiFi.APMLD.{i}.AffiliatedAP.{i}.Stats.                                                        proto::wld
+  Device.WiFi.APMLD.{i}.AffiliatedAP.{i}.Stats.BroadcastBytesReceived                                  proto::wld
+  Device.WiFi.APMLD.{i}.AffiliatedAP.{i}.Stats.BroadcastBytesSent                                      proto::wld
+  Device.WiFi.APMLD.{i}.AffiliatedAP.{i}.Stats.ErrorsSent                                              proto::wld
+  Device.WiFi.APMLD.{i}.AffiliatedAP.{i}.Stats.MulticastBytesReceived                                  proto::wld
+  Device.WiFi.APMLD.{i}.AffiliatedAP.{i}.Stats.MulticastBytesSent                                      proto::wld
+  Device.WiFi.APMLD.{i}.AffiliatedAP.{i}.Stats.PacketsReceived                                         proto::wld
+  Device.WiFi.APMLD.{i}.AffiliatedAP.{i}.Stats.PacketsSent                                             proto::wld
+  Device.WiFi.APMLD.{i}.AffiliatedAP.{i}.Stats.UnicastBytesReceived                                    proto::wld
+  Device.WiFi.APMLD.{i}.AffiliatedAP.{i}.Stats.UnicastBytesSent                                        proto::wld
+  Device.WiFi.APMLD.{i}.AffiliatedAPNumberOfEntries                                                    proto::wld
+  Device.WiFi.APMLD.{i}.MLDID                                                                          proto::wld
+  Device.WiFi.APMLD.{i}.MLDMACAddress                                                                  proto::wld
+  Device.WiFi.APMLDMaxLinks                                                                            proto::wld
   Device.WiFi.AccessPoint.{i}.                                                                         proto::wld
   Device.WiFi.AccessPoint.{i}.APBridgeDisable                                                          proto::wld
   Device.WiFi.AccessPoint.{i}.ActiveAssociatedDeviceNumberOfEntries                                    proto::wld
@@ -8180,6 +8332,7 @@ Check that obuspa provides the same datamodel again (minus the platform specific
   Device.WiFi.AccessPoint.{i}.Alias                                                                    proto::wld
   Device.WiFi.AccessPoint.{i}.ApRole                                                                   proto::wld
   Device.WiFi.AccessPoint.{i}.AssociatedDevice.{i}.                                                    proto::wld
+  Device.WiFi.AccessPoint.{i}.AssociatedDevice.{i}.APMLDMacAddress                                     proto::wld
   Device.WiFi.AccessPoint.{i}.AssociatedDevice.{i}.Active                                              proto::wld
   Device.WiFi.AccessPoint.{i}.AssociatedDevice.{i}.ActiveNumberOfAffiliatedSta                         proto::wld
   Device.WiFi.AccessPoint.{i}.AssociatedDevice.{i}.AffiliatedSta.{i}.                                  proto::wld
@@ -8306,6 +8459,7 @@ Check that obuspa provides the same datamodel again (minus the platform specific
   Device.WiFi.AccessPoint.{i}.AssociatedDevice.{i}.VendorCapabilities                                  proto::wld
   Device.WiFi.AccessPoint.{i}.AssociatedDevice.{i}.VendorOUI                                           proto::wld
   Device.WiFi.AccessPoint.{i}.AssociatedDevice.{i}.VhtCapabilities                                     proto::wld
+  Device.WiFi.AccessPoint.{i}.AssociatedDevice.{i}.WdsInterfaceName                                    proto::wld
   Device.WiFi.AccessPoint.{i}.AssociatedDevice.{i}.getLastAssocReq()                                   proto::wld
   Device.WiFi.AccessPoint.{i}.AssociatedDeviceNumberOfEntries                                          proto::wld
   Device.WiFi.AccessPoint.{i}.AssociationCount.                                                        proto::wld
@@ -8321,6 +8475,7 @@ Check that obuspa provides the same datamodel again (minus the platform specific
   Device.WiFi.AccessPoint.{i}.BSS-TM-RESP!                                                             proto::wld
   Device.WiFi.AccessPoint.{i}.BridgeInterface                                                          proto::wld
   Device.WiFi.AccessPoint.{i}.CpeOperationMode                                                         proto::wld
+  Device.WiFi.AccessPoint.{i}.CustomAlias                                                              proto::wld
   Device.WiFi.AccessPoint.{i}.DefaultDeviceType                                                        proto::wld
   Device.WiFi.AccessPoint.{i}.Disassociation!                                                          proto::wld
   Device.WiFi.AccessPoint.{i}.DiscoveryMethodEnabled                                                   proto::wld
@@ -8381,27 +8536,6 @@ Check that obuspa provides the same datamodel again (minus the platform specific
   Device.WiFi.AccessPoint.{i}.MBOAssocDisallowReason                                                   proto::wld
   Device.WiFi.AccessPoint.{i}.MBOEnable                                                                proto::wld
   Device.WiFi.AccessPoint.{i}.MCEnable                                                                 proto::wld
-  Device.WiFi.AccessPoint.{i}.MLDConfig.                                                               proto::wld
-  Device.WiFi.AccessPoint.{i}.MLDConfig.EMLMREnable                                                    proto::wld
-  Device.WiFi.AccessPoint.{i}.MLDConfig.EMLSREnable                                                    proto::wld
-  Device.WiFi.AccessPoint.{i}.MLDConfig.NSTREnable                                                     proto::wld
-  Device.WiFi.AccessPoint.{i}.MLDConfig.STREnable                                                      proto::wld
-  Device.WiFi.AccessPoint.{i}.MLOStats.                                                                proto::wld
-  Device.WiFi.AccessPoint.{i}.MLOStats.BroadcastBytesReceived                                          proto::wld
-  Device.WiFi.AccessPoint.{i}.MLOStats.BroadcastBytesSent                                              proto::wld
-  Device.WiFi.AccessPoint.{i}.MLOStats.ErrorsSent                                                      proto::wld
-  Device.WiFi.AccessPoint.{i}.MLOStats.EstServiceParametersBE                                          proto::wld
-  Device.WiFi.AccessPoint.{i}.MLOStats.EstServiceParametersBK                                          proto::wld
-  Device.WiFi.AccessPoint.{i}.MLOStats.EstServiceParametersVI                                          proto::wld
-  Device.WiFi.AccessPoint.{i}.MLOStats.EstServiceParametersVO                                          proto::wld
-  Device.WiFi.AccessPoint.{i}.MLOStats.LinkID                                                          proto::wld
-  Device.WiFi.AccessPoint.{i}.MLOStats.MLORole                                                         proto::wld
-  Device.WiFi.AccessPoint.{i}.MLOStats.MulticastBytesReceived                                          proto::wld
-  Device.WiFi.AccessPoint.{i}.MLOStats.MulticastBytesSent                                              proto::wld
-  Device.WiFi.AccessPoint.{i}.MLOStats.PacketsReceived                                                 proto::wld
-  Device.WiFi.AccessPoint.{i}.MLOStats.PacketsSent                                                     proto::wld
-  Device.WiFi.AccessPoint.{i}.MLOStats.UnicastBytesReceived                                            proto::wld
-  Device.WiFi.AccessPoint.{i}.MLOStats.UnicastBytesSent                                                proto::wld
   Device.WiFi.AccessPoint.{i}.MaxAssociatedDevices                                                     proto::wld
   Device.WiFi.AccessPoint.{i}.MgmtActionFrameReceived!                                                 proto::wld
   Device.WiFi.AccessPoint.{i}.MgmtDeauthFrame!                                                         proto::wld
@@ -8611,6 +8745,7 @@ Check that obuspa provides the same datamodel again (minus the platform specific
   Device.WiFi.EndPoint.{i}.ReconnectDelay                                                              proto::wld
   Device.WiFi.EndPoint.{i}.ReconnectInterval                                                           proto::wld
   Device.WiFi.EndPoint.{i}.ReconnectRadioToggleThreshold                                               proto::wld
+  Device.WiFi.EndPoint.{i}.RequiredOperatingStandards                                                  proto::wld
   Device.WiFi.EndPoint.{i}.SSIDReference                                                               proto::wld
   Device.WiFi.EndPoint.{i}.Security.                                                                   proto::wld
   Device.WiFi.EndPoint.{i}.Security.ModesSupported                                                     proto::wld
@@ -8677,6 +8812,7 @@ Check that obuspa provides the same datamodel again (minus the platform specific
   Device.WiFi.FSM_Start()                                                                              proto::wld
   Device.WiFi.FSM_Start() input:bitnr
   Device.WiFi.FSM_Start() input:vap
+  Device.WiFi.MaxNumMLDs                                                                               proto::wld
   Device.WiFi.NeighboringWiFiDiagnostic()                                                              proto::wld
   Device.WiFi.Radio.{i}.                                                                               proto::wld
   Device.WiFi.Radio.{i}.AP_Mode                                                                        proto::wld
@@ -8764,6 +8900,7 @@ Check that obuspa provides the same datamodel again (minus the platform specific
   Device.WiFi.Radio.{i}.ChannelSwitchComplete!                                                         proto::wld
   Device.WiFi.Radio.{i}.ChannelsInUse                                                                  proto::wld
   Device.WiFi.Radio.{i}.ChipsetVendor                                                                  proto::wld
+  Device.WiFi.Radio.{i}.CurrentEhtOperatingIE                                                          proto::wld
   Device.WiFi.Radio.{i}.CurrentOperatingChannelBandwidth                                               proto::wld
   Device.WiFi.Radio.{i}.DFS Done!                                                                      proto::wld
   Device.WiFi.Radio.{i}.DFS.                                                                           proto::wld
@@ -8799,6 +8936,8 @@ Check that obuspa provides the same datamodel again (minus the platform specific
   Device.WiFi.Radio.{i}.DriverStatus.NrActiveTxAntenna                                                 proto::wld
   Device.WiFi.Radio.{i}.DriverStatus.NrRxAntenna                                                       proto::wld
   Device.WiFi.Radio.{i}.DriverStatus.NrTxAntenna                                                       proto::wld
+  Device.WiFi.Radio.{i}.EhtPhyCapabilities                                                             proto::wld
+  Device.WiFi.Radio.{i}.EhtPhyCapabilitiesStr                                                          proto::wld
   Device.WiFi.Radio.{i}.Enable                                                                         proto::wld
   Device.WiFi.Radio.{i}.EventCounter.{i}.                                                              proto::wld
   Device.WiFi.Radio.{i}.EventCounter.{i}.Info                                                          proto::wld
@@ -8902,9 +9041,11 @@ Check that obuspa provides the same datamodel again (minus the platform specific
   Device.WiFi.Radio.{i}.ScanComplete!                                                                  proto::wld
   Device.WiFi.Radio.{i}.ScanConfig.                                                                    proto::wld
   Device.WiFi.Radio.{i}.ScanConfig.ActiveChannelTime                                                   proto::wld
+  Device.WiFi.Radio.{i}.ScanConfig.EnableScanResultsDm                                                 proto::wld
   Device.WiFi.Radio.{i}.ScanConfig.FastScanReasons                                                     proto::wld
   Device.WiFi.Radio.{i}.ScanConfig.HomeTime                                                            proto::wld
   Device.WiFi.Radio.{i}.ScanConfig.MaxChannelsPerScan                                                  proto::wld
+  Device.WiFi.Radio.{i}.ScanConfig.OnlyScanPscChannels                                                 proto::wld
   Device.WiFi.Radio.{i}.ScanConfig.PassiveChannelTime                                                  proto::wld
   Device.WiFi.Radio.{i}.ScanConfig.ScanChannelCount                                                    proto::wld
   Device.WiFi.Radio.{i}.ScanConfig.ScanRequestInterval                                                 proto::wld
@@ -8952,6 +9093,8 @@ Check that obuspa provides the same datamodel again (minus the platform specific
   Device.WiFi.Radio.{i}.Sensing.delClient()                                                            proto::wld
   Device.WiFi.Radio.{i}.Sensing.delClient() input:MACAddress
   Device.WiFi.Radio.{i}.Sensing.resetStats()                                                           proto::wld
+  Device.WiFi.Radio.{i}.StaticPuncturing.                                                              proto::wld
+  Device.WiFi.Radio.{i}.StaticPuncturing.DisabledSubChannels                                           proto::wld
   Device.WiFi.Radio.{i}.Stats.                                                                         proto::wld
   Device.WiFi.Radio.{i}.Stats.BroadcastPacketsReceived                                                 proto::wld
   Device.WiFi.Radio.{i}.Stats.BroadcastPacketsSent                                                     proto::wld
@@ -9031,6 +9174,7 @@ Check that obuspa provides the same datamodel again (minus the platform specific
   Device.WiFi.Radio.{i}.TxBeamformingCapsEnabled                                                       proto::wld
   Device.WiFi.Radio.{i}.TxChainCtrl                                                                    proto::wld
   Device.WiFi.Radio.{i}.Upstream                                                                       proto::wld
+  Device.WiFi.Radio.{i}.VHTCapabilities                                                                proto::wld
   Device.WiFi.Radio.{i}.WDS_Mode                                                                       proto::wld
   Device.WiFi.Radio.{i}.WET_Mode                                                                       proto::wld
   Device.WiFi.Radio.{i}.WPS_Enrollee_Mode                                                              proto::wld
@@ -9042,6 +9186,7 @@ Check that obuspa provides the same datamodel again (minus the platform specific
   Device.WiFi.Radio.{i}.edit()                                                                         proto::wld
   Device.WiFi.Radio.{i}.getChanSurveyReport()                                                          proto::wld
   Device.WiFi.Radio.{i}.getCurrentTransmitPowerdBm()                                                   proto::wld
+  Device.WiFi.Radio.{i}.getEHTOperations()                                                             proto::wld
   Device.WiFi.Radio.{i}.getLatestPower()                                                               proto::wld
   Device.WiFi.Radio.{i}.getMaxTransmitPowerdBm()                                                       proto::wld
   Device.WiFi.Radio.{i}.getMaxTransmitPowerdBm() input:channel
@@ -9096,6 +9241,9 @@ Check that obuspa provides the same datamodel again (minus the platform specific
   Device.WiFi.SSID.{i}.LastStatusChangeTimeStamp                                                       proto::wld
   Device.WiFi.SSID.{i}.LowerLayers                                                                     proto::wld
   Device.WiFi.SSID.{i}.MACAddress                                                                      proto::wld
+  Device.WiFi.SSID.{i}.MLDLinkID                                                                       proto::wld
+  Device.WiFi.SSID.{i}.MLDRole                                                                         proto::wld
+  Device.WiFi.SSID.{i}.MLDStatus                                                                       proto::wld
   Device.WiFi.SSID.{i}.MLDUnit                                                                         proto::wld
   Device.WiFi.SSID.{i}.Name                                                                            proto::wld
   Device.WiFi.SSID.{i}.SSID                                                                            proto::wld
@@ -9173,6 +9321,16 @@ Check that obuspa provides the same datamodel again (minus the platform specific
   Device.WiFi.addVAPIntf() input:ifname
   Device.WiFi.addVAPIntf() input:radio
   Device.WiFi.addVAPIntf() input:vap
+  Device.WiFi.bSTAMLD.{i}.                                                                             proto::wld
+  Device.WiFi.bSTAMLD.{i}.AffiliatedbSTAList                                                           proto::wld
+  Device.WiFi.bSTAMLD.{i}.BSSID                                                                        proto::wld
+  Device.WiFi.bSTAMLD.{i}.MLDID                                                                        proto::wld
+  Device.WiFi.bSTAMLD.{i}.MLDMACAddress                                                                proto::wld
+  Device.WiFi.bSTAMLD.{i}.bSTAMLDConfig.                                                               proto::wld
+  Device.WiFi.bSTAMLD.{i}.bSTAMLDConfig.EMLMREnabled                                                   proto::wld
+  Device.WiFi.bSTAMLD.{i}.bSTAMLDConfig.EMLSREnabled                                                   proto::wld
+  Device.WiFi.bSTAMLD.{i}.bSTAMLDConfig.NSTREnabled                                                    proto::wld
+  Device.WiFi.bSTAMLD.{i}.bSTAMLDConfig.STREnabled                                                     proto::wld
   Device.WiFi.checkWPSPIN()                                                                            proto::wld
   Device.WiFi.checkWPSPIN() input:PIN
   Device.WiFi.delEndPointIntf()                                                                        proto::wld
@@ -9667,6 +9825,7 @@ Check that obuspa provides the same datamodel again (minus the platform specific
   Device.X_PRPLWARE-COM_WANManager.WAN.{i}.Intf.{i}.IPv4Address.{i}.DefaultRouter                      proto::wan-manager
   Device.X_PRPLWARE-COM_WANManager.WAN.{i}.Intf.{i}.IPv4Address.{i}.IPv4Address                        proto::wan-manager
   Device.X_PRPLWARE-COM_WANManager.WAN.{i}.Intf.{i}.IPv4Address.{i}.SubnetMask                         proto::wan-manager
+  Device.X_PRPLWARE-COM_WANManager.WAN.{i}.Intf.{i}.IPv4AddressNumberOfEntries                         proto::wan-manager
   Device.X_PRPLWARE-COM_WANManager.WAN.{i}.Intf.{i}.IPv4Mode                                           proto::wan-manager
   Device.X_PRPLWARE-COM_WANManager.WAN.{i}.Intf.{i}.IPv4Reference                                      proto::wan-manager
   Device.X_PRPLWARE-COM_WANManager.WAN.{i}.Intf.{i}.IPv6Address.{i}.                                   proto::wan-manager
@@ -9676,6 +9835,7 @@ Check that obuspa provides the same datamodel again (minus the platform specific
   Device.X_PRPLWARE-COM_WANManager.WAN.{i}.Intf.{i}.IPv6Address.{i}.IPv6Address                        proto::wan-manager
   Device.X_PRPLWARE-COM_WANManager.WAN.{i}.Intf.{i}.IPv6Address.{i}.PrefixLength                       proto::wan-manager
   Device.X_PRPLWARE-COM_WANManager.WAN.{i}.Intf.{i}.IPv6AddressDelegate                                proto::wan-manager
+  Device.X_PRPLWARE-COM_WANManager.WAN.{i}.Intf.{i}.IPv6AddressNumberOfEntries                         proto::wan-manager
   Device.X_PRPLWARE-COM_WANManager.WAN.{i}.Intf.{i}.IPv6Mode                                           proto::wan-manager
   Device.X_PRPLWARE-COM_WANManager.WAN.{i}.Intf.{i}.IPv6Reference                                      proto::wan-manager
   Device.X_PRPLWARE-COM_WANManager.WAN.{i}.Intf.{i}.Name                                               proto::wan-manager
@@ -9688,6 +9848,7 @@ Check that obuspa provides the same datamodel again (minus the platform specific
   Device.X_PRPLWARE-COM_WANManager.WAN.{i}.Intf.{i}.UserName                                           proto::wan-manager
   Device.X_PRPLWARE-COM_WANManager.WAN.{i}.Intf.{i}.VlanID                                             proto::wan-manager
   Device.X_PRPLWARE-COM_WANManager.WAN.{i}.Intf.{i}.VlanPriority                                       proto::wan-manager
+  Device.X_PRPLWARE-COM_WANManager.WAN.{i}.IntfNumberOfEntries                                         proto::wan-manager
   Device.X_PRPLWARE-COM_WANManager.WAN.{i}.Origin                                                      proto::wan-manager
   Device.X_PRPLWARE-COM_WANManager.WAN.{i}.PhysicalReference                                           proto::wan-manager
   Device.X_PRPLWARE-COM_WANManager.WAN.{i}.PhysicalType                                                proto::wan-manager
@@ -9701,6 +9862,7 @@ Check that obuspa provides the same datamodel again (minus the platform specific
   Device.X_PRPLWARE-COM_WANManager.WANModeEnable()                                                     proto::wan-manager
   Device.X_PRPLWARE-COM_WANManager.WANModeEnable() input:Autosensing
   Device.X_PRPLWARE-COM_WANManager.WANModeEnable() input:WANMode
+  Device.X_PRPLWARE-COM_WANManager.WANNumberOfEntries                                                  proto::wan-manager
   Device.X_PRPLWARE-COM_WANManager.getWANMode()                                                        proto::wan-manager
   Device.X_PRPLWARE-COM_WANManager.setIPv4Mode()                                                       proto::wan-manager
   Device.X_PRPLWARE-COM_WANManager.setIPv4Mode() input:IPv4Mode

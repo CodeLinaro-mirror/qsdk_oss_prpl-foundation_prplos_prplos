@@ -376,6 +376,7 @@ Check that ubus has expected datamodels available:
   WANManager
   WANManager.WAN
   WiFi
+  WiFi.APMLD
   WiFi.AccessPoint
   WiFi.AutoCommitMgr
   WiFi.AutoNeighbourAddition
@@ -386,6 +387,7 @@ Check that ubus has expected datamodels available:
   WiFi.Radio
   WiFi.SSID
   WiFi.Vendor
+  WiFi.bSTAMLD
   WiFi.wps_DefParam
   WiFiScheduler
   WiFiScheduler.Group

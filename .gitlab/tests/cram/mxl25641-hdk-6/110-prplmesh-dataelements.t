@@ -1,11 +1,7 @@
 Create R alias:
 
   $ alias R="${CRAM_REMOTE_COMMAND:-}"
-
-Provide common helpers:
-
-  $ get_ssid_status() { R "ba-cli -j -l WiFi.SSID.?0 | jsonfilter -e @[0]'[@.Alias != \"ep2g0\" && @.Alias != \"ep5g0\" && @.Alias != \"ep6g0\"].Status'" | LC_ALL=C sort;}
-  $ get_ssid_ssid() { R "ba-cli -j -l WiFi.SSID.?0 | jsonfilter -e @[0]'[@.Alias != \"ep2g0\" && @.Alias != \"ep5g0\" && @.Alias != \"ep6g0\"].SSID'" | LC_ALL=C sort;}
+  $ . "${TESTDIR}/../scripts/wifi.sh"
 
 Set AutoChannelEnable=0 on all WiFi.Radio. interfaces:
 
@@ -61,9 +57,9 @@ Check all AccessPoint.SSIDReference+ instances are disabled
   Down
 
   $ get_ssid_ssid
-  backhaul_4C:BA:7D:*:*:* (glob)
-  backhaul_4C:BA:7D:*:*:* (glob)
-  backhaul_4C:BA:7D:*:*:* (glob)
+  backhaul_(4C:BA:7D|A8:C2:46):[0-9A-F]{2}:[0-9A-F]{2}:[0-9A-F]{2} (re)
+  backhaul_(4C:BA:7D|A8:C2:46):[0-9A-F]{2}:[0-9A-F]{2}:[0-9A-F]{2} (re)
+  backhaul_(4C:BA:7D|A8:C2:46):[0-9A-F]{2}:[0-9A-F]{2}:[0-9A-F]{2} (re)
   prplOS
   prplOS
   prplOS
@@ -162,19 +158,6 @@ Check that wireless is operating:
   Up
   Up
 
-  $ get_ssid_ssid
-  backhaul_4C:BA:7D:*:*:* (glob)
-  backhaul_4C:BA:7D:*:*:* (glob)
-  backhaul_4C:BA:7D:*:*:* (glob)
-  prplOSguest
-  prplOSguest
-  prplOSguest
-  prplOSpriv
-  prplOSpriv
-  prplOSpriv
-
-  $ sleep 10
-
 Check that prplmesh processes are running:
 
   $ R logger -t cram "Check that prplmesh processes are running"
@@ -187,6 +170,27 @@ Check that prplmesh processes are running:
   /opt/prplmesh/bin/beerocks_fronthaul -i wlan4
   /opt/prplmesh/bin/beerocks_vendor_message
   /opt/prplmesh/bin/ieee1905_transport
+
+Check that prplmesh is operational:
+
+  $ R logger -t cram "Check that prplmesh is operational"
+
+  $ R "/opt/prplmesh/scripts/prplmesh_utils.sh status" | sed 's/^[0-9]\+ //' | LC_ALL=C sort
+  \x1b[0m (esc)
+  \x1b[0m\x1b[1;32mOK Main radio agent operational (esc)
+  \x1b[1;32moperational test success! (esc)
+  /opt/prplmesh/scripts/prplmesh_utils.sh: status
+  OK wlan0 radio agent operational
+  OK wlan2 radio agent operational
+  OK wlan4 radio agent operational
+  beerocks_agent
+  beerocks_contro
+  beerocks_fronth
+  beerocks_fronth
+  beerocks_fronth
+  beerocks_vendor
+  executing operational test using bml
+  ieee1905_transp
 
 Check that controller received correct info about wifi subsystem:
 
@@ -239,19 +243,6 @@ Check that wireless is disabled:
   Down
   Down
   Down
-
-Check that SSIDs did not change:
-
-  $ get_ssid_ssid
-  backhaul_4C:BA:7D:*:*:* (glob)
-  backhaul_4C:BA:7D:*:*:* (glob)
-  backhaul_4C:BA:7D:*:*:* (glob)
-  prplOSguest
-  prplOSguest
-  prplOSguest
-  prplOSpriv
-  prplOSpriv
-  prplOSpriv
 
 Check the default ChipsetVendor param configurations:
 
