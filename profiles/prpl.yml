@@ -6,6 +6,11 @@ include:
   - lcm
   - mgmt
 
+feeds:
+  - name: feed_swupdate
+    uri: https://gitlab.com/prpl-foundation/prplos/feeds/feed_swupdate.git
+    revision: main@349e4fa12168ae9c29074304727fcd74e5b140c0
+
 additional_packages:
   - feed: packages
     packages:
@@ -50,6 +55,7 @@ packages:
   - miniupnpd-prpl
   - mod-autosensing
   - mod-busstats
+  - mod-fwi-swupdate
   - mod-httpaccess-lighttpd
   - mod-ppp-daemon
   - mod-ra-radvd
