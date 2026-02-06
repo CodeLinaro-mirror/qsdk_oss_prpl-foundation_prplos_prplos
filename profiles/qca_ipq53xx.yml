@@ -123,6 +123,7 @@ additional_packages:
       - afc
       - qca-afc-daemon
       - athdiag
+      - qti-softsku-license-loader-libs
       - softsku_sdk
       - softsku_qwin_agent
       - wasm-container-interfaces
