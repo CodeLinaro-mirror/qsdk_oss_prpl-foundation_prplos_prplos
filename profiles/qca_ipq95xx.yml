@@ -126,6 +126,9 @@ additional_packages:
       - afc
       - qca-afc-daemon
       - athdiag
+      - softsku_sdk
+      - softsku_qwin_agent
+      - wasm-container-interfaces
 
 packages:
   - e2fsprogs
