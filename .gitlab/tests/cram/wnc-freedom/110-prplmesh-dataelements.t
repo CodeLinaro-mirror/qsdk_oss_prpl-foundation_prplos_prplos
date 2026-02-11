@@ -244,6 +244,14 @@ To disable wireless, disable instances of Network.AccessPoint{i} and call Access
 
   $ sleep 10
 
+Restore Security.ModeEnabled for AccessPoints used in the test
+
+  $ R "ba-cli \"WiFi.AccessPoint.[RadioReference == 'WiFi.Radio.radio0_band0'].Security.ModeEnabled='WPA2-WPA3-Personal'\" > /dev/null "
+
+  $ R "ba-cli \"WiFi.AccessPoint.[RadioReference == 'WiFi.Radio.radio0_band1'].Security.ModeEnabled='WPA2-WPA3-Personal'\" > /dev/null "
+
+  $ R "ba-cli \"WiFi.AccessPoint.[RadioReference == 'WiFi.Radio.radio0_band2'].Security.ModeEnabled='WPA3-Personal'\" > /dev/null "
+
 Check that wireless is disabled:
 
   $ get_ssid_status
@@ -269,6 +277,14 @@ Check that SSIDs did not change:
   prplOSpriv
   prplOSpriv
   prplOSpriv
+
+Restore Security Mode to default values
+
+  $ R "ba-cli \"WiFi.AccessPoint.[RadioReference == 'WiFi.Radio.radio0_band0'].Security.ModeEnabled='WPA2-WPA3-Personal'\" > /dev/null "
+
+  $ R "ba-cli \"WiFi.AccessPoint.[RadioReference == 'WiFi.Radio.radio0_band1'].Security.ModeEnabled='WPA2-WPA3-Personal'\" > /dev/null "
+
+  $ R "ba-cli \"WiFi.AccessPoint.[RadioReference == 'WiFi.Radio.radio0_band2'].Security.ModeEnabled='WPA3-Personal'\" > /dev/null "
 
 Check the default ChipsetVendor param configurations:
 
