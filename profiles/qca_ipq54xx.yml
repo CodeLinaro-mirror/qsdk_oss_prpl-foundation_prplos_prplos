@@ -14,6 +14,7 @@ additional_packages:
       - u-boot
       - u-boot-2025
       - ntfs-3g
+      - unzip
   - feed: wlan-internal
     packages:
       - kmod-ath12k
@@ -126,6 +127,7 @@ additional_packages:
       - softsku_sdk
       - softsku_qwin_agent
       - wasm-container-interfaces
+      - package_manager_agent
 
 packages:
   - e2fsprogs
@@ -194,3 +196,8 @@ diffconfig: |
   CONFIG_PACKAGE_afc-open=m
   CONFIG_PACKAGE_qca-afc-daemon-open=m
   CONFIG_MAKE_TOOLCHAIN=y
+  CONFIG_PACKAGE_softsku_sdk=m
+  CONFIG_PACKAGE_softsku_qwin_agent=m
+  CONFIG_PACKAGE_wasm-container-interfaces=m
+  CONFIG_PACKAGE_package_manager_agent=m
+  CONFIG_PACAGE_unzip=m
