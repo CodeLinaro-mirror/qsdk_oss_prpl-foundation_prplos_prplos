@@ -130,6 +130,7 @@ additional_packages:
       - softsku_qwin_agent
       - wasm-container-interfaces
       - package_manager_agent
+      - qti-license-pfm
 
 packages:
   - e2fsprogs
@@ -203,3 +204,4 @@ diffconfig: |
   CONFIG_PACKAGE_wasm-container-interfaces=m
   CONFIG_PACKAGE_package_manager_agent=m
   CONFIG_PACAGE_unzip=m
+  CONFIG_PACKAGE_qti-license-pfm=m
