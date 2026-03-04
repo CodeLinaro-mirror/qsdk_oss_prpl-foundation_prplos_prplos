@@ -135,6 +135,7 @@ additional_packages:
       - wasm-container-interfaces
       - package_manager_agent
       - qti-license-pfm
+      - pm-utils
 
 packages:
   - e2fsprogs
@@ -224,3 +225,4 @@ diffconfig: |
   CONFIG_PACKAGE_package_manager_agent=m
   CONFIG_PACKAGE_unzip=m
   CONFIG_PACKAGE_qti-license-pfm=m
+  CONFIG_PACKAGE_pm-utils=m
