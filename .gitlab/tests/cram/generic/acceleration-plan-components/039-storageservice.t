@@ -3,7 +3,7 @@ Setup the test configuration:
   $ alias R="${CRAM_REMOTE_COMMAND:-}"
   $ alias C="${CRAM_REMOTE_COPY:-}"
   $ S="/tmp/storageservice.sh"
-  $ C ${TESTDIR}/125-storageservice/storageservice.sh root@${TARGET_LAN_IP}:/tmp/storageservice.sh
+  $ C ${TESTDIR}/039-storageservice/storageservice.sh root@${TARGET_LAN_IP}:/tmp/storageservice.sh
   Warning: Permanently added '192.168.1.1' (ECDSA) to the list of known hosts.\r (esc)
 
 Don't run test on Turris Omnia, OSPv1 and Haze boards as they don't have USB flash disk available:
@@ -86,7 +86,8 @@ Change the Password:
   $ R "ba-cli StorageService.1.UserAccount.1.Password=\"newprplpassword\"" > /dev/null
   $ sleep 3
 
-Verify the new password:
+Disable SMB:
 
-  $ smbclient \\\\${TARGET_LAN_IP}\\ext3 -U 'prpluser%newprplpassword' --command=ls >/dev/null 2>/dev/null
+  $ R "ba-cli StorageService.1.NetworkServer.SMBEnable=0" > /dev/null
+  $ sleep 3
 

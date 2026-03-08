@@ -135,6 +135,7 @@ Assure expected build configuration (PCF-1413):
   CONFIG_PACKAGE_ebtables-legacy-utils=y
   CONFIG_PACKAGE_efr32-boot-config=y
   CONFIG_PACKAGE_ethernet-manager=y
+  CONFIG_PACKAGE_ethtool-full=y
   CONFIG_PACKAGE_exfat-mkfs=y
   CONFIG_PACKAGE_fcgi=y
   # CONFIG_PACKAGE_firewall4 is not set
@@ -169,12 +170,11 @@ Assure expected build configuration (PCF-1413):
   # CONFIG_PACKAGE_jansson is not set
   CONFIG_PACKAGE_kmod-asn1-decoder=y
   CONFIG_PACKAGE_kmod-ath11k=y
-  CONFIG_PACKAGE_kmod-crypto-md5=y
-  CONFIG_PACKAGE_kmod-crypto-michael-mic=y
   CONFIG_PACKAGE_kmod-cdrom=y
   CONFIG_PACKAGE_kmod-crypto-des=y
   CONFIG_PACKAGE_kmod-crypto-ecb=y
   CONFIG_PACKAGE_kmod-crypto-md5=y
+  CONFIG_PACKAGE_kmod-crypto-michael-mic=y
   CONFIG_PACKAGE_kmod-crypto-sha256=y
   CONFIG_PACKAGE_kmod-ebtables=y
   CONFIG_PACKAGE_kmod-ebtables-ipv4=y
