@@ -2548,6 +2548,7 @@ Check that obuspa has expected datamodel available (minus the platform specific 
   Device.PeriodicFileTransfer.Transfer.{i}.TimeReference                                               proto::tr181-periodicfileupload
   Device.PeriodicFileTransfer.Transfer.{i}.Type                                                        proto::tr181-periodicfileupload
   Device.PeriodicFileTransfer.Transfer.{i}.UploadInterval                                              proto::tr181-periodicfileupload
+  Device.PeriodicFileTransfer.Transfer.{i}.X_PRPLWARE-COM_ForceTransfer                                proto::tr181-periodicfileupload
   Device.PeriodicFileTransfer.TransferNumberOfEntries                                                  proto::tr181-periodicfileupload
   Device.PeriodicFileTransfer.TypesSupported                                                           proto::tr181-periodicfileupload
   Device.QoS.                                                                                          proto::tr181-qos
@@ -3485,6 +3486,16 @@ Check that obuspa has expected datamodel available (minus the platform specific 
   Device.WiFi.APMLD.{i}.AffiliatedAPNumberOfEntries                                                    proto::prplmesh-dm-mapper
   Device.WiFi.APMLD.{i}.MLDID                                                                          proto::prplmesh-dm-mapper
   Device.WiFi.APMLD.{i}.MLDMACAddress                                                                  proto::prplmesh-dm-mapper
+  Device.WiFi.APMLD.{i}.TIDLinkMap.{i}.                                                                proto::prplmesh-dm-mapper
+  Device.WiFi.APMLD.{i}.TIDLinkMap.{i}.BSSID                                                           proto::prplmesh-dm-mapper
+  Device.WiFi.APMLD.{i}.TIDLinkMap.{i}.Direction                                                       proto::prplmesh-dm-mapper
+  Device.WiFi.APMLD.{i}.TIDLinkMap.{i}.LinkMap                                                         proto::prplmesh-dm-mapper
+  Device.WiFi.APMLD.{i}.TIDLinkMap.{i}.TID                                                             proto::prplmesh-dm-mapper
+  Device.WiFi.APMLD.{i}.TIDLinkMapConfig.                                                              proto::prplmesh-dm-mapper
+  Device.WiFi.APMLD.{i}.TIDLinkMapConfig.AdvertisedExpectedDuration                                    proto::prplmesh-dm-mapper
+  Device.WiFi.APMLD.{i}.TIDLinkMapConfig.AdvertisedLinkMap                                             proto::prplmesh-dm-mapper
+  Device.WiFi.APMLD.{i}.TIDLinkMapConfig.AdvertisedMapSwitchTime                                       proto::prplmesh-dm-mapper
+  Device.WiFi.APMLD.{i}.TIDLinkMapConfig.Mode                                                          proto::prplmesh-dm-mapper
   Device.WiFi.APMLDMaxLinks                                                                            proto::prplmesh-dm-mapper
   Device.WiFi.APMLDNumberOfEntries                                                                     proto::prplmesh-dm-mapper
   Device.WiFi.AccessPoint.{i}.                                                                         proto::prplmesh-dm-mapper
@@ -4604,8 +4615,11 @@ Check that obuspa has expected datamodel available (minus the platform specific 
   Device.WiFi.Radio.{i}.BasicDataTransmitRates                                                         proto::prplmesh-dm-mapper
   Device.WiFi.Radio.{i}.BeaconPeriod                                                                   proto::prplmesh-dm-mapper
   Device.WiFi.Radio.{i}.Capabilities.                                                                  proto::prplmesh-dm-mapper
+  Device.WiFi.Radio.{i}.Capabilities.TIDLinkMapCapability                                              proto::prplmesh-dm-mapper
   Device.WiFi.Radio.{i}.Capabilities.WiFi7APRole.                                                      proto::prplmesh-dm-mapper
+  Device.WiFi.Radio.{i}.Capabilities.WiFi7APRole.TIDLinkMapNegotiation                                 proto::prplmesh-dm-mapper
   Device.WiFi.Radio.{i}.Capabilities.WiFi7STARole.                                                     proto::prplmesh-dm-mapper
+  Device.WiFi.Radio.{i}.Capabilities.WiFi7STARole.TIDLinkMapNegotiation                                proto::prplmesh-dm-mapper
   Device.WiFi.Radio.{i}.Channel                                                                        proto::prplmesh-dm-mapper
   Device.WiFi.Radio.{i}.ChannelsInUse                                                                  proto::prplmesh-dm-mapper
   Device.WiFi.Radio.{i}.CurrentEhtOperatingIE                                                          proto::prplmesh-dm-mapper
@@ -8043,6 +8057,7 @@ Check that obuspa provides the same datamodel again (minus the platform specific
   Device.PeriodicFileTransfer.Transfer.{i}.TimeReference                                               proto::tr181-periodicfileupload
   Device.PeriodicFileTransfer.Transfer.{i}.Type                                                        proto::tr181-periodicfileupload
   Device.PeriodicFileTransfer.Transfer.{i}.UploadInterval                                              proto::tr181-periodicfileupload
+  Device.PeriodicFileTransfer.Transfer.{i}.X_PRPLWARE-COM_ForceTransfer                                proto::tr181-periodicfileupload
   Device.PeriodicFileTransfer.TransferNumberOfEntries                                                  proto::tr181-periodicfileupload
   Device.PeriodicFileTransfer.TypesSupported                                                           proto::tr181-periodicfileupload
   Device.QoS.                                                                                          proto::tr181-qos
@@ -8980,6 +8995,16 @@ Check that obuspa provides the same datamodel again (minus the platform specific
   Device.WiFi.APMLD.{i}.AffiliatedAPNumberOfEntries                                                    proto::prplmesh-dm-mapper
   Device.WiFi.APMLD.{i}.MLDID                                                                          proto::prplmesh-dm-mapper
   Device.WiFi.APMLD.{i}.MLDMACAddress                                                                  proto::prplmesh-dm-mapper
+  Device.WiFi.APMLD.{i}.TIDLinkMap.{i}.                                                                proto::prplmesh-dm-mapper
+  Device.WiFi.APMLD.{i}.TIDLinkMap.{i}.BSSID                                                           proto::prplmesh-dm-mapper
+  Device.WiFi.APMLD.{i}.TIDLinkMap.{i}.Direction                                                       proto::prplmesh-dm-mapper
+  Device.WiFi.APMLD.{i}.TIDLinkMap.{i}.LinkMap                                                         proto::prplmesh-dm-mapper
+  Device.WiFi.APMLD.{i}.TIDLinkMap.{i}.TID                                                             proto::prplmesh-dm-mapper
+  Device.WiFi.APMLD.{i}.TIDLinkMapConfig.                                                              proto::prplmesh-dm-mapper
+  Device.WiFi.APMLD.{i}.TIDLinkMapConfig.AdvertisedExpectedDuration                                    proto::prplmesh-dm-mapper
+  Device.WiFi.APMLD.{i}.TIDLinkMapConfig.AdvertisedLinkMap                                             proto::prplmesh-dm-mapper
+  Device.WiFi.APMLD.{i}.TIDLinkMapConfig.AdvertisedMapSwitchTime                                       proto::prplmesh-dm-mapper
+  Device.WiFi.APMLD.{i}.TIDLinkMapConfig.Mode                                                          proto::prplmesh-dm-mapper
   Device.WiFi.APMLDMaxLinks                                                                            proto::prplmesh-dm-mapper
   Device.WiFi.APMLDNumberOfEntries                                                                     proto::prplmesh-dm-mapper
   Device.WiFi.AccessPoint.{i}.                                                                         proto::prplmesh-dm-mapper
@@ -10099,8 +10124,11 @@ Check that obuspa provides the same datamodel again (minus the platform specific
   Device.WiFi.Radio.{i}.BasicDataTransmitRates                                                         proto::prplmesh-dm-mapper
   Device.WiFi.Radio.{i}.BeaconPeriod                                                                   proto::prplmesh-dm-mapper
   Device.WiFi.Radio.{i}.Capabilities.                                                                  proto::prplmesh-dm-mapper
+  Device.WiFi.Radio.{i}.Capabilities.TIDLinkMapCapability                                              proto::prplmesh-dm-mapper
   Device.WiFi.Radio.{i}.Capabilities.WiFi7APRole.                                                      proto::prplmesh-dm-mapper
+  Device.WiFi.Radio.{i}.Capabilities.WiFi7APRole.TIDLinkMapNegotiation                                 proto::prplmesh-dm-mapper
   Device.WiFi.Radio.{i}.Capabilities.WiFi7STARole.                                                     proto::prplmesh-dm-mapper
+  Device.WiFi.Radio.{i}.Capabilities.WiFi7STARole.TIDLinkMapNegotiation                                proto::prplmesh-dm-mapper
   Device.WiFi.Radio.{i}.Channel                                                                        proto::prplmesh-dm-mapper
   Device.WiFi.Radio.{i}.ChannelsInUse                                                                  proto::prplmesh-dm-mapper
   Device.WiFi.Radio.{i}.CurrentEhtOperatingIE                                                          proto::prplmesh-dm-mapper
