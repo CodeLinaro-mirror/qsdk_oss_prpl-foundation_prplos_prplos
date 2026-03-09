@@ -208,3 +208,4 @@ diffconfig: |
   CONFIG_PACKAGE_unzip=m
   CONFIG_PACKAGE_qti-license-pfm=m
   CONFIG_PACKAGE_pm-utils=m
+  CONFIG_PACKAGE_qti-softsku-license-loader-libs=m
