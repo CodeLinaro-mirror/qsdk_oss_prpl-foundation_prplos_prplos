@@ -32,6 +32,74 @@ Check default configuration:
   Device.WiFi.APMLD.1.AffiliatedAPNumberOfEntries=0
   Device.WiFi.APMLD.1.MLDID=0
   Device.WiFi.APMLD.1.MLDMACAddress=""
+  Device.WiFi.APMLD.1.TIDLinkMap.1.BSSID="([0-9a-fA-F]{2}:){5}[0-9a-fA-F]{2}" (re)
+  Device.WiFi.APMLD.1.TIDLinkMap.1.Direction="Up"
+  Device.WiFi.APMLD.1.TIDLinkMap.1.LinkMap=""
+  Device.WiFi.APMLD.1.TIDLinkMap.1.TID=0
+  Device.WiFi.APMLD.1.TIDLinkMap.10.BSSID="([0-9a-fA-F]{2}:){5}[0-9a-fA-F]{2}" (re)
+  Device.WiFi.APMLD.1.TIDLinkMap.10.Direction="Down"
+  Device.WiFi.APMLD.1.TIDLinkMap.10.LinkMap=""
+  Device.WiFi.APMLD.1.TIDLinkMap.10.TID=1
+  Device.WiFi.APMLD.1.TIDLinkMap.11.BSSID="([0-9a-fA-F]{2}:){5}[0-9a-fA-F]{2}" (re)
+  Device.WiFi.APMLD.1.TIDLinkMap.11.Direction="Down"
+  Device.WiFi.APMLD.1.TIDLinkMap.11.LinkMap=""
+  Device.WiFi.APMLD.1.TIDLinkMap.11.TID=2
+  Device.WiFi.APMLD.1.TIDLinkMap.12.BSSID="([0-9a-fA-F]{2}:){5}[0-9a-fA-F]{2}" (re)
+  Device.WiFi.APMLD.1.TIDLinkMap.12.Direction="Down"
+  Device.WiFi.APMLD.1.TIDLinkMap.12.LinkMap=""
+  Device.WiFi.APMLD.1.TIDLinkMap.12.TID=3
+  Device.WiFi.APMLD.1.TIDLinkMap.13.BSSID="([0-9a-fA-F]{2}:){5}[0-9a-fA-F]{2}" (re)
+  Device.WiFi.APMLD.1.TIDLinkMap.13.Direction="Down"
+  Device.WiFi.APMLD.1.TIDLinkMap.13.LinkMap=""
+  Device.WiFi.APMLD.1.TIDLinkMap.13.TID=4
+  Device.WiFi.APMLD.1.TIDLinkMap.14.BSSID="([0-9a-fA-F]{2}:){5}[0-9a-fA-F]{2}" (re)
+  Device.WiFi.APMLD.1.TIDLinkMap.14.Direction="Down"
+  Device.WiFi.APMLD.1.TIDLinkMap.14.LinkMap=""
+  Device.WiFi.APMLD.1.TIDLinkMap.14.TID=5
+  Device.WiFi.APMLD.1.TIDLinkMap.15.BSSID="([0-9a-fA-F]{2}:){5}[0-9a-fA-F]{2}" (re)
+  Device.WiFi.APMLD.1.TIDLinkMap.15.Direction="Down"
+  Device.WiFi.APMLD.1.TIDLinkMap.15.LinkMap=""
+  Device.WiFi.APMLD.1.TIDLinkMap.15.TID=6
+  Device.WiFi.APMLD.1.TIDLinkMap.16.BSSID="([0-9a-fA-F]{2}:){5}[0-9a-fA-F]{2}" (re)
+  Device.WiFi.APMLD.1.TIDLinkMap.16.Direction="Down"
+  Device.WiFi.APMLD.1.TIDLinkMap.16.LinkMap=""
+  Device.WiFi.APMLD.1.TIDLinkMap.16.TID=7
+  Device.WiFi.APMLD.1.TIDLinkMap.2.BSSID="([0-9a-fA-F]{2}:){5}[0-9a-fA-F]{2}" (re)
+  Device.WiFi.APMLD.1.TIDLinkMap.2.Direction="Up"
+  Device.WiFi.APMLD.1.TIDLinkMap.2.LinkMap=""
+  Device.WiFi.APMLD.1.TIDLinkMap.2.TID=1
+  Device.WiFi.APMLD.1.TIDLinkMap.3.BSSID="([0-9a-fA-F]{2}:){5}[0-9a-fA-F]{2}" (re)
+  Device.WiFi.APMLD.1.TIDLinkMap.3.Direction="Up"
+  Device.WiFi.APMLD.1.TIDLinkMap.3.LinkMap=""
+  Device.WiFi.APMLD.1.TIDLinkMap.3.TID=2
+  Device.WiFi.APMLD.1.TIDLinkMap.4.BSSID="([0-9a-fA-F]{2}:){5}[0-9a-fA-F]{2}" (re)
+  Device.WiFi.APMLD.1.TIDLinkMap.4.Direction="Up"
+  Device.WiFi.APMLD.1.TIDLinkMap.4.LinkMap=""
+  Device.WiFi.APMLD.1.TIDLinkMap.4.TID=3
+  Device.WiFi.APMLD.1.TIDLinkMap.5.BSSID="([0-9a-fA-F]{2}:){5}[0-9a-fA-F]{2}" (re)
+  Device.WiFi.APMLD.1.TIDLinkMap.5.Direction="Up"
+  Device.WiFi.APMLD.1.TIDLinkMap.5.LinkMap=""
+  Device.WiFi.APMLD.1.TIDLinkMap.5.TID=4
+  Device.WiFi.APMLD.1.TIDLinkMap.6.BSSID="([0-9a-fA-F]{2}:){5}[0-9a-fA-F]{2}" (re)
+  Device.WiFi.APMLD.1.TIDLinkMap.6.Direction="Up"
+  Device.WiFi.APMLD.1.TIDLinkMap.6.LinkMap=""
+  Device.WiFi.APMLD.1.TIDLinkMap.6.TID=5
+  Device.WiFi.APMLD.1.TIDLinkMap.7.BSSID="([0-9a-fA-F]{2}:){5}[0-9a-fA-F]{2}" (re)
+  Device.WiFi.APMLD.1.TIDLinkMap.7.Direction="Up"
+  Device.WiFi.APMLD.1.TIDLinkMap.7.LinkMap=""
+  Device.WiFi.APMLD.1.TIDLinkMap.7.TID=6
+  Device.WiFi.APMLD.1.TIDLinkMap.8.BSSID="([0-9a-fA-F]{2}:){5}[0-9a-fA-F]{2}" (re)
+  Device.WiFi.APMLD.1.TIDLinkMap.8.Direction="Up"
+  Device.WiFi.APMLD.1.TIDLinkMap.8.LinkMap=""
+  Device.WiFi.APMLD.1.TIDLinkMap.8.TID=7
+  Device.WiFi.APMLD.1.TIDLinkMap.9.BSSID="([0-9a-fA-F]{2}:){5}[0-9a-fA-F]{2}" (re)
+  Device.WiFi.APMLD.1.TIDLinkMap.9.Direction="Down"
+  Device.WiFi.APMLD.1.TIDLinkMap.9.LinkMap=""
+  Device.WiFi.APMLD.1.TIDLinkMap.9.TID=0
+  Device.WiFi.APMLD.1.TIDLinkMapConfig.AdvertisedExpectedDuration=300
+  Device.WiFi.APMLD.1.TIDLinkMapConfig.AdvertisedLinkMap=""
+  Device.WiFi.APMLD.1.TIDLinkMapConfig.AdvertisedMapSwitchTime=100
+  Device.WiFi.APMLD.1.TIDLinkMapConfig.Mode="Advertised"
   Device.WiFi.APMLD.2.APMLDConfig.EMLMREnabled=0
   Device.WiFi.APMLD.2.APMLDConfig.EMLSREnabled=1
   Device.WiFi.APMLD.2.APMLDConfig.NSTREnabled=1
@@ -39,6 +107,74 @@ Check default configuration:
   Device.WiFi.APMLD.2.AffiliatedAPNumberOfEntries=0
   Device.WiFi.APMLD.2.MLDID=1
   Device.WiFi.APMLD.2.MLDMACAddress=""
+  Device.WiFi.APMLD.2.TIDLinkMap.1.BSSID="([0-9a-fA-F]{2}:){5}[0-9a-fA-F]{2}" (re)
+  Device.WiFi.APMLD.2.TIDLinkMap.1.Direction="Up"
+  Device.WiFi.APMLD.2.TIDLinkMap.1.LinkMap=""
+  Device.WiFi.APMLD.2.TIDLinkMap.1.TID=0
+  Device.WiFi.APMLD.2.TIDLinkMap.10.BSSID="([0-9a-fA-F]{2}:){5}[0-9a-fA-F]{2}" (re)
+  Device.WiFi.APMLD.2.TIDLinkMap.10.Direction="Down"
+  Device.WiFi.APMLD.2.TIDLinkMap.10.LinkMap=""
+  Device.WiFi.APMLD.2.TIDLinkMap.10.TID=1
+  Device.WiFi.APMLD.2.TIDLinkMap.11.BSSID="([0-9a-fA-F]{2}:){5}[0-9a-fA-F]{2}" (re)
+  Device.WiFi.APMLD.2.TIDLinkMap.11.Direction="Down"
+  Device.WiFi.APMLD.2.TIDLinkMap.11.LinkMap=""
+  Device.WiFi.APMLD.2.TIDLinkMap.11.TID=2
+  Device.WiFi.APMLD.2.TIDLinkMap.12.BSSID="([0-9a-fA-F]{2}:){5}[0-9a-fA-F]{2}" (re)
+  Device.WiFi.APMLD.2.TIDLinkMap.12.Direction="Down"
+  Device.WiFi.APMLD.2.TIDLinkMap.12.LinkMap=""
+  Device.WiFi.APMLD.2.TIDLinkMap.12.TID=3
+  Device.WiFi.APMLD.2.TIDLinkMap.13.BSSID="([0-9a-fA-F]{2}:){5}[0-9a-fA-F]{2}" (re)
+  Device.WiFi.APMLD.2.TIDLinkMap.13.Direction="Down"
+  Device.WiFi.APMLD.2.TIDLinkMap.13.LinkMap=""
+  Device.WiFi.APMLD.2.TIDLinkMap.13.TID=4
+  Device.WiFi.APMLD.2.TIDLinkMap.14.BSSID="([0-9a-fA-F]{2}:){5}[0-9a-fA-F]{2}" (re)
+  Device.WiFi.APMLD.2.TIDLinkMap.14.Direction="Down"
+  Device.WiFi.APMLD.2.TIDLinkMap.14.LinkMap=""
+  Device.WiFi.APMLD.2.TIDLinkMap.14.TID=5
+  Device.WiFi.APMLD.2.TIDLinkMap.15.BSSID="([0-9a-fA-F]{2}:){5}[0-9a-fA-F]{2}" (re)
+  Device.WiFi.APMLD.2.TIDLinkMap.15.Direction="Down"
+  Device.WiFi.APMLD.2.TIDLinkMap.15.LinkMap=""
+  Device.WiFi.APMLD.2.TIDLinkMap.15.TID=6
+  Device.WiFi.APMLD.2.TIDLinkMap.16.BSSID="([0-9a-fA-F]{2}:){5}[0-9a-fA-F]{2}" (re)
+  Device.WiFi.APMLD.2.TIDLinkMap.16.Direction="Down"
+  Device.WiFi.APMLD.2.TIDLinkMap.16.LinkMap=""
+  Device.WiFi.APMLD.2.TIDLinkMap.16.TID=7
+  Device.WiFi.APMLD.2.TIDLinkMap.2.BSSID="([0-9a-fA-F]{2}:){5}[0-9a-fA-F]{2}" (re)
+  Device.WiFi.APMLD.2.TIDLinkMap.2.Direction="Up"
+  Device.WiFi.APMLD.2.TIDLinkMap.2.LinkMap=""
+  Device.WiFi.APMLD.2.TIDLinkMap.2.TID=1
+  Device.WiFi.APMLD.2.TIDLinkMap.3.BSSID="([0-9a-fA-F]{2}:){5}[0-9a-fA-F]{2}" (re)
+  Device.WiFi.APMLD.2.TIDLinkMap.3.Direction="Up"
+  Device.WiFi.APMLD.2.TIDLinkMap.3.LinkMap=""
+  Device.WiFi.APMLD.2.TIDLinkMap.3.TID=2
+  Device.WiFi.APMLD.2.TIDLinkMap.4.BSSID="([0-9a-fA-F]{2}:){5}[0-9a-fA-F]{2}" (re)
+  Device.WiFi.APMLD.2.TIDLinkMap.4.Direction="Up"
+  Device.WiFi.APMLD.2.TIDLinkMap.4.LinkMap=""
+  Device.WiFi.APMLD.2.TIDLinkMap.4.TID=3
+  Device.WiFi.APMLD.2.TIDLinkMap.5.BSSID="([0-9a-fA-F]{2}:){5}[0-9a-fA-F]{2}" (re)
+  Device.WiFi.APMLD.2.TIDLinkMap.5.Direction="Up"
+  Device.WiFi.APMLD.2.TIDLinkMap.5.LinkMap=""
+  Device.WiFi.APMLD.2.TIDLinkMap.5.TID=4
+  Device.WiFi.APMLD.2.TIDLinkMap.6.BSSID="([0-9a-fA-F]{2}:){5}[0-9a-fA-F]{2}" (re)
+  Device.WiFi.APMLD.2.TIDLinkMap.6.Direction="Up"
+  Device.WiFi.APMLD.2.TIDLinkMap.6.LinkMap=""
+  Device.WiFi.APMLD.2.TIDLinkMap.6.TID=5
+  Device.WiFi.APMLD.2.TIDLinkMap.7.BSSID="([0-9a-fA-F]{2}:){5}[0-9a-fA-F]{2}" (re)
+  Device.WiFi.APMLD.2.TIDLinkMap.7.Direction="Up"
+  Device.WiFi.APMLD.2.TIDLinkMap.7.LinkMap=""
+  Device.WiFi.APMLD.2.TIDLinkMap.7.TID=6
+  Device.WiFi.APMLD.2.TIDLinkMap.8.BSSID="([0-9a-fA-F]{2}:){5}[0-9a-fA-F]{2}" (re)
+  Device.WiFi.APMLD.2.TIDLinkMap.8.Direction="Up"
+  Device.WiFi.APMLD.2.TIDLinkMap.8.LinkMap=""
+  Device.WiFi.APMLD.2.TIDLinkMap.8.TID=7
+  Device.WiFi.APMLD.2.TIDLinkMap.9.BSSID="([0-9a-fA-F]{2}:){5}[0-9a-fA-F]{2}" (re)
+  Device.WiFi.APMLD.2.TIDLinkMap.9.Direction="Down"
+  Device.WiFi.APMLD.2.TIDLinkMap.9.LinkMap=""
+  Device.WiFi.APMLD.2.TIDLinkMap.9.TID=0
+  Device.WiFi.APMLD.2.TIDLinkMapConfig.AdvertisedExpectedDuration=300
+  Device.WiFi.APMLD.2.TIDLinkMapConfig.AdvertisedLinkMap=""
+  Device.WiFi.APMLD.2.TIDLinkMapConfig.AdvertisedMapSwitchTime=100
+  Device.WiFi.APMLD.2.TIDLinkMapConfig.Mode="Advertised"
   Device.WiFi.APMLD.3.APMLDConfig.EMLMREnabled=0
   Device.WiFi.APMLD.3.APMLDConfig.EMLSREnabled=1
   Device.WiFi.APMLD.3.APMLDConfig.NSTREnabled=1
@@ -46,6 +182,74 @@ Check default configuration:
   Device.WiFi.APMLD.3.AffiliatedAPNumberOfEntries=0
   Device.WiFi.APMLD.3.MLDID=2
   Device.WiFi.APMLD.3.MLDMACAddress=""
+  Device.WiFi.APMLD.3.TIDLinkMap.1.BSSID="([0-9a-fA-F]{2}:){5}[0-9a-fA-F]{2}" (re)
+  Device.WiFi.APMLD.3.TIDLinkMap.1.Direction="Up"
+  Device.WiFi.APMLD.3.TIDLinkMap.1.LinkMap=""
+  Device.WiFi.APMLD.3.TIDLinkMap.1.TID=0
+  Device.WiFi.APMLD.3.TIDLinkMap.10.BSSID="([0-9a-fA-F]{2}:){5}[0-9a-fA-F]{2}" (re)
+  Device.WiFi.APMLD.3.TIDLinkMap.10.Direction="Down"
+  Device.WiFi.APMLD.3.TIDLinkMap.10.LinkMap=""
+  Device.WiFi.APMLD.3.TIDLinkMap.10.TID=1
+  Device.WiFi.APMLD.3.TIDLinkMap.11.BSSID="([0-9a-fA-F]{2}:){5}[0-9a-fA-F]{2}" (re)
+  Device.WiFi.APMLD.3.TIDLinkMap.11.Direction="Down"
+  Device.WiFi.APMLD.3.TIDLinkMap.11.LinkMap=""
+  Device.WiFi.APMLD.3.TIDLinkMap.11.TID=2
+  Device.WiFi.APMLD.3.TIDLinkMap.12.BSSID="([0-9a-fA-F]{2}:){5}[0-9a-fA-F]{2}" (re)
+  Device.WiFi.APMLD.3.TIDLinkMap.12.Direction="Down"
+  Device.WiFi.APMLD.3.TIDLinkMap.12.LinkMap=""
+  Device.WiFi.APMLD.3.TIDLinkMap.12.TID=3
+  Device.WiFi.APMLD.3.TIDLinkMap.13.BSSID="([0-9a-fA-F]{2}:){5}[0-9a-fA-F]{2}" (re)
+  Device.WiFi.APMLD.3.TIDLinkMap.13.Direction="Down"
+  Device.WiFi.APMLD.3.TIDLinkMap.13.LinkMap=""
+  Device.WiFi.APMLD.3.TIDLinkMap.13.TID=4
+  Device.WiFi.APMLD.3.TIDLinkMap.14.BSSID="([0-9a-fA-F]{2}:){5}[0-9a-fA-F]{2}" (re)
+  Device.WiFi.APMLD.3.TIDLinkMap.14.Direction="Down"
+  Device.WiFi.APMLD.3.TIDLinkMap.14.LinkMap=""
+  Device.WiFi.APMLD.3.TIDLinkMap.14.TID=5
+  Device.WiFi.APMLD.3.TIDLinkMap.15.BSSID="([0-9a-fA-F]{2}:){5}[0-9a-fA-F]{2}" (re)
+  Device.WiFi.APMLD.3.TIDLinkMap.15.Direction="Down"
+  Device.WiFi.APMLD.3.TIDLinkMap.15.LinkMap=""
+  Device.WiFi.APMLD.3.TIDLinkMap.15.TID=6
+  Device.WiFi.APMLD.3.TIDLinkMap.16.BSSID="([0-9a-fA-F]{2}:){5}[0-9a-fA-F]{2}" (re)
+  Device.WiFi.APMLD.3.TIDLinkMap.16.Direction="Down"
+  Device.WiFi.APMLD.3.TIDLinkMap.16.LinkMap=""
+  Device.WiFi.APMLD.3.TIDLinkMap.16.TID=7
+  Device.WiFi.APMLD.3.TIDLinkMap.2.BSSID="([0-9a-fA-F]{2}:){5}[0-9a-fA-F]{2}" (re)
+  Device.WiFi.APMLD.3.TIDLinkMap.2.Direction="Up"
+  Device.WiFi.APMLD.3.TIDLinkMap.2.LinkMap=""
+  Device.WiFi.APMLD.3.TIDLinkMap.2.TID=1
+  Device.WiFi.APMLD.3.TIDLinkMap.3.BSSID="([0-9a-fA-F]{2}:){5}[0-9a-fA-F]{2}" (re)
+  Device.WiFi.APMLD.3.TIDLinkMap.3.Direction="Up"
+  Device.WiFi.APMLD.3.TIDLinkMap.3.LinkMap=""
+  Device.WiFi.APMLD.3.TIDLinkMap.3.TID=2
+  Device.WiFi.APMLD.3.TIDLinkMap.4.BSSID="([0-9a-fA-F]{2}:){5}[0-9a-fA-F]{2}" (re)
+  Device.WiFi.APMLD.3.TIDLinkMap.4.Direction="Up"
+  Device.WiFi.APMLD.3.TIDLinkMap.4.LinkMap=""
+  Device.WiFi.APMLD.3.TIDLinkMap.4.TID=3
+  Device.WiFi.APMLD.3.TIDLinkMap.5.BSSID="([0-9a-fA-F]{2}:){5}[0-9a-fA-F]{2}" (re)
+  Device.WiFi.APMLD.3.TIDLinkMap.5.Direction="Up"
+  Device.WiFi.APMLD.3.TIDLinkMap.5.LinkMap=""
+  Device.WiFi.APMLD.3.TIDLinkMap.5.TID=4
+  Device.WiFi.APMLD.3.TIDLinkMap.6.BSSID="([0-9a-fA-F]{2}:){5}[0-9a-fA-F]{2}" (re)
+  Device.WiFi.APMLD.3.TIDLinkMap.6.Direction="Up"
+  Device.WiFi.APMLD.3.TIDLinkMap.6.LinkMap=""
+  Device.WiFi.APMLD.3.TIDLinkMap.6.TID=5
+  Device.WiFi.APMLD.3.TIDLinkMap.7.BSSID="([0-9a-fA-F]{2}:){5}[0-9a-fA-F]{2}" (re)
+  Device.WiFi.APMLD.3.TIDLinkMap.7.Direction="Up"
+  Device.WiFi.APMLD.3.TIDLinkMap.7.LinkMap=""
+  Device.WiFi.APMLD.3.TIDLinkMap.7.TID=6
+  Device.WiFi.APMLD.3.TIDLinkMap.8.BSSID="([0-9a-fA-F]{2}:){5}[0-9a-fA-F]{2}" (re)
+  Device.WiFi.APMLD.3.TIDLinkMap.8.Direction="Up"
+  Device.WiFi.APMLD.3.TIDLinkMap.8.LinkMap=""
+  Device.WiFi.APMLD.3.TIDLinkMap.8.TID=7
+  Device.WiFi.APMLD.3.TIDLinkMap.9.BSSID="([0-9a-fA-F]{2}:){5}[0-9a-fA-F]{2}" (re)
+  Device.WiFi.APMLD.3.TIDLinkMap.9.Direction="Down"
+  Device.WiFi.APMLD.3.TIDLinkMap.9.LinkMap=""
+  Device.WiFi.APMLD.3.TIDLinkMap.9.TID=0
+  Device.WiFi.APMLD.3.TIDLinkMapConfig.AdvertisedExpectedDuration=300
+  Device.WiFi.APMLD.3.TIDLinkMapConfig.AdvertisedLinkMap=""
+  Device.WiFi.APMLD.3.TIDLinkMapConfig.AdvertisedMapSwitchTime=100
+  Device.WiFi.APMLD.3.TIDLinkMapConfig.Mode="Advertised"
 
 Configure radio and enable all AccessPoints:
 
@@ -418,7 +622,218 @@ Check if guest apmld is cleared:
   Device.WiFi.APMLD.2.AffiliatedAPNumberOfEntries=0
   Device.WiFi.APMLD.2.MLDID=1
   Device.WiFi.APMLD.2.MLDMACAddress=""
+  Device.WiFi.APMLD.2.TIDLinkMap.1.BSSID="([0-9a-fA-F]{2}:){5}[0-9a-fA-F]{2}" (re)
+  Device.WiFi.APMLD.2.TIDLinkMap.1.Direction="Up"
+  Device.WiFi.APMLD.2.TIDLinkMap.1.LinkMap=""
+  Device.WiFi.APMLD.2.TIDLinkMap.1.TID=0
+  Device.WiFi.APMLD.2.TIDLinkMap.10.BSSID="([0-9a-fA-F]{2}:){5}[0-9a-fA-F]{2}" (re)
+  Device.WiFi.APMLD.2.TIDLinkMap.10.Direction="Down"
+  Device.WiFi.APMLD.2.TIDLinkMap.10.LinkMap=""
+  Device.WiFi.APMLD.2.TIDLinkMap.10.TID=1
+  Device.WiFi.APMLD.2.TIDLinkMap.11.BSSID="([0-9a-fA-F]{2}:){5}[0-9a-fA-F]{2}" (re)
+  Device.WiFi.APMLD.2.TIDLinkMap.11.Direction="Down"
+  Device.WiFi.APMLD.2.TIDLinkMap.11.LinkMap=""
+  Device.WiFi.APMLD.2.TIDLinkMap.11.TID=2
+  Device.WiFi.APMLD.2.TIDLinkMap.12.BSSID="([0-9a-fA-F]{2}:){5}[0-9a-fA-F]{2}" (re)
+  Device.WiFi.APMLD.2.TIDLinkMap.12.Direction="Down"
+  Device.WiFi.APMLD.2.TIDLinkMap.12.LinkMap=""
+  Device.WiFi.APMLD.2.TIDLinkMap.12.TID=3
+  Device.WiFi.APMLD.2.TIDLinkMap.13.BSSID="([0-9a-fA-F]{2}:){5}[0-9a-fA-F]{2}" (re)
+  Device.WiFi.APMLD.2.TIDLinkMap.13.Direction="Down"
+  Device.WiFi.APMLD.2.TIDLinkMap.13.LinkMap=""
+  Device.WiFi.APMLD.2.TIDLinkMap.13.TID=4
+  Device.WiFi.APMLD.2.TIDLinkMap.14.BSSID="([0-9a-fA-F]{2}:){5}[0-9a-fA-F]{2}" (re)
+  Device.WiFi.APMLD.2.TIDLinkMap.14.Direction="Down"
+  Device.WiFi.APMLD.2.TIDLinkMap.14.LinkMap=""
+  Device.WiFi.APMLD.2.TIDLinkMap.14.TID=5
+  Device.WiFi.APMLD.2.TIDLinkMap.15.BSSID="([0-9a-fA-F]{2}:){5}[0-9a-fA-F]{2}" (re)
+  Device.WiFi.APMLD.2.TIDLinkMap.15.Direction="Down"
+  Device.WiFi.APMLD.2.TIDLinkMap.15.LinkMap=""
+  Device.WiFi.APMLD.2.TIDLinkMap.15.TID=6
+  Device.WiFi.APMLD.2.TIDLinkMap.16.BSSID="([0-9a-fA-F]{2}:){5}[0-9a-fA-F]{2}" (re)
+  Device.WiFi.APMLD.2.TIDLinkMap.16.Direction="Down"
+  Device.WiFi.APMLD.2.TIDLinkMap.16.LinkMap=""
+  Device.WiFi.APMLD.2.TIDLinkMap.16.TID=7
+  Device.WiFi.APMLD.2.TIDLinkMap.2.BSSID="([0-9a-fA-F]{2}:){5}[0-9a-fA-F]{2}" (re)
+  Device.WiFi.APMLD.2.TIDLinkMap.2.Direction="Up"
+  Device.WiFi.APMLD.2.TIDLinkMap.2.LinkMap=""
+  Device.WiFi.APMLD.2.TIDLinkMap.2.TID=1
+  Device.WiFi.APMLD.2.TIDLinkMap.3.BSSID="([0-9a-fA-F]{2}:){5}[0-9a-fA-F]{2}" (re)
+  Device.WiFi.APMLD.2.TIDLinkMap.3.Direction="Up"
+  Device.WiFi.APMLD.2.TIDLinkMap.3.LinkMap=""
+  Device.WiFi.APMLD.2.TIDLinkMap.3.TID=2
+  Device.WiFi.APMLD.2.TIDLinkMap.4.BSSID="([0-9a-fA-F]{2}:){5}[0-9a-fA-F]{2}" (re)
+  Device.WiFi.APMLD.2.TIDLinkMap.4.Direction="Up"
+  Device.WiFi.APMLD.2.TIDLinkMap.4.LinkMap=""
+  Device.WiFi.APMLD.2.TIDLinkMap.4.TID=3
+  Device.WiFi.APMLD.2.TIDLinkMap.5.BSSID="([0-9a-fA-F]{2}:){5}[0-9a-fA-F]{2}" (re)
+  Device.WiFi.APMLD.2.TIDLinkMap.5.Direction="Up"
+  Device.WiFi.APMLD.2.TIDLinkMap.5.LinkMap=""
+  Device.WiFi.APMLD.2.TIDLinkMap.5.TID=4
+  Device.WiFi.APMLD.2.TIDLinkMap.6.BSSID="([0-9a-fA-F]{2}:){5}[0-9a-fA-F]{2}" (re)
+  Device.WiFi.APMLD.2.TIDLinkMap.6.Direction="Up"
+  Device.WiFi.APMLD.2.TIDLinkMap.6.LinkMap=""
+  Device.WiFi.APMLD.2.TIDLinkMap.6.TID=5
+  Device.WiFi.APMLD.2.TIDLinkMap.7.BSSID="([0-9a-fA-F]{2}:){5}[0-9a-fA-F]{2}" (re)
+  Device.WiFi.APMLD.2.TIDLinkMap.7.Direction="Up"
+  Device.WiFi.APMLD.2.TIDLinkMap.7.LinkMap=""
+  Device.WiFi.APMLD.2.TIDLinkMap.7.TID=6
+  Device.WiFi.APMLD.2.TIDLinkMap.8.BSSID="([0-9a-fA-F]{2}:){5}[0-9a-fA-F]{2}" (re)
+  Device.WiFi.APMLD.2.TIDLinkMap.8.Direction="Up"
+  Device.WiFi.APMLD.2.TIDLinkMap.8.LinkMap=""
+  Device.WiFi.APMLD.2.TIDLinkMap.8.TID=7
+  Device.WiFi.APMLD.2.TIDLinkMap.9.BSSID="([0-9a-fA-F]{2}:){5}[0-9a-fA-F]{2}" (re)
+  Device.WiFi.APMLD.2.TIDLinkMap.9.Direction="Down"
+  Device.WiFi.APMLD.2.TIDLinkMap.9.LinkMap=""
+  Device.WiFi.APMLD.2.TIDLinkMap.9.TID=0
+  Device.WiFi.APMLD.2.TIDLinkMapConfig.AdvertisedExpectedDuration=300
+  Device.WiFi.APMLD.2.TIDLinkMapConfig.AdvertisedLinkMap=""
+  Device.WiFi.APMLD.2.TIDLinkMapConfig.AdvertisedMapSwitchTime=100
+  Device.WiFi.APMLD.2.TIDLinkMapConfig.Mode="Advertised"
 
+#########################################
+# Test TIDLinkMap                       #
+#########################################
+
+Check TIDLinkMapConfig before setting new mode:
+
+  $ R logger -t cram "Test TIDLinkMap default config"
+  $ wifi_dm "APMLD.1.TIDLinkMapConfig.?"
+  Device.WiFi.APMLD.1.TIDLinkMapConfig.AdvertisedExpectedDuration=300
+  Device.WiFi.APMLD.1.TIDLinkMapConfig.AdvertisedLinkMap=""
+  Device.WiFi.APMLD.1.TIDLinkMapConfig.AdvertisedMapSwitchTime=100
+  Device.WiFi.APMLD.1.TIDLinkMapConfig.Mode="Advertised"
+
+  $ wifi_dm "APMLD.1.TIDLinkMap.?"
+  Device.WiFi.APMLD.1.TIDLinkMap.1.BSSID="([0-9a-fA-F]{2}:){5}[0-9a-fA-F]{2}" (re)
+  Device.WiFi.APMLD.1.TIDLinkMap.1.Direction="Up"
+  Device.WiFi.APMLD.1.TIDLinkMap.1.LinkMap=""
+  Device.WiFi.APMLD.1.TIDLinkMap.1.TID=0
+  Device.WiFi.APMLD.1.TIDLinkMap.10.BSSID="([0-9a-fA-F]{2}:){5}[0-9a-fA-F]{2}" (re)
+  Device.WiFi.APMLD.1.TIDLinkMap.10.Direction="Down"
+  Device.WiFi.APMLD.1.TIDLinkMap.10.LinkMap=""
+  Device.WiFi.APMLD.1.TIDLinkMap.10.TID=1
+  Device.WiFi.APMLD.1.TIDLinkMap.11.BSSID="([0-9a-fA-F]{2}:){5}[0-9a-fA-F]{2}" (re)
+  Device.WiFi.APMLD.1.TIDLinkMap.11.Direction="Down"
+  Device.WiFi.APMLD.1.TIDLinkMap.11.LinkMap=""
+  Device.WiFi.APMLD.1.TIDLinkMap.11.TID=2
+  Device.WiFi.APMLD.1.TIDLinkMap.12.BSSID="([0-9a-fA-F]{2}:){5}[0-9a-fA-F]{2}" (re)
+  Device.WiFi.APMLD.1.TIDLinkMap.12.Direction="Down"
+  Device.WiFi.APMLD.1.TIDLinkMap.12.LinkMap=""
+  Device.WiFi.APMLD.1.TIDLinkMap.12.TID=3
+  Device.WiFi.APMLD.1.TIDLinkMap.13.BSSID="([0-9a-fA-F]{2}:){5}[0-9a-fA-F]{2}" (re)
+  Device.WiFi.APMLD.1.TIDLinkMap.13.Direction="Down"
+  Device.WiFi.APMLD.1.TIDLinkMap.13.LinkMap=""
+  Device.WiFi.APMLD.1.TIDLinkMap.13.TID=4
+  Device.WiFi.APMLD.1.TIDLinkMap.14.BSSID="([0-9a-fA-F]{2}:){5}[0-9a-fA-F]{2}" (re)
+  Device.WiFi.APMLD.1.TIDLinkMap.14.Direction="Down"
+  Device.WiFi.APMLD.1.TIDLinkMap.14.LinkMap=""
+  Device.WiFi.APMLD.1.TIDLinkMap.14.TID=5
+  Device.WiFi.APMLD.1.TIDLinkMap.15.BSSID="([0-9a-fA-F]{2}:){5}[0-9a-fA-F]{2}" (re)
+  Device.WiFi.APMLD.1.TIDLinkMap.15.Direction="Down"
+  Device.WiFi.APMLD.1.TIDLinkMap.15.LinkMap=""
+  Device.WiFi.APMLD.1.TIDLinkMap.15.TID=6
+  Device.WiFi.APMLD.1.TIDLinkMap.16.BSSID="([0-9a-fA-F]{2}:){5}[0-9a-fA-F]{2}" (re)
+  Device.WiFi.APMLD.1.TIDLinkMap.16.Direction="Down"
+  Device.WiFi.APMLD.1.TIDLinkMap.16.LinkMap=""
+  Device.WiFi.APMLD.1.TIDLinkMap.16.TID=7
+  Device.WiFi.APMLD.1.TIDLinkMap.2.BSSID="([0-9a-fA-F]{2}:){5}[0-9a-fA-F]{2}" (re)
+  Device.WiFi.APMLD.1.TIDLinkMap.2.Direction="Up"
+  Device.WiFi.APMLD.1.TIDLinkMap.2.LinkMap=""
+  Device.WiFi.APMLD.1.TIDLinkMap.2.TID=1
+  Device.WiFi.APMLD.1.TIDLinkMap.3.BSSID="([0-9a-fA-F]{2}:){5}[0-9a-fA-F]{2}" (re)
+  Device.WiFi.APMLD.1.TIDLinkMap.3.Direction="Up"
+  Device.WiFi.APMLD.1.TIDLinkMap.3.LinkMap=""
+  Device.WiFi.APMLD.1.TIDLinkMap.3.TID=2
+  Device.WiFi.APMLD.1.TIDLinkMap.4.BSSID="([0-9a-fA-F]{2}:){5}[0-9a-fA-F]{2}" (re)
+  Device.WiFi.APMLD.1.TIDLinkMap.4.Direction="Up"
+  Device.WiFi.APMLD.1.TIDLinkMap.4.LinkMap=""
+  Device.WiFi.APMLD.1.TIDLinkMap.4.TID=3
+  Device.WiFi.APMLD.1.TIDLinkMap.5.BSSID="([0-9a-fA-F]{2}:){5}[0-9a-fA-F]{2}" (re)
+  Device.WiFi.APMLD.1.TIDLinkMap.5.Direction="Up"
+  Device.WiFi.APMLD.1.TIDLinkMap.5.LinkMap=""
+  Device.WiFi.APMLD.1.TIDLinkMap.5.TID=4
+  Device.WiFi.APMLD.1.TIDLinkMap.6.BSSID="([0-9a-fA-F]{2}:){5}[0-9a-fA-F]{2}" (re)
+  Device.WiFi.APMLD.1.TIDLinkMap.6.Direction="Up"
+  Device.WiFi.APMLD.1.TIDLinkMap.6.LinkMap=""
+  Device.WiFi.APMLD.1.TIDLinkMap.6.TID=5
+  Device.WiFi.APMLD.1.TIDLinkMap.7.BSSID="([0-9a-fA-F]{2}:){5}[0-9a-fA-F]{2}" (re)
+  Device.WiFi.APMLD.1.TIDLinkMap.7.Direction="Up"
+  Device.WiFi.APMLD.1.TIDLinkMap.7.LinkMap=""
+  Device.WiFi.APMLD.1.TIDLinkMap.7.TID=6
+  Device.WiFi.APMLD.1.TIDLinkMap.8.BSSID="([0-9a-fA-F]{2}:){5}[0-9a-fA-F]{2}" (re)
+  Device.WiFi.APMLD.1.TIDLinkMap.8.Direction="Up"
+  Device.WiFi.APMLD.1.TIDLinkMap.8.LinkMap=""
+  Device.WiFi.APMLD.1.TIDLinkMap.8.TID=7
+  Device.WiFi.APMLD.1.TIDLinkMap.9.BSSID="([0-9a-fA-F]{2}:){5}[0-9a-fA-F]{2}" (re)
+  Device.WiFi.APMLD.1.TIDLinkMap.9.Direction="Down"
+  Device.WiFi.APMLD.1.TIDLinkMap.9.LinkMap=""
+  Device.WiFi.APMLD.1.TIDLinkMap.9.TID=0
+
+Set Advertised mode and force 2.4GHz link usage:
+
+  $ R logger -t cram "Set Advertised and force 2.4GHz link usage"
+  $ wifi_dm "APMLD.1.TIDLinkMapConfig.Mode=\"Advertised\""
+  Device.WiFi.APMLD.1.TIDLinkMapConfig.Mode="Advertised"
+
+  $ wifi_dm "APMLD.1.TIDLinkMapConfig.AdvertisedLinkMap=\"2.4GHz\""
+  Device.WiFi.APMLD.1.TIDLinkMapConfig.AdvertisedLinkMap="2.4GHz"
+
+  $ sleep 5
+
+Check if all TIDLinkMap are now set to 2.4GHz:
+
+  $ wifi_dm "APMLD.1.TIDLinkMap.*.LinkMap?"
+  Device.WiFi.APMLD.1.TIDLinkMap.1.LinkMap="2.4GHz"
+  Device.WiFi.APMLD.1.TIDLinkMap.10.LinkMap="2.4GHz"
+  Device.WiFi.APMLD.1.TIDLinkMap.11.LinkMap="2.4GHz"
+  Device.WiFi.APMLD.1.TIDLinkMap.12.LinkMap="2.4GHz"
+  Device.WiFi.APMLD.1.TIDLinkMap.13.LinkMap="2.4GHz"
+  Device.WiFi.APMLD.1.TIDLinkMap.14.LinkMap="2.4GHz"
+  Device.WiFi.APMLD.1.TIDLinkMap.15.LinkMap="2.4GHz"
+  Device.WiFi.APMLD.1.TIDLinkMap.16.LinkMap="2.4GHz"
+  Device.WiFi.APMLD.1.TIDLinkMap.2.LinkMap="2.4GHz"
+  Device.WiFi.APMLD.1.TIDLinkMap.3.LinkMap="2.4GHz"
+  Device.WiFi.APMLD.1.TIDLinkMap.4.LinkMap="2.4GHz"
+  Device.WiFi.APMLD.1.TIDLinkMap.5.LinkMap="2.4GHz"
+  Device.WiFi.APMLD.1.TIDLinkMap.6.LinkMap="2.4GHz"
+  Device.WiFi.APMLD.1.TIDLinkMap.7.LinkMap="2.4GHz"
+  Device.WiFi.APMLD.1.TIDLinkMap.8.LinkMap="2.4GHz"
+  Device.WiFi.APMLD.1.TIDLinkMap.9.LinkMap="2.4GHz"
+
+Clear AdvertisedLinkMap:
+
+  $ R logger -t cram "Clear AdvertisedLinkMap"
+  $ wifi_dm "APMLD.1.TIDLinkMapConfig.AdvertisedLinkMap=\"\""
+  Device.WiFi.APMLD.1.TIDLinkMapConfig.AdvertisedLinkMap=""
+
+  $ sleep 5
+
+Check if all TIDLinkMap are now cleared:
+
+  $ wifi_dm "APMLD.1.TIDLinkMap.*.LinkMap?"
+  Device.WiFi.APMLD.1.TIDLinkMap.1.LinkMap=""
+  Device.WiFi.APMLD.1.TIDLinkMap.10.LinkMap=""
+  Device.WiFi.APMLD.1.TIDLinkMap.11.LinkMap=""
+  Device.WiFi.APMLD.1.TIDLinkMap.12.LinkMap=""
+  Device.WiFi.APMLD.1.TIDLinkMap.13.LinkMap=""
+  Device.WiFi.APMLD.1.TIDLinkMap.14.LinkMap=""
+  Device.WiFi.APMLD.1.TIDLinkMap.15.LinkMap=""
+  Device.WiFi.APMLD.1.TIDLinkMap.16.LinkMap=""
+  Device.WiFi.APMLD.1.TIDLinkMap.2.LinkMap=""
+  Device.WiFi.APMLD.1.TIDLinkMap.3.LinkMap=""
+  Device.WiFi.APMLD.1.TIDLinkMap.4.LinkMap=""
+  Device.WiFi.APMLD.1.TIDLinkMap.5.LinkMap=""
+  Device.WiFi.APMLD.1.TIDLinkMap.6.LinkMap=""
+  Device.WiFi.APMLD.1.TIDLinkMap.7.LinkMap=""
+  Device.WiFi.APMLD.1.TIDLinkMap.8.LinkMap=""
+  Device.WiFi.APMLD.1.TIDLinkMap.9.LinkMap=""
+
+Disable TIDLinkMap on private MLD:
+
+  $ R logger -t cram "Disable TIDLinkMap on private MLD"
+  $ wifi_dm "APMLD.1.TIDLinkMapConfig.Mode=\"Disabled\""
+  Device.WiFi.APMLD.1.TIDLinkMapConfig.Mode="Disabled"
 
 #########################################
 # Terminate test                       #
@@ -460,8 +875,6 @@ Check AccessPoints status:
 
 Check if private apmld is cleared:
 
-  $ sleep 10
-
   $ wifi_dm "APMLD.1.?"
   Device.WiFi.APMLD.1.APMLDConfig.EMLMREnabled=0
   Device.WiFi.APMLD.1.APMLDConfig.EMLSREnabled=1
@@ -470,6 +883,74 @@ Check if private apmld is cleared:
   Device.WiFi.APMLD.1.AffiliatedAPNumberOfEntries=0
   Device.WiFi.APMLD.1.MLDID=0
   Device.WiFi.APMLD.1.MLDMACAddress=""
+  Device.WiFi.APMLD.1.TIDLinkMap.1.BSSID="([0-9a-fA-F]{2}:){5}[0-9a-fA-F]{2}" (re)
+  Device.WiFi.APMLD.1.TIDLinkMap.1.Direction="Up"
+  Device.WiFi.APMLD.1.TIDLinkMap.1.LinkMap=""
+  Device.WiFi.APMLD.1.TIDLinkMap.1.TID=0
+  Device.WiFi.APMLD.1.TIDLinkMap.10.BSSID="([0-9a-fA-F]{2}:){5}[0-9a-fA-F]{2}" (re)
+  Device.WiFi.APMLD.1.TIDLinkMap.10.Direction="Down"
+  Device.WiFi.APMLD.1.TIDLinkMap.10.LinkMap=""
+  Device.WiFi.APMLD.1.TIDLinkMap.10.TID=1
+  Device.WiFi.APMLD.1.TIDLinkMap.11.BSSID="([0-9a-fA-F]{2}:){5}[0-9a-fA-F]{2}" (re)
+  Device.WiFi.APMLD.1.TIDLinkMap.11.Direction="Down"
+  Device.WiFi.APMLD.1.TIDLinkMap.11.LinkMap=""
+  Device.WiFi.APMLD.1.TIDLinkMap.11.TID=2
+  Device.WiFi.APMLD.1.TIDLinkMap.12.BSSID="([0-9a-fA-F]{2}:){5}[0-9a-fA-F]{2}" (re)
+  Device.WiFi.APMLD.1.TIDLinkMap.12.Direction="Down"
+  Device.WiFi.APMLD.1.TIDLinkMap.12.LinkMap=""
+  Device.WiFi.APMLD.1.TIDLinkMap.12.TID=3
+  Device.WiFi.APMLD.1.TIDLinkMap.13.BSSID="([0-9a-fA-F]{2}:){5}[0-9a-fA-F]{2}" (re)
+  Device.WiFi.APMLD.1.TIDLinkMap.13.Direction="Down"
+  Device.WiFi.APMLD.1.TIDLinkMap.13.LinkMap=""
+  Device.WiFi.APMLD.1.TIDLinkMap.13.TID=4
+  Device.WiFi.APMLD.1.TIDLinkMap.14.BSSID="([0-9a-fA-F]{2}:){5}[0-9a-fA-F]{2}" (re)
+  Device.WiFi.APMLD.1.TIDLinkMap.14.Direction="Down"
+  Device.WiFi.APMLD.1.TIDLinkMap.14.LinkMap=""
+  Device.WiFi.APMLD.1.TIDLinkMap.14.TID=5
+  Device.WiFi.APMLD.1.TIDLinkMap.15.BSSID="([0-9a-fA-F]{2}:){5}[0-9a-fA-F]{2}" (re)
+  Device.WiFi.APMLD.1.TIDLinkMap.15.Direction="Down"
+  Device.WiFi.APMLD.1.TIDLinkMap.15.LinkMap=""
+  Device.WiFi.APMLD.1.TIDLinkMap.15.TID=6
+  Device.WiFi.APMLD.1.TIDLinkMap.16.BSSID="([0-9a-fA-F]{2}:){5}[0-9a-fA-F]{2}" (re)
+  Device.WiFi.APMLD.1.TIDLinkMap.16.Direction="Down"
+  Device.WiFi.APMLD.1.TIDLinkMap.16.LinkMap=""
+  Device.WiFi.APMLD.1.TIDLinkMap.16.TID=7
+  Device.WiFi.APMLD.1.TIDLinkMap.2.BSSID="([0-9a-fA-F]{2}:){5}[0-9a-fA-F]{2}" (re)
+  Device.WiFi.APMLD.1.TIDLinkMap.2.Direction="Up"
+  Device.WiFi.APMLD.1.TIDLinkMap.2.LinkMap=""
+  Device.WiFi.APMLD.1.TIDLinkMap.2.TID=1
+  Device.WiFi.APMLD.1.TIDLinkMap.3.BSSID="([0-9a-fA-F]{2}:){5}[0-9a-fA-F]{2}" (re)
+  Device.WiFi.APMLD.1.TIDLinkMap.3.Direction="Up"
+  Device.WiFi.APMLD.1.TIDLinkMap.3.LinkMap=""
+  Device.WiFi.APMLD.1.TIDLinkMap.3.TID=2
+  Device.WiFi.APMLD.1.TIDLinkMap.4.BSSID="([0-9a-fA-F]{2}:){5}[0-9a-fA-F]{2}" (re)
+  Device.WiFi.APMLD.1.TIDLinkMap.4.Direction="Up"
+  Device.WiFi.APMLD.1.TIDLinkMap.4.LinkMap=""
+  Device.WiFi.APMLD.1.TIDLinkMap.4.TID=3
+  Device.WiFi.APMLD.1.TIDLinkMap.5.BSSID="([0-9a-fA-F]{2}:){5}[0-9a-fA-F]{2}" (re)
+  Device.WiFi.APMLD.1.TIDLinkMap.5.Direction="Up"
+  Device.WiFi.APMLD.1.TIDLinkMap.5.LinkMap=""
+  Device.WiFi.APMLD.1.TIDLinkMap.5.TID=4
+  Device.WiFi.APMLD.1.TIDLinkMap.6.BSSID="([0-9a-fA-F]{2}:){5}[0-9a-fA-F]{2}" (re)
+  Device.WiFi.APMLD.1.TIDLinkMap.6.Direction="Up"
+  Device.WiFi.APMLD.1.TIDLinkMap.6.LinkMap=""
+  Device.WiFi.APMLD.1.TIDLinkMap.6.TID=5
+  Device.WiFi.APMLD.1.TIDLinkMap.7.BSSID="([0-9a-fA-F]{2}:){5}[0-9a-fA-F]{2}" (re)
+  Device.WiFi.APMLD.1.TIDLinkMap.7.Direction="Up"
+  Device.WiFi.APMLD.1.TIDLinkMap.7.LinkMap=""
+  Device.WiFi.APMLD.1.TIDLinkMap.7.TID=6
+  Device.WiFi.APMLD.1.TIDLinkMap.8.BSSID="([0-9a-fA-F]{2}:){5}[0-9a-fA-F]{2}" (re)
+  Device.WiFi.APMLD.1.TIDLinkMap.8.Direction="Up"
+  Device.WiFi.APMLD.1.TIDLinkMap.8.LinkMap=""
+  Device.WiFi.APMLD.1.TIDLinkMap.8.TID=7
+  Device.WiFi.APMLD.1.TIDLinkMap.9.BSSID="([0-9a-fA-F]{2}:){5}[0-9a-fA-F]{2}" (re)
+  Device.WiFi.APMLD.1.TIDLinkMap.9.Direction="Down"
+  Device.WiFi.APMLD.1.TIDLinkMap.9.LinkMap=""
+  Device.WiFi.APMLD.1.TIDLinkMap.9.TID=0
+  Device.WiFi.APMLD.1.TIDLinkMapConfig.AdvertisedExpectedDuration=300
+  Device.WiFi.APMLD.1.TIDLinkMapConfig.AdvertisedLinkMap=""
+  Device.WiFi.APMLD.1.TIDLinkMapConfig.AdvertisedMapSwitchTime=100
+  Device.WiFi.APMLD.1.TIDLinkMapConfig.Mode="Disabled"
 
 Resume prplMesh:
 
