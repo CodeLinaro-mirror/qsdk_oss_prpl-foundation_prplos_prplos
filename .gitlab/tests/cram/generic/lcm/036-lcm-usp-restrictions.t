@@ -59,7 +59,7 @@ Update the RegisterTrustPaths parameter for service and check that untrusted ser
   $ R "usp-cli 'gsdm Device.' | grep TrustedProvider | sed '/^$/d'"
   ... (Object      ) Device.TrustedProvider1.
 
-Update the RegisterTrustPaths parameter with serveral paths and check that untrusted service can register only allowed paths on USP bus:
+Update the RegisterTrustPaths parameter with several paths and check that untrusted service can register only allowed paths on USP bus:
 
   $ R "${S} && update_ctr --url ${PROVIDER_SERVICE_URL} --password --username --ee --uuid --privileged true --usprequired \"Full Access\" --uspregisterpaths \"Device.TrustedProvider1.,Device.TrustedProvider2.\" --uspautomountipc \"USP_UDS_Authenticated\"" > /dev/null
   $ sleep ${SLEEP_TIME}

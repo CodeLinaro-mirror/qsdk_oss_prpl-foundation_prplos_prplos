@@ -45,7 +45,7 @@ Check that trusted UDS sockets are mounted in the container:
   $ R "${S} && execute_in_container --uuid --cmd 'mount | grep usp'"
   tmpfs on /run/usp type tmpfs* (glob)
 
-Check that service model is accesable on USP bus:
+Check that service model is accessible on USP bus:
 
   $ R "usp-cli -lj Device.LCMSampleApp.? | sed '/^$/d'"
   [{"Device.LCMSampleApp.":{"NumberOfDummyMultiInstances":0,"DummyGlobalString":"","DummyGlobalInt":0}}]
@@ -107,7 +107,7 @@ Check that Device.UnixDomainSockets.Authentication model is filled on USP bus:
   $ R "usp-cli -lj 'Device.UnixDomainSockets.Authentication.[EndpointID==\"${CTR_ENDPOINTID}\"].?' | sed '/^$/d'"
   [{"Device.UnixDomainSockets.Authentication.*.":{"Enable":true,"Password":"*","EndpointID":"*"}}] (glob)
 
-Check that service model is accesable on USP bus:
+Check that service model is accessible on USP bus:
 
   $ R "usp-cli -lj Device.LCMSampleApp.? | sed '/^$/d'"
   [{"Device.LCMSampleApp.":{"NumberOfDummyMultiInstances":0,"DummyGlobalString":"","DummyGlobalInt":0}}]
@@ -191,7 +191,7 @@ Check that Device.UnixDomainSockets.Authentication model is filled on USP bus af
   $ R "usp-cli -lj 'Device.UnixDomainSockets.Authentication.[EndpointID==\"${CTR_ENDPOINTID}\"].?' | sed '/^$/d'"
   [{"Device.UnixDomainSockets.Authentication.*.":{"Enable":true,"Password":"*","EndpointID":"*"}}] (glob)
 
-Check that service model is accesable on USP bus after update:
+Check that service model is accessible on USP bus after update:
 
   $ R "usp-cli -lj Device.LCMSampleApp.? | sed '/^$/d'"
   [{"Device.LCMSampleApp.":{"NumberOfDummyMultiInstances":0,"DummyGlobalString":"","DummyGlobalInt":0}}]
