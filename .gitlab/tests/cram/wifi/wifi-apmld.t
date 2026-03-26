@@ -310,10 +310,16 @@ have again 3 links
 Move AP1 to a new APMLD:
 
   $ R logger -t cram "Move AP1 to a new APMLD"
+  $ R "usp-cli -l 'Device.WiFi.APMLD.[MLDID == ${test_mldunit}].-'" > /dev/null 2>&1 || true
   $ wifi_dm "AccessPoint.1.SSIDReference+.MLDUnit=${test_mldunit}"
   Device.WiFi.SSID.1.MLDUnit=12
 
   $ sleep 10
+
+Wait for the new APMLD MAC address to be assigned (poll up to 30s):
+
+  $ R "i=0; while [ \$i -lt 60 ]; do mac=\$(usp-cli -l -j 'Device.WiFi.APMLD.[MLDID == ${test_mldunit}].MLDMACAddress?' | jsonfilter -e '@[0][*].MLDMACAddress' | strings); if [ -n \"\$mac\" ] && [ \"\$mac\" != '00:00:00:00:00:00' ]; then echo \"APMLD MAC ready: \$mac\"; break; fi; i=\$(expr \$i + 1); sleep 1; done; if [ \$i -eq 60 ]; then echo 'APMLD MAC wait timeout'; fi"
+  APMLD MAC ready: ([0-9a-fA-F]{2}:){5}[0-9a-fA-F]{2} (re)
 
 Check private APMLD number of links:
 
@@ -388,6 +394,10 @@ Check if new APMLD was cleared:
 
   $ get_apmld_mac_from_dm ${test_mldunit}
   not_found
+
+Delete the APMLD object created for test_mldunit to avoid stale entries across reboots:
+
+  $ R "usp-cli -l 'Device.WiFi.APMLD.[MLDID == ${test_mldunit}].-'" > /dev/null 2>&1 || true
 
 #########################################
 # Test Guest MLD deactivation           #
