@@ -2895,6 +2895,20 @@ Check that obuspa has expected datamodel available (minus the platform specific 
   Device.SoftwareModules.AddExecEnv() input:ParentExecEnv
   Device.SoftwareModules.AddExecEnv() input:Vendor
   Device.SoftwareModules.AddExecEnv() input:Version
+  Device.SoftwareModules.Config.                                                                       proto::timingila
+  Device.SoftwareModules.Config.CABundle                                                               proto::timingila
+  Device.SoftwareModules.Config.Certificate                                                            proto::timingila
+  Device.SoftwareModules.Config.DUSignatureProtocols                                                   proto::timingila
+  Device.SoftwareModules.Config.Repository.{i}.                                                        proto::timingila
+  Device.SoftwareModules.Config.Repository.{i}.Alias                                                   proto::timingila
+  Device.SoftwareModules.Config.Repository.{i}.BaseURL                                                 proto::timingila
+  Device.SoftwareModules.Config.Repository.{i}.CABundle                                                proto::timingila
+  Device.SoftwareModules.Config.Repository.{i}.Certificate                                             proto::timingila
+  Device.SoftwareModules.Config.Repository.{i}.Enable                                                  proto::timingila
+  Device.SoftwareModules.Config.Repository.{i}.Name                                                    proto::timingila
+  Device.SoftwareModules.Config.Repository.{i}.Type                                                    proto::timingila
+  Device.SoftwareModules.Config.RepositoryNumberOfEntries                                              proto::timingila
+  Device.SoftwareModules.Config.SupportedDUSignatureProtocols                                          proto::timingila
   Device.SoftwareModules.DUStateChange!                                                                proto::timingila
   Device.SoftwareModules.DeploymentUnit.{i}.                                                           proto::timingila
   Device.SoftwareModules.DeploymentUnit.{i}.Alias                                                      proto::timingila
@@ -2929,6 +2943,8 @@ Check that obuspa has expected datamodel available (minus the platform specific 
   Device.SoftwareModules.DeploymentUnit.{i}.Update() input:RequiredRoles
   Device.SoftwareModules.DeploymentUnit.{i}.Update() input:RequiredUserRoles
   Device.SoftwareModules.DeploymentUnit.{i}.Update() input:RetainData
+  Device.SoftwareModules.DeploymentUnit.{i}.Update() input:SignaturePassword
+  Device.SoftwareModules.DeploymentUnit.{i}.Update() input:SignatureUsername
   Device.SoftwareModules.DeploymentUnit.{i}.Update() input:URL
   Device.SoftwareModules.DeploymentUnit.{i}.Update() input:Username
   Device.SoftwareModules.DeploymentUnit.{i}.Vendor                                                     proto::timingila
@@ -3070,6 +3086,8 @@ Check that obuspa has expected datamodel available (minus the platform specific 
   Device.SoftwareModules.InstallDU() input:RequiredRoles
   Device.SoftwareModules.InstallDU() input:RequiredUserRoles
   Device.SoftwareModules.InstallDU() input:Signature
+  Device.SoftwareModules.InstallDU() input:SignaturePassword
+  Device.SoftwareModules.InstallDU() input:SignatureUsername
   Device.SoftwareModules.InstallDU() input:URL
   Device.SoftwareModules.InstallDU() input:UUID
   Device.SoftwareModules.InstallDU() input:Username
@@ -8390,6 +8408,20 @@ Check that obuspa provides the same datamodel again (minus the platform specific
   Device.SoftwareModules.AddExecEnv() input:ParentExecEnv
   Device.SoftwareModules.AddExecEnv() input:Vendor
   Device.SoftwareModules.AddExecEnv() input:Version
+  Device.SoftwareModules.Config.                                                                       proto::timingila
+  Device.SoftwareModules.Config.CABundle                                                               proto::timingila
+  Device.SoftwareModules.Config.Certificate                                                            proto::timingila
+  Device.SoftwareModules.Config.DUSignatureProtocols                                                   proto::timingila
+  Device.SoftwareModules.Config.Repository.{i}.                                                        proto::timingila
+  Device.SoftwareModules.Config.Repository.{i}.Alias                                                   proto::timingila
+  Device.SoftwareModules.Config.Repository.{i}.BaseURL                                                 proto::timingila
+  Device.SoftwareModules.Config.Repository.{i}.CABundle                                                proto::timingila
+  Device.SoftwareModules.Config.Repository.{i}.Certificate                                             proto::timingila
+  Device.SoftwareModules.Config.Repository.{i}.Enable                                                  proto::timingila
+  Device.SoftwareModules.Config.Repository.{i}.Name                                                    proto::timingila
+  Device.SoftwareModules.Config.Repository.{i}.Type                                                    proto::timingila
+  Device.SoftwareModules.Config.RepositoryNumberOfEntries                                              proto::timingila
+  Device.SoftwareModules.Config.SupportedDUSignatureProtocols                                          proto::timingila
   Device.SoftwareModules.DUStateChange!                                                                proto::timingila
   Device.SoftwareModules.DeploymentUnit.{i}.                                                           proto::timingila
   Device.SoftwareModules.DeploymentUnit.{i}.Alias                                                      proto::timingila
@@ -8424,6 +8456,8 @@ Check that obuspa provides the same datamodel again (minus the platform specific
   Device.SoftwareModules.DeploymentUnit.{i}.Update() input:RequiredRoles
   Device.SoftwareModules.DeploymentUnit.{i}.Update() input:RequiredUserRoles
   Device.SoftwareModules.DeploymentUnit.{i}.Update() input:RetainData
+  Device.SoftwareModules.DeploymentUnit.{i}.Update() input:SignaturePassword
+  Device.SoftwareModules.DeploymentUnit.{i}.Update() input:SignatureUsername
   Device.SoftwareModules.DeploymentUnit.{i}.Update() input:URL
   Device.SoftwareModules.DeploymentUnit.{i}.Update() input:Username
   Device.SoftwareModules.DeploymentUnit.{i}.Vendor                                                     proto::timingila
@@ -8565,6 +8599,8 @@ Check that obuspa provides the same datamodel again (minus the platform specific
   Device.SoftwareModules.InstallDU() input:RequiredRoles
   Device.SoftwareModules.InstallDU() input:RequiredUserRoles
   Device.SoftwareModules.InstallDU() input:Signature
+  Device.SoftwareModules.InstallDU() input:SignaturePassword
+  Device.SoftwareModules.InstallDU() input:SignatureUsername
   Device.SoftwareModules.InstallDU() input:URL
   Device.SoftwareModules.InstallDU() input:UUID
   Device.SoftwareModules.InstallDU() input:Username

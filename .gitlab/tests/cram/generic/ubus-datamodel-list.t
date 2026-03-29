@@ -339,6 +339,8 @@ Check that ubus has expected datamodels available:
   Security.CABundle
   Security.Certificate
   SoftwareModules
+  SoftwareModules.Config
+  SoftwareModules.Config.Repository
   SoftwareModules.DeploymentUnit
   SoftwareModules.ExecEnv
   SoftwareModules.ExecutionUnit
@@ -366,6 +368,9 @@ Check that ubus has expected datamodels available:
   Timingila.CthulhuAdapters.CthulhuCommandMapping
   Timingila.CthulhuAdapters.SoftwareModulesFuncArgsOverload
   Timingila.CthulhuAdapters.SoftwareModulesTable
+  Timingila.RlyehPluginsConfig
+  Timingila.RlyehPluginsInfo
+  Timingila.RlyehPluginsInfo.LoadedPlugins
   UPnP
   UPnP.Device
   UPnP.Device.Capabilities
