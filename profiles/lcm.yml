@@ -4,7 +4,7 @@ description: Packages and features for LCM
 feeds:
   - name: feed_lcm
     uri: https://gitlab.com/prpl-foundation/prplos/feeds/feed_lcm.git
-    revision: main@8220cfc3b0f7a4790ae8d4ae9e15bb81e0a54244
+    revision: main@916c5ca6c1862b5a6ddf95652d8b100c83e8facd
 
 packages:
   - cthulhu
@@ -15,6 +15,8 @@ packages:
   - cthulhu-networking
   - cthulhu-pcm
   - cthulhu-plugin-usp
+  - cthulhu-rootfs-oci-bundle
+  - cthulhu-rootfs-oci-image
   - cthulhu-syslog
   - lxc
   - lxc-attach
