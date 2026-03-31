@@ -51,6 +51,8 @@ packages:
   - timingila
   - timingila-cthulhu
   - timingila-rlyeh
+  - timingila-rlyeh-security
+  - image-authentication
 
 diffconfig: |
           # lxc options for LCM
