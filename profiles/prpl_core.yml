@@ -3,15 +3,15 @@ description: A minimal set of prpl packages and configs (no WAN support, no LCM,
 feeds:
   - name: feed_amx
     uri: https://gitlab.com/prpl-foundation/prplos/feeds/feed_amx.git
-    revision: main@f5e613d6ab1c2c3fa11dde94f6dd197b0a5a3b48
+    revision: main@95eee2b0292653f3a6bb76f9eb850230ce5301ac
 
   - name: feed_prplmesh
     uri: https://gitlab.com/prpl-foundation/prplos/feeds/feed-prplmesh.git
-    revision: main@07005b263656946eaf365a25452bb43f7acef603
+    revision: main@dbc612987f867da200a4fd6e3cc16bbf9ffcc6d8
 
   - name: feed_prplos
     uri: https://gitlab.com/prpl-foundation/prplos/feeds/feed-prplos.git
-    revision: main@2a7d87206c94a00f35ac82eb0597b9cf436de6a4
+    revision: main@e8bab580e179aa88a67f51b17e8c75823db67454
 
 additional_packages:
   - feed: packages
@@ -76,6 +76,8 @@ packages:
   - procps-ng-uptime
   - prpl-configuration
   - prplmesh
+  - prplmesh-dm-mapper
+  - prplmesh-process-manager
   - reboot-service
   - routing-manager
   - ssh-server
@@ -83,6 +85,7 @@ packages:
   - time-manager
   - tr181-bridging
   - tr181-button
+  - tr181-cpu
   - tr181-device
   - tr181-dhcpv4client
   - tr181-dhcpv6client
@@ -103,6 +106,8 @@ packages:
 diffconfig: |
           CONFIG_DEVEL=y
           CONFIG_KERNEL_WERROR=y
+          CONFIG_KERNEL_SLUB_DEBUG=y
+          CONFIG_KERNEL_PROC_PAGE_MONITOR=y
           CONFIG_JSON_CYCLONEDX_SBOM=y
           CONFIG_PACKAGE_unbound-daemon-prpl=y
           CONFIG_PACKAGE_dnsmasq-prpl=y

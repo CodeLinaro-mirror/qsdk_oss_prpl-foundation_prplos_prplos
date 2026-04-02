@@ -11,21 +11,21 @@ Wait for Device.WiFi. datamodel availability:
 
   $ sleep 10
 
-Set AutoChannelEnable=0 on all WiFi.Radio. interfaces:
+Set AutoChannelEnable=0 on all Device.WiFi.Radio. interfaces:
 
   $ R "ba-cli -j -l WiFi.Radio.*.AutoChannelEnable=0 | sed '/^$/d'"
   [{"WiFi.Radio.1.":{"AutoChannelEnable":0},"WiFi.Radio.2.":{"AutoChannelEnable":0},"WiFi.Radio.3.":{"AutoChannelEnable":0}}]
 
 Set channel to a non DFS one:
 
-  $ R "ba-cli -j -l WiFi.Radio.2.Channel=36 | sed '/^$/d'"
-  [{"WiFi.Radio.2.":{"Channel":36}}]
+  $ R "usp-cli -j -l Device.WiFi.Radio.2.Channel=36 | sed '/^$/d'"
+  [{"Device.WiFi.Radio.2.":{"Channel":36}}]
 
   $ sleep 5
 
 Check default WiFiScheduler configuration:
 
-  $ R "ba-cli  'Device.X_PRPLWARE-COM_WiFiScheduler.?'"  | sed '/^$/d' | tail -n +2
+  $ R "usp-cli  'Device.X_PRPLWARE-COM_WiFiScheduler.?'"  | sed '/^$/d' | tail -n +2
   Device.X_PRPLWARE-COM_WiFiScheduler.
   Device.X_PRPLWARE-COM_WiFiScheduler.Enable=1
   Device.X_PRPLWARE-COM_WiFiScheduler.EnableMethod="Parameter"
@@ -50,10 +50,14 @@ Configure controller:
 
   $ R logger -t cram "Stop prplmesh"
 
-  $ R "( /etc/init.d/prplmesh stop ; sleep 2 )  2>&1 > /dev/null"
+  $ R "ba-cli -l X_PRPLWARE-COM_ProcessManager.PrplMesh.Enable=0" | tr -d '\n'
+  0 (no-eol)
 
+  $ sleep 2
   $ R "sed -i 's/use_dataelements_vap_configs=0/use_dataelements_vap_configs=1/g' /opt/prplmesh/config/beerocks_controller.conf"
-  $ R "( /etc/init.d/prplmesh gateway_mode ; sleep 2 ) > /tmp/prplmesh-gw-mode.log 2>&1 ; logger -t prplmesh-gateway-mode < /tmp/prplmesh-gw-mode.log"
+  $ R "ba-cli X_PRPLWARE-COM_ProcessManager.PrplMesh.ManagementMode=Multi-AP-Controller-and-Agent"  > /dev/null
+  $ R "ba-cli -l X_PRPLWARE-COM_ProcessManager.PrplMesh.Enable=1" | tr -d '\n'
+  1 (no-eol)
 
   $ R "ubus -t 60 wait_for X_PRPLWARE-COM_WiFiController.Network.Device.1"
 

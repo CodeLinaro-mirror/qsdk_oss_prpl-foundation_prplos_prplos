@@ -3,15 +3,20 @@ Create R alias:
   $ alias R="${CRAM_REMOTE_COMMAND:-}"
   $ . "${TESTDIR}/../scripts/wifi.sh"
 
-Set AutoChannelEnable=0 on all WiFi.Radio. interfaces:
+Set AutoChannelEnable=0 on all Device.WiFi.Radio. interfaces:
 
   $ R "ba-cli -j -l WiFi.Radio.*.AutoChannelEnable=0 | sed '/^$/d'"
   [{"WiFi.Radio.1.":{"AutoChannelEnable":0},"WiFi.Radio.2.":{"AutoChannelEnable":0},"WiFi.Radio.3.":{"AutoChannelEnable":0}}]
 
+Reset 2.4GHz bandwidth to the default 20MHz (PCF-2420):
+
+  $ wifi_dm_radio_band 2 "OperatingChannelBandwidth=\"20MHz\""
+  Device.WiFi.Radio.\d+.OperatingChannelBandwidth="20MHz" (re)
+
 Set channel to a non DFS one:
 
-  $ R "ba-cli -j -l WiFi.Radio.2.Channel=36 | sed '/^$/d'"
-  [{"WiFi.Radio.2.":{"Channel":36}}]
+  $ R "usp-cli -j -l Device.WiFi.Radio.2.Channel=36 | sed '/^$/d'"
+  [{"Device.WiFi.Radio.2.":{"Channel":36}}]
 
   $ sleep 5
 
@@ -19,16 +24,19 @@ Configure controller, requires PPM-3022 to work:
 
   $ R logger -t cram "Stop prplmesh"
 
-  $ R "( /etc/init.d/prplmesh stop ; sleep 2 )  2>&1 > /dev/null"
+  $ R "ba-cli -l X_PRPLWARE-COM_ProcessManager.PrplMesh.Enable=0" | tr -d '\n'
+  0 (no-eol)
 
-
+  $ sleep 2
   $ R "sed -i 's/use_dataelements_vap_configs=0/use_dataelements_vap_configs=1/g' /opt/prplmesh/config/beerocks_controller.conf"
 
 Restart prplmesh:
 
   $ R logger -t cram "Restart prplmesh"
 
-  $ R "( /etc/init.d/prplmesh gateway_mode ; sleep 2 ) > /tmp/prplmesh-gw-mode.log 2>&1 ; logger -t prplmesh-gateway-mode < /tmp/prplmesh-gw-mode.log"
+  $ R "ba-cli X_PRPLWARE-COM_ProcessManager.PrplMesh.ManagementMode=Multi-AP-Controller-and-Agent"  > /dev/null
+  $ R "ba-cli -l X_PRPLWARE-COM_ProcessManager.PrplMesh.Enable=1" | tr -d '\n'
+  1 (no-eol)
 
   $ R "ubus -t 60 wait_for X_PRPLWARE-COM_WiFiController.Network.Device.1"
 
@@ -84,8 +92,8 @@ Since no persistent storage of NbAPI Network subsection, always index:1 after co
   {}
   {"amxd-error-code":0}
 
-  $ R "ubus -S call X_PRPLWARE-COM_WiFiController.Network.AccessPoint.1 _set '{\"parameters\":{\"MultiApMode\":\"Fronthaul+Backhaul\"}}'"
-  {"X_PRPLWARE-COM_WiFiController.Network.AccessPoint.1.":{"MultiApMode":"Fronthaul+Backhaul"}}
+  $ R "ubus -S call X_PRPLWARE-COM_WiFiController.Network.AccessPoint.1 _set '{\"parameters\":{\"MultiApMode\":\"Fronthaul+Backhaul\",\"X_PRPLWARE_VapType\":\"home\"}}'"
+  {"X_PRPLWARE-COM_WiFiController.Network.AccessPoint.1.":{"X_PRPLWARE_VapType":"home","MultiApMode":"Fronthaul+Backhaul"}}
   {}
   {"amxd-error-code":0}
 
@@ -116,8 +124,8 @@ Create second instance of Network.AccessPoint for guest VAPs:
   {}
   {"amxd-error-code":0}
 
-  $ R "ubus -S call X_PRPLWARE-COM_WiFiController.Network.AccessPoint.2 _set '{\"parameters\":{\"MultiApMode\":\"Fronthaul\"}}'"
-  {"X_PRPLWARE-COM_WiFiController.Network.AccessPoint.2.":{"MultiApMode":"Fronthaul"}}
+  $ R "ubus -S call X_PRPLWARE-COM_WiFiController.Network.AccessPoint.2 _set '{\"parameters\":{\"MultiApMode\":\"Fronthaul\",\"X_PRPLWARE_VapType\":\"guest\"}}'"
+  {"X_PRPLWARE-COM_WiFiController.Network.AccessPoint.2.":{"X_PRPLWARE_VapType":"guest","MultiApMode":"Fronthaul"}}
   {}
   {"amxd-error-code":0}
 
@@ -188,22 +196,29 @@ Check that prplmesh is operational:
 
   $ R logger -t cram "Check that prplmesh is operational"
 
-  $ R "/opt/prplmesh/scripts/prplmesh_utils.sh status" | sed 's/^[0-9]\+ //' | LC_ALL=C sort
-  \x1b[0m (esc)
-  \x1b[0m\x1b[1;32mOK Main radio agent operational (esc)
-  \x1b[1;32moperational test success! (esc)
-  /opt/prplmesh/scripts/prplmesh_utils.sh: status
-  OK wlan0 radio agent operational
-  OK wlan1 radio agent operational
-  OK wlan2 radio agent operational
-  beerocks_agent
-  beerocks_contro
-  beerocks_fronth
-  beerocks_fronth
-  beerocks_fronth
-  beerocks_vendor
-  executing operational test using bml
-  ieee1905_transp
+  $ R "/opt/prplmesh/bin/prplmesh_cli -c status -o pretty" | sed 's/\t/        /g'
+  Mode: Agent+Controller
+  Controller:
+          bridge MAC: (AC:91:9B|58:E4:03):[0-9A-F]{2}:[0-9A-F]{2}:[0-9A-F]{2} (re)
+          1 agent(s) connected
+  Agent:
+          MAC address: [0-9A-F]{2}:[0-9A-F]{2}:[0-9A-F]{2}:[0-9A-F]{2}:[0-9A-F]{2}:[0-9A-F]{2} (re)
+          management mode: Multi-AP-Controller-and-Agent
+          fronthaul ifaces: wlan0,wlan1,wlan2
+          current state: OPERATIONAL
+          best state: OPERATIONAL
+          Fronthaul:
+                  interface: wlan0
+                  current state: OPERATIONAL
+                  best state: OPERATIONAL
+          Fronthaul:
+                  interface: wlan1
+                  current state: OPERATIONAL
+                  best state: OPERATIONAL
+          Fronthaul:
+                  interface: wlan2
+                  current state: OPERATIONAL
+                  best state: OPERATIONAL
 
 Check that controller received correct info about wifi subsystem:
 
@@ -246,11 +261,20 @@ To disable wireless, disable instances of Network.AccessPoint{i} and call Access
 
 Restore Security.ModeEnabled for AccessPoints used in the test
 
-  $ R "ba-cli \"WiFi.AccessPoint.[RadioReference == 'WiFi.Radio.radio0_band0'].Security.ModeEnabled='WPA2-WPA3-Personal'\" > /dev/null "
+  $ R "ba-cli  \"WiFi.AccessPoint.[RadioReference == 'Device.WiFi.Radio.1'].Security.ModeEnabled='WPA2-WPA3-Personal'\"" | grep 'ModeEnabled=' | sed '/^$/d' | grep -v '>'
+  WiFi.AccessPoint.\d+.Security.ModeEnabled="WPA2-WPA3-Personal" (re)
+  WiFi.AccessPoint.\d+.Security.ModeEnabled="WPA2-WPA3-Personal" (re)
+  WiFi.AccessPoint.\d+.Security.ModeEnabled="WPA2-WPA3-Personal" (re)
 
-  $ R "ba-cli \"WiFi.AccessPoint.[RadioReference == 'WiFi.Radio.radio0_band1'].Security.ModeEnabled='WPA2-WPA3-Personal'\" > /dev/null "
+  $ R "ba-cli  \"WiFi.AccessPoint.[RadioReference == 'Device.WiFi.Radio.2'].Security.ModeEnabled='WPA2-WPA3-Personal'\"" | grep 'ModeEnabled=' | sed '/^$/d' | grep -v '>'
+  WiFi.AccessPoint.\d+.Security.ModeEnabled="WPA2-WPA3-Personal" (re)
+  WiFi.AccessPoint.\d+.Security.ModeEnabled="WPA2-WPA3-Personal" (re)
+  WiFi.AccessPoint.\d+.Security.ModeEnabled="WPA2-WPA3-Personal" (re)
 
-  $ R "ba-cli \"WiFi.AccessPoint.[RadioReference == 'WiFi.Radio.radio0_band2'].Security.ModeEnabled='WPA3-Personal'\" > /dev/null "
+  $ R "ba-cli  \"WiFi.AccessPoint.[RadioReference == 'Device.WiFi.Radio.3'].Security.ModeEnabled='WPA3-Personal'\"" | grep 'ModeEnabled=' | sed '/^$/d' | grep -v '>'
+  WiFi.AccessPoint.\d+.Security.ModeEnabled="WPA3-Personal" (re)
+  WiFi.AccessPoint.\d+.Security.ModeEnabled="WPA3-Personal" (re)
+  WiFi.AccessPoint.\d+.Security.ModeEnabled="WPA3-Personal" (re)
 
 Check that wireless is disabled:
 
@@ -280,11 +304,20 @@ Check that SSIDs did not change:
 
 Restore Security Mode to default values
 
-  $ R "ba-cli \"WiFi.AccessPoint.[RadioReference == 'WiFi.Radio.radio0_band0'].Security.ModeEnabled='WPA2-WPA3-Personal'\" > /dev/null "
+  $ R "ba-cli  \"WiFi.AccessPoint.[RadioReference == 'Device.WiFi.Radio.1'].Security.ModeEnabled='WPA2-WPA3-Personal'\"" | grep 'ModeEnabled=' | sed '/^$/d' | grep -v '>'
+  WiFi.AccessPoint.\d+.Security.ModeEnabled="WPA2-WPA3-Personal" (re)
+  WiFi.AccessPoint.\d+.Security.ModeEnabled="WPA2-WPA3-Personal" (re)
+  WiFi.AccessPoint.\d+.Security.ModeEnabled="WPA2-WPA3-Personal" (re)
 
-  $ R "ba-cli \"WiFi.AccessPoint.[RadioReference == 'WiFi.Radio.radio0_band1'].Security.ModeEnabled='WPA2-WPA3-Personal'\" > /dev/null "
+  $ R "ba-cli  \"WiFi.AccessPoint.[RadioReference == 'Device.WiFi.Radio.2'].Security.ModeEnabled='WPA2-WPA3-Personal'\"" | grep 'ModeEnabled=' | sed '/^$/d' | grep -v '>'
+  WiFi.AccessPoint.\d+.Security.ModeEnabled="WPA2-WPA3-Personal" (re)
+  WiFi.AccessPoint.\d+.Security.ModeEnabled="WPA2-WPA3-Personal" (re)
+  WiFi.AccessPoint.\d+.Security.ModeEnabled="WPA2-WPA3-Personal" (re)
 
-  $ R "ba-cli \"WiFi.AccessPoint.[RadioReference == 'WiFi.Radio.radio0_band2'].Security.ModeEnabled='WPA3-Personal'\" > /dev/null "
+  $ R "ba-cli  \"WiFi.AccessPoint.[RadioReference == 'Device.WiFi.Radio.3'].Security.ModeEnabled='WPA3-Personal'\"" | grep 'ModeEnabled=' | sed '/^$/d' | grep -v '>'
+  WiFi.AccessPoint.\d+.Security.ModeEnabled="WPA3-Personal" (re)
+  WiFi.AccessPoint.\d+.Security.ModeEnabled="WPA3-Personal" (re)
+  WiFi.AccessPoint.\d+.Security.ModeEnabled="WPA3-Personal" (re)
 
 Check the default ChipsetVendor param configurations:
 
