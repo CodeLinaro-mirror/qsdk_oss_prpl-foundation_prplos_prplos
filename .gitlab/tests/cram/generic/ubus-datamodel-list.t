@@ -407,6 +407,7 @@ Check that ubus has expected datamodels available:
   WiFi.Radio
   WiFi.SSID
   WiFi.Vendor
+  WiFi.Vendor.MLD
   WiFi.bSTAMLD
   WiFi.wps_DefParam
   WiFiScheduler
