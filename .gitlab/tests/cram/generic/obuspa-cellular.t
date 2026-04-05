@@ -8,6 +8,7 @@ If test is running on a Mozart, Turris, OSPv1 or Haze, lets skip the test as the
 Check that obuspa has expected datamodel available for cellular:
 
   $ R "obuspa -f /etc/obuspa.db -c dump datamodel | grep '^Device.Cellular.'"
+  [1]
 
 Check that USP stack is handling the reconnection scenario properly PCF-1198/PPW-65 by restarting obuspa:
 
@@ -16,3 +17,4 @@ Check that USP stack is handling the reconnection scenario properly PCF-1198/PPW
 Check that obuspa provides the same datamodel for cellular again:
 
   $ R "obuspa -f /etc/obuspa.db -c dump datamodel | grep '^Device.Cellular.'"
+  [1]
