@@ -7,7 +7,7 @@ feeds:
 
   - name: feed_prplmesh
     uri: https://gitlab.com/prpl-foundation/prplos/feeds/feed-prplmesh.git
-    revision: main@547d08e1c46f3a8ec8c4a0f6f1837e328a1268e4
+    revision: PPW-1749-owe-getStationStats-fix@3719de0491195f41a26b58ab3624e7cb40d83655
 
   - name: feed_prplos
     uri: https://gitlab.com/prpl-foundation/prplos/feeds/feed-prplos.git
