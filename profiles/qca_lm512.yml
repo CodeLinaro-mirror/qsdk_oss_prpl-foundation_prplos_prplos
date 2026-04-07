@@ -1,0 +1,7 @@
+---
+description: Enable qca LM512 for IPQ boards
+
+diffconfig: |
+  CONFIG_KERNEL_ALLOC_SKB_PAGE_FRAG_DISABLE=y
+  CONFIG_KERNEL_IPQ_MEM_PROFILE=512
+  CONFIG_KERNEL_SKB_FIXED_SIZE_2K=y
