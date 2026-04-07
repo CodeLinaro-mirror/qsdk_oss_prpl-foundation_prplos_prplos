@@ -21,6 +21,7 @@ Assure expected build configuration (PCF-1413):
   CONFIG_BIND_ENABLE_DOH=y
   CONFIG_BUILD_LOG=y
   CONFIG_BUILD_SDK="prplos"
+  CONFIG_BUSYBOX_CONFIG_DEVMEM=y
   CONFIG_BUSYBOX_CONFIG_FEATURE_FIND_INUM=y
   CONFIG_BUSYBOX_CONFIG_FEATURE_TFTP_GET=y
   CONFIG_BUSYBOX_CONFIG_FEATURE_TFTP_PUT=y
@@ -130,6 +131,7 @@ Assure expected build configuration (PCF-1413):
   CONFIG_KERNEL_CGROUP_DEVICE=y
   CONFIG_KERNEL_CGROUP_FREEZER=y
   CONFIG_KERNEL_CGROUP_PERF=y
+  CONFIG_KERNEL_DEVMEM=y
   CONFIG_KERNEL_FTRACE=y
   CONFIG_KERNEL_GIT_CLONE_URI="https://github.com/maxlinear/linux.git"
   CONFIG_KERNEL_GIT_LOCAL_REPOSITORY=""
@@ -195,6 +197,7 @@ Assure expected build configuration (PCF-1413):
   CONFIG_PACKAGE_ca-certificates=y
   CONFIG_PACKAGE_cellular-manager=y
   CONFIG_PACKAGE_chrony-prpl=y
+  CONFIG_PACKAGE_conntrack=y
   CONFIG_PACKAGE_cthulhu=y
   CONFIG_PACKAGE_cthulhu-capabilities=y
   CONFIG_PACKAGE_cthulhu-dhcpc=y
@@ -349,7 +352,6 @@ Assure expected build configuration (PCF-1413):
   CONFIG_PACKAGE_kmod-mxl_eth_drv=y
   CONFIG_PACKAGE_kmod-mxl_gpy=y
   CONFIG_PACKAGE_kmod-mxl_lgm_toe=y
-  CONFIG_PACKAGE_kmod-mxl_pon_hgu_vuni_lgm=y
   CONFIG_PACKAGE_kmod-mxl_vpn=y
   CONFIG_PACKAGE_kmod-nat46=y
   CONFIG_PACKAGE_kmod-nf-conncount=y
@@ -359,6 +361,8 @@ Assure expected build configuration (PCF-1413):
   CONFIG_PACKAGE_kmod-nf-nat6=y
   CONFIG_PACKAGE_kmod-nf-nathelper=y
   CONFIG_PACKAGE_kmod-nf-nathelper-extra=y
+  CONFIG_PACKAGE_kmod-nfnetlink-cthelper=y
+  CONFIG_PACKAGE_kmod-nfnetlink-cttimeout=y
   CONFIG_PACKAGE_kmod-nfnetlink-queue=y
   CONFIG_PACKAGE_kmod-nft-bridge=y
   CONFIG_PACKAGE_kmod-nft-fib=m
@@ -490,6 +494,8 @@ Assure expected build configuration (PCF-1413):
   CONFIG_PACKAGE_libmsgapi=y
   CONFIG_PACKAGE_libncurses=y
   CONFIG_PACKAGE_libnetfilter-conntrack=y
+  CONFIG_PACKAGE_libnetfilter-cthelper=y
+  CONFIG_PACKAGE_libnetfilter-cttimeout=y
   CONFIG_PACKAGE_libnetfilter-queue=y
   CONFIG_PACKAGE_libnetlink-utils=y
   CONFIG_PACKAGE_libnetmodel=y
