@@ -151,3 +151,5 @@ diffconfig: |
           # CONFIG_BUSYBOX_CONFIG_NTPD is not set
           CONFIG_SAH_AMX_USERMANAGEMENT_DISABLE_PASSWORD_HASHED_FORMAT_STORAGE=y
           CONFIG_INCLUDE_CONFIG=y
+          CONFIG_PACKAGE_prplmesh=m
+          CONFIG_PACKAGE_pwhm=y
