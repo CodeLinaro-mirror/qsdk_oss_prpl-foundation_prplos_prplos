@@ -43,7 +43,6 @@ additional_packages:
       - kmod-fs-vfat
       - kmod-fs-ntfs
       - qca-wifi-scripts
-      - wifi-scripts
       - kmod-qca-nss-dp
       - kmod-qca-nss-dscpstats
       - kmod-qca-nss-flowmgr
@@ -158,6 +157,7 @@ packages:
   - tcpdump
   - taskset
   - freedom-lcm-partitioner
+  - wifi-scripts
 
 diffconfig: |
   CONFIG_TARGET_INITRAMFS_COMPRESSION_LZMA=y

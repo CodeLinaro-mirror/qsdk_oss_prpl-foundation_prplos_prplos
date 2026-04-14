@@ -38,7 +38,6 @@ additional_packages:
   - feed: wlan_utils
     packages:
       - qca-wifi-scripts
-      - wifi-scripts
       - wlan-telemetry
   - feed: ssdk
     packages:
@@ -174,6 +173,7 @@ packages:
   - tcpdump
   - taskset
   - freedom-lcm-partitioner
+  - wifi-scripts
 
 diffconfig: |
   CONFIG_TARGET_INITRAMFS_COMPRESSION_LZMA=y
