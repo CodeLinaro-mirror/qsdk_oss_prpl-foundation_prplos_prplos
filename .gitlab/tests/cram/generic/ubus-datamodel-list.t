@@ -14,6 +14,8 @@ Check that ubus has expected datamodels available:
   Buttons
   Buttons.Action
   Buttons.Button
+  CPUs
+  CPUs.CPU
   CaptivePortal
   CaptivePortal.LANInterface
   ConMon
@@ -23,10 +25,15 @@ Check that ubus has expected datamodels available:
   Cthulhu
   Cthulhu.Config
   Cthulhu.Config.Debug
+  Cthulhu.Config.LocalPolicyManager
   Cthulhu.Config.Syslog
   Cthulhu.Container
   Cthulhu.Container.Instances
   Cthulhu.Information
+  Cthulhu.Information.LocalPolicyManager
+  Cthulhu.Information.LocalPolicyManager.Action
+  Cthulhu.LocalManagement
+  Cthulhu.LocalManagement.Action
   Cthulhu.Plugins
   Cthulhu.PluginsPrivate
   Cthulhu.PluginsPrivate.NetworkConfig
@@ -85,6 +92,7 @@ Check that ubus has expected datamodels available:
   Device.Ethernet
   Device.Firewall
   Device.Hardware
+  Device.Hardware.CPUs
   Device.Hardware.X_PRPLWARE-COM_FlashDevice
   Device.HomePlug
   Device.Hosts
@@ -119,7 +127,6 @@ Check that ubus has expected datamodels available:
   Device.UserInterface
   Device.Users
   Device.WiFi
-  Device.WiFi.Sensing
   Device.XPON
   Device.X_PRPLWARE-COM_Buttons
   Device.X_PRPLWARE-COM_ConMon
@@ -168,12 +175,12 @@ Check that ubus has expected datamodels available:
   Firewall.DMZ
   Firewall.InterfaceSetting
   Firewall.Level
+  Firewall.Log
   Firewall.Pinhole
   Firewall.Policy
   Firewall.Service
   Firewall.Set
   Firewall.X_PRPLWARE-COM_InterfaceSetting
-  Firewall.X_PRPLWARE-COM_Log
   Firewall.X_PRPLWARE-COM_WANAccess
   Firewall.X_PRPLWARE-COM_WANAccess.BlockList
   GenericNetworkInterface
@@ -329,11 +336,14 @@ Check that ubus has expected datamodels available:
   SSH.AuthorizedKey
   SSH.Server
   Security
+  Security.CABundle
   Security.Certificate
   SoftwareModules
   SoftwareModules.DeploymentUnit
   SoftwareModules.ExecEnv
   SoftwareModules.ExecutionUnit
+  SoftwareModules.LocalManagement
+  SoftwareModules.LocalManagement.Action
   SoftwareModules.NetworkConfig
   SoftwareModules.NetworkConfig.Interfaces
   Syslog
@@ -374,7 +384,8 @@ Check that ubus has expected datamodels available:
   USB.USBHosts
   USB.USBHosts.AllowedDevice
   USB.USBHosts.Host
-  Unbound
+  Unbound-br-lan
+  Unbound-lo
   UserInterface
   UserInterface.HTTPAccess
   Users
@@ -410,38 +421,133 @@ Check that ubus has expected datamodels available:
   X_PRPLWARE-COM_Agent.Info
   X_PRPLWARE-COM_Agent.Info.Fronthaul
   X_PRPLWARE-COM_Agent.WPS
-  X_PRPLWARE-COM_Device
-  X_PRPLWARE-COM_Device.SelfTestDiagnosticsCmd
-  X_PRPLWARE-COM_Device.SelfTestDiagnosticsCmd.Output
-  X_PRPLWARE-COM_SoftwareModules
-  X_PRPLWARE-COM_SoftwareModules.AddExecEnvCmd
-  X_PRPLWARE-COM_SoftwareModules.AddExecEnvCmd.Input
-  X_PRPLWARE-COM_SoftwareModules.DeploymentUnitUninstallCmd
-  X_PRPLWARE-COM_SoftwareModules.DeploymentUnitUninstallCmd.Input
-  X_PRPLWARE-COM_SoftwareModules.DeploymentUnitUpdateCmd
-  X_PRPLWARE-COM_SoftwareModules.DeploymentUnitUpdateCmd.Input
-  X_PRPLWARE-COM_SoftwareModules.DeploymentUnitUpdateCmd.Input.EnvVariable
-  X_PRPLWARE-COM_SoftwareModules.DeploymentUnitUpdateCmd.Input.HostObject
-  X_PRPLWARE-COM_SoftwareModules.DeploymentUnitUpdateCmd.Input.NetworkConfig
-  X_PRPLWARE-COM_SoftwareModules.ExecEnvDeleteCmd
-  X_PRPLWARE-COM_SoftwareModules.ExecEnvRestartCmd
-  X_PRPLWARE-COM_SoftwareModules.ExecEnvRestartCmd.Input
-  X_PRPLWARE-COM_SoftwareModules.InstallDUCmd
-  X_PRPLWARE-COM_SoftwareModules.InstallDUCmd.Input
-  X_PRPLWARE-COM_SoftwareModules.InstallDUCmd.Input.EnvVariable
-  X_PRPLWARE-COM_SoftwareModules.InstallDUCmd.Input.HostObject
-  X_PRPLWARE-COM_SoftwareModules.InstallDUCmd.Input.NetworkConfig
-  X_PRPLWARE-COM_SoftwareModules.ModifyAvailableRolesCmd
-  X_PRPLWARE-COM_SoftwareModules.ModifyAvailableRolesCmd.Input
-  X_PRPLWARE-COM_SoftwareModules.ModifyConstraintsCmd
-  X_PRPLWARE-COM_SoftwareModules.ModifyConstraintsCmd.Input
-  X_PRPLWARE-COM_SoftwareModules.ModifyNetworkConfigCmd
-  X_PRPLWARE-COM_SoftwareModules.ModifyNetworkConfigCmd.Input
-  X_PRPLWARE-COM_SoftwareModules.ModifyNetworkConfigCmd.Input.NetworkConfig
-  X_PRPLWARE-COM_SoftwareModules.SetRequestedStateCmd
-  X_PRPLWARE-COM_SoftwareModules.SetRequestedStateCmd.Input
-  X_PRPLWARE-COM_SoftwareModules.SetRunLevelCmd
-  X_PRPLWARE-COM_SoftwareModules.SetRunLevelCmd.Input
+  X_PRPLWARE-COM_Controller
+  X_PRPLWARE-COM_Controller.AgentConnectedEvent
+  X_PRPLWARE-COM_Controller.AgentConnectedEvent.AgentConnected
+  X_PRPLWARE-COM_Controller.AgentConnectedEvent.AgentConnected.Neighbor
+  X_PRPLWARE-COM_Controller.AgentConnectedEvent.AgentConnected.Radio
+  X_PRPLWARE-COM_Controller.AgentConnectedEvent.AgentConnected.Radio.BSS
+  X_PRPLWARE-COM_Controller.AgentConnectedEvent.AgentConnected.Radio.BSS.STA
+  X_PRPLWARE-COM_Controller.AgentDisconnectedEvent
+  X_PRPLWARE-COM_Controller.AgentDisconnectedEvent.AgentDisconnected
+  X_PRPLWARE-COM_Controller.AgentDisconnectedEvent.AgentDisconnected.Neighbor
+  X_PRPLWARE-COM_Controller.AgentDisconnectedEvent.AgentDisconnected.Radio
+  X_PRPLWARE-COM_Controller.AgentDisconnectedEvent.AgentDisconnected.Radio.BSS
+  X_PRPLWARE-COM_Controller.AgentDisconnectedEvent.AgentDisconnected.Radio.BSS.STA
+  X_PRPLWARE-COM_Controller.Configuration
+  X_PRPLWARE-COM_Controller.Configuration.QoS
+  X_PRPLWARE-COM_Controller.Configuration.TrafficSeparation
+  X_PRPLWARE-COM_Controller.SteerEvent
+  X_PRPLWARE-COM_ProcessManager
+  X_PRPLWARE-COM_ProcessManager.PWHM
+  X_PRPLWARE-COM_ProcessManager.PrplMesh
+  X_PRPLWARE-COM_ProcessManager.Sensing
+  X_PRPLWARE-COM_WiFiController
+  X_PRPLWARE-COM_WiFiController.AssociationEvent
+  X_PRPLWARE-COM_WiFiController.AssociationEvent.AssociationEventData
+  X_PRPLWARE-COM_WiFiController.AssociationEvent.AssociationEventData.HTCapabilities
+  X_PRPLWARE-COM_WiFiController.AssociationEvent.AssociationEventData.VHTCapabilities
+  X_PRPLWARE-COM_WiFiController.AssociationEvent.AssociationEventData.WiFi6Capabilities
+  X_PRPLWARE-COM_WiFiController.AssociationEvent.AssociationEventData.WiFi6Capabilities.MCSNSS
+  X_PRPLWARE-COM_WiFiController.DisassociationEvent
+  X_PRPLWARE-COM_WiFiController.DisassociationEvent.DisassociationEventData
+  X_PRPLWARE-COM_WiFiController.FailedConnectionEvent
+  X_PRPLWARE-COM_WiFiController.FailedConnectionEvent.FailedConnectionEventData
+  X_PRPLWARE-COM_WiFiController.Network
+  X_PRPLWARE-COM_WiFiController.Network.AccessPoint
+  X_PRPLWARE-COM_WiFiController.Network.AccessPoint.Security
+  X_PRPLWARE-COM_WiFiController.Network.Device
+  X_PRPLWARE-COM_WiFiController.Network.Device.APMLD
+  X_PRPLWARE-COM_WiFiController.Network.Device.APMLD.APMLDConfig
+  X_PRPLWARE-COM_WiFiController.Network.Device.APMLD.AffiliatedAP
+  X_PRPLWARE-COM_WiFiController.Network.Device.APMLD.STAMLD
+  X_PRPLWARE-COM_WiFiController.Network.Device.APMLD.STAMLD.AffiliatedSTA
+  X_PRPLWARE-COM_WiFiController.Network.Device.APMLD.STAMLD.STAMLDConfig
+  X_PRPLWARE-COM_WiFiController.Network.Device.APMLD.STAMLD.STATIDLinkMap
+  X_PRPLWARE-COM_WiFiController.Network.Device.APMLD.STAMLD.WiFi7Capabilities
+  X_PRPLWARE-COM_WiFiController.Network.Device.APMLD.TIDLinkMap
+  X_PRPLWARE-COM_WiFiController.Network.Device.BTMSteeringDisallowedSTAList
+  X_PRPLWARE-COM_WiFiController.Network.Device.CACStatus
+  X_PRPLWARE-COM_WiFiController.Network.Device.CACStatus.CACActiveChannel
+  X_PRPLWARE-COM_WiFiController.Network.Device.CACStatus.CACAvailableChannel
+  X_PRPLWARE-COM_WiFiController.Network.Device.CACStatus.CACNonOccupancyChannel
+  X_PRPLWARE-COM_WiFiController.Network.Device.Default8021Q
+  X_PRPLWARE-COM_WiFiController.Network.Device.IEEE1905Security
+  X_PRPLWARE-COM_WiFiController.Network.Device.Interface
+  X_PRPLWARE-COM_WiFiController.Network.Device.Interface.Neighbor
+  X_PRPLWARE-COM_WiFiController.Network.Device.Interface.Stats
+  X_PRPLWARE-COM_WiFiController.Network.Device.LocalSteeringDisallowedSTA
+  X_PRPLWARE-COM_WiFiController.Network.Device.MultiAPCapabilities
+  X_PRPLWARE-COM_WiFiController.Network.Device.MultiAPDevice
+  X_PRPLWARE-COM_WiFiController.Network.Device.MultiAPDevice.Backhaul
+  X_PRPLWARE-COM_WiFiController.Network.Device.MultiAPDevice.Backhaul.CurrentOperatingClassProfile
+  X_PRPLWARE-COM_WiFiController.Network.Device.MultiAPDevice.Backhaul.Stats
+  X_PRPLWARE-COM_WiFiController.Network.Device.Radio
+  X_PRPLWARE-COM_WiFiController.Network.Device.Radio.BSS
+  X_PRPLWARE-COM_WiFiController.Network.Device.Radio.BSS.MultiAPSteering
+  X_PRPLWARE-COM_WiFiController.Network.Device.Radio.BSS.STA
+  X_PRPLWARE-COM_WiFiController.Network.Device.Radio.BSS.STA.HTCapabilities
+  X_PRPLWARE-COM_WiFiController.Network.Device.Radio.BSS.STA.MeasurementReport
+  X_PRPLWARE-COM_WiFiController.Network.Device.Radio.BSS.STA.MultiAPSTA
+  X_PRPLWARE-COM_WiFiController.Network.Device.Radio.BSS.STA.MultiAPSTA.SteeringHistory
+  X_PRPLWARE-COM_WiFiController.Network.Device.Radio.BSS.STA.MultiAPSTA.SteeringSummaryStats
+  X_PRPLWARE-COM_WiFiController.Network.Device.Radio.BSS.STA.TIDQueueSizes
+  X_PRPLWARE-COM_WiFiController.Network.Device.Radio.BSS.STA.VHTCapabilities
+  X_PRPLWARE-COM_WiFiController.Network.Device.Radio.BSS.STA.WiFi6Capabilities
+  X_PRPLWARE-COM_WiFiController.Network.Device.Radio.BSS.STA.WiFi6Capabilities.MCSNSS
+  X_PRPLWARE-COM_WiFiController.Network.Device.Radio.BackhaulSta
+  X_PRPLWARE-COM_WiFiController.Network.Device.Radio.CACCapability
+  X_PRPLWARE-COM_WiFiController.Network.Device.Radio.CACCapability.CACMethod
+  X_PRPLWARE-COM_WiFiController.Network.Device.Radio.CACCapability.CACMethod.OpClassChannels
+  X_PRPLWARE-COM_WiFiController.Network.Device.Radio.CACCapability.CACMethod.OpClassChannels.Channel
+  X_PRPLWARE-COM_WiFiController.Network.Device.Radio.Capabilities
+  X_PRPLWARE-COM_WiFiController.Network.Device.Radio.Capabilities.AKMBackhaul
+  X_PRPLWARE-COM_WiFiController.Network.Device.Radio.Capabilities.AKMFrontHaul
+  X_PRPLWARE-COM_WiFiController.Network.Device.Radio.Capabilities.HTCapabilities
+  X_PRPLWARE-COM_WiFiController.Network.Device.Radio.Capabilities.OperatingClasses
+  X_PRPLWARE-COM_WiFiController.Network.Device.Radio.Capabilities.OperatingClasses.NonOperable
+  X_PRPLWARE-COM_WiFiController.Network.Device.Radio.Capabilities.VBSSCapabilities
+  X_PRPLWARE-COM_WiFiController.Network.Device.Radio.Capabilities.VHTCapabilities
+  X_PRPLWARE-COM_WiFiController.Network.Device.Radio.Capabilities.WiFi6APRole
+  X_PRPLWARE-COM_WiFiController.Network.Device.Radio.Capabilities.WiFi6APRole.MCSNSS
+  X_PRPLWARE-COM_WiFiController.Network.Device.Radio.Capabilities.WiFi6Capabilities
+  X_PRPLWARE-COM_WiFiController.Network.Device.Radio.Capabilities.WiFi6Capabilities.MCSNSS
+  X_PRPLWARE-COM_WiFiController.Network.Device.Radio.Capabilities.WiFi6bSTARole
+  X_PRPLWARE-COM_WiFiController.Network.Device.Radio.Capabilities.WiFi6bSTARole.MCSNSS
+  X_PRPLWARE-COM_WiFiController.Network.Device.Radio.Capabilities.WiFi7APRole
+  X_PRPLWARE-COM_WiFiController.Network.Device.Radio.Capabilities.WiFi7APRole.EMLMRFreqSeparation
+  X_PRPLWARE-COM_WiFiController.Network.Device.Radio.Capabilities.WiFi7APRole.EMLSRFreqSeparation
+  X_PRPLWARE-COM_WiFiController.Network.Device.Radio.Capabilities.WiFi7APRole.NSTRFreqSeparation
+  X_PRPLWARE-COM_WiFiController.Network.Device.Radio.Capabilities.WiFi7APRole.STRFreqSeparation
+  X_PRPLWARE-COM_WiFiController.Network.Device.Radio.Capabilities.WiFi7bSTARole
+  X_PRPLWARE-COM_WiFiController.Network.Device.Radio.Capabilities.WiFi7bSTARole.EMLMRFreqSeparation
+  X_PRPLWARE-COM_WiFiController.Network.Device.Radio.Capabilities.WiFi7bSTARole.EMLSRFreqSeparation
+  X_PRPLWARE-COM_WiFiController.Network.Device.Radio.Capabilities.WiFi7bSTARole.NSTRFreqSeparation
+  X_PRPLWARE-COM_WiFiController.Network.Device.Radio.Capabilities.WiFi7bSTARole.STRFreqSeparation
+  X_PRPLWARE-COM_WiFiController.Network.Device.Radio.CurrentOperatingClassProfile
+  X_PRPLWARE-COM_WiFiController.Network.Device.Radio.ScanCapability
+  X_PRPLWARE-COM_WiFiController.Network.Device.Radio.ScanCapability.OpClassChannels
+  X_PRPLWARE-COM_WiFiController.Network.Device.Radio.ScanCapability.OpClassChannels.Channel
+  X_PRPLWARE-COM_WiFiController.Network.Device.Radio.ScanResult
+  X_PRPLWARE-COM_WiFiController.Network.Device.Radio.ScanResult.OpClassScan
+  X_PRPLWARE-COM_WiFiController.Network.Device.Radio.ScanResult.OpClassScan.ChannelScan
+  X_PRPLWARE-COM_WiFiController.Network.Device.Radio.ScanResult.OpClassScan.ChannelScan.NeighborBSS
+  X_PRPLWARE-COM_WiFiController.Network.Device.Radio.SpatialReuse
+  X_PRPLWARE-COM_WiFiController.Network.Device.Radio.UnassociatedSTA
+  X_PRPLWARE-COM_WiFiController.Network.Device.Radio.X_PRPLWARE-COM_CACCompletion
+  X_PRPLWARE-COM_WiFiController.Network.Device.Radio.X_PRPLWARE-COM_CACCompletion.Pairs
+  X_PRPLWARE-COM_WiFiController.Network.Device.SPRule
+  X_PRPLWARE-COM_WiFiController.Network.Device.SSIDtoVIDMapping
+  X_PRPLWARE-COM_WiFiController.Network.Device.bSTAMLD
+  X_PRPLWARE-COM_WiFiController.Network.Device.bSTAMLD.bSTAMLDConfig
+  X_PRPLWARE-COM_WiFiController.Network.MultiAPSteeringSummaryStats
+  X_PRPLWARE-COM_WiFiController.Network.X-PRPL_ORG_Group
+  X_PRPLWARE-COM_WiFiMapped
+  X_PRPLWARE-COM_WiFiMapped.WiFi
+  X_PRPLWARE-COM_WiFiMapped.WiFi.DataElements
+  X_PRPLWARE-COM_WiFiMapped.WiFi.DataElements.X_PRPLWARE-COM_Controller
+  X_PRPLWARE-COM_WiFiMapped.WiFi.X_PRPLWARE-COM_ProcessManager
+  X_PRPLWARE-COM_WiFiMapped.WiFi.X_PRPLWARE-COM_WiFiSensing
   X_PRPLWARE-COM_WiFiSensing
   X_PRPLWARE-COM_WiFiSensing.Session
   X_PRPLWARE-COM_WiFiSensing.Session.Exchange

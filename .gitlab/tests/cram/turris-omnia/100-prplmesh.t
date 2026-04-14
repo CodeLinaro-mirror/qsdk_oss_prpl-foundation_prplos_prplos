@@ -27,8 +27,11 @@ Check that wireless has desired configuration and state after boot:
 Restart prplmesh:
 
   $ R logger -t cram "Restart prplmesh"
-  $ R "( /etc/init.d/prplmesh gateway_mode ; sleep 2 ) > /tmp/prplmesh-gw-mode.log 2>&1 ; logger -t prplmesh-gateway-mode < /tmp/prplmesh-gw-mode.log"
 
+  $ R "ba-cli X_PRPLWARE-COM_ProcessManager.PrplMesh.ManagementMode=Multi-AP-Controller-and-Agent"  > /dev/null
+  $ R "ba-cli -l X_PRPLWARE-COM_ProcessManager.PrplMesh.Enable=1" | tr -d '\n'
+  1 (no-eol)
+  
   $ R "ubus -t 60 wait_for X_PRPLWARE-COM_WiFiController.Network.Device.1"
 
 
@@ -131,18 +134,25 @@ Check that prplmesh processes are running:
 Check that prplmesh is operational:
 
   $ R logger -t cram "Check that prplmesh is operational"
-  $ R "/opt/prplmesh/scripts/prplmesh_utils.sh status" | LC_ALL=C sort
-  \x1b[0m (esc)
-  \x1b[0m\x1b[1;32mOK Main radio agent operational (esc)
-  \x1b[1;32moperational test success! (esc)
-  /opt/prplmesh/scripts/prplmesh_utils.sh: status
-  [0-9]+ beerocks_contro (re)
-  [0-9]+ beerocks_agent (re)
-  [0-9]+ beerocks_fronth (re)
-  [0-9]+ beerocks_fronth (re)
-  OK wlan0 radio agent operational
-  OK wlan1 radio agent operational
-  executing operational test using bml
+  $ R "/opt/prplmesh/bin/prplmesh_cli -c status -o pretty" | sed 's/\t/        /g'
+  Mode: Agent+Controller
+  Controller:
+          bridge MAC: [0-9A-F]{2}:[0-9A-F]{2}:[0-9A-F]{2}:[0-9A-F]{2}:[0-9A-F]{2}:[0-9A-F]{2} (re)
+          1 agent(s) connected
+  Agent:
+          MAC address: [0-9A-F]{2}:[0-9A-F]{2}:[0-9A-F]{2}:[0-9A-F]{2}:[0-9A-F]{2}:[0-9A-F]{2} (re)
+          management mode: Multi-AP-Controller-and-Agent
+          fronthaul ifaces: wlan0,wlan1
+          current state: OPERATIONAL
+          best state: OPERATIONAL
+          Fronthaul:
+                  interface: wlan0
+                  current state: OPERATIONAL
+                  best state: OPERATIONAL
+          Fronthaul:
+                  interface: wlan1
+                  current state: OPERATIONAL
+                  best state: OPERATIONAL
 
 Check that prplmesh is in operational state:
 
