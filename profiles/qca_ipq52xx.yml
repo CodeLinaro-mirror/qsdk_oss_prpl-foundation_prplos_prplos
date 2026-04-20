@@ -122,6 +122,7 @@ additional_packages:
       - kmod-qca-sdc-drv
       - kmod-qca-sac-drv
       - kmod-qca-mdio
+      - kmod-qca-debug-uio
       - qca-nsm-app
       - qca-sal-qos-test
       - qca-sal-rule-test
