@@ -1,8 +1,6 @@
 ---
 profiles:
-  - qcom_alxx
   - prpl_freedom
-  - qcom_rdp433
 target: ipq95xx
 subtarget: generic
 external_target: True
@@ -34,6 +32,7 @@ additional_packages:
   - feed: wlan_utils
     packages:
       - qca-wifi-scripts
+      - wifi-scripts
       - wlan-telemetry
   - feed: ssdk
     packages:
@@ -166,11 +165,11 @@ packages:
   - tcpdump
   - taskset
   - freedom-lcm-partitioner
-  - wifi-scripts
 
 diffconfig: |
   CONFIG_TARGET_INITRAMFS_COMPRESSION_LZMA=y
   CONFIG_BUSYBOX_CUSTOM=y
+  CONFIG_TARGET_ipq95xx_generic_DEVICE_qcom_alxx=y
   CONFIG_KERNEL_HWMON=y
   CONFIG_BUSYBOX_CONFIG_USLEEP=y
   CONFIG_BUSYBOX_CONFIG_BLOCKDEV=y
@@ -218,6 +217,3 @@ diffconfig: |
   CONFIG_PACKAGE_qti-license-pfm=m
   CONFIG_PACKAGE_pm-utils=m
   CONFIG_PACKAGE_qti-softsku-license-loader-libs=m
-  # CONFIG_PACKAGE_wififw_mount_script is not set
-  # CONFIG_KERNEL_SWAP is not set
-  # CONFIG_BUSYBOX_CONFIG_DEVMEM is not set
