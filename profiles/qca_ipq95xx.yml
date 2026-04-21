@@ -217,6 +217,3 @@ diffconfig: |
   CONFIG_PACKAGE_qti-license-pfm=m
   CONFIG_PACKAGE_pm-utils=m
   CONFIG_PACKAGE_qti-softsku-license-loader-libs=m
-  # CONFIG_PACKAGE_wififw_mount_script is not set
-  # CONFIG_KERNEL_SWAP is not set
-  # CONFIG_BUSYBOX_CONFIG_DEVMEM is not set
