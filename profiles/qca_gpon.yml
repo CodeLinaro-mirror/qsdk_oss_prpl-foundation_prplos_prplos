@@ -12,3 +12,5 @@ additional_packages:
       - util-ubus
       - omci
       - onu-hal-agent
+      - omci-pon
+      - nss-pon-drv
