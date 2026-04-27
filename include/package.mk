@@ -23,6 +23,8 @@ else
 PKG_JOBS?=$(if $(PKG_BUILD_PARALLEL),$(MAKE_J),-j1)
 endif
 
+PKG_SOURCE_SUBMODULES:=skip
+
 PKG_BUILD_FLAGS?=
 __unknown_flags=$(filter-out no-iremap no-mips16 gc-sections no-gc-sections lto no-lto no-mold,$(PKG_BUILD_FLAGS))
 ifneq ($(__unknown_flags),)
