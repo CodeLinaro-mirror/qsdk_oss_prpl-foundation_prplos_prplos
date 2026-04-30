@@ -138,6 +138,8 @@ additional_packages:
       - softsku_sdk
       - softsku_qwin_agent
       - wasm-container-interfaces
+      - omci-pon
+      - nss-pon-drv
 
 packages:
   - e2fsprogs
