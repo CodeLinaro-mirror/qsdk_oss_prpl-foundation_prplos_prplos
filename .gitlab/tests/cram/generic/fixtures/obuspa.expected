@@ -5345,6 +5345,7 @@ Device.WiFi.Radio.{i}.X_PRPLWARE-COM_Sensing.addClient() input:Receiver
 Device.WiFi.Radio.{i}.X_PRPLWARE-COM_Sensing.csiStats()                                              proto::prplmesh-dm-mapper
 Device.WiFi.Radio.{i}.X_PRPLWARE-COM_Sensing.delClient()                                             proto::prplmesh-dm-mapper
 Device.WiFi.Radio.{i}.X_PRPLWARE-COM_Sensing.delClient() input:MACAddress
+Device.WiFi.Radio.{i}.X_PRPLWARE-COM_SetRadioPowerDown()                                             proto::prplmesh-dm-mapper
 Device.WiFi.Radio.{i}.X_PRPLWARE-COM_SupportedSensingDataTypes                                       proto::prplmesh-dm-mapper
 Device.WiFi.Radio.{i}.X_PRPLWARE-COM_SupportedSensingExchangeTypes                                   proto::prplmesh-dm-mapper
 Device.WiFi.Radio.{i}.X_PRPLWARE-COM_getRadioAirStats()                                              proto::prplmesh-dm-mapper
