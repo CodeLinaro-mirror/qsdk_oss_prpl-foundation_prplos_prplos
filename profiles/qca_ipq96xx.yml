@@ -137,6 +137,7 @@ additional_packages:
       - softsku_qwin_agent
       - wasm-container-interfaces
       - qca-cfg80211tool
+      - qca-rfs-tftp
 
 packages:
   - e2fsprogs
