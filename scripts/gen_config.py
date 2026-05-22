@@ -60,6 +60,10 @@ def load_yaml(fname: str, profile: dict, seen: Set[str]):
                 if profile.get(n):
                     die(f"Duplicate tag found {n}")
                 profile.update({n: new.get(n)})
+            elif n in {"subtarget_suffix"}:
+                if profile.get(n):
+                    die(f"Duplicate tag found {n}")
+                profile.update({n: new.get(n)})
             elif n in {"description"}:
                 profile["description"].append(new.get(n))
             elif n in {"packages"}:
@@ -178,10 +182,13 @@ profile = {
     "packages": [],
     "profiles": [],
     "packages_remove": [],
+    "subtarget_suffix": "",
 }
 
 profile = load_yaml_list(sys.argv[1:], profile)
 
+if profile.get("subtarget_suffix"):
+    profile["subtarget"] = profile["target"] + profile["subtarget_suffix"]
 
 if getenv("GENCONFIG_VERBOSE"):
     print(yaml.dump(profile))
