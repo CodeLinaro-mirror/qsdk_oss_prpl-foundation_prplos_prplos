@@ -96,6 +96,7 @@ additional_packages:
       - kmod-qca-nss-ppe-netlink
       - kmod-qca-nss-netfn
       - kmod-qca-net-standby
+      - kmod-rsrcmgr-netstandby-drv
       - kmod-qca-nss-nsm
       - kmod-qca-nss-ppe-dtlsmgr
       - kmod-qca8k

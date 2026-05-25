@@ -102,6 +102,7 @@ additional_packages:
       - nss-tcp-st-cli
       - nss-udp-st
       - netstandby-drv
+      - kmod-rsrcmgr-netstandby-drv
       - kmod-qca-nss-nsm
       - mcproxy
       - kmod-qca-mmap-telemetry
