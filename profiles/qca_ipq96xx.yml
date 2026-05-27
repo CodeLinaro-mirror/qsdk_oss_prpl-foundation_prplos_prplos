@@ -136,6 +136,7 @@ additional_packages:
       - softsku_sdk
       - softsku_qwin_agent
       - wasm-container-interfaces
+      - qca-cfg80211tool
 
 packages:
   - e2fsprogs
