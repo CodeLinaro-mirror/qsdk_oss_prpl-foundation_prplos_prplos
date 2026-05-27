@@ -134,6 +134,7 @@ additional_packages:
       - package_manager_agent
       - qti-license-pfm
       - pm-utils
+      - qca-cfg80211tool
 
 packages:
   - e2fsprogs
