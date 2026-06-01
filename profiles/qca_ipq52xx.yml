@@ -96,6 +96,7 @@ additional_packages:
       - kmod-qca-ovsmgr
       - kmod-macvlan
       - wpad-mesh-openssl
+      - wpad-macsec
       - hostapd-common
       - hostapd-utils
       - ath-wifi-scripts
