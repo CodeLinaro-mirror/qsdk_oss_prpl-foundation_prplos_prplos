@@ -138,6 +138,7 @@ packages:
   - ath-wifi-scripts
   - kmod-bonding
   - wpad-mesh-openssl
+  - wpad-macsec
   - kmod-pptp
   - kmod-crypto-authenc
   - kmod-qca-nss-dscpstats
