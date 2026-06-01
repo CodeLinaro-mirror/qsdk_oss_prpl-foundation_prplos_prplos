@@ -151,6 +151,7 @@ packages:
   - kmod-telemetry-agent
   - kmod-bootconfig
   - wpa-cli
+  - linuxptp
   - ethtool
   - tcpdump
   - taskset
