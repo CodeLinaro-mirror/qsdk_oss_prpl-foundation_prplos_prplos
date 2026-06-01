@@ -158,6 +158,7 @@ packages:
   - kmod-crypto-authenc
   - kmod-fs-vfat
   - kmod-bootconfig
+  - linuxptp
   - ethtool
   - tcpdump
   - taskset
