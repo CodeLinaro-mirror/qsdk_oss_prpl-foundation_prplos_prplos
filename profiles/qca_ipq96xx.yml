@@ -136,6 +136,7 @@ additional_packages:
       - softsku_sdk
       - softsku_qwin_agent
       - wasm-container-interfaces
+      - memory-dashboard
       - qca-cfg80211tool
 
 packages:
