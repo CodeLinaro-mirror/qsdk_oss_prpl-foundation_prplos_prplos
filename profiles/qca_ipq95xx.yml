@@ -1,6 +1,8 @@
 ---
 profiles:
+  - qcom_alxx
   - prpl_freedom
+  - qcom_rdp433
 target: ipq95xx
 subtarget: generic
 external_target: True
@@ -156,7 +158,6 @@ packages:
 diffconfig: |
   CONFIG_TARGET_INITRAMFS_COMPRESSION_LZMA=y
   CONFIG_BUSYBOX_CUSTOM=y
-  CONFIG_TARGET_ipq95xx_generic_DEVICE_qcom_alxx=y
   CONFIG_KERNEL_HWMON=y
   CONFIG_BUSYBOX_CONFIG_USLEEP=y
   CONFIG_BUSYBOX_CONFIG_BLOCKDEV=y
