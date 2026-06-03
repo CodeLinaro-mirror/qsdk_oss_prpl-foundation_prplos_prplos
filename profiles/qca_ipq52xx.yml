@@ -143,6 +143,7 @@ additional_packages:
       - wasm-container-interfaces
       - omci-pon
       - nss-pon-drv
+      - memory-dashboard
       - qca-cfg80211tool
 
 packages:
