@@ -141,6 +141,7 @@ additional_packages:
       - wifitelemetry
       - qca-rfs-tftp
       - rproc-fw-mount
+      - fastrpc
 
 packages:
   - e2fsprogs
