@@ -139,6 +139,7 @@ additional_packages:
       - memory-dashboard
       - qca-cfg80211tool
       - qca-rfs-tftp
+      - rproc-fw-mount
 
 packages:
   - e2fsprogs
