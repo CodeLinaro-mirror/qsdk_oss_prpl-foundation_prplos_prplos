@@ -137,6 +137,7 @@ additional_packages:
       - pm-utils
       - memory-dashboard
       - qca-cfg80211tool
+      - wifitelemetry
 
 packages:
   - e2fsprogs

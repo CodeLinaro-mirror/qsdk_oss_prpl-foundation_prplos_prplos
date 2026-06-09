@@ -145,6 +145,7 @@ additional_packages:
       - nss-pon-drv
       - memory-dashboard
       - qca-cfg80211tool
+      - wifitelemetry
 
 packages:
   - e2fsprogs
