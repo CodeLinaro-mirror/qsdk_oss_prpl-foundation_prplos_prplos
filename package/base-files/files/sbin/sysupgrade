@@ -33,6 +33,9 @@ export SAVE_CONFIG=1
 export IGNORE_MINOR_COMPAT=0
 export FORCE=0
 export CONFFILES=/tmp/sysupgrade.conffiles
+export TEST=0
+export ALIVE=0
+export UMOUNT_ETCBACKUP_DIR=0
 
 # parse options
 while [ -n "$1" ]; do
@@ -41,15 +44,16 @@ while [ -n "$1" ]; do
 		-v) export VERBOSE="$(($VERBOSE + 1))";;
 		-q) export VERBOSE="$(($VERBOSE - 1))";;
 		-n) export SAVE_CONFIG=0;;
-		-c) SAVE_OVERLAY=1 SAVE_OVERLAY_PATH=/etc;;
-		-o) SAVE_OVERLAY=1 SAVE_OVERLAY_PATH=/;;
-		-p) SAVE_PARTITIONS=0;;
-		-k) SAVE_INSTALLED_PKGS=1;;
-		-u) SKIP_UNCHANGED=1;;
-		-b|--create-backup) CONF_BACKUP="$2" NEED_IMAGE=1; shift;;
-		-r|--restore-backup) CONF_RESTORE="$2" NEED_IMAGE=1; shift;;
-		-l|--list-backup) CONF_BACKUP_LIST=1;;
-		-f) CONF_IMAGE="$2"; shift;;
+		-c) export SAVE_OVERLAY=1 SAVE_OVERLAY_PATH=/etc;;
+		-o) export SAVE_OVERLAY=1 SAVE_OVERLAY_PATH=/;;
+		-p) export SAVE_PARTITIONS=0;;
+		-k) export SAVE_INSTALLED_PKGS=1;;
+		-u) export SKIP_UNCHANGED=1;;
+		-a|--alive) export ALIVE=1;;
+		-b|--create-backup) export CONF_BACKUP="$2" NEED_IMAGE=1; shift;;
+		-r|--restore-backup) export CONF_RESTORE="$2" NEED_IMAGE=1; shift;;
+		-l|--list-backup) export CONF_BACKUP_LIST=1;;
+		-f) export CONF_IMAGE="$2"; shift;;
 		-F|--force) export FORCE=1;;
 		-T|--test) TEST=1;;
 		-h|--help) HELP=1; break;;
@@ -63,7 +67,17 @@ while [ -n "$1" ]; do
 	shift;
 done
 
-print_help() {
+export CONFFILES=/tmp/sysupgrade.conffiles
+export CONF_TAR=/tmp/sysupgrade.tgz
+export ETCBACKUP_DIR=/etc/backup
+export INSTALLED_PACKAGES=${ETCBACKUP_DIR}/installed_packages.txt
+
+export ARGV="$*"
+export ARGC="$#"
+
+IMAGE="$1"
+
+[ -z "$IMAGE" -a -z "$NEED_IMAGE" -a $CONF_BACKUP_LIST -eq 0 -o $HELP -gt 0 ] && {
 	cat <<EOF
 Usage: $0 [<upgrade-option>...] <image file or URL>
        $0 [-q] [-i] [-c] [-u] [-o] [-k] <backup-command> <file>
@@ -75,6 +89,7 @@ upgrade-option:
 	-o           attempt to preserve all changed files in /, except those
 	             from packages but including changed confs.
 	-u           skip from backup files that are equal to those in /rom
+	-a           alive upgrade valid only when trymode is enabled
 	-n           do not save configuration over reflash
 	-p           do not attempt to restore the partition table after flash.
 	-k           include in backup a list of current installed packages at
@@ -336,6 +351,8 @@ if [ -n "$CONF_RESTORE" ]; then
 	exit $?
 fi
 
+echo $ALIVE > /tmp/.alive_upgrade
+
 type platform_check_image >/dev/null 2>/dev/null || {
 	echo "Firmware upgrade is not implemented for this platform." >&2
 	exit 1
@@ -401,22 +418,28 @@ if [ $TEST -eq 1 ]; then
 	exit 0
 fi
 
-install_bin /sbin/upgraded
-v "Commencing upgrade. Closing all shell sessions."
-
-if [ -n "$FAILSAFE" ]; then
-	printf '%s\x00%s\x00%s' "$RAM_ROOT" "$IMAGE" "$COMMAND" >/tmp/sysupgrade
-	lock -u /tmp/.failsafe
+if [ $ALIVE -eq 1 ]; then
+	do_upgrade
 else
-	json_init
-	json_add_string prefix "$RAM_ROOT"
-	json_add_string path "$IMAGE"
-	[ $FORCE -eq 1 ] && json_add_boolean force 1
-	[ $SAVE_CONFIG -eq 1 ] && json_add_string backup "$CONF_TAR"
-	json_add_string command "$COMMAND"
-	json_add_object options
-	json_add_int save_partitions "$SAVE_PARTITIONS"
-	json_close_object
+	install_bin /sbin/upgraded
+	v "Commencing upgrade. Closing all shell sessions."
 
-	ubus call system sysupgrade "$(json_dump)"
+	COMMAND='/lib/upgrade/do_stage2'
+
+	if [ -n "$FAILSAFE" ]; then
+		printf '%s\x00%s\x00%s' "$RAM_ROOT" "$IMAGE" "$COMMAND" >/tmp/sysupgrade
+		lock -u /tmp/.failsafe
+	else
+		json_init
+		json_add_string prefix "$RAM_ROOT"
+		json_add_string path "$IMAGE"
+		[ $FORCE -eq 1 ] && json_add_boolean force 1
+		[ $SAVE_CONFIG -eq 1 ] && json_add_string backup "$CONF_TAR"
+		json_add_string command "$COMMAND"
+		json_add_object options
+		json_add_int save_partitions "$SAVE_PARTITIONS"
+		json_close_object
+
+		ubus call system sysupgrade "$(json_dump)"
+	fi
 fi
