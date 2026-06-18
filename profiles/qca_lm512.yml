@@ -1,5 +1,6 @@
 ---
 description: Enable qca LM512 for IPQ boards
+subtarget_suffix: _32
 
 diffconfig: |
   CONFIG_KERNEL_ALLOC_SKB_PAGE_FRAG_DISABLE=y
