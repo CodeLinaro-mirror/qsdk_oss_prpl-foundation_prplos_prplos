@@ -79,6 +79,7 @@ additional_packages:
       - kmod-nss-udp-st-drv
       - kmod-nss-userspace-oss
       - kmod-qca8k
+      - kmod-qce2k
       - kmod-ath12k
       - kmod-ath11k
       - kmod-qca-ovsmgr
