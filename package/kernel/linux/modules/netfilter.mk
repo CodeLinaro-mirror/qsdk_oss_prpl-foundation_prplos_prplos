@@ -110,6 +110,7 @@ define KernelPackage/nf-conntrack
 	$(KCONFIG_NF_CONNTRACK)
   DEPENDS:=+PACKAGE_kmod-pptp:kmod-pptp
   FILES:=$(foreach mod,$(NF_CONNTRACK-m),$(LINUX_DIR)/net/$(mod).ko)
+  DEPENDS:=+PACKAGE_kmod-pptp:kmod-pptp +PACKAGE_kmod-ipt-sctp:kmod-lib-crc32c
   AUTOLOAD:=$(call AutoProbe,$(notdir $(NF_CONNTRACK-m)))
 endef
 
@@ -331,6 +332,7 @@ define KernelPackage/ipt-ipopt
   KCONFIG:=$(KCONFIG_IPT_IPOPT)
   DEPENDS:=+PACKAGE_kmod-nf-conntrack:kmod-nf-conntrack
   FILES:=$(foreach mod,$(IPT_IPOPT-m),$(LINUX_DIR)/net/$(mod).ko)
+  DEPENDS:=+kmod-nf-conntrack
   AUTOLOAD:=$(call AutoProbe,$(notdir $(IPT_IPOPT-m)))
   $(call AddDepends/ipt)
 endef
