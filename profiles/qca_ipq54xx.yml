@@ -100,6 +100,7 @@ additional_packages:
       - myftm
       - diag
       - cnssdiag
+      - minidump
       - sysupgrade-helper
       - kmod-qca-nss-netfn-tcpst
       - nss-tcp-st-cli
