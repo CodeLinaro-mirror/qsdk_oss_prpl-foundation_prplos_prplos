@@ -7,10 +7,6 @@ target: ipq95xx
 subtarget: generic
 external_target: True
 description: Build image for prpl Foundation Freedom board
-feeds:
-  - name: feed_qca
-    uri: https://gitlab.com/prpl-foundation/prplOS/feed-qca.git
-    revision: prplware-v5.0.0@2be4d2f7f45de4332ed4d484c8277472266ae52a
 
 additional_packages:
   - feed: packages
@@ -212,8 +208,6 @@ diffconfig: |
   CONFIG_KERNEL_PERF_EVENTS=y
   # CONFIG_KERNEL_SWAP is not set
   CONFIG_PACKAGE_ATH_DEBUG=y
-  CONFIG_PACKAGE_ppecfg=y
-  CONFIG_PACKAGE_libnl-ppe=y
   CONFIG_PACKAGE_ppecfg=y
   CONFIG_PACKAGE_libnl-ppe=y
   CONFIG_PACKAGE_mcastd-noforward=n
