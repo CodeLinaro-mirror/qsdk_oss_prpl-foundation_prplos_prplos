@@ -141,6 +141,7 @@ additional_packages:
       - package_manager_agent
       - qti-license-pfm
       - pm-utils
+      - memory-dashboard
       - qca-cfg80211tool
 
 packages:
