@@ -102,6 +102,10 @@ additional_packages:
       - kmod-rsrcmgr-netstandby-drv
       - kmod-qca-nss-nsm
       - kmod-qca-nss-ppe-dtlsmgr
+      - kmod-qca8084
+      - kmod-qcom-lnx-phy
+      - kmod-qcom-lnx-phy-macsec
+      - kmod-qca8xxx-phc
       - kmod-qca8k
       - ftm
       - myftm

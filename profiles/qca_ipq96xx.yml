@@ -76,7 +76,8 @@ additional_packages:
       - kmod-qca-ssdk-nohnat
       - qca-ssdk-shell
       - kmod-qca8084
-      - kmod-qca81xx
+      - kmod-qcom-lnx-phy
+      - kmod-qcom-lnx-phy-macsec
       - kmod-qca8xxx-phc
       - kmod-qca-nss-ecm-premium
       - kmod-qca-nss-fls
