@@ -151,9 +151,12 @@ menu "Global build settings"
 		  Useful for release builds, so that kernel issues can be debugged offline
 		  later.
 
+	source "prpl-patches/config/Config-build.in"
+
 	menu "Kernel build options"
 
 	source "config/Config-kernel.in"
+	source "prpl-patches/config/Config-kernel.in"
 
 	endmenu
 
