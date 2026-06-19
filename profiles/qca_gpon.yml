@@ -1,0 +1,13 @@
+---
+description: Add qca gpon related packages
+
+additional_packages:
+  - feed: packages
+    packages:
+      - omciibc
+      - sw-hook
+      - swacl-if
+      - trex-drv
+      - apps-scripts
+      - util-ubus
+      - omci
