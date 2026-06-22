@@ -142,6 +142,7 @@ additional_packages:
       - qca-rfs-tftp
       - rproc-fw-mount
       - fastrpc
+      - control-app-open
 
 packages:
   - e2fsprogs
