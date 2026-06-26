@@ -143,6 +143,7 @@ additional_packages:
       - rproc-fw-mount
       - fastrpc
       - control-app-open
+      - onu-hal-agent
 
 packages:
   - e2fsprogs
