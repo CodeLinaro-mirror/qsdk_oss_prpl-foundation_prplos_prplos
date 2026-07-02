@@ -232,3 +232,5 @@ diffconfig: |
   CONFIG_PACKAGE_qti-license-pfm=m
   CONFIG_PACKAGE_pm-utils=m
   CONFIG_PACKAGE_qti-softsku-license-loader-libs=m
+  CONFIG_PREINITOPT=y
+  CONFIG_TARGET_PREINIT_TIMEOUT=0
