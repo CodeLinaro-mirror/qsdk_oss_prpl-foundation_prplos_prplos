@@ -144,6 +144,8 @@ additional_packages:
       - fastrpc
       - control-app-open
       - onu-hal-agent
+      - optee-client
+      - qca-thermal-engine
 
 packages:
   - e2fsprogs
@@ -213,6 +215,7 @@ diffconfig: |
   CONFIG_LOCALMIRROR="https://sources.cdn.openwrt.org/"
   CONFIG_PACKAGE_afc-open=m
   CONFIG_PACKAGE_qca-afc-daemon-open=m
+  CONFIG_PACKAGE_qca-thermal-engine=m
   CONFIG_MAKE_TOOLCHAIN=y
   CONFIG_PREINITOPT=y
   CONFIG_TARGET_PREINIT_TIMEOUT=0
