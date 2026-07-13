@@ -175,6 +175,7 @@ packages:
   - tcpdump
   - taskset
   - freedom-lcm-partitioner
+  - kmod-nft-netdev
 
 diffconfig: |
   CONFIG_TARGET_ALL_PROFILES=y
