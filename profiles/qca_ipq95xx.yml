@@ -180,6 +180,7 @@ packages:
   - taskset
   - freedom-lcm-partitioner
   - wifi-scripts
+  - kmod-nft-netdev
 
 diffconfig: |
   CONFIG_TARGET_INITRAMFS_COMPRESSION_LZMA=y
