@@ -14,4 +14,12 @@ boot() {
 	# set leds to normal state
 	. /etc/diag.sh
 	set_state done
+
+	# Apply SMP affinity once after the first PHY is registered.
+	while ! iw dev | grep -q "Interface"; do
+		echo "Waiting for driver initialization" > /dev/null
+		sleep 2
+	done
+	. /lib/smp_affinity_settings.sh
+	enable_smp_affinity_wifi
 }
