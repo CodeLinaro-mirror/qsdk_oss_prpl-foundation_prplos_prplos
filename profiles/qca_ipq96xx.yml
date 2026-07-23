@@ -136,6 +136,7 @@ additional_packages:
       - softsku_sdk
       - softsku_qwin_agent
       - wasm-container-interfaces
+      - pm-utils
       - memory-dashboard
       - qca-cfg80211tool
       - wifitelemetry
@@ -205,6 +206,7 @@ diffconfig: |
   CONFIG_PACKAGE_ppecfg=y
   CONFIG_PACKAGE_libnl-ppe=y
   CONFIG_PACKAGE_mcastd-noforward=n
+  CONFIG_PACKAGE_pm-utils=m
   CONFIG_PACKAGE_tr181-mcastd=n
   CONFIG_PACKAGE_perf=m
   CONFIG_PACKAGE_libtraceevent=m

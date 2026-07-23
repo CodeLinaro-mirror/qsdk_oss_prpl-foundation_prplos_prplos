@@ -141,6 +141,8 @@ additional_packages:
       - softsku_sdk
       - softsku_qwin_agent
       - wasm-container-interfaces
+      - pm-utils
+      - qti-license-pfm
       - omci-pon
       - nss-pon-drv
       - memory-dashboard
@@ -215,6 +217,8 @@ diffconfig: |
   CONFIG_PACKAGE_libunwind=m
   CONFIG_PACKAGE_lldpd=y
   CONFIG_PACKAGE_kmod-qseecom=m
+  CONFIG_PACKAGE_pm-utils=m
+  CONFIG_PACKAGE_qti-license-pfm=m
   CONFIG_PACKAGE_samba4-server=m
   CONFIG_PACKAGE_openssh-sftp-server=m
   CONFIG_LOCALMIRROR="https://sources.cdn.openwrt.org/"
