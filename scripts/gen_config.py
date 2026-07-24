@@ -37,7 +37,8 @@ def usage(code: int = 0):
         f"""Usage: {sys.argv[0]} <profile> [options...]
 
     clean           Cleanup feeds related parts in the tree and exit.
-    list            List available profiles"""
+    list            List available profiles
+    32bit           Enable 32-bit build"""
     )
     quit(code)
 
@@ -176,6 +177,9 @@ if "clean" in sys.argv:
     print("Tree is now clean")
     quit(0)
 
+enable_32bit = "32bit" in sys.argv
+yaml_args = [a for a in sys.argv[1:] if a != "32bit"]
+
 profile = {
     "additional_packages": [],
     "description": [],
@@ -187,7 +191,10 @@ profile = {
     "subtarget_suffix": "",
 }
 
-profile = load_yaml_list(sys.argv[1:], profile)
+profile = load_yaml_list(yaml_args, profile)
+
+if enable_32bit:
+    profile["subtarget_suffix"] = "_32"
 
 if profile.get("subtarget_suffix"):
     profile["subtarget"] = profile["target"] + profile["subtarget_suffix"]
