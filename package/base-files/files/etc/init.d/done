@@ -20,11 +20,24 @@ boot() {
 	. /etc/diag.sh
 	set_state done
 
-	# Apply SMP affinity once after the first PHY is registered.
-	while ! iw dev | grep -q "Interface"; do
-		echo "Waiting for driver initialization" > /dev/null
+	# Apply SMP affinity once after all PHYs are registered.
+	# Skips gracefully if no WiFi driver is present (e.g. non-WiFi boards).
+	smp_prev=0
+	smp_stable=0
+	smp_timeout=20
+	while [ "$smp_stable" -lt 2 ] && [ "$smp_timeout" -gt 0 ]; do
+		smp_cur=$(ls /sys/class/ieee80211/ 2>/dev/null | wc -l)
+		if [ "$smp_cur" -gt 0 ] && [ "$smp_cur" -eq "$smp_prev" ]; then
+			smp_stable=$((smp_stable + 1))
+		else
+			smp_stable=0
+			smp_prev=$smp_cur
+		fi
+		smp_timeout=$((smp_timeout - 1))
 		sleep 2
 	done
-	. /lib/smp_affinity_settings.sh
-	enable_smp_affinity_wifi
+	if [ "$smp_cur" -gt 0 ]; then
+		. /lib/smp_affinity_settings.sh
+		enable_smp_affinity_wifi
+	fi
 }
