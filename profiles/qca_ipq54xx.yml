@@ -138,6 +138,7 @@ additional_packages:
       - qca-cfg80211tool
       - wifitelemetry
       - control-app-open
+      - qca-acfg
 
 packages:
   - e2fsprogs
