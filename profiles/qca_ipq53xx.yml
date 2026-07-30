@@ -140,6 +140,7 @@ additional_packages:
       - wifitelemetry
       - control-app-open
       - kmod-nft-netdev
+      - qca-acfg
 
 packages:
   - e2fsprogs

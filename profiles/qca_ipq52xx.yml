@@ -152,6 +152,7 @@ additional_packages:
       - onu-hal-agent
       - optee-client
       - qca-thermal-engine
+      - qca-acfg
 
 packages:
   - e2fsprogs
