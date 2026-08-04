@@ -11,11 +11,6 @@ boot() {
 		sh /etc/rc.local
 	}
 
-	# Check if wld is running
-	if ! pidof wld >/dev/null 2>&1; then
-		logger -t pwhm_boot "wld is not running, restarting prplmesh_whm"
-		/etc/init.d/prplmesh_whm restart
-	fi
 	# set leds to normal state
 	. /etc/diag.sh
 	set_state done
