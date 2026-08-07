@@ -146,6 +146,7 @@ additional_packages:
       - omci-pon
       - nss-pon-drv
       - memory-dashboard
+      - mem-profile
       - qca-cfg80211tool
       - wifitelemetry
       - control-app-open

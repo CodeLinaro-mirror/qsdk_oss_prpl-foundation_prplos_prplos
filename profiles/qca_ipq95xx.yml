@@ -138,6 +138,7 @@ additional_packages:
       - qti-license-pfm
       - pm-utils
       - memory-dashboard
+      - mem-profile
       - qca-cfg80211tool
       - wifitelemetry
       - control-app-open

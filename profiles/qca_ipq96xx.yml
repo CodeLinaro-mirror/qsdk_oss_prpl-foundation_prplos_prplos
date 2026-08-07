@@ -138,6 +138,7 @@ additional_packages:
       - wasm-container-interfaces
       - pm-utils
       - memory-dashboard
+      - mem-profile
       - qca-cfg80211tool
       - wifitelemetry
       - qca-rfs-tftp
