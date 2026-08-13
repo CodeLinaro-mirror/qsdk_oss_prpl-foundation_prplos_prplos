@@ -153,6 +153,7 @@ Check LocalTimeZone correctly filter wrong TZ:
    Time.LocalTimeZone=JST-9
   Time.
   Time.LocalTimeZone="JST-9"
+  $ sleep 3
   $ (R "date +%Z")
   JST
 
@@ -160,12 +161,14 @@ Check LocalTimeZone correctly filter wrong TZ:
    Time.LocalTimeZone=UTC0
   Time.
   Time.LocalTimeZone="UTC0"
+  $ sleep 3
   $ (R "date +%Z")
   UTC
 
   $ (R "ba-cli Time.LocalTimeZone=\"NOTAVALIDETZ\"") | sed 's|[>,]||g'
    Time.LocalTimeZone=NOTAVALIDETZ
   ERROR: set Time.LocalTimeZone failed (10 - invalid value)
+  $ sleep 3
   $ (R "date +%Z")
   UTC
 
@@ -173,12 +176,14 @@ Check LocalTimeZone correctly filter wrong TZ:
    Time.LocalTimeZone=GMT0
   Time.
   Time.LocalTimeZone="GMT0"
+  $ sleep 3
   $ (R "date +%Z")
   GMT
 
   $ (R "ba-cli Time.LocalTimeZone=\"/usr/share/zoneinfo/Universal\"") | sed 's|[>,]||g'
    Time.LocalTimeZone=/usr/share/zoneinfo/Universal
   ERROR: set Time.LocalTimeZone failed (10 - invalid value)
+  $ sleep 3
   $ (R "date +%Z")
   GMT
 
@@ -188,6 +193,7 @@ Set back default timezone:
    Time.LocalTimeZone=GMT0
   Time.
   Time.LocalTimeZone="GMT0"
+  $ sleep 3
   $ (R "date +%Z")
   GMT
 
