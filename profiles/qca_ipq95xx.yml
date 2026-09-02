@@ -122,6 +122,7 @@ additional_packages:
       - qca-nsm-app
       - qca-sal-qos-test
       - qca-sal-rule-test
+      - qca-sal-rule
       - udp-clf
       - kmod-qca-nss-ecm-wifi-plugin
       - ath11k-fwtest
