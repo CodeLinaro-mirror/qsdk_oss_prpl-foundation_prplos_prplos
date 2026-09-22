@@ -2,6 +2,30 @@
 # Copyright (C) 2006 OpenWrt.org
 
 START=95
+
+apply_wifi_smp_affinity_late() {
+        smp_prev=0
+        smp_stable=0
+        smp_timeout=20
+
+        while [ "$smp_stable" -lt 2 ] && [ "$smp_timeout" -gt 0 ]; do
+                smp_cur=$(ls /sys/class/ieee80211/ 2>/dev/null | wc -l)
+                if [ "$smp_cur" -gt 0 ] && [ "$smp_cur" -eq "$smp_prev" ]; then
+                        smp_stable=$((smp_stable + 1))
+                else
+                        smp_stable=0
+                        smp_prev=$smp_cur
+                fi
+                smp_timeout=$((smp_timeout - 1))
+                sleep 2
+        done
+
+        if [ "$smp_cur" -gt 0 ] && [ -f /lib/smp_affinity_settings.sh ]; then
+                . /lib/smp_affinity_settings.sh
+                enable_smp_affinity_wifi
+        fi
+}
+
 boot() {
 	mount_root done
 	rm -f /sysupgrade.tgz && sync
@@ -15,24 +39,5 @@ boot() {
 	. /etc/diag.sh
 	set_state done
 
-	# Apply SMP affinity once after all PHYs are registered.
-	# Skips gracefully if no WiFi driver is present (e.g. non-WiFi boards).
-	smp_prev=0
-	smp_stable=0
-	smp_timeout=20
-	while [ "$smp_stable" -lt 2 ] && [ "$smp_timeout" -gt 0 ]; do
-		smp_cur=$(ls /sys/class/ieee80211/ 2>/dev/null | wc -l)
-		if [ "$smp_cur" -gt 0 ] && [ "$smp_cur" -eq "$smp_prev" ]; then
-			smp_stable=$((smp_stable + 1))
-		else
-			smp_stable=0
-			smp_prev=$smp_cur
-		fi
-		smp_timeout=$((smp_timeout - 1))
-		sleep 2
-	done
-	if [ "$smp_cur" -gt 0 ]; then
-		. /lib/smp_affinity_settings.sh
-		enable_smp_affinity_wifi
-	fi
+	apply_wifi_smp_affinity_late &
 }
