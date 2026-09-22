@@ -56,12 +56,6 @@ boot() {
 	uci_apply_defaults
 	sync
 
-	if [ -f "/lib/smp_affinity_settings.sh" ]; then
-		. /lib/smp_affinity_settings.sh
-		echo "Configur affinity settings" > /dev/console
-		enable_smp_affinity_wifi
-	fi
-
 	# temporary hack until configd exists
 	/sbin/reload_config
 }
