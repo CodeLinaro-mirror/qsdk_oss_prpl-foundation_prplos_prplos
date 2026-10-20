@@ -640,6 +640,7 @@ endef
 define Package/iptables-zz-legacy/install
 	$(INSTALL_DIR) $(1)/usr/sbin
 	$(CP) $(PKG_INSTALL_DIR)/usr/sbin/iptables-legacy{,-restore,-save} $(1)/usr/sbin/
+	$(LN) xtables-legacy-multi $(1)/usr/sbin/xtables-multi
 	$(INSTALL_DIR) $(1)/usr/lib/iptables
 endef
 
