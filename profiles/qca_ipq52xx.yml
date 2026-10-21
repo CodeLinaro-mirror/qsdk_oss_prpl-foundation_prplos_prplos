@@ -31,6 +31,7 @@ additional_packages:
       - qca-cfg80211
       - iw-full
       - wireless-freedom
+      - energyservice
       - netifd-scripts
       - libubox
       - ubus

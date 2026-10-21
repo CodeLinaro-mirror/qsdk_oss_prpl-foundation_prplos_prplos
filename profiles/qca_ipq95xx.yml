@@ -50,6 +50,7 @@ additional_packages:
       - wpad-mesh-openssl
       - iw-full
       - wireless-freedom
+      - energyservice
       - netifd-scripts
       - ubus
       - libubox
