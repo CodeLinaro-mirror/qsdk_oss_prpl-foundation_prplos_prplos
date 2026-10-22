@@ -19,6 +19,8 @@ additional_packages:
       - u-boot
       - u-boot-2025
       - ntfs-3g
+      - strongswan
+      - strongswan-full
   - feed: wlan-internal
     packages:
       - kmod-ath12k
@@ -150,6 +152,14 @@ additional_packages:
       - optee-client
       - qca-thermal-engine
       - qca-acfg
+      - kmod-ipt-nflog
+      - kmod-ipt-hashlimit
+      - kmod-ipt-filter
+      - kmod-ipt-tproxy
+      - kmod-br-netfilter
+      - kmod-tun
+      - kmod-ipt-offload
+      - kmod-ipt-socket
 
 packages:
   - e2fsprogs
@@ -223,5 +233,15 @@ diffconfig: |
   CONFIG_PACKAGE_qca-afc-daemon-open=m
   CONFIG_PACKAGE_qca-thermal-engine=m
   CONFIG_MAKE_TOOLCHAIN=y
+  CONFIG_PACKAGE_kmod-br-netfilter=m
+  CONFIG_PACKAGE_kmod-ipt-nflog=m
+  CONFIG_PACKAGE_kmod-ipt-hashlimit=m
+  CONFIG_PACKAGE_kmod-ipt-filter=m
+  CONFIG_PACKAGE_kmod-ipt-tproxy=m
+  CONFIG_PACKAGE_kmod-tun=m
+  CONFIG_PACKAGE_kmod-ipt-offload=m
+  CONFIG_PACKAGE_kmod-ipt-socket=m
+  CONFIG_PACKAGE_strongswan=m
+  CONFIG_PACKAGE_strongswan-full=m
   CONFIG_PREINITOPT=y
   CONFIG_TARGET_PREINIT_TIMEOUT=0
