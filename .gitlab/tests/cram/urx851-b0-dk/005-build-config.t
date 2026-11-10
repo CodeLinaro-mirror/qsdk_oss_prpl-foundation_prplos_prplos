@@ -340,9 +340,14 @@ Assure expected build configuration (PCF-1413):
   CONFIG_PACKAGE_kmod-l2tp=y
   CONFIG_PACKAGE_kmod-lib-crc-ccitt=y
   CONFIG_PACKAGE_kmod-lib-crc16=y
+  CONFIG_PACKAGE_kmod-lib-lz4=y
+  CONFIG_PACKAGE_kmod-lib-lz4-decompress=y
+  CONFIG_PACKAGE_kmod-lib-lzo=y
   CONFIG_PACKAGE_kmod-lib-textsearch=y
+  CONFIG_PACKAGE_kmod-lib-xxhash=y
   CONFIG_PACKAGE_kmod-lib-zlib-deflate=y
   CONFIG_PACKAGE_kmod-lib-zlib-inflate=y
+  CONFIG_PACKAGE_kmod-lib-zstd=y
   CONFIG_PACKAGE_kmod-loop=y
   CONFIG_PACKAGE_kmod-mcastd-core=y
   CONFIG_PACKAGE_kmod-mii=y

@@ -163,6 +163,7 @@ Assure expected build configuration (PCF-1413):
   # CONFIG_PACKAGE_iw is not set
   CONFIG_PACKAGE_iw-full=y
   CONFIG_PACKAGE_kmod-asn1-decoder=y
+  CONFIG_PACKAGE_kmod-crypto-acompress=y
   CONFIG_PACKAGE_kmod-crypto-md5=y
   CONFIG_PACKAGE_kmod-ebtables=y
   CONFIG_PACKAGE_kmod-ebtables-ipv4=y
@@ -188,7 +189,12 @@ Assure expected build configuration (PCF-1413):
   CONFIG_PACKAGE_kmod-ipt-raw6=y
   CONFIG_PACKAGE_kmod-iptunnel6=y
   CONFIG_PACKAGE_kmod-lib-crc-ccitt=y
+  CONFIG_PACKAGE_kmod-lib-lz4=y
+  CONFIG_PACKAGE_kmod-lib-lz4-decompress=y
+  CONFIG_PACKAGE_kmod-lib-lzo=y
   CONFIG_PACKAGE_kmod-lib-textsearch=y
+  CONFIG_PACKAGE_kmod-lib-xxhash=y
+  CONFIG_PACKAGE_kmod-lib-zstd=y
   CONFIG_PACKAGE_kmod-loop=y
   CONFIG_PACKAGE_kmod-mcastd-core=y
   CONFIG_PACKAGE_kmod-nf-conncount=y
