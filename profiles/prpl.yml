@@ -35,6 +35,8 @@ packages:
   - ip6tables-zz-legacy
   - iptables-mod-ipopt
   - iptables-zz-legacy
+  - kmod-lib-lz4
+  - kmod-lib-zstd
   - libdhcpoptions
   - libfwinterface
   - libfwrules
@@ -91,6 +93,7 @@ packages:
   - tr181-upnpdiscovery
   - tr181-usb
   - tr181-xpon
+  - tr181-zram
   - wan-manager
   - wifi-scheduler
 
