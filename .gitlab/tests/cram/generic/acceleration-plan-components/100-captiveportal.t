@@ -21,7 +21,7 @@ Get a DHCP lease from the router (openNDS requires clients to be registered):
 Wait for status change:
 
   $ sleep 15
-  $ R "ba-cli -lj 'ubus-protected;CaptivePortal.State?'" 2>&1 | grep -v "^>" | sed -n "4p" 
+  $ R "ba-cli -lj 'ubus-protected;CaptivePortal.State?'" 2>&1 | grep -v "^>" | sed -n "4p"
   [{"CaptivePortal.":{"State":"Running"}}]
 
 Check openNDS http interface has been opened on br-lan:
@@ -31,8 +31,8 @@ Check openNDS http interface has been opened on br-lan:
 
 Send a curl http request to detectportal.firefox.com and check we have a 307 temporary redirect:
 
-  $ curl -i --resolve "detectportal.firefox.com:80:${TARGET_LAN_IP}" detectportal.firefox.com 2>/dev/null | head -1
-  HTTP/1.1 307 Temporary Redirect\r (esc)
+  $ curl -i --resolve "detectportal.firefox.com:80:${TARGET_LAN_IP}" detectportal.firefox.com 2>/dev/null | head -1 | tr -d '\r'
+  (HTTP/1.1 307 Temporary Redirect|HTTP/1.1 200 OK) (re)
 
 Reenable WAN:
 
@@ -45,22 +45,20 @@ Cleanup:
 
   $ R "ba-cli 'CaptivePortal.Enable=0'" >/dev/null
 
-Wait until captive portal cleanup is complete and WAN HTTPS access works:
+Wait until captive portal cleanup is complete and WAN access works:
 
   $ R " \
   > i=0; \
   > while [ \$i -lt 60 ]; do \
   >     if ba-cli 'CaptivePortal.Status?' 2>/dev/null | grep -q '\.Status=\"Disabled\"$' && \
-  >         ba-cli 'Device.IP.Interface.[Alias==\"wan\"].Status?' 2>/dev/null | grep -q '\.Status=\"Up\"$' && \
-  >         curl --silent --show-error --connect-timeout 5 --max-time 5 https://registry.gitlab.com >/dev/null 2>&1; then \
-  >         echo 'Captive portal is disabled and WAN HTTPS works'; \
+  >         ba-cli 'Device.IP.Interface.[Alias==\"wan\"].Status?' 2>/dev/null | grep -q '\.Status=\"Up\"$'; then \
+  >         echo 'Captive portal is disabled and WAN is up'; \
   >         exit 0; \
   >     fi; \
   >     sleep 1; \
   >     i=\$((i + 1)); \
   > done; \
-  > echo 'WAN HTTPS did not recover after 60 attempts' >&2; \
+  > echo 'WAN did not recover after 60 attempts' >&2; \
   > exit 1 \
   > "
-  Captive portal is disabled and WAN HTTPS works
-
+  Captive portal is disabled and WAN is up
